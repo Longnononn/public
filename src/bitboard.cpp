@@ -171,8 +171,8 @@ void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_c
 }
 
 void init_magics_bb() {
-    Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-    Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
+    Direction rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
+    Direction bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
 
     init_magics(RookMagics, RookTable, (u64*)RookMasks, (u64*)RookMagics_const, (unsigned*)RookShifts, rook_deltas);
     init_magics(BishopMagics, BishopTable, (u64*)BishopMasks, (u64*)BishopMagics_const, (unsigned*)BishopShifts, bishop_deltas);

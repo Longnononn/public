@@ -90,6 +90,8 @@ constexpr Direction pawn_capture_west(Color c) { return c == WHITE ? NORTH_WEST 
 
 constexpr Square operator+(Square s, Direction d) { return Square(s + d); }
 constexpr Square operator-(Square s, Direction d) { return Square(s - d); }
+constexpr Square& operator+=(Square& s, Direction d) { s = s + d; return s; }
+constexpr Square& operator-=(Square& s, Direction d) { s = s - d; return s; }
 
 enum Value : i32 {
     VALUE_ZERO = 0,

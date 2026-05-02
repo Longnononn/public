@@ -84,7 +84,6 @@ public:
     // State queries
     bool is_capture(Move m) const;
     bool is_capture_or_promotion(Move m) const;
-    bool is_check() const { return checkers(); }
     PieceType captured_piece_type() const { return type_of(st.capturedPiece); }
     bool can_castle(CastlingRights cr) const { return st.castlingRights & cr; }
     bool is_draw(int ply) const;

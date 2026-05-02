@@ -114,25 +114,6 @@ constexpr unsigned BishopShifts[SQUARE_NB] = {
     58, 59, 59, 59, 59, 59, 59, 58
 };
 
-u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
-    u64 attacks = 0;
-    const Direction directions[2][4] = {
-        { NORTH, SOUTH, EAST, WEST },
-        { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST }
-    };
-    int idx = (pt == BISHOP) ? 1 : 0;
-    for (int i = 0; i < 4; ++i) {
-        Direction d = directions[idx][i];
-        Square s = sq + d;
-        while (is_ok(s) && square_distance(s, s - d) == 1) {
-            attacks |= square_bb(s);
-            if (occupied & square_bb(s)) break;
-            s += d;
-        }
-    }
-    return attacks;
-}
-
 // Generate all subsets of a mask (for magic initialization)
 u64 index_to_u64(int index, int bits, u64 mask) {
     u64 result = 0;

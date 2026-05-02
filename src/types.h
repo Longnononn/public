@@ -99,8 +99,8 @@ constexpr Direction pawn_push(Color c) { return c == WHITE ? NORTH : SOUTH; }
 constexpr Direction pawn_capture_east(Color c) { return c == WHITE ? NORTH_EAST : SOUTH_EAST; }
 constexpr Direction pawn_capture_west(Color c) { return c == WHITE ? NORTH_WEST : SOUTH_WEST; }
 
-constexpr Square operator+(Square s, Direction d) { return Square(s + d); }
-constexpr Square operator-(Square s, Direction d) { return Square(s - d); }
+constexpr Square operator+(Square s, Direction d) { return Square(int(s) + int(d)); }
+constexpr Square operator-(Square s, Direction d) { return Square(int(s) - int(d)); }
 constexpr Square& operator+=(Square& s, Direction d) { s = s + d; return s; }
 constexpr Square& operator-=(Square& s, Direction d) { s = s - d; return s; }
 

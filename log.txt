@@ -1,437 +1,400 @@
-2026-05-02T11:24:07.6648366Z Current runner version: '2.334.0'
-2026-05-02T11:24:07.6681793Z ##[group]Runner Image Provisioner
-2026-05-02T11:24:07.6683239Z Hosted Compute Agent
-2026-05-02T11:24:07.6684030Z Version: 20260213.493
-2026-05-02T11:24:07.6685027Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-05-02T11:24:07.6686068Z Build Date: 2026-02-13T00:28:41Z
-2026-05-02T11:24:07.6687083Z Worker ID: {fb22f3e6-838a-497b-8f95-3b438f7d519f}
-2026-05-02T11:24:07.6688249Z Azure Region: eastus
-2026-05-02T11:24:07.6689051Z ##[endgroup]
-2026-05-02T11:24:07.6691412Z ##[group]Operating System
-2026-05-02T11:24:07.6692418Z Ubuntu
-2026-05-02T11:24:07.6693075Z 24.04.4
-2026-05-02T11:24:07.6693784Z LTS
-2026-05-02T11:24:07.6694669Z ##[endgroup]
-2026-05-02T11:24:07.6695361Z ##[group]Runner Image
-2026-05-02T11:24:07.6696158Z Image: ubuntu-24.04
-2026-05-02T11:24:07.6697033Z Version: 20260413.86.1
-2026-05-02T11:24:07.6698834Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
-2026-05-02T11:24:07.6701557Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
-2026-05-02T11:24:07.6702985Z ##[endgroup]
-2026-05-02T11:24:07.6704545Z ##[group]GITHUB_TOKEN Permissions
-2026-05-02T11:24:07.6706974Z Contents: read
-2026-05-02T11:24:07.6708336Z Metadata: read
-2026-05-02T11:24:07.6709093Z Packages: read
-2026-05-02T11:24:07.6709825Z ##[endgroup]
-2026-05-02T11:24:07.6712944Z Secret source: Actions
-2026-05-02T11:24:07.6714188Z Prepare workflow directory
-2026-05-02T11:24:07.7177088Z Prepare all required actions
-2026-05-02T11:24:07.7231068Z Getting action download info
-2026-05-02T11:24:07.9620989Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-05-02T11:24:08.0752693Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2026-05-02T11:24:08.2860367Z Complete job name: build-and-test
-2026-05-02T11:24:08.3553885Z ##[group]Run actions/checkout@v4
-2026-05-02T11:24:08.3554653Z with:
-2026-05-02T11:24:08.3555019Z   fetch-depth: 0
-2026-05-02T11:24:08.3555413Z   repository: Longnononn/public
-2026-05-02T11:24:08.3556052Z   token: ***
-2026-05-02T11:24:08.3556436Z   ssh-strict: true
-2026-05-02T11:24:08.3556812Z   ssh-user: git
-2026-05-02T11:24:08.3557205Z   persist-credentials: true
-2026-05-02T11:24:08.3557631Z   clean: true
-2026-05-02T11:24:08.3558018Z   sparse-checkout-cone-mode: true
-2026-05-02T11:24:08.3558469Z   fetch-tags: false
-2026-05-02T11:24:08.3558857Z   show-progress: true
-2026-05-02T11:24:08.3559237Z   lfs: false
-2026-05-02T11:24:08.3559589Z   submodules: false
-2026-05-02T11:24:08.3560152Z   set-safe-directory: true
-2026-05-02T11:24:08.3560755Z ##[endgroup]
-2026-05-02T11:24:08.4676495Z Syncing repository: Longnononn/public
-2026-05-02T11:24:08.4678134Z ##[group]Getting Git version info
-2026-05-02T11:24:08.4678986Z Working directory is '/home/runner/work/public/public'
-2026-05-02T11:24:08.4680129Z [command]/usr/bin/git version
-2026-05-02T11:24:08.4711187Z git version 2.53.0
-2026-05-02T11:24:08.4735182Z ##[endgroup]
-2026-05-02T11:24:08.4749452Z Temporarily overriding HOME='/home/runner/work/_temp/12faef02-30c8-4ddf-95d2-6425b0f218d5' before making global git config changes
-2026-05-02T11:24:08.4751163Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T11:24:08.4763223Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T11:24:08.4795659Z Deleting the contents of '/home/runner/work/public/public'
-2026-05-02T11:24:08.4799038Z ##[group]Initializing the repository
-2026-05-02T11:24:08.4803130Z [command]/usr/bin/git init /home/runner/work/public/public
-2026-05-02T11:24:08.4875182Z hint: Using 'master' as the name for the initial branch. This default branch name
-2026-05-02T11:24:08.4876647Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-2026-05-02T11:24:08.4877692Z hint: to use in all of your new repositories, which will suppress this warning,
-2026-05-02T11:24:08.4878664Z hint: call:
-2026-05-02T11:24:08.4879016Z hint:
-2026-05-02T11:24:08.4879477Z hint: 	git config --global init.defaultBranch <name>
-2026-05-02T11:24:08.4880258Z hint:
-2026-05-02T11:24:08.4880873Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2026-05-02T11:24:08.4882114Z hint: 'development'. The just-created branch can be renamed via this command:
-2026-05-02T11:24:08.4882779Z hint:
-2026-05-02T11:24:08.4883140Z hint: 	git branch -m <name>
-2026-05-02T11:24:08.4883560Z hint:
-2026-05-02T11:24:08.4884109Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2026-05-02T11:24:08.4885146Z Initialized empty Git repository in /home/runner/work/public/public/.git/
-2026-05-02T11:24:08.4886932Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
-2026-05-02T11:24:08.4917505Z ##[endgroup]
-2026-05-02T11:24:08.4918234Z ##[group]Disabling automatic garbage collection
-2026-05-02T11:24:08.4921600Z [command]/usr/bin/git config --local gc.auto 0
-2026-05-02T11:24:08.4950453Z ##[endgroup]
-2026-05-02T11:24:08.4951122Z ##[group]Setting up auth
-2026-05-02T11:24:08.4956601Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T11:24:08.4986637Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T11:24:08.5273300Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T11:24:08.5302851Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T11:24:08.5531690Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T11:24:08.5561999Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T11:24:08.5803239Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-05-02T11:24:08.5837331Z ##[endgroup]
-2026-05-02T11:24:08.5838238Z ##[group]Fetching the repository
-2026-05-02T11:24:08.5845669Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-2026-05-02T11:24:08.9226837Z From https://github.com/Longnononn/public
-2026-05-02T11:24:08.9227892Z  * [new branch]      main       -> origin/main
-2026-05-02T11:24:08.9263048Z [command]/usr/bin/git branch --list --remote origin/main
-2026-05-02T11:24:08.9287038Z   origin/main
-2026-05-02T11:24:08.9295033Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
-2026-05-02T11:24:08.9315530Z ba5b4c25da43f68f2c1c84ea42da160481061fad
-2026-05-02T11:24:08.9319643Z ##[endgroup]
-2026-05-02T11:24:08.9320776Z ##[group]Determining the checkout info
-2026-05-02T11:24:08.9321853Z ##[endgroup]
-2026-05-02T11:24:08.9325087Z [command]/usr/bin/git sparse-checkout disable
-2026-05-02T11:24:08.9361696Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-05-02T11:24:08.9388453Z ##[group]Checking out the ref
-2026-05-02T11:24:08.9393698Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-05-02T11:24:08.9542790Z Switched to a new branch 'main'
-2026-05-02T11:24:08.9544003Z branch 'main' set up to track 'origin/main'.
-2026-05-02T11:24:08.9546344Z ##[endgroup]
-2026-05-02T11:24:08.9562660Z [command]/usr/bin/git log -1 --format=%H
-2026-05-02T11:24:08.9587804Z ba5b4c25da43f68f2c1c84ea42da160481061fad
-2026-05-02T11:24:08.9780721Z ##[group]Run sudo apt-get update
-2026-05-02T11:24:08.9781403Z [36;1msudo apt-get update[0m
-2026-05-02T11:24:08.9782116Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
-2026-05-02T11:24:08.9782901Z [36;1mpip3 install numpy scipy[0m
-2026-05-02T11:24:08.9809386Z shell: /usr/bin/bash -e {0}
-2026-05-02T11:24:08.9810373Z ##[endgroup]
-2026-05-02T11:24:09.0596642Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T11:24:09.1005255Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2026-05-02T11:24:09.1012324Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2026-05-02T11:24:09.1015155Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2026-05-02T11:24:09.1038213Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2026-05-02T11:24:09.1056918Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2026-05-02T11:24:09.1105974Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2026-05-02T11:24:09.1226933Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
-2026-05-02T11:24:09.2717251Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
-2026-05-02T11:24:09.2825476Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
-2026-05-02T11:24:09.2868286Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
-2026-05-02T11:24:09.3241495Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
-2026-05-02T11:24:09.3363257Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
-2026-05-02T11:24:09.3388920Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
-2026-05-02T11:24:09.3409576Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
-2026-05-02T11:24:09.3418507Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
-2026-05-02T11:24:09.3506607Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
-2026-05-02T11:24:09.3531909Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
-2026-05-02T11:24:09.3570901Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
-2026-05-02T11:24:09.3584191Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
-2026-05-02T11:24:09.3738212Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
-2026-05-02T11:24:09.4223638Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2026-05-02T11:24:09.4231568Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
-2026-05-02T11:24:09.4242070Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
-2026-05-02T11:24:09.4254132Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
-2026-05-02T11:24:09.4273926Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2026-05-02T11:24:09.4282125Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
-2026-05-02T11:24:09.4292257Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
-2026-05-02T11:24:09.4306275Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
-2026-05-02T11:24:09.4317875Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
-2026-05-02T11:24:09.4379626Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
-2026-05-02T11:24:09.4383593Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
-2026-05-02T11:24:09.4387225Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
-2026-05-02T11:24:09.4391160Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
-2026-05-02T11:24:09.4395351Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
-2026-05-02T11:24:09.4861782Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-2026-05-02T11:24:09.4869912Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
-2026-05-02T11:24:09.4882341Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2026-05-02T11:24:09.4902697Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
-2026-05-02T11:24:09.4983212Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
-2026-05-02T11:24:09.5005229Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
-2026-05-02T11:24:09.5041313Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
-2026-05-02T11:24:09.5050224Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
-2026-05-02T11:24:09.5118590Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
-2026-05-02T11:24:09.5142785Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
-2026-05-02T11:24:09.5155212Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
-2026-05-02T11:24:09.5165229Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
-2026-05-02T11:24:09.5238233Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
-2026-05-02T11:24:09.5321440Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
-2026-05-02T11:24:09.5360404Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2026-05-02T11:24:09.5369510Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
-2026-05-02T11:24:09.5819834Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
-2026-05-02T11:24:09.5828706Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2026-05-02T11:24:18.0709658Z Fetched 16.5 MB in 2s (8279 kB/s)
-2026-05-02T11:24:18.8331182Z Reading package lists...
-2026-05-02T11:24:18.8660345Z Reading package lists...
-2026-05-02T11:24:19.0487221Z Building dependency tree...
-2026-05-02T11:24:19.0494857Z Reading state information...
-2026-05-02T11:24:19.2153957Z g++ is already the newest version (4:13.2.0-7ubuntu1).
-2026-05-02T11:24:19.2154676Z python3 is already the newest version (3.12.3-0ubuntu2.1).
-2026-05-02T11:24:19.2155254Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
-2026-05-02T11:24:19.2155731Z Suggested packages:
-2026-05-02T11:24:19.2156096Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
-2026-05-02T11:24:19.2396149Z The following NEW packages will be installed:
-2026-05-02T11:24:19.2403038Z   cmake cmake-data libjsoncpp25 librhash0
-2026-05-02T11:24:19.2583333Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
-2026-05-02T11:24:19.2583955Z Need to get 13.6 MB of archives.
-2026-05-02T11:24:19.2584372Z After this operation, 49.1 MB of additional disk space will be used.
-2026-05-02T11:24:19.2584826Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T11:24:19.4446392Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
-2026-05-02T11:24:19.4563889Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
-2026-05-02T11:24:19.4651034Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
-2026-05-02T11:24:19.4945364Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
-2026-05-02T11:24:19.8714145Z Fetched 13.6 MB in 0s (36.9 MB/s)
-2026-05-02T11:24:19.8921831Z Selecting previously unselected package libjsoncpp25:amd64.
-2026-05-02T11:24:19.9148633Z (Reading database ... 
-2026-05-02T11:24:19.9149015Z (Reading database ... 5%
-2026-05-02T11:24:19.9149847Z (Reading database ... 10%
-2026-05-02T11:24:19.9150377Z (Reading database ... 15%
-2026-05-02T11:24:19.9150746Z (Reading database ... 20%
-2026-05-02T11:24:19.9151050Z (Reading database ... 25%
-2026-05-02T11:24:19.9151359Z (Reading database ... 30%
-2026-05-02T11:24:19.9151739Z (Reading database ... 35%
-2026-05-02T11:24:19.9152085Z (Reading database ... 40%
-2026-05-02T11:24:19.9152430Z (Reading database ... 45%
-2026-05-02T11:24:19.9152814Z (Reading database ... 50%
-2026-05-02T11:24:19.9206775Z (Reading database ... 55%
-2026-05-02T11:24:20.0415892Z (Reading database ... 60%
-2026-05-02T11:24:20.2253066Z (Reading database ... 65%
-2026-05-02T11:24:20.3897744Z (Reading database ... 70%
-2026-05-02T11:24:20.5932981Z (Reading database ... 75%
-2026-05-02T11:24:20.7821283Z (Reading database ... 80%
-2026-05-02T11:24:20.9883356Z (Reading database ... 85%
-2026-05-02T11:24:21.1821069Z (Reading database ... 90%
-2026-05-02T11:24:21.3484404Z (Reading database ... 95%
-2026-05-02T11:24:21.3484715Z (Reading database ... 100%
-2026-05-02T11:24:21.3485058Z (Reading database ... 220764 files and directories currently installed.)
-2026-05-02T11:24:21.3533578Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
-2026-05-02T11:24:21.3570137Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T11:24:21.3824660Z Selecting previously unselected package librhash0:amd64.
-2026-05-02T11:24:21.3971994Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
-2026-05-02T11:24:21.3981644Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T11:24:21.4233415Z Selecting previously unselected package cmake-data.
-2026-05-02T11:24:21.4379200Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
-2026-05-02T11:24:21.4449657Z Unpacking cmake-data (3.28.3-1build7) ...
-2026-05-02T11:24:21.9769286Z Selecting previously unselected package cmake.
-2026-05-02T11:24:21.9933870Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
-2026-05-02T11:24:21.9941589Z Unpacking cmake (3.28.3-1build7) ...
-2026-05-02T11:24:22.1753179Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T11:24:22.1778195Z Setting up librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T11:24:22.1798185Z Setting up cmake-data (3.28.3-1build7) ...
-2026-05-02T11:24:22.1862516Z Setting up cmake (3.28.3-1build7) ...
-2026-05-02T11:24:22.1884948Z Processing triggers for man-db (2.12.0-4build2) ...
-2026-05-02T11:24:22.1904780Z Not building database; man-db/auto-update is not 'true'.
-2026-05-02T11:24:22.1917680Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
-2026-05-02T11:24:22.8846086Z 
-2026-05-02T11:24:22.8846792Z Running kernel seems to be up-to-date.
-2026-05-02T11:24:22.8847124Z 
-2026-05-02T11:24:22.8847259Z No services need to be restarted.
-2026-05-02T11:24:22.8847516Z 
-2026-05-02T11:24:22.8847639Z No containers need to be restarted.
-2026-05-02T11:24:22.8847912Z 
-2026-05-02T11:24:22.8848087Z No user sessions are running outdated binaries.
-2026-05-02T11:24:22.8848384Z 
-2026-05-02T11:24:22.8848655Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
-2026-05-02T11:24:24.1309805Z Defaulting to user installation because normal site-packages is not writeable
-2026-05-02T11:24:24.6690746Z Collecting numpy
-2026-05-02T11:24:24.7118473Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
-2026-05-02T11:24:24.8349259Z Collecting scipy
-2026-05-02T11:24:24.8382672Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
-2026-05-02T11:24:24.8490532Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 6.1 MB/s eta 0:00:00
-2026-05-02T11:24:24.8889677Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
-2026-05-02T11:24:25.0057793Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 164.4 MB/s eta 0:00:00
-2026-05-02T11:24:25.0089369Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
-2026-05-02T11:24:25.1877232Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 132.6 MB/s eta 0:00:00
-2026-05-02T11:24:25.5173126Z Installing collected packages: numpy, scipy
-2026-05-02T11:24:31.0606575Z Successfully installed numpy-2.4.4 scipy-1.17.1
-2026-05-02T11:24:31.1626709Z ##[group]Run git checkout main
-2026-05-02T11:24:31.1627001Z [36;1mgit checkout main[0m
-2026-05-02T11:24:31.1627235Z [36;1mmkdir -p build_baseline[0m
-2026-05-02T11:24:31.1627493Z [36;1mcd build_baseline[0m
-2026-05-02T11:24:31.1627742Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
-2026-05-02T11:24:31.1628011Z [36;1mmake -j$(nproc)[0m
-2026-05-02T11:24:31.1628223Z [36;1mcp nexus ../nexus_base[0m
-2026-05-02T11:24:31.1628448Z [36;1mcd ..[0m
-2026-05-02T11:24:31.1651387Z shell: /usr/bin/bash -e {0}
-2026-05-02T11:24:31.1651622Z ##[endgroup]
-2026-05-02T11:24:31.1748325Z Already on 'main'
-2026-05-02T11:24:31.1821994Z Your branch is up to date with 'origin/main'.
-2026-05-02T11:24:31.3384823Z -- The CXX compiler identification is GNU 13.3.0
-2026-05-02T11:24:31.3514754Z -- Detecting CXX compiler ABI info
-2026-05-02T11:24:31.4255459Z -- Detecting CXX compiler ABI info - done
-2026-05-02T11:24:31.4431085Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
-2026-05-02T11:24:31.4534153Z -- Detecting CXX compile features
-2026-05-02T11:24:31.4631341Z -- Detecting CXX compile features - done
-2026-05-02T11:24:31.4739293Z -- Performing Test COMPILER_SUPPORTS_AVX2
-2026-05-02T11:24:31.5403096Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
-2026-05-02T11:24:31.5410780Z -- Performing Test COMPILER_SUPPORTS_BMI2
-2026-05-02T11:24:31.6050928Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
-2026-05-02T11:24:31.6058853Z -- Performing Test COMPILER_SUPPORTS_POPCNT
-2026-05-02T11:24:31.6705748Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
-2026-05-02T11:24:31.6712285Z -- Configuring done (0.5s)
-2026-05-02T11:24:31.6799072Z -- Generating done (0.0s)
-2026-05-02T11:24:31.6802818Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
-2026-05-02T11:24:31.6998324Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
-2026-05-02T11:24:31.7000848Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
-2026-05-02T11:24:31.7001970Z [  7%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
-2026-05-02T11:24:31.7002950Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
-2026-05-02T11:24:32.0787707Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T11:24:32.0851784Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T11:24:32.0910823Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T11:24:32.0940705Z       |             ^~~~~
-2026-05-02T11:24:32.1301028Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T11:24:32.1332080Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T11:24:32.1341561Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T11:24:32.1390513Z       |     ^~~~~~~~~~~~
-2026-05-02T11:24:32.1421114Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
-2026-05-02T11:24:32.1451227Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
-2026-05-02T11:24:32.1480575Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
-2026-05-02T11:24:32.1490501Z       |         ^~~~~~~
-2026-05-02T11:24:32.1603821Z [ 12%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
-2026-05-02T11:24:32.2032463Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T11:24:32.2033998Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
-2026-05-02T11:24:32.2061550Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T11:24:32.2070773Z   169 |     Key key = st.key;
-2026-05-02T11:24:32.2091048Z       |         ^~~
-2026-05-02T11:24:32.2510984Z [ 17%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
-2026-05-02T11:24:32.4230921Z [ 20%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
-2026-05-02T11:24:32.5612488Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T11:24:32.5671575Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T11:24:32.5710636Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T11:24:32.5730560Z       |             ^~~~~
-2026-05-02T11:24:32.5852274Z /home/runner/work/public/public/src/movegen.cpp:306:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::CAPTURES]’ [-fpermissive]
-2026-05-02T11:24:32.5860931Z   306 | template ExtMove* generate<CAPTURES>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:32.5880558Z       |                                                                              ^
-2026-05-02T11:24:32.5882409Z /home/runner/work/public/public/src/movegen.cpp:307:76: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIETS]’ [-fpermissive]
-2026-05-02T11:24:32.5910744Z   307 | template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:32.5911424Z       |                                                                            ^
-2026-05-02T11:24:32.5913341Z /home/runner/work/public/public/src/movegen.cpp:308:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::EVASIONS]’ [-fpermissive]
-2026-05-02T11:24:32.5914751Z   308 | template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:32.5915461Z       |                                                                              ^
-2026-05-02T11:24:32.5941922Z /home/runner/work/public/public/src/movegen.cpp:309:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::NON_EVASIONS]’ [-fpermissive]
-2026-05-02T11:24:32.5943515Z   309 | template ExtMove* generate<NON_EVASIONS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:32.5944252Z       |                                                                                  ^
-2026-05-02T11:24:32.5946215Z /home/runner/work/public/public/src/movegen.cpp:310:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIET_CHECKS]’ [-fpermissive]
-2026-05-02T11:24:32.5947773Z   310 | template ExtMove* generate<QUIET_CHECKS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:32.5948511Z       |                                                                                  ^
-2026-05-02T11:24:32.6087634Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T11:24:32.6101733Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T11:24:32.6102992Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T11:24:32.6103432Z       |     ^~~~~~~~~~~~
-2026-05-02T11:24:32.6104798Z /home/runner/work/public/public/src/movegen.cpp: In instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::LEGAL]’:
-2026-05-02T11:24:32.6120794Z /home/runner/work/public/public/src/movegen.cpp:305:75:   required from here
-2026-05-02T11:24:32.6161000Z /home/runner/work/public/public/src/movegen.cpp:198:24: error: static assertion failed: LEGAL generation uses pseudolegal + filter
-2026-05-02T11:24:32.6191079Z   198 |     static_assert(Type != LEGAL, "LEGAL generation uses pseudolegal + filter");
-2026-05-02T11:24:32.6212106Z       |                   ~~~~~^~~~~~~~
-2026-05-02T11:24:32.6242720Z /home/runner/work/public/public/src/movegen.cpp:198:24: note: the comparison reduces to ‘(5 != 5)’
-2026-05-02T11:24:32.6331472Z [ 22%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
-2026-05-02T11:24:32.6372821Z [ 25%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
-2026-05-02T11:24:32.6404038Z make[2]: *** [CMakeFiles/nexus.dir/build.make:121: CMakeFiles/nexus.dir/src/movegen.cpp.o] Error 1
-2026-05-02T11:24:32.6406526Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T11:24:32.6442949Z [ 27%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
-2026-05-02T11:24:32.8432326Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T11:24:32.8461342Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T11:24:32.8490605Z    94 |     Color them = ~us;
-2026-05-02T11:24:32.8520715Z       |           ^~~~
-2026-05-02T11:24:32.8551773Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static int Nexus::Eval::game_phase(const Nexus::BoardState&)’:
-2026-05-02T11:24:32.8553476Z /home/runner/work/public/public/src/eval.cpp:175:46: error: no match for ‘operator++’ (operand type is ‘Nexus::PieceType’)
-2026-05-02T11:24:32.8554401Z   175 |     for (PieceType pt = KNIGHT; pt <= QUEEN; ++pt)
-2026-05-02T11:24:32.8554900Z       |                                              ^~~~
-2026-05-02T11:24:32.8941199Z make[2]: *** [CMakeFiles/nexus.dir/build.make:135: CMakeFiles/nexus.dir/src/eval.cpp.o] Error 1
-2026-05-02T11:24:32.8970864Z [ 30%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
-2026-05-02T11:24:33.0442126Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T11:24:33.0501393Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T11:24:33.0502218Z   169 |     Key key = st.key;
-2026-05-02T11:24:33.0502564Z       |         ^~~
-2026-05-02T11:24:33.0740945Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T11:24:33.0771230Z /home/runner/work/public/public/src/tt.h:46:52: error: ‘Depth’ has not been declared
-2026-05-02T11:24:33.0800751Z    46 |     void store(Key key, Value v, bool pv, Bound b, Depth d, Move m, Value ev);
-2026-05-02T11:24:33.0830581Z       |                                                    ^~~~~
-2026-05-02T11:24:33.1221230Z [ 32%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
-2026-05-02T11:24:33.2501192Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
-2026-05-02T11:24:33.2682452Z /home/runner/work/public/public/src/movegen.cpp:306:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::CAPTURES]’ [-fpermissive]
-2026-05-02T11:24:33.2710882Z   306 | template ExtMove* generate<CAPTURES>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:33.2740582Z       |                                                                              ^
-2026-05-02T11:24:33.2771915Z /home/runner/work/public/public/src/movegen.cpp:307:76: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIETS]’ [-fpermissive]
-2026-05-02T11:24:33.2800771Z   307 | template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:33.2830547Z       |                                                                            ^
-2026-05-02T11:24:33.2861910Z /home/runner/work/public/public/src/movegen.cpp:308:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::EVASIONS]’ [-fpermissive]
-2026-05-02T11:24:33.2890948Z   308 | template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:33.2920367Z       |                                                                              ^
-2026-05-02T11:24:33.2951991Z /home/runner/work/public/public/src/movegen.cpp:309:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::NON_EVASIONS]’ [-fpermissive]
-2026-05-02T11:24:33.2980553Z   309 | template ExtMove* generate<NON_EVASIONS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:33.3010588Z       |                                                                                  ^
-2026-05-02T11:24:33.3042035Z /home/runner/work/public/public/src/movegen.cpp:310:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIET_CHECKS]’ [-fpermissive]
-2026-05-02T11:24:33.3070766Z   310 | template ExtMove* generate<QUIET_CHECKS>(const BoardState& pos, ExtMove* moveList);
-2026-05-02T11:24:33.3100546Z       |                                                                                  ^
-2026-05-02T11:24:33.3131804Z /home/runner/work/public/public/src/movegen.cpp: In instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::LEGAL]’:
-2026-05-02T11:24:33.3180633Z /home/runner/work/public/public/src/movegen.cpp:305:75:   required from here
-2026-05-02T11:24:33.3181740Z /home/runner/work/public/public/src/movegen.cpp:198:24: error: static assertion failed: LEGAL generation uses pseudolegal + filter
-2026-05-02T11:24:33.3230819Z   198 |     static_assert(Type != LEGAL, "LEGAL generation uses pseudolegal + filter");
-2026-05-02T11:24:33.3254709Z       |                   ~~~~~^~~~~~~~
-2026-05-02T11:24:33.3256173Z /home/runner/work/public/public/src/movegen.cpp:198:24: note: the comparison reduces to ‘(5 != 5)’
-2026-05-02T11:24:33.3263766Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:149: CMakeFiles/nexus_tests.dir/src/movegen.cpp.o] Error 1
-2026-05-02T11:24:33.3265112Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T11:24:33.4335741Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T11:24:33.4337472Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T11:24:33.4338353Z    94 |     Color them = ~us;
-2026-05-02T11:24:33.4338909Z       |           ^~~~
-2026-05-02T11:24:33.4340550Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static int Nexus::Eval::game_phase(const Nexus::BoardState&)’:
-2026-05-02T11:24:33.4342652Z /home/runner/work/public/public/src/eval.cpp:175:46: error: no match for ‘operator++’ (operand type is ‘Nexus::PieceType’)
-2026-05-02T11:24:33.4343877Z   175 |     for (PieceType pt = KNIGHT; pt <= QUEEN; ++pt)
-2026-05-02T11:24:33.4352450Z       |                                              ^~~~
-2026-05-02T11:24:33.4671211Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:163: CMakeFiles/nexus_tests.dir/src/eval.cpp.o] Error 1
-2026-05-02T11:24:33.5961038Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T11:24:33.5962276Z /home/runner/work/public/public/src/tt.h:46:52: error: ‘Depth’ has not been declared
-2026-05-02T11:24:33.5963414Z    46 |     void store(Key key, Value v, bool pv, Bound b, Depth d, Move m, Value ev);
-2026-05-02T11:24:33.5965274Z       |                                                    ^~~~~
-2026-05-02T11:24:33.7164064Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T11:24:33.7166781Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T11:24:33.7168637Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T11:24:33.7169223Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:24:33.7170423Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T11:24:33.7171093Z    26 | struct TTCluster {
-2026-05-02T11:24:33.7171434Z       |        ^~~~~~~~~
-2026-05-02T11:24:33.7171887Z /home/runner/work/public/public/src/tt.cpp: At global scope:
-2026-05-02T11:24:33.7172765Z /home/runner/work/public/public/src/tt.cpp:72:68: error: ‘Depth’ has not been declared
-2026-05-02T11:24:33.7173732Z    72 | void TranspositionTable::store(Key key, Value v, bool pv, Bound b, Depth d, Move m, Value ev) {
-2026-05-02T11:24:33.7174476Z       |                                                                    ^~~~~
-2026-05-02T11:24:33.7657004Z make[2]: *** [CMakeFiles/nexus.dir/build.make:149: CMakeFiles/nexus.dir/src/tt.cpp.o] Error 1
-2026-05-02T11:24:33.7659663Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
-2026-05-02T11:24:33.7660418Z make[1]: *** Waiting for unfinished jobs....
-2026-05-02T11:24:34.1043881Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T11:24:34.1045445Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T11:24:34.1046825Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T11:24:34.1047373Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:24:34.1048444Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T11:24:34.1049064Z    26 | struct TTCluster {
-2026-05-02T11:24:34.1049365Z       |        ^~~~~~~~~
-2026-05-02T11:24:34.1049825Z /home/runner/work/public/public/src/tt.cpp: At global scope:
-2026-05-02T11:24:34.1050914Z /home/runner/work/public/public/src/tt.cpp:72:68: error: ‘Depth’ has not been declared
-2026-05-02T11:24:34.1051870Z    72 | void TranspositionTable::store(Key key, Value v, bool pv, Bound b, Depth d, Move m, Value ev) {
-2026-05-02T11:24:34.1052626Z       |                                                                    ^~~~~
-2026-05-02T11:24:34.1527513Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:177: CMakeFiles/nexus_tests.dir/src/tt.cpp.o] Error 1
-2026-05-02T11:24:34.1529133Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
-2026-05-02T11:24:34.1531932Z make: *** [Makefile:101: all] Error 2
-2026-05-02T11:24:34.1549276Z ##[error]Process completed with exit code 2.
-2026-05-02T11:24:34.1662013Z Post job cleanup.
-2026-05-02T11:24:34.2650840Z [command]/usr/bin/git version
-2026-05-02T11:24:34.2686534Z git version 2.53.0
-2026-05-02T11:24:34.2726335Z Temporarily overriding HOME='/home/runner/work/_temp/c5c6d031-7786-40f6-9bfc-66ccc7b598b9' before making global git config changes
-2026-05-02T11:24:34.2727170Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T11:24:34.2731656Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T11:24:34.2766973Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T11:24:34.2799464Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T11:24:34.3034472Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T11:24:34.3055617Z http.https://github.com/.extraheader
-2026-05-02T11:24:34.3067391Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-05-02T11:24:34.3098316Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T11:24:34.3327798Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T11:24:34.3359313Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T11:24:34.3698672Z Cleaning up orphan processes
-2026-05-02T11:24:34.3963182Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-05-02T11:31:03.9646041Z Current runner version: '2.334.0'
+2026-05-02T11:31:03.9669543Z ##[group]Runner Image Provisioner
+2026-05-02T11:31:03.9670294Z Hosted Compute Agent
+2026-05-02T11:31:03.9671257Z Version: 20260213.493
+2026-05-02T11:31:03.9672034Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-02T11:31:03.9672707Z Build Date: 2026-02-13T00:28:41Z
+2026-05-02T11:31:03.9673527Z Worker ID: {ac50353e-87d4-4e55-a751-8811a425b7f8}
+2026-05-02T11:31:03.9674199Z Azure Region: centralus
+2026-05-02T11:31:03.9674730Z ##[endgroup]
+2026-05-02T11:31:03.9676258Z ##[group]Operating System
+2026-05-02T11:31:03.9676868Z Ubuntu
+2026-05-02T11:31:03.9677334Z 24.04.4
+2026-05-02T11:31:03.9677888Z LTS
+2026-05-02T11:31:03.9678307Z ##[endgroup]
+2026-05-02T11:31:03.9678794Z ##[group]Runner Image
+2026-05-02T11:31:03.9679331Z Image: ubuntu-24.04
+2026-05-02T11:31:03.9679878Z Version: 20260413.86.1
+2026-05-02T11:31:03.9681407Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-02T11:31:03.9683086Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-02T11:31:03.9683969Z ##[endgroup]
+2026-05-02T11:31:03.9685072Z ##[group]GITHUB_TOKEN Permissions
+2026-05-02T11:31:03.9687092Z Contents: read
+2026-05-02T11:31:03.9687589Z Metadata: read
+2026-05-02T11:31:03.9688192Z Packages: read
+2026-05-02T11:31:03.9688646Z ##[endgroup]
+2026-05-02T11:31:03.9690575Z Secret source: Actions
+2026-05-02T11:31:03.9691650Z Prepare workflow directory
+2026-05-02T11:31:04.0028858Z Prepare all required actions
+2026-05-02T11:31:04.0068945Z Getting action download info
+2026-05-02T11:31:04.3733064Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-02T11:31:04.5270417Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-02T11:31:04.7311983Z Complete job name: build-and-test
+2026-05-02T11:31:04.8035315Z ##[group]Run actions/checkout@v4
+2026-05-02T11:31:04.8036155Z with:
+2026-05-02T11:31:04.8036532Z   fetch-depth: 0
+2026-05-02T11:31:04.8036951Z   repository: Longnononn/public
+2026-05-02T11:31:04.8037569Z   token: ***
+2026-05-02T11:31:04.8037935Z   ssh-strict: true
+2026-05-02T11:31:04.8038319Z   ssh-user: git
+2026-05-02T11:31:04.8038703Z   persist-credentials: true
+2026-05-02T11:31:04.8039139Z   clean: true
+2026-05-02T11:31:04.8039522Z   sparse-checkout-cone-mode: true
+2026-05-02T11:31:04.8040020Z   fetch-tags: false
+2026-05-02T11:31:04.8040420Z   show-progress: true
+2026-05-02T11:31:04.8041018Z   lfs: false
+2026-05-02T11:31:04.8041394Z   submodules: false
+2026-05-02T11:31:04.8041792Z   set-safe-directory: true
+2026-05-02T11:31:04.8042483Z ##[endgroup]
+2026-05-02T11:31:04.9143583Z Syncing repository: Longnononn/public
+2026-05-02T11:31:04.9145811Z ##[group]Getting Git version info
+2026-05-02T11:31:04.9146499Z Working directory is '/home/runner/work/public/public'
+2026-05-02T11:31:04.9147477Z [command]/usr/bin/git version
+2026-05-02T11:31:04.9203036Z git version 2.53.0
+2026-05-02T11:31:04.9229281Z ##[endgroup]
+2026-05-02T11:31:04.9253237Z Temporarily overriding HOME='/home/runner/work/_temp/871844d7-84ad-4180-ae9a-11ab535a5ee6' before making global git config changes
+2026-05-02T11:31:04.9255615Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T11:31:04.9259231Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T11:31:04.9292493Z Deleting the contents of '/home/runner/work/public/public'
+2026-05-02T11:31:04.9296436Z ##[group]Initializing the repository
+2026-05-02T11:31:04.9301409Z [command]/usr/bin/git init /home/runner/work/public/public
+2026-05-02T11:31:04.9393642Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-02T11:31:04.9395436Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-02T11:31:04.9396666Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-02T11:31:04.9397751Z hint: call:
+2026-05-02T11:31:04.9398350Z hint:
+2026-05-02T11:31:04.9398931Z hint: 	git config --global init.defaultBranch <name>
+2026-05-02T11:31:04.9399595Z hint:
+2026-05-02T11:31:04.9400223Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-02T11:31:04.9401848Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-02T11:31:04.9403011Z hint:
+2026-05-02T11:31:04.9403483Z hint: 	git branch -m <name>
+2026-05-02T11:31:04.9403906Z hint:
+2026-05-02T11:31:04.9404503Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-02T11:31:04.9405421Z Initialized empty Git repository in /home/runner/work/public/public/.git/
+2026-05-02T11:31:04.9409749Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
+2026-05-02T11:31:04.9442102Z ##[endgroup]
+2026-05-02T11:31:04.9442896Z ##[group]Disabling automatic garbage collection
+2026-05-02T11:31:04.9447769Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-02T11:31:04.9479323Z ##[endgroup]
+2026-05-02T11:31:04.9480523Z ##[group]Setting up auth
+2026-05-02T11:31:04.9487129Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T11:31:04.9516897Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T11:31:04.9815889Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T11:31:04.9852715Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T11:31:05.0088181Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T11:31:05.0125351Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T11:31:05.0365957Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-02T11:31:05.0403430Z ##[endgroup]
+2026-05-02T11:31:05.0404296Z ##[group]Fetching the repository
+2026-05-02T11:31:05.0411694Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-02T11:31:05.5566993Z From https://github.com/Longnononn/public
+2026-05-02T11:31:05.5568536Z  * [new branch]      main       -> origin/main
+2026-05-02T11:31:05.5603424Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-02T11:31:05.5626155Z   origin/main
+2026-05-02T11:31:05.5635272Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-02T11:31:05.5656878Z 4a3520df9ea2561ed772922151c6225b206bbddc
+2026-05-02T11:31:05.5667152Z ##[endgroup]
+2026-05-02T11:31:05.5667942Z ##[group]Determining the checkout info
+2026-05-02T11:31:05.5668755Z ##[endgroup]
+2026-05-02T11:31:05.5671241Z [command]/usr/bin/git sparse-checkout disable
+2026-05-02T11:31:05.5708991Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-02T11:31:05.5735554Z ##[group]Checking out the ref
+2026-05-02T11:31:05.5741145Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-02T11:31:05.5841118Z Switched to a new branch 'main'
+2026-05-02T11:31:05.5842723Z branch 'main' set up to track 'origin/main'.
+2026-05-02T11:31:05.5848728Z ##[endgroup]
+2026-05-02T11:31:05.5882844Z [command]/usr/bin/git log -1 --format=%H
+2026-05-02T11:31:05.5904553Z 4a3520df9ea2561ed772922151c6225b206bbddc
+2026-05-02T11:31:05.6105991Z ##[group]Run sudo apt-get update
+2026-05-02T11:31:05.6107183Z [36;1msudo apt-get update[0m
+2026-05-02T11:31:05.6108554Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
+2026-05-02T11:31:05.6110081Z [36;1mpip3 install numpy scipy[0m
+2026-05-02T11:31:05.6136158Z shell: /usr/bin/bash -e {0}
+2026-05-02T11:31:05.6137405Z ##[endgroup]
+2026-05-02T11:31:05.6998321Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T11:31:05.7353020Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-05-02T11:31:05.7359041Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-05-02T11:31:05.7362818Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-05-02T11:31:05.7388905Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-05-02T11:31:05.7423438Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-05-02T11:31:05.7465181Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-05-02T11:31:05.9024728Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
+2026-05-02T11:31:05.9103262Z Get:9 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
+2026-05-02T11:31:05.9125261Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
+2026-05-02T11:31:05.9163049Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
+2026-05-02T11:31:05.9489647Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
+2026-05-02T11:31:05.9601899Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
+2026-05-02T11:31:05.9626147Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-05-02T11:31:05.9645388Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+2026-05-02T11:31:05.9655205Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
+2026-05-02T11:31:05.9734646Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
+2026-05-02T11:31:05.9759418Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-05-02T11:31:05.9785507Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+2026-05-02T11:31:05.9816376Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
+2026-05-02T11:31:05.9964636Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
+2026-05-02T11:31:06.0426769Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-05-02T11:31:06.0443374Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+2026-05-02T11:31:06.0463423Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+2026-05-02T11:31:06.0467712Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
+2026-05-02T11:31:06.0472317Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-05-02T11:31:06.0488843Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+2026-05-02T11:31:06.0498316Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
+2026-05-02T11:31:06.0511519Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+2026-05-02T11:31:06.0523461Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-05-02T11:31:06.0531429Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-05-02T11:31:06.0546621Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
+2026-05-02T11:31:06.0600537Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-05-02T11:31:06.0605857Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+2026-05-02T11:31:06.0622830Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
+2026-05-02T11:31:06.1061952Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+2026-05-02T11:31:06.1075044Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+2026-05-02T11:31:06.1084996Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-05-02T11:31:06.1097454Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
+2026-05-02T11:31:06.1181353Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
+2026-05-02T11:31:06.1202480Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+2026-05-02T11:31:06.1214060Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+2026-05-02T11:31:06.1225470Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
+2026-05-02T11:31:06.1283263Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
+2026-05-02T11:31:06.1303687Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-05-02T11:31:06.1315201Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+2026-05-02T11:31:06.1325811Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
+2026-05-02T11:31:06.1451388Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
+2026-05-02T11:31:06.1487185Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-05-02T11:31:06.1491611Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
+2026-05-02T11:31:06.1495196Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+2026-05-02T11:31:06.1984186Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
+2026-05-02T11:31:06.1993496Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-05-02T11:31:14.4739694Z Fetched 16.5 MB in 2s (8814 kB/s)
+2026-05-02T11:31:15.2301636Z Reading package lists...
+2026-05-02T11:31:15.2616485Z Reading package lists...
+2026-05-02T11:31:15.4184986Z Building dependency tree...
+2026-05-02T11:31:15.4192237Z Reading state information...
+2026-05-02T11:31:15.5662891Z g++ is already the newest version (4:13.2.0-7ubuntu1).
+2026-05-02T11:31:15.5663809Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-05-02T11:31:15.5664693Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+2026-05-02T11:31:15.5665534Z Suggested packages:
+2026-05-02T11:31:15.5666245Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
+2026-05-02T11:31:15.5906475Z The following NEW packages will be installed:
+2026-05-02T11:31:15.5915722Z   cmake cmake-data libjsoncpp25 librhash0
+2026-05-02T11:31:15.6104767Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
+2026-05-02T11:31:15.6105464Z Need to get 13.6 MB of archives.
+2026-05-02T11:31:15.6106159Z After this operation, 49.1 MB of additional disk space will be used.
+2026-05-02T11:31:15.6106639Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T11:31:15.7621354Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-05-02T11:31:15.7931147Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-05-02T11:31:15.8240165Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-05-02T11:31:15.8933546Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-05-02T11:31:16.2986435Z Fetched 13.6 MB in 0s (31.1 MB/s)
+2026-05-02T11:31:16.3326032Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-05-02T11:31:16.4277682Z (Reading database ... 
+2026-05-02T11:31:16.4278198Z (Reading database ... 5%
+2026-05-02T11:31:16.4278706Z (Reading database ... 10%
+2026-05-02T11:31:16.4279231Z (Reading database ... 15%
+2026-05-02T11:31:16.4279753Z (Reading database ... 20%
+2026-05-02T11:31:16.4280258Z (Reading database ... 25%
+2026-05-02T11:31:16.4281151Z (Reading database ... 30%
+2026-05-02T11:31:16.4282623Z (Reading database ... 35%
+2026-05-02T11:31:16.4283259Z (Reading database ... 40%
+2026-05-02T11:31:16.4283807Z (Reading database ... 45%
+2026-05-02T11:31:16.4284427Z (Reading database ... 50%
+2026-05-02T11:31:16.4637247Z (Reading database ... 55%
+2026-05-02T11:31:16.7499264Z (Reading database ... 60%
+2026-05-02T11:31:17.0324857Z (Reading database ... 65%
+2026-05-02T11:31:17.2729762Z (Reading database ... 70%
+2026-05-02T11:31:17.5354372Z (Reading database ... 75%
+2026-05-02T11:31:17.9239516Z (Reading database ... 80%
+2026-05-02T11:31:18.5118031Z (Reading database ... 85%
+2026-05-02T11:31:19.1141263Z (Reading database ... 90%
+2026-05-02T11:31:19.7061510Z (Reading database ... 95%
+2026-05-02T11:31:19.7061890Z (Reading database ... 100%
+2026-05-02T11:31:19.7062345Z (Reading database ... 220764 files and directories currently installed.)
+2026-05-02T11:31:19.7106907Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-05-02T11:31:19.7153555Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T11:31:19.7469064Z Selecting previously unselected package librhash0:amd64.
+2026-05-02T11:31:19.7604800Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
+2026-05-02T11:31:19.7618372Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T11:31:19.7864992Z Selecting previously unselected package cmake-data.
+2026-05-02T11:31:19.8000248Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
+2026-05-02T11:31:19.8303949Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-05-02T11:31:20.3812556Z Selecting previously unselected package cmake.
+2026-05-02T11:31:20.3962297Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
+2026-05-02T11:31:20.3973567Z Unpacking cmake (3.28.3-1build7) ...
+2026-05-02T11:31:20.5854450Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T11:31:20.5882748Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T11:31:20.5907651Z Setting up cmake-data (3.28.3-1build7) ...
+2026-05-02T11:31:20.5976659Z Setting up cmake (3.28.3-1build7) ...
+2026-05-02T11:31:20.6007475Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-05-02T11:31:20.6032004Z Not building database; man-db/auto-update is not 'true'.
+2026-05-02T11:31:20.6047026Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-05-02T11:31:21.7793659Z 
+2026-05-02T11:31:21.7794294Z Running kernel seems to be up-to-date.
+2026-05-02T11:31:21.7794668Z 
+2026-05-02T11:31:21.7794828Z No services need to be restarted.
+2026-05-02T11:31:21.7795135Z 
+2026-05-02T11:31:21.7795290Z No containers need to be restarted.
+2026-05-02T11:31:21.7795624Z 
+2026-05-02T11:31:21.7795814Z No user sessions are running outdated binaries.
+2026-05-02T11:31:21.7796169Z 
+2026-05-02T11:31:21.7796496Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-05-02T11:31:23.0241186Z Defaulting to user installation because normal site-packages is not writeable
+2026-05-02T11:31:23.6578889Z Collecting numpy
+2026-05-02T11:31:23.7593514Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-05-02T11:31:23.9135479Z Collecting scipy
+2026-05-02T11:31:23.9405383Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-05-02T11:31:23.9740006Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 2.0 MB/s eta 0:00:00
+2026-05-02T11:31:24.0424187Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2026-05-02T11:31:24.3869675Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 110.1 MB/s eta 0:00:00
+2026-05-02T11:31:24.4135754Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
+2026-05-02T11:31:24.5948813Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 126.3 MB/s eta 0:00:00
+2026-05-02T11:31:24.9536311Z Installing collected packages: numpy, scipy
+2026-05-02T11:31:30.1729229Z Successfully installed numpy-2.4.4 scipy-1.17.1
+2026-05-02T11:31:30.2644621Z ##[group]Run git checkout main
+2026-05-02T11:31:30.2644925Z [36;1mgit checkout main[0m
+2026-05-02T11:31:30.2645149Z [36;1mmkdir -p build_baseline[0m
+2026-05-02T11:31:30.2645381Z [36;1mcd build_baseline[0m
+2026-05-02T11:31:30.2645607Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-02T11:31:30.2645867Z [36;1mmake -j$(nproc)[0m
+2026-05-02T11:31:30.2646077Z [36;1mcp nexus ../nexus_base[0m
+2026-05-02T11:31:30.2646288Z [36;1mcd ..[0m
+2026-05-02T11:31:30.2667751Z shell: /usr/bin/bash -e {0}
+2026-05-02T11:31:30.2667982Z ##[endgroup]
+2026-05-02T11:31:30.2822843Z Already on 'main'
+2026-05-02T11:31:30.2825825Z Your branch is up to date with 'origin/main'.
+2026-05-02T11:31:31.5066833Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-02T11:31:31.5945004Z -- Detecting CXX compiler ABI info
+2026-05-02T11:31:31.6851282Z -- Detecting CXX compiler ABI info - done
+2026-05-02T11:31:31.7023861Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-02T11:31:31.7090159Z -- Detecting CXX compile features
+2026-05-02T11:31:31.7137799Z -- Detecting CXX compile features - done
+2026-05-02T11:31:31.7461524Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-02T11:31:31.8200380Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-02T11:31:31.8208300Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-02T11:31:31.8792169Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-02T11:31:31.8800228Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-02T11:31:31.9381759Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-02T11:31:31.9386533Z -- Configuring done (1.2s)
+2026-05-02T11:31:31.9466037Z -- Generating done (0.0s)
+2026-05-02T11:31:31.9469624Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
+2026-05-02T11:31:31.9650277Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-02T11:31:31.9655782Z [  5%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-02T11:31:31.9656715Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-02T11:31:31.9657554Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-02T11:31:32.9019466Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T11:31:32.9042186Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T11:31:32.9071353Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T11:31:32.9101345Z       |             ^~~~~
+2026-05-02T11:31:32.9491712Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T11:31:32.9522810Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:31:32.9551441Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T11:31:32.9581275Z       |     ^~~~~~~~~~~~
+2026-05-02T11:31:32.9791695Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-02T11:31:33.0572293Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-02T11:31:33.0602170Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-02T11:31:33.0631361Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-02T11:31:33.0631858Z       |         ^~~~~~~
+2026-05-02T11:31:33.1254563Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T11:31:33.1282131Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T11:31:33.1283228Z   169 |     Key key = st.key;
+2026-05-02T11:31:33.1283673Z       |         ^~~
+2026-05-02T11:31:33.1284453Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-02T11:31:33.1701414Z [ 17%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
+2026-05-02T11:31:33.2972970Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T11:31:33.3032031Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T11:31:33.3061334Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T11:31:33.3091278Z       |             ^~~~~
+2026-05-02T11:31:33.3421867Z [ 20%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-02T11:31:33.3451606Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T11:31:33.3483086Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:31:33.3501483Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T11:31:33.3531352Z       |     ^~~~~~~~~~~~
+2026-05-02T11:31:33.3751664Z [ 22%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
+2026-05-02T11:31:33.6211748Z [ 25%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-02T11:31:33.6243149Z /home/runner/work/public/public/src/movegen.cpp:305:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::CAPTURES]’ [-fpermissive]
+2026-05-02T11:31:33.6271815Z   305 | template ExtMove* generate<CAPTURES>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:33.6311364Z       |                                                                              ^
+2026-05-02T11:31:33.6343108Z /home/runner/work/public/public/src/movegen.cpp:306:76: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIETS]’ [-fpermissive]
+2026-05-02T11:31:33.6361728Z   306 | template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:33.6362689Z       |                                                                            ^
+2026-05-02T11:31:33.6393011Z /home/runner/work/public/public/src/movegen.cpp:307:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::EVASIONS]’ [-fpermissive]
+2026-05-02T11:31:33.6421615Z   307 | template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:33.6451524Z       |                                                                              ^
+2026-05-02T11:31:33.6453786Z /home/runner/work/public/public/src/movegen.cpp:308:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::NON_EVASIONS]’ [-fpermissive]
+2026-05-02T11:31:33.6481725Z   308 | template ExtMove* generate<NON_EVASIONS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:33.6511391Z       |                                                                                  ^
+2026-05-02T11:31:33.6542800Z /home/runner/work/public/public/src/movegen.cpp:309:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIET_CHECKS]’ [-fpermissive]
+2026-05-02T11:31:33.6544480Z   309 | template ExtMove* generate<QUIET_CHECKS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:33.6571406Z       |                                                                                  ^
+2026-05-02T11:31:33.6821742Z make[2]: *** [CMakeFiles/nexus.dir/build.make:121: CMakeFiles/nexus.dir/src/movegen.cpp.o] Error 1
+2026-05-02T11:31:33.6830457Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T11:31:33.6851442Z [ 27%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
+2026-05-02T11:31:33.7743883Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T11:31:33.7751905Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T11:31:33.7752786Z    94 |     Color them = ~us;
+2026-05-02T11:31:33.7753145Z       |           ^~~~
+2026-05-02T11:31:33.8052577Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T11:31:33.8054224Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T11:31:33.8055273Z   169 |     Key key = st.key;
+2026-05-02T11:31:33.8055628Z       |         ^~~
+2026-05-02T11:31:33.8381801Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
+2026-05-02T11:31:33.8411542Z make[1]: *** Waiting for unfinished jobs....
+2026-05-02T11:31:33.8412250Z [ 30%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
+2026-05-02T11:31:34.0141842Z [ 32%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
+2026-05-02T11:31:34.1010410Z /home/runner/work/public/public/src/movegen.cpp:305:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::CAPTURES]’ [-fpermissive]
+2026-05-02T11:31:34.1032016Z   305 | template ExtMove* generate<CAPTURES>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:34.1041743Z       |                                                                              ^
+2026-05-02T11:31:34.1044451Z /home/runner/work/public/public/src/movegen.cpp:306:76: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIETS]’ [-fpermissive]
+2026-05-02T11:31:34.1046607Z   306 | template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:34.1047737Z       |                                                                            ^
+2026-05-02T11:31:34.1050178Z /home/runner/work/public/public/src/movegen.cpp:307:78: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::EVASIONS]’ [-fpermissive]
+2026-05-02T11:31:34.1052679Z   307 | template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:34.1053711Z       |                                                                              ^
+2026-05-02T11:31:34.1056038Z /home/runner/work/public/public/src/movegen.cpp:308:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::NON_EVASIONS]’ [-fpermissive]
+2026-05-02T11:31:34.1058252Z   308 | template ExtMove* generate<NON_EVASIONS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:34.1059416Z       |                                                                                  ^
+2026-05-02T11:31:34.1062049Z /home/runner/work/public/public/src/movegen.cpp:309:82: error: duplicate explicit instantiation of ‘Nexus::ExtMove* Nexus::generate(const BoardState&, ExtMove*) [with GenType Type = Nexus::QUIET_CHECKS]’ [-fpermissive]
+2026-05-02T11:31:34.1064246Z   309 | template ExtMove* generate<QUIET_CHECKS>(const BoardState& pos, ExtMove* moveList);
+2026-05-02T11:31:34.1065386Z       |                                                                                  ^
+2026-05-02T11:31:34.1245083Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
+2026-05-02T11:31:34.1617808Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:149: CMakeFiles/nexus_tests.dir/src/movegen.cpp.o] Error 1
+2026-05-02T11:31:34.1619852Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T11:31:34.2117247Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T11:31:34.2119405Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T11:31:34.2120281Z    94 |     Color them = ~us;
+2026-05-02T11:31:34.2120666Z       |           ^~~~
+2026-05-02T11:31:34.4284182Z In file included from /home/runner/work/public/public/src/see.h:3,
+2026-05-02T11:31:34.4285348Z                  from /home/runner/work/public/public/src/see.cpp:1:
+2026-05-02T11:31:34.4287276Z /home/runner/work/public/public/src/types.h: In function ‘Nexus::operator+(Nexus::Square, Nexus::Direction)’:
+2026-05-02T11:31:34.4288648Z /home/runner/work/public/public/src/types.h:102:18: warning: infinite recursion detected [-Winfinite-recursion]
+2026-05-02T11:31:34.4289852Z   102 | constexpr Square operator+(Square s, Direction d) { return Square(s + d); }
+2026-05-02T11:31:34.4290527Z       |                  ^~~~~~~~
+2026-05-02T11:31:34.4291429Z /home/runner/work/public/public/src/types.h:102:69: note: recursive call
+2026-05-02T11:31:34.4292337Z   102 | constexpr Square operator+(Square s, Direction d) { return Square(s + d); }
+2026-05-02T11:31:34.4293070Z       |                                                                   ~~^~~
+2026-05-02T11:31:35.1479551Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-02T11:31:35.1482515Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-02T11:31:35.1484286Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-02T11:31:35.1484977Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T11:31:35.1485656Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-02T11:31:35.1487031Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-02T11:31:35.1487807Z    26 | struct TTCluster {
+2026-05-02T11:31:35.1488207Z       |        ^~~~~~~~~
+2026-05-02T11:31:35.2099755Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
+2026-05-02T11:31:35.2101311Z make: *** [Makefile:101: all] Error 2
+2026-05-02T11:31:35.2118224Z ##[error]Process completed with exit code 2.
+2026-05-02T11:31:35.2233299Z Post job cleanup.
+2026-05-02T11:31:35.3193983Z [command]/usr/bin/git version
+2026-05-02T11:31:35.3230217Z git version 2.53.0
+2026-05-02T11:31:35.3273348Z Temporarily overriding HOME='/home/runner/work/_temp/12bf39b3-eada-432a-9fe6-7f49418100ca' before making global git config changes
+2026-05-02T11:31:35.3274444Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T11:31:35.3278907Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T11:31:35.3318143Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T11:31:35.3348740Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T11:31:35.3563270Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T11:31:35.3582872Z http.https://github.com/.extraheader
+2026-05-02T11:31:35.3595156Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-02T11:31:35.3624392Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T11:31:35.3836400Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T11:31:35.3865521Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T11:31:35.4185245Z Cleaning up orphan processes
+2026-05-02T11:31:35.4491786Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -260,12 +260,6 @@ ExtMove* generate(const BoardState& pos, ExtMove* moveList) {
     return moveList;
 }
 
-template ExtMove* generate<CAPTURES>(const BoardState&, ExtMove*);
-template ExtMove* generate<QUIETS>(const BoardState&, ExtMove*);
-template ExtMove* generate<EVASIONS>(const BoardState&, ExtMove*);
-template ExtMove* generate<NON_EVASIONS>(const BoardState&, ExtMove*);
-template ExtMove* generate<QUIET_CHECKS>(const BoardState&, ExtMove*);
-
 bool is_legal(const BoardState& pos, Move m) {
     return is_legal_move(pos, m);
 }

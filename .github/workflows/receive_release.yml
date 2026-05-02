@@ -22,7 +22,7 @@ jobs:
       run: |
         # Download artifacts using GitHub API
         PRIVATE_REPO="Longnononn/Private"
-        TOKEN="${{ secrets.NEXUSINFINITECORE }}"
+        TOKEN="${{ secrets.nexusinfinitecore }}"
         RUN_ID="${{ github.event.client_payload.run_id }}"
         
         # Create releases directory

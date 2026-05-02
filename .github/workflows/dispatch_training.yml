@@ -34,7 +34,7 @@ jobs:
     - name: Send Dispatch Event
       uses: peter-evans/repository-dispatch@v3
       with:
-        token: ${{ secrets.NEXUSINFINITECORE }}
+        token: ${{ secrets.nexusinfinitecore }}
         repository: Longnononn/Private
         event-type: public-training-request
         client-payload: |

@@ -24,15 +24,15 @@ jobs:
     steps:
     - name: Debug Secret Availability
       run: |
-        if [ -n "${{ secrets.NEXUSINFINITECORE }}" ]; then
-          echo "Secret NEXUSINFINITECORE is available (length: ${#TOKEN})"
+        if [ -n "${{ secrets.nexusinfinitecore }}" ]; then
+          echo "Secret nexusinfinitecore is available (length: ${#TOKEN})"
         else
-          echo "ERROR: Secret NEXUSINFINITECORE is NOT available"
+          echo "ERROR: Secret nexusinfinitecore is NOT available"
           echo "Available secrets: ${{ toJson(secrets) }}"
           exit 1
         fi
       env:
-        TOKEN: ${{ secrets.NEXUSINFINITECORE }}
+        TOKEN: ${{ secrets.nexusinfinitecore }}
 
     - name: Checkout Public Repo
       uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Longnononn/Private
-        token: ${{ secrets.NEXUSINFINITECORE }}
+        token: ${{ secrets.nexusinfinitecore }}
         path: private_source
         ref: ${{ steps.vars.outputs.branch }}
         fetch-depth: 1

@@ -42,12 +42,17 @@ jobs:
         path: ./artifacts
       continue-on-error: true
       
-    - name: Clone Private Repo
+    - name: Checkout Private Repo
+      uses: actions/checkout@v4
+      with:
+        repository: Longnononn/Private
+        token: ${{ secrets.nexusinfinitecore }}
+        path: private_storage
+        ref: main
+        fetch-depth: 1
+
+    - name: Configure Git
       run: |
-        PRIVATE_REPO="Longnononn/Private"
-        TOKEN="${{ secrets.nexusinfinitecore }}"
-        
-        git clone https://${TOKEN}@github.com/${PRIVATE_REPO}.git private_storage
         cd private_storage
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"

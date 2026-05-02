@@ -24,32 +24,37 @@ jobs:
     steps:
     - name: Checkout Public Repo
       uses: actions/checkout@v4
-      
-    - name: Clone Private Repo Source
+
+    - name: Checkout Private Repo Source
+      uses: actions/checkout@v4
+      with:
+        repository: Longnononn/Private
+        token: ${{ secrets.nexusinfinitecore }}
+        path: private_source
+        ref: ${{ github.event.inputs.branch || 'main' }}
+        fetch-depth: 1
+
+    - name: Copy Source Files
       run: |
-        PRIVATE_REPO="Longnononn/Private"
-        TOKEN="${{ secrets.nexusinfinitecore }}"
-        BRANCH="${{ github.event.inputs.branch || 'main' }}"
-        
-        # Clone source code from private repo
-        git clone --depth 1 --branch $BRANCH https://${TOKEN}@github.com/${PRIVATE_REPO}.git private_source
-        
         # Copy only source files (not data/weights)
         mkdir -p src tests scripts
-        cp -r private_source/src/* src/
-        cp -r private_source/tests/* tests/
-        cp -r private_source/scripts/* scripts/
-        cp private_source/CMakeLists.txt .
-        
-        # Get commit SHA
+        cp -r private_source/src/* src/ || true
+        cp -r private_source/tests/* tests/ || true
+        cp -r private_source/scripts/* scripts/ || true
+        cp private_source/CMakeLists.txt . || true
+        cp private_source/Makefile . || true
+        cp private_source/*.h . || true
+        cp private_source/*.cpp . || true
+
+    - name: Get Commit SHA
+      id: clone
+      run: |
         cd private_source
         COMMIT_SHA=$(git rev-parse HEAD)
-        echo "commit_sha=$COMMIT_SHA" >> $GITHUB_ENV
         echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
-        
-        echo "Cloned source from $PRIVATE_REPO@$BRANCH"
+        echo "Cloned source from Longnononn/Private@${{ github.event.inputs.branch || 'main' }}"
         echo "Commit: $COMMIT_SHA"
-        
+
     - name: Upload Source Artifact
       uses: actions/upload-artifact@v4
       with:
@@ -59,4 +64,7 @@ jobs:
           tests/
           scripts/
           CMakeLists.txt
+          Makefile
+          *.h
+          *.cpp
         retention-days: 1

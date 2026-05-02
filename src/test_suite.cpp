@@ -175,7 +175,7 @@ std::vector<TestResult> TestSuite::run_perft_tests() {
     
     for (const auto& pos : perftPositions) {
         TestResult result;
-        result.name = "Perft: " + pos.name;
+        result.name = std::string("Perft: ") + pos.name;
         
         BoardState board;
         board.set_fen(pos.fen);
@@ -274,7 +274,7 @@ std::vector<TestResult> TestSuite::run_tactical_tests() {
     
     for (const auto& pos : tacticalPositions) {
         TestResult result;
-        result.name = "Tactical: " + pos.name;
+        result.name = std::string("Tactical: ") + pos.name;
         
         BoardState board;
         board.set_fen(pos.fen);
@@ -290,7 +290,7 @@ std::vector<TestResult> TestSuite::run_tactical_tests() {
             std::chrono::steady_clock::now() - start).count();
         
         // Check if expected move was found
-        if (!pos.bestMove.empty()) {
+        if (pos.bestMove != nullptr && pos.bestMove[0] != '\0') {
             result.passed = true;  // Would check actual best move
             result.message = "Found move (check required)";
         } else {
@@ -309,7 +309,7 @@ std::vector<TestResult> TestSuite::run_endgame_tests() {
     
     for (const auto& pos : endgamePositions) {
         TestResult result;
-        result.name = "Endgame: " + pos.name;
+        result.name = std::string("Endgame: ") + pos.name;
         
         BoardState board;
         board.set_fen(pos.fen);
@@ -329,7 +329,7 @@ std::vector<TestResult> TestSuite::run_regression_tests() {
     
     for (const auto& pos : regressionPositions) {
         TestResult result;
-        result.name = "Regression: " + pos.name;
+        result.name = std::string("Regression: ") + pos.name;
         
         BoardState board;
         board.set_fen(pos.fen);

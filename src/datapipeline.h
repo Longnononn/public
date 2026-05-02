@@ -8,6 +8,8 @@
 
 namespace DataPipeline {
 
+using namespace Nexus;
+
 // Filter types for training data
 enum FilterType {
     FILTER_NONE          = 0,

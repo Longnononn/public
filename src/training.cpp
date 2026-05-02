@@ -96,7 +96,7 @@ GameResult DataGenerator::play_one_game(int threadId) {
     std::mt19937 rng(static_cast<unsigned>(std::chrono::steady_clock::now().time_since_epoch().count() + threadId));
     
     int randomMoves = rng() % 8 + 2;  // 2-10 random opening moves
-    for (int i = 0; i < randomMoves && !board.is_game_over(); ++i) {
+    for (int i = 0; i < randomMoves; ++i) {
         ExtMove moves[MAX_MOVES];
         ExtMove* end = generate<LEGAL>(board, moves);
         int moveCount = end - moves;
@@ -113,7 +113,7 @@ GameResult DataGenerator::play_one_game(int threadId) {
     std::string gameId = std::to_string(std::chrono::steady_clock::now().time_since_epoch().count());
     int moveCounter = 0;
     
-    while (!board.is_game_over() && moveCounter < 200) {
+    while (moveCounter < 200) {
         // Check adjudication
         if (should_adjudicate(board, moveCounter)) {
             result.adjudicated = true;
@@ -173,9 +173,11 @@ GameResult DataGenerator::play_one_game(int threadId) {
     }
     
     // Determine result
-    if (board.is_checkmate()) {
+    ExtMove finMoves[MAX_MOVES];
+    ExtMove* finEnd = generate<LEGAL>(board, finMoves);
+    if (finEnd == finMoves && board.is_check()) {
         result.result = (board.sideToMove == BLACK) ? 1 : -1;  // White wins if black mated
-    } else if (board.is_draw()) {
+    } else if (finEnd == finMoves || board.is_draw(0)) {
         result.result = 0;
     } else if (result.adjudicated) {
         // Determine by material or position eval
@@ -204,7 +206,8 @@ Value DataGenerator::score_position(const BoardState& pos) {
         SearchLimits limits;
         limits.depth = 6;
         
-        searcher.start(pos, limits, false);
+        BoardState posCopy = pos;
+        searcher.start(posCopy, limits, false);
         while (searcher.is_running()) {
             std::this_thread::sleep_for(std::chrono::milliseconds(5));
         }
@@ -219,7 +222,8 @@ Value DataGenerator::score_position(const BoardState& pos) {
 int DataGenerator::evaluate_game_phase(const BoardState& pos) {
     // Simple phase detection based on material
     int material = 0;
-    for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+    for (int sq_i = SQ_A1; sq_i <= SQ_H8; ++sq_i) {
+        Square sq = Square(sq_i);
         Piece pc = pos.piece_on(sq);
         if (pc != NO_PIECE) {
             PieceType pt = type_of(pc);

@@ -2,6 +2,7 @@
 
 #include "types.h"
 #include "move.h"
+#include <algorithm>
 #include <cstring>
 
 namespace Nexus {

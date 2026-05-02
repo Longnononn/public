@@ -127,6 +127,9 @@ enum Value : i32 {
 constexpr Value operator+(Value a, Value b) { return Value((int)a + (int)b); }
 constexpr Value operator-(Value a, Value b) { return Value((int)a - (int)b); }
 constexpr Value operator-(Value a) { return Value(-(int)a); }
+constexpr Value operator+(Value a, int b) { return Value((int)a + b); }
+constexpr Value operator-(Value a, int b) { return Value((int)a - b); }
+constexpr Value operator+(int a, Value b) { return Value(a + (int)b); }
 constexpr Value operator*(Value a, int b) { return Value((int)a * b); }
 constexpr Value operator/(Value a, int b) { return Value((int)a / b); }
 inline Value& operator+=(Value& a, Value b) { a = a + b; return a; }

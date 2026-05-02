@@ -56,7 +56,7 @@ Value mate_distance(int ply) {
 }
 
 Search::Search() : running(false), stopOnPonderhit(false), nodesSearched(0), 
-                   selDepth(0), completedDepth(0), previousScore(VALUE_NONE), multiPV(1) {
+                   selDepth(0), completedDepth(Depth(0)), previousScore(VALUE_NONE), multiPV(1) {
     clear();
 }
 
@@ -91,7 +91,7 @@ void Search::start(BoardState& pos, const SearchLimits& limits, bool ponder) {
     running = true;
     stopOnPonderhit = false;
     nodesSearched = 0;
-    completedDepth = 0;
+    completedDepth = Depth(0);
     selDepth = 0;
     
     // Reset NNUE accumulator for root position
@@ -163,7 +163,8 @@ void Search::iterative_deepening(BoardState& pos) {
     // Aspiration window initial
     Value prevScore = VALUE_ZERO;
     
-    for (Depth depth = 1; depth <= 64; ++depth) {
+    for (int idepth = 1; idepth <= 64; ++idepth) {
+        Depth depth = Depth(idepth);
         if (!running) break;
         
         selDepth = 0;
@@ -235,7 +236,7 @@ Value Search::aspiration_window(BoardState& pos, SearchStack* ss, Value prevScor
             if (alpha < -VALUE_MATE_IN_MAX_PLY) alpha = -VALUE_INFINITE;
             
             // Increase window faster after multiple fails
-            delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
+            delta = Value(static_cast<int>(int(delta) * SearchParams::AspirationGrowth) + (failCount++ * 5));
         }
         else if (score >= beta) {
             // Failed high - widen window
@@ -243,7 +244,7 @@ Value Search::aspiration_window(BoardState& pos, SearchStack* ss, Value prevScor
             if (beta > VALUE_MATE_IN_MAX_PLY) beta = VALUE_INFINITE;
             
             // Increase window faster after multiple fails
-            delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
+            delta = Value(static_cast<int>(int(delta) * SearchParams::AspirationGrowth) + (failCount++ * 5));
         }
         else {
             // Within window - success
@@ -360,7 +361,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
             ss->currentMove = Move::null();
             (ss+1)->continuationHistory = continuationHistory[false][false];
             
-            Value nullValue = -negamax<false>(pos, ss+1, -beta, -beta+1, depth-R, !cutNode);
+            Value nullValue = -negamax<false>(pos, ss+1, -beta, -beta+1, Depth(int(depth) - R), !cutNode);
             
             pos.undo_null_move(nullSt);
             
@@ -417,7 +418,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
     
     // Step 10: Internal iterative reductions
     if (depth >= 4 && PvNode && ttMove == Move::none())
-        depth--;
+        depth = Depth(int(depth) - 1);
     
     // Move generation and sorting
     ExtMove moveList[MAX_MOVES];
@@ -859,7 +860,7 @@ u64 Search::bench(int depth) {
         // Search to specified depth
         running = true;
         for (int d = 1; d <= depth; ++d) {
-            negamax<true>(pos, ss, -VALUE_INFINITE, VALUE_INFINITE, d, false);
+            negamax<true>(pos, ss, -VALUE_INFINITE, VALUE_INFINITE, Depth(d), false);
         }
         running = false;
         

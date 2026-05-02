@@ -75,8 +75,8 @@ struct SearchParams {
     
     // Singular extension thresholds
     static constexpr Value SingularMargin = Value(2);
-    static constexpr Depth SingularDepth = 7;
-    static constexpr Depth SingularDepthMin = 4;
+    static constexpr Depth SingularDepth = Depth(7);
+    static constexpr Depth SingularDepthMin = Depth(4);
     
     // Double extension limit to avoid search explosion
     static constexpr int DoubleExtensionMax = 6;

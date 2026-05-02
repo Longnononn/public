@@ -10,6 +10,8 @@
 
 namespace Training {
 
+using namespace Nexus;
+
 // Training data format (compatible with Stockfish/binpack)
 #pragma pack(push, 1)
 struct PackedPosition {

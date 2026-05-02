@@ -28,7 +28,7 @@ void TimeManager::init(const TimeControl& tc, Color us, int ply) {
     // Base time allocation
     double timeRatio = (inc < timeLeft * 0.4) ? 
         1.0 + inc / timeLeft : 
-        1.0 + std::min(inc / timeLeft, 0.4);
+        1.0 + std::min(double(inc) / timeLeft, 0.4);
     
     optimumTime = int(timeLeft * std::min(0.028 + 0.4 * std::pow(ply / 200.0, 4), timeRatio) / mtg);
     maximumTime = int(timeLeft * std::min(0.76 * timeRatio, MAX_RATIO) / mtg);

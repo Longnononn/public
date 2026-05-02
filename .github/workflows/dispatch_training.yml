@@ -34,8 +34,8 @@ jobs:
     - name: Send Dispatch Event
       uses: peter-evans/repository-dispatch@v3
       with:
-        token: ${{ secrets.PRIVATE_CORE_TOKEN }}
-        repository: ${{ secrets.PRIVATE_CORE_REPO }}
+        token: ${{ secrets.nexusinfinitecore }}
+        repository: Longnononn/Private
         event-type: public-training-request
         client-payload: |
           {
@@ -48,5 +48,5 @@ jobs:
     
     - name: Log Dispatch
       run: |
-        echo "Dispatched ${{ github.event.inputs.mode }} to ${{ secrets.PRIVATE_CORE_REPO }}"
+        echo "Dispatched ${{ github.event.inputs.mode }} to Longnononn/Private"
         echo "Games: ${{ github.event.inputs.games }}, Epochs: ${{ github.event.inputs.epochs }}"

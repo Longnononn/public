@@ -27,8 +27,8 @@ jobs:
       
     - name: Clone Private Repo Source
       run: |
-        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"  # Should be Longnononn/nexusinfinitecore
-        TOKEN="${{ secrets.PRIVATE_CORE_TOKEN }}"
+        PRIVATE_REPO="Longnononn/Private"
+        TOKEN="${{ secrets.nexusinfinitecore }}"
         BRANCH="${{ github.event.inputs.branch || 'main' }}"
         
         # Clone source code from private repo

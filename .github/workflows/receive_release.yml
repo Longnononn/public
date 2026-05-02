@@ -21,8 +21,8 @@ jobs:
     - name: Download Build Artifacts from Private
       run: |
         # Download artifacts using GitHub API
-        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"
-        TOKEN="${{ secrets.PRIVATE_CORE_TOKEN }}"
+        PRIVATE_REPO="Longnononn/Private"
+        TOKEN="${{ secrets.nexusinfinitecore }}"
         RUN_ID="${{ github.event.client_payload.run_id }}"
         
         # Create releases directory

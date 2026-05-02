@@ -144,7 +144,7 @@ u64 index_to_u64(int index, int bits, u64 mask) {
     return result;
 }
 
-void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Square deltas[]) {
+void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Direction deltas[]) {
     int count = 0;
     for (Square s = SQ_A1; s <= SQ_H8; s = Square(s + 1)) {
         int shift = 64 - shifts[s];

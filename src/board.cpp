@@ -131,7 +131,7 @@ void BoardState::set_piece(Square s, Piece p) {
     if (type_of(p) == PAWN)
         st.pawnKey ^= ZobristPiece[p][s];
     else
-        st.nonPawnMaterial[color_of(p)] += piece_value[type_of(p)];
+        st.nonPawnMaterial[color_of(p)] += Value(piece_value[type_of(p)]);
 }
 
 void BoardState::remove_piece(Square s) {
@@ -144,7 +144,7 @@ void BoardState::remove_piece(Square s) {
     if (type_of(p) == PAWN)
         st.pawnKey ^= ZobristPiece[p][s];
     else
-        st.nonPawnMaterial[color_of(p)] -= piece_value[type_of(p)];
+        st.nonPawnMaterial[color_of(p)] -= Value(piece_value[type_of(p)]);
 }
 
 void BoardState::move_piece(Square from, Square to) {
@@ -219,7 +219,7 @@ void BoardState::do_move(Move m, StateInfo& newSt) {
         st.key ^= ZobristEnpassant[file_of(st.epSquare)];
     
     if (pt == PAWN && std::abs(rank_of(to) - rank_of(from)) == 2) {
-        st.epSquare = make_square(file_of(from), (rank_of(from) + rank_of(to)) / 2);
+        st.epSquare = make_square(file_of(from), Rank((rank_of(from) + rank_of(to)) / 2));
         st.key ^= ZobristEnpassant[file_of(st.epSquare)];
     } else {
         st.epSquare = SQ_NONE;

@@ -6,6 +6,8 @@
 
 using namespace Nexus;
 
+int test_bitboard_main();
+
 int main() {
     init_bitboards();
     init_zobrist();

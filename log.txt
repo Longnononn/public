@@ -1,849 +1,468 @@
-2026-05-02T11:17:42.6775103Z Phiên bản trình chạy hiện tại: '2.334.0'
-2026-05-02T11:17:42.6815757Z ##[group]Runner Image Provisioner
-2026-05-02T11:17:42.6817096Z Hosted Compute Agent
-2026-05-02T11:17:42.6818053Z Phiên bản: 20260213.493
-2026-05-02T11:17:42.6819008Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-05-02T11:17:42.6820367Z Ngày xây dựng: 2026-02-13T00:28:41Z
-2026-05-02T11:17:42.6821590Z ID người lao động: {2694780f-1b92-412b-a146-280d92536860}
-2026-05-02T11:17:42.6822614Z Vùng Azure: northcentralus
-2026-05-02T11:17:42.6823317Z ##[endgroup]
-2026-05-02T11:17:42.6825170Z ##[group]Hệ điều hành
-2026-05-02T11:17:42.6825796Z Ubuntu
-2026-05-02T11:17:42.6826301Z 24.04.4
-2026-05-02T11:17:42.6826807Z LTS
-2026-05-02T11:17:42.6827229Z ##[endgroup]
-2026-05-02T11:17:42.6827754Z ##[group]Runner Image
-2026-05-02T11:17:42.6828316Z Image: ubuntu-24.04
-2026-05-02T11:17:42.6828777Z Phiên bản: 20260413.86.1
-2026-05-02T11:17:42.6829956Z Phần mềm đi kèm: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
-2026-05-02T11:17:42.6831405Z Bản phát hành hình ảnh: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
-2026-05-02T11:17:42.6832325Z ##[endgroup]
-2026-05-02T11:17:42.6833438Z ##[group]GITHUB_TOKEN Quyền hạn
-2026-05-02T11:17:42.6835934Z Nội dung: đã đọc
-2026-05-02T11:17:42.6836634Z Siêu dữ liệu: đã đọc
-2026-05-02T11:17:42.6837110Z Gói: đã đọc
-2026-05-02T11:17:42.6837596Z ##[endgroup]
-2026-05-02T11:17:42.6839648Z Nguồn bí mật: Hành động
-2026-05-02T11:17:42.6840729Z Chuẩn bị thư mục quy trình làm việc
-2026-05-02T11:17:42.7189797Z Chuẩn bị tất cả các hành động cần thiết
-2026-05-02T11:17:42.7227826Z Đang lấy thông tin tải xuống hành động
-2026-05-02T11:17:43.0982230Z Tải xuống kho lưu trữ hành động 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-05-02T11:17:43.2573901Z Tải xuống kho lưu trữ hành động 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2026-05-02T11:17:43.4669498Z Tên công việc hoàn chỉnh: build-and-test
-2026-05-02T11:17:43.5451914Z ##[group]Run actions/checkout@v4
-2026-05-02T11:17:43.5452828Z với:
-2026-05-02T11:17:43.5453249Z fetch-depth: 0
-2026-05-02T11:17:43.5453695Z kho lưu trữ: Longnononn/public
-2026-05-02T11:17:43.5454626Z token: ***
-2026-05-02T11:17:43.5455053Z ssh-strict: true
-2026-05-02T11:17:43.5455467Z ssh-user: git
-2026-05-02T11:17:43.5455893Z persist-credentials: true
-2026-05-02T11:17:43.5456361Z clean: true
-2026-05-02T11:17:43.5456790Z sparse-checkout-cone-mode: true
-2026-05-02T11:17:43.5457294Z fetch-tags: false
-2026-05-02T11:17:43.5457723Z show-progress: true
-2026-05-02T11:17:43.5458169Z lfs: false
-2026-05-02T11:17:43.5458572Z submodules: false
-2026-05-02T11:17:43.5459020Z set-safe-directory: true
-2026-05-02T11:17:43.5459955Z ##[endgroup]
-2026-05-02T11:17:43.6625881Z Đồng bộ hóa kho lưu trữ: Longnononn/public
-2026-05-02T11:17:43.6627762Z ##[group]Lấy thông tin phiên bản Git
-2026-05-02T11:17:43.6628509Z Thư mục làm việc hiện tại là '/home/runner/work/public/public'
-2026-05-02T11:17:43.6629576Z [command]/usr/bin/git version
-2026-05-02T11:17:43.6667721Z git version 2.53.0
-2026-05-02T11:17:43.6695877Z ##[endgroup]
-2026-05-02T11:17:43.6719455Z Tạm thời ghi đè HOME='/home/runner/work/_temp/b66521b8-7761-453e-a8a1-924dfe91710f' trước khi thực hiện các thay đổi cấu hình git toàn cục
-2026-05-02T11:17:43.6722145Z Thêm thư mục kho lưu trữ vào cấu hình toàn cục tạm thời của git như một thư mục an toàn.
-2026-05-02T11:17:43.6726299Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T11:17:43.6767476Z Đang xóa nội dung của '/home/runner/work/public/public'
-2026-05-02T11:17:43.6771684Z ##[group]Khởi tạo kho lưu trữ
-2026-05-02T11:17:43.6777579Z [command]/usr/bin/git init /home/runner/work/public/public
-2026-05-02T11:17:43.6882421Z gợi ý: Sử dụng 'master' làm tên cho nhánh ban đầu. Đây là tên nhánh mặc định.
-2026-05-02T11:17:43.6884612Z gợi ý: sẽ thay đổi thành "main" trong Git 3.0. Để cấu hình tên nhánh ban đầu
-2026-05-02T11:17:43.6886482Z gợi ý: sử dụng trong tất cả các kho lưu trữ mới của bạn, điều này sẽ loại bỏ cảnh báo này.
-2026-05-02T11:17:43.6887721Z gợi ý: cuộc gọi:
-2026-05-02T11:17:43.6888108Z gợi ý:
-2026-05-02T11:17:43.6888617Z gợi ý: git config --global init.defaultBranch <name>
-2026-05-02T11:17:43.6889216Z gợi ý:
-2026-05-02T11:17:43.6889779Z gợi ý: Các tên thường được chọn thay cho 'master' là 'main', 'trunk' và
-2026-05-02T11:17:43.6890863Z gợi ý: 'development'. Có thể đổi tên nhánh vừa tạo bằng lệnh này:
-2026-05-02T11:17:43.6892237Z gợi ý:
-2026-05-02T11:17:43.6892677Z gợi ý: git branch -m <tên>
-2026-05-02T11:17:43.6893150Z gợi ý:
-2026-05-02T11:17:43.6893796Z gợi ý: Tắt thông báo này bằng lệnh "git config set advice.defaultBranchName false"
-2026-05-02T11:17:43.6895096Z Khởi tạo kho lưu trữ Git trống trong /home/runner/work/public/public/.git/
-2026-05-02T11:17:43.6900413Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
-2026-05-02T11:17:43.6936284Z ##[endgroup]
-2026-05-02T11:17:43.6937095Z ##[group]Vô hiệu hóa việc thu gom rác tự động
-2026-05-02T11:17:43.6942661Z [command]/usr/bin/git config --local gc.auto 0
-2026-05-02T11:17:43.6976802Z ##[endgroup]
-2026-05-02T11:17:43.6978102Z ##[group]Thiết lập xác thực
-2026-05-02T11:17:43.6987705Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T11:17:43.7023408Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T11:17:43.7336082Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T11:17:43.7373367Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T11:17:43.7597096Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T11:17:43.7631836Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T11:17:43.7859063Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-05-02T11:17:43.7895911Z ##[endgroup]
-2026-05-02T11:17:43.7904918Z ##[group]Đang tải kho lưu trữ
-2026-05-02T11:17:43.7906432Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-2026-05-02T11:17:44.3340807Z Từ https://github.com/Longnononn/public
-2026-05-02T11:17:44.3342422Z * [nhánh mới] main -> origin/main
-2026-05-02T11:17:44.3377367Z [command]/usr/bin/git branch --list --remote origin/main
-2026-05-02T11:17:44.3400290Z origin/main
-2026-05-02T11:17:44.3408874Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
-2026-05-02T11:17:44.3430475Z 2b7c5dee4dd15bec31909a130d68bffb923c5ba8
-2026-05-02T11:17:44.3438459Z ##[endgroup]
-2026-05-02T11:17:44.3440805Z ##[group]Xác định thông tin thanh toán
-2026-05-02T11:17:44.3443576Z ##[endgroup]
-2026-05-02T11:17:44.3445962Z [command]/usr/bin/git sparse-checkout disable
-2026-05-02T11:17:44.3479556Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-05-02T11:17:44.3506694Z ##[group]Kiểm tra tham chiếu
-2026-05-02T11:17:44.3511107Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-05-02T11:17:44.3604722Z Đã chuyển sang nhánh mới 'main'
-2026-05-02T11:17:44.3607456Z nhánh 'main' được thiết lập để theo dõi 'origin/main'.
-2026-05-02T11:17:44.3614004Z ##[endgroup]
-2026-05-02T11:17:44.3645960Z [command]/usr/bin/git log -1 --format=%H
-2026-05-02T11:17:44.3667823Z 2b7c5dee4dd15bec31909a130d68bffb923c5ba8
-2026-05-02T11:17:44.3883530Z ##[group]Chạy lệnh sudo apt-get update
-2026-05-02T11:17:44.3885023Z [36;1msudo apt-get update [0m
-2026-05-02T11:17:44.3886437Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip [0m
-2026-05-02T11:17:44.3888013Z [36;1mpip3 install numpy scipy [0m
-2026-05-02T11:17:44.3914946Z shell: /usr/bin/bash -e {0}
-2026-05-02T11:17:44.3916254Z ##[endgroup]
-2026-05-02T11:17:44.4806745Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T11:17:44.5186235Z Lượt truy cập: 2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2026-05-02T11:17:44.5203758Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2026-05-02T11:17:44.5256153Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2026-05-02T11:17:44.5291379Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2026-05-02T11:17:44.5464909Z Get:6 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
-2026-05-02T11:17:44.6449951Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
-2026-05-02T11:17:44.6628505Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
-2026-05-02T11:17:44.6660278Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
-2026-05-02T11:17:44.6679770Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 cnf Metadata [17.1 kB]
-2026-05-02T11:17:44.6696268Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
-2026-05-02T11:17:44.6805167Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
-2026-05-02T11:17:44.6865893Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
-2026-05-02T11:17:44.6884460Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 cnf Metadata [34.5 kB]
-2026-05-02T11:17:44.6906745Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
-2026-05-02T11:17:44.7078706Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
-2026-05-02T11:17:44.7089484Z Lượt truy cập: 34 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2026-05-02T11:17:44.7137697Z Get:35 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2026-05-02T11:17:44.7570727Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2026-05-02T11:17:44.7584871Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 cnf Metadata [480 B]
-2026-05-02T11:17:44.7607550Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
-2026-05-02T11:17:44.7742595Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
-2026-05-02T11:17:44.7748113Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2026-05-02T11:17:44.7752725Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 cnf Metadata [656 B]
-2026-05-02T11:17:44.7757193Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
-2026-05-02T11:17:44.7761199Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
-2026-05-02T11:17:44.7765593Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
-2026-05-02T11:17:44.7769895Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 cnf Metadata [368 B]
-2026-05-02T11:17:44.7774127Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
-2026-05-02T11:17:44.7778780Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
-2026-05-02T11:17:44.7792359Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
-2026-05-02T11:17:44.7818277Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 cnf Metadata [1484 B]
-2026-05-02T11:17:44.8254050Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-2026-05-02T11:17:44.8264872Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
-2026-05-02T11:17:44.8278140Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2026-05-02T11:17:44.8287234Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
-2026-05-02T11:17:44.8378098Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
-2026-05-02T11:17:44.8425698Z Get:50 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
-2026-05-02T11:17:44.8433204Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
-2026-05-02T11:17:44.8443117Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 cnf Metadata [11.0 kB]
-2026-05-02T11:17:44.8457871Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
-2026-05-02T11:17:44.8523686Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
-2026-05-02T11:17:44.8545947Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
-2026-05-02T11:17:44.8561730Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 cnf Metadata [23.1 kB]
-2026-05-02T11:17:44.8576059Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
-2026-05-02T11:17:44.8743850Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
-2026-05-02T11:17:44.8782825Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2026-05-02T11:17:44.8795671Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
-2026-05-02T11:17:44.9206691Z Get:51 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
-2026-05-02T11:17:44.9254739Z Get:52 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
-2026-05-02T11:17:44.9279988Z Get:53 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
-2026-05-02T11:17:44.9285813Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
-2026-05-02T11:17:44.9297391Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2026-05-02T11:17:54.1969804Z Đã tải về 16.5 MB trong 2 giây (8959 kB/s)
-2026-05-02T11:17:54.9841593Z Đang đọc danh sách gói hàng...
-2026-05-02T11:17:55.0154670Z Đang đọc danh sách gói hàng...
-2026-05-02T11:17:55.2038315Z Đang xây dựng cây phụ thuộc...
-2026-05-02T11:17:55.2045925Z Đang đọc thông tin trạng thái...
-2026-05-02T11:17:55.3770694Z g++ đã là phiên bản mới nhất (4:13.2.0-7ubuntu1).
-2026-05-02T11:17:55.3771745Z python3 đã là phiên bản mới nhất (3.12.3-0ubuntu2.1).
-2026-05-02T11:17:55.3772545Z python3-pip đã là phiên bản mới nhất (24.0+dfsg-1ubuntu1.3).
-2026-05-02T11:17:55.3773229Z Các gói được đề xuất:
-2026-05-02T11:17:55.3774034Z cmake-doc cmake-format elpa-cmake-mode ninja-build
-2026-05-02T11:17:55.3950361Z Các gói MỚI sau đây sẽ được cài đặt:
-2026-05-02T11:17:55.3957130Z cmake cmake-data libjsoncpp25 librhash0
-2026-05-02T11:17:55.4131919Z 0 được nâng cấp, 4 được cài đặt mới, 0 bị gỡ bỏ và 53 không được nâng cấp.
-2026-05-02T11:17:55.4132611Z Cần tải xuống 13.6 MB tệp lưu trữ.
-2026-05-02T11:17:55.4133354Z Sau thao tác này, 49,1 MB dung lượng đĩa bổ sung sẽ được sử dụng.
-2026-05-02T11:17:55.4133990Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T11:17:55.4525142Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
-2026-05-02T11:17:55.4771214Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
-2026-05-02T11:17:55.5007288Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
-2026-05-02T11:17:55.5448095Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
-2026-05-02T11:17:55.9173679Z Đã tải về 13.6 MB trong 0 giây (51.3 MB/s)
-2026-05-02T11:17:55.9433763Z Đang chọn gói libjsoncpp25:amd64 chưa được chọn trước đó.
-2026-05-02T11:17:55.9746136Z (Đang đọc cơ sở dữ liệu ...)
-2026-05-02T11:17:55.9746584Z (Đang đọc cơ sở dữ liệu ... 5%)
-2026-05-02T11:17:55.9747112Z (Đang đọc cơ sở dữ liệu ... 10%)
-2026-05-02T11:17:55.9747473Z (Đang đọc cơ sở dữ liệu ... 15%)
-2026-05-02T11:17:55.9747756Z (Đang đọc cơ sở dữ liệu ... 20%)
-2026-05-02T11:17:55.9747995Z (Đang đọc cơ sở dữ liệu ... 25%)
-2026-05-02T11:17:55.9748360Z (Đang đọc cơ sở dữ liệu ... 30%)
-2026-05-02T11:17:55.9748721Z (Đang đọc cơ sở dữ liệu ... 35%)
-2026-05-02T11:17:55.9748991Z (Đang đọc cơ sở dữ liệu ... 40%)
-2026-05-02T11:17:55.9749226Z (Đang đọc cơ sở dữ liệu ... 45%)
-2026-05-02T11:17:55.9749479Z (Đang đọc cơ sở dữ liệu ... 50%)
-2026-05-02T11:17:55.9854453Z (Đang đọc cơ sở dữ liệu ... 55%)
-2026-05-02T11:17:56.1181286Z (Đang đọc cơ sở dữ liệu ... 60%)
-2026-05-02T11:17:56.2561687Z (Đang đọc cơ sở dữ liệu ... 65%)
-2026-05-02T11:17:56.4616634Z (Đang đọc cơ sở dữ liệu ... 70%)
-2026-05-02T11:17:56.6637286Z (Đang đọc cơ sở dữ liệu ... 75%)
-2026-05-02T11:17:56.8543946Z (Đang đọc cơ sở dữ liệu ... 80%)
-2026-05-02T11:17:57.0588823Z (Đang đọc cơ sở dữ liệu ... 85%)
-2026-05-02T11:17:57.2701089Z (Đang đọc cơ sở dữ liệu ... 90%)
-2026-05-02T11:17:57.4240154Z (Đang đọc cơ sở dữ liệu ... 95%)
-2026-05-02T11:17:57.4240728Z (Đang đọc cơ sở dữ liệu ... 100%)
-2026-05-02T11:17:57.4241387Z (Đang đọc cơ sở dữ liệu ... Hiện có 220764 tệp và thư mục được cài đặt.)
-2026-05-02T11:17:57.4285693Z Đang chuẩn bị giải nén .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
-2026-05-02T11:17:57.4333359Z Giải nén libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T11:17:57.4589699Z Đang chọn gói librhash0:amd64 chưa được chọn trước đó.
-2026-05-02T11:17:57.4726340Z Đang chuẩn bị giải nén .../librhash0_1.4.3-3build1_amd64.deb ...
-2026-05-02T11:17:57.4738099Z Giải nén librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T11:17:57.5008556Z Đang chọn gói cmake-data chưa được chọn trước đó.
-2026-05-02T11:17:57.5144719Z Đang chuẩn bị giải nén .../cmake-data_3.28.3-1build7_all.deb ...
-2026-05-02T11:17:57.5217559Z Giải nén cmake-data (3.28.3-1build7) ...
-2026-05-02T11:17:58.0725071Z Đang chọn gói cmake chưa được chọn trước đó.
-2026-05-02T11:17:58.0873810Z Đang chuẩn bị giải nén .../cmake_3.28.3-1build7_amd64.deb ...
-2026-05-02T11:17:58.0884829Z Giải nén cmake (3.28.3-1build7) ...
-2026-05-02T11:17:58.2742296Z Đang thiết lập libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T11:17:58.2770365Z Đang thiết lập librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T11:17:58.2796483Z Đang thiết lập cmake-data (3.28.3-1build7) ...
-2026-05-02T11:17:58.2877049Z Đang thiết lập cmake (3.28.3-1build7) ...
-2026-05-02T11:17:58.2906180Z Đang xử lý các trình kích hoạt cho man-db (2.12.0-4build2) ...
-2026-05-02T11:17:58.2934970Z Không xây dựng cơ sở dữ liệu; man-db/auto-update không phải là 'true'.
-2026-05-02T11:17:58.2944113Z Đang xử lý các trình kích hoạt cho libc-bin (2.39-0ubuntu8.7) ...
-2026-05-02T11:17:58.9301171Z
-2026-05-02T11:17:58.9302077Z Kernel đang chạy có vẻ như đã được cập nhật.
-2026-05-02T11:17:58.9302619Z
-2026-05-02T11:17:58.9302789Z Không cần khởi động lại dịch vụ nào.
-2026-05-02T11:17:58.9303089Z
-2026-05-02T11:17:58.9303253Z Không cần khởi động lại bất kỳ container nào.
-2026-05-02T11:17:58.9303574Z
-2026-05-02T11:17:58.9303763Z Không có phiên người dùng nào đang chạy các tệp nhị phân lỗi thời.
-2026-05-02T11:17:58.9304114Z
-2026-05-02T11:17:58.9304819Z Không có máy ảo nào đang chạy các tệp nhị phân hypervisor (qemu) lỗi thời trên máy chủ này.
-2026-05-02T11:18:01.2001869Z Mặc định sử dụng cài đặt người dùng vì thư mục site-packages thông thường không thể ghi được.
-2026-05-02T11:18:02.5149355Z Đang thu thập numpy
-2026-05-02T11:18:02.5485669Z Đang tải xuống numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
-2026-05-02T11:18:02.6925884Z Đang thu thập scipy
-2026-05-02T11:18:02.6963641Z Đang tải xuống scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
-2026-05-02T11:18:02.7063841Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 62,1/62,1 kB 6,9 MB/s trước 0:00:00
-2026-05-02T11:18:02.7504789Z Đang tải xuống numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16,6 MB)
-2026-05-02T11:18:02.8541225Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 16,6/16,6 MB 152,7 MB/giây trước 0:00:00
-2026-05-02T11:18:02.8575546Z Đang tải xuống scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35,2 MB)
-2026-05-02T11:18:03.0523759Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 35,2/35,2 MB 120,3 MB/giây trước 0:00:00
-2026-05-02T11:18:03.4251049Z Đang cài đặt các gói đã thu thập: numpy, scipy
-2026-05-02T11:18:08.8002337Z Đã cài đặt thành công numpy-2.4.4 scipy-1.17.1
-2026-05-02T11:18:08.9037726Z ##[group]Run git checkout main
-2026-05-02T11:18:08.9038069Z [36;1mgit checkout main [0m
-2026-05-02T11:18:08.9038314Z [36;1mmkdir -p build_baseline [0m
-2026-05-02T11:18:08.9038572Z [36;1mcd build_baseline [0m
-2026-05-02T11:18:08.9038820Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release [0m
-2026-05-02T11:18:08.9039096Z [36;1mmake -j$(nproc) [0m
-2026-05-02T11:18:08.9039310Z [36;1mcp nexus ../nexus_base [0m
-2026-05-02T11:18:08.9039533Z [36;1mcd .. [0m
-2026-05-02T11:18:08.9061060Z shell: /usr/bin/bash -e {0}
-2026-05-02T11:18:08.9061307Z ##[endgroup]
-2026-05-02T11:18:08.9153594Z Đã có trên 'chính'
-2026-05-02T11:18:08.9157079Z Nhánh của bạn đã được cập nhật với 'origin/main'.
-2026-05-02T11:18:10.2436762Z -- Trình biên dịch CXX được xác định là GNU 13.3.0
-2026-05-02T11:18:10.3444774Z -- Phát hiện thông tin ABI của trình biên dịch CXX
-2026-05-02T11:18:10.4601108Z -- Phát hiện thông tin ABI của trình biên dịch CXX - hoàn tất
-2026-05-02T11:18:10.4779675Z -- Kiểm tra trình biên dịch C++ hoạt động: /usr/bin/c++ - bỏ qua
-2026-05-02T11:18:10.4841273Z -- Phát hiện các tính năng biên dịch CXX
-2026-05-02T11:18:10.4898133Z -- Phát hiện các tính năng biên dịch CXX - hoàn tất
-2026-05-02T11:18:10.5324358Z -- Đang thực hiện kiểm tra COMPILER_SUPPORTS_AVX2
-2026-05-02T11:18:10.6269348Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_AVX2 - Thành công
-2026-05-02T11:18:10.6277342Z -- Đang thực hiện kiểm tra COMPILER_SUPPORTS_BMI2
-2026-05-02T11:18:10.6926563Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_BMI2 - Thành công
-2026-05-02T11:18:10.6934634Z -- Thực hiện kiểm thử COMPILER_SUPPORTS_POPCNT
-2026-05-02T11:18:10.7558775Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_POPCNT - Thành công
-2026-05-02T11:18:10.7563546Z -- Cấu hình hoàn tất (1,5 giây)
-2026-05-02T11:18:10.7644707Z -- Quá trình tạo hoàn tất (0.0s)
-2026-05-02T11:18:10.7648104Z -- Các tệp xây dựng đã được ghi vào: /home/runner/work/public/public/build_baseline
-2026-05-02T11:18:10.7835750Z [ 2%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/bitboard.cpp.o
-2026-05-02T11:18:10.7836524Z [ 7%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/board.cpp.o
-2026-05-02T11:18:10.7837374Z [ 7%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
-2026-05-02T11:18:10.7838216Z [ 10%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
-2026-05-02T11:18:11.5213995Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)':
-2026-05-02T11:18:11.5216791Z /home/runner/work/public/public/src/bitboard.cpp:130:15: lỗi: không tìm thấy toán tử 'operator+=' (kiểu toán hạng là 'Nexus::Square' và 'Nexus::Direction')
-2026-05-02T11:18:11.5217998Z 130 | s += d;
-2026-05-02T11:18:11.5218444Z | ~~^~~~
-2026-05-02T11:18:11.5220067Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)':
-2026-05-02T11:18:11.5222511Z /home/runner/work/public/public/src/bitboard.cpp:167:63: cảnh báo: so sánh giữa 'enum Nexus::Square' và 'enum Nexus::Direction' [-Wenum-compare]
-2026-05-02T11:18:11.5224037Z 167 | magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
-2026-05-02T11:18:11.5225177Z | ~~~~~~~~~^~~~~~~~
-2026-05-02T11:18:11.5226859Z /home/runner/work/public/public/src/bitboard.cpp:167:52: lỗi: lời gọi hàm quá tải 'sliding_attack(Nexus::PieceType, Nexus::Square&, Nexus::u64&)' không rõ ràng
-2026-05-02T11:18:11.5228375Z 167 | magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
-2026-05-02T11:18:11.5229804Z | ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.5231558Z /home/runner/work/public/public/src/bitboard.cpp:117:5: note: ứng viên: 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)'
-2026-05-02T11:18:11.5233282Z 117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
-2026-05-02T11:18:11.5233897Z | ^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.5264814Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/bitboard.cpp:1:
-2026-05-02T11:18:11.5266408Z /home/runner/work/public/public/src/bitboard.h:71:5: note: ứng viên: 'Nexus::u64 Nexus::sliding_attack(PieceType, Square, u64)'
-2026-05-02T11:18:11.5267549Z 71 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied);
-2026-05-02T11:18:11.5268099Z | ^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.5269044Z /home/runner/work/public/public/src/bitboard.cpp:150:13: cảnh báo: biến 'shift' không được sử dụng [-Wunused-variable]
-2026-05-02T11:18:11.5269960Z 150 | int shift = 64 - shifts[s];
-2026-05-02T11:18:11.5270397Z | ^~~~~
-2026-05-02T11:18:11.5271498Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics_bb()':
-2026-05-02T11:18:11.5273175Z /home/runner/work/public/public/src/bitboard.cpp:174:31: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5274522Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.5275093Z | ^~~~~
-2026-05-02T11:18:11.5275510Z | |
-2026-05-02T11:18:11.5275948Z | Nexus::Direction
-2026-05-02T11:18:11.5277306Z /home/runner/work/public/public/src/bitboard.cpp:174:38: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5278437Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.5278970Z | ^~~~
-2026-05-02T11:18:11.5279397Z | |
-2026-05-02T11:18:11.5279931Z | Nexus::Direction
-2026-05-02T11:18:11.5281283Z /home/runner/work/public/public/src/bitboard.cpp:174:44: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5282474Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.5283038Z | ^~~~~
-2026-05-02T11:18:11.5283515Z | |
-2026-05-02T11:18:11.5284040Z | Nexus::Direction
-2026-05-02T11:18:11.5285719Z /home/runner/work/public/public/src/bitboard.cpp:174:51: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5286855Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.5287471Z | ^~~~
-2026-05-02T11:18:11.5287989Z | |
-2026-05-02T11:18:11.5288540Z | Nexus::Direction
-2026-05-02T11:18:11.5290001Z /home/runner/work/public/public/src/bitboard.cpp:175:33: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5291285Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.5292014Z | ^~~~~~~~~~
-2026-05-02T11:18:11.5292468Z | |
-2026-05-02T11:18:11.5292955Z | Nexus::Direction
-2026-05-02T11:18:11.5314735Z /home/runner/work/public/public/src/bitboard.cpp:175:45: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5316063Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.5317166Z | ^~~~~~~~~~
-2026-05-02T11:18:11.5317690Z | |
-2026-05-02T11:18:11.5318234Z | Nexus::Direction
-2026-05-02T11:18:11.5320006Z /home/runner/work/public/public/src/bitboard.cpp:175:57: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5321330Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.5322076Z | ^~~~~~~~~~
-2026-05-02T11:18:11.5322624Z | |
-2026-05-02T11:18:11.5323223Z | Nexus::Direction
-2026-05-02T11:18:11.5324955Z /home/runner/work/public/public/src/bitboard.cpp:175:69: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.5326276Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.5327072Z | ^~~~~~~~~~
-2026-05-02T11:18:11.5327629Z | |
-2026-05-02T11:18:11.5328269Z | Nexus::Direction
-2026-05-02T11:18:11.5755464Z /home/runner/work/public/public/src/bitboard.cpp: Tại phạm vi toàn cục:
-2026-05-02T11:18:11.5757565Z /home/runner/work/public/public/src/bitboard.cpp:137:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T11:18:11.5758858Z 137 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T11:18:11.5759387Z | ^~~~~~~~~~~~~
-2026-05-02T11:18:11.5761352Z /home/runner/work/public/public/src/bitboard.cpp:117:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T11:18:11.5763014Z 117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
-2026-05-02T11:18:11.5763617Z | ^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.5764664Z make[2]: *** [CMakeFiles/nexus.dir/build.make:79: CMakeFiles/nexus.dir/src/bitboard.cpp.o] Lỗi 1
-2026-05-02T11:18:11.5765527Z make[2]: *** Đang chờ các công việc chưa hoàn thành....
-2026-05-02T11:18:11.5825069Z [ 12%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
-2026-05-02T11:18:11.6125461Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/board.cpp:1:
-2026-05-02T11:18:11.6156584Z /home/runner/work/public/public/src/board.h:87:10: lỗi: 'bool Nexus::BoardState::is_check() const' không thể được nạp chồng với 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:11.6175029Z 87 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:11.6204874Z | ^~~~~~~~
-2026-05-02T11:18:11.6235842Z /home/runner/work/public/public/src/board.h:68:10: note: khai báo trước đó 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:11.6237059Z 68 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:11.6264815Z | ^~~~~~~~
-2026-05-02T11:18:11.6635923Z /home/runner/work/public/public/tests/test_bitboard.cpp: Trong hàm 'int test_bitboard_main()':
-2026-05-02T11:18:11.6665681Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: cảnh báo: biến 'attacks' không được sử dụng [-Wunused-variable]
-2026-05-02T11:18:11.6694803Z 24 | u64 attacks = rook_attacks(SQ_C3, occ);
-2026-05-02T11:18:11.6714774Z | ^~~~~~~
-2026-05-02T11:18:11.6935162Z Trong tệp được bao gồm từ /home/runner/work/public/public/tests/test_perft.cpp:4:
-2026-05-02T11:18:11.6966251Z /home/runner/work/public/public/src/board.h:87:10: lỗi: 'bool Nexus::BoardState::is_check() const' không thể được nạp chồng với 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:11.6994812Z 87 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:11.7028943Z | ^~~~~~~~
-2026-05-02T11:18:11.7055679Z /home/runner/work/public/public/src/board.h:68:10: note: khai báo trước đó 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:11.7084800Z 68 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:11.7105071Z | ^~~~~~~~
-2026-05-02T11:18:11.7106044Z /home/runner/work/public/public/tests/test_perft.cpp: Trong hàm 'int main()':
-2026-05-02T11:18:11.7107526Z /home/runner/work/public/public/tests/test_perft.cpp:14:5: lỗi: 'test_bitboard_main' chưa được khai báo trong phạm vi này
-2026-05-02T11:18:11.7108504Z 14 | test_bitboard_main();
-2026-05-02T11:18:11.7108926Z | ^~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7346181Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::set_piece(Nexus::Square, Nexus::Piece)':
-2026-05-02T11:18:11.7375757Z /home/runner/work/public/public/src/board.cpp:129:32: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7377074Z 129 | st.key ^= ZobristPiece[p][s];
-2026-05-02T11:18:11.7414734Z | ^
-2026-05-02T11:18:11.7444677Z | |
-2026-05-02T11:18:11.7474752Z | long unsigned int
-2026-05-02T11:18:11.7495792Z /home/runner/work/public/public/src/board.cpp:132:40: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7496996Z [ 15%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/board.cpp.o
-2026-05-02T11:18:11.7524865Z 132 | st.pawnKey ^= ZobristPiece[p][s];
-2026-05-02T11:18:11.7554789Z | ^
-2026-05-02T11:18:11.7584685Z | |
-2026-05-02T11:18:11.7596267Z | long unsigned int
-2026-05-02T11:18:11.7603345Z /home/runner/work/public/public/src/board.cpp:134:66: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Value' [-fpermissive]
-2026-05-02T11:18:11.7605198Z 134 | st.nonPawnMaterial[color_of(p)] += piece_value[type_of(p)];
-2026-05-02T11:18:11.7605900Z | ~~~~~~~~~~~~~~~~~~~~~~~~^
-2026-05-02T11:18:11.7606489Z | |
-2026-05-02T11:18:11.7607045Z | int
-2026-05-02T11:18:11.7607731Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/board.h:3:
-2026-05-02T11:18:11.7609313Z /home/runner/work/public/public/src/types.h:119:42: note: khởi tạo đối số 2 của 'Nexus::Value& Nexus::operator+=(Value&, Value)'
-2026-05-02T11:18:11.7610584Z 119 | inline Value& operator+=(Value& a, Value b) { a = a + b; return a; }
-2026-05-02T11:18:11.7611238Z | ~~~~~~^
-2026-05-02T11:18:11.7612523Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::remove_piece(Nexus::Square)':
-2026-05-02T11:18:11.7614833Z /home/runner/work/public/public/src/board.cpp:142:32: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7616045Z 142 | st.key ^= ZobristPiece[p][s];
-2026-05-02T11:18:11.7616546Z | ^
-2026-05-02T11:18:11.7616961Z | |
-2026-05-02T11:18:11.7617416Z | long unsigned int
-2026-05-02T11:18:11.7618810Z /home/runner/work/public/public/src/board.cpp:145:40: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7619924Z 145 | st.pawnKey ^= ZobristPiece[p][s];
-2026-05-02T11:18:11.7620419Z | ^
-2026-05-02T11:18:11.7620855Z | |
-2026-05-02T11:18:11.7621695Z | long unsigned int
-2026-05-02T11:18:11.7623013Z /home/runner/work/public/public/src/board.cpp:147:66: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Value' [-fpermissive]
-2026-05-02T11:18:11.7624382Z 147 | st.nonPawnMaterial[color_of(p)] -= piece_value[type_of(p)];
-2026-05-02T11:18:11.7625335Z | ~~~~~~~~~~~~~~~~~~~~~~~~^
-2026-05-02T11:18:11.7625919Z | |
-2026-05-02T11:18:11.7626384Z | int
-2026-05-02T11:18:11.7627736Z /home/runner/work/public/public/src/types.h:120:42: note: khởi tạo đối số 2 của 'Nexus::Value& Nexus::operator-=(Value&, Value)'
-2026-05-02T11:18:11.7628954Z 120 | inline Value& operator-=(Value& a, Value b) { a = a - b; return a; }
-2026-05-02T11:18:11.7629605Z | ~~~~~~^
-2026-05-02T11:18:11.7630971Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::move_piece(Nexus::Square, Nexus::Square)':
-2026-05-02T11:18:11.7632987Z /home/runner/work/public/public/src/board.cpp:157:57: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7634446Z 157 | st.key ^= ZobristPiece[p][from] ^ ZobristPiece[p][to];
-2026-05-02T11:18:11.7635117Z | ^
-2026-05-02T11:18:11.7635616Z | |
-2026-05-02T11:18:11.7636137Z | long unsigned int
-2026-05-02T11:18:11.7637554Z /home/runner/work/public/public/src/board.cpp:160:65: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7638790Z 160 | st.pawnKey ^= ZobristPiece[p][from] ^ ZobristPiece[p][to];
-2026-05-02T11:18:11.7639440Z | ^
-2026-05-02T11:18:11.7639985Z | |
-2026-05-02T11:18:11.7640549Z | long unsigned int
-2026-05-02T11:18:11.7641932Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)':
-2026-05-02T11:18:11.7643762Z /home/runner/work/public/public/src/board.cpp:188:52: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7645111Z 188 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:11.7645655Z | ^
-2026-05-02T11:18:11.7646126Z | |
-2026-05-02T11:18:11.7646625Z | long unsigned int
-2026-05-02T11:18:11.7648002Z /home/runner/work/public/public/src/board.cpp:189:27: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7649315Z 189 | st.castlingRights &= ~(us == WHITE ? (WHITE_OO | WHITE_OOO) : (BLACK_OO | BLACK_OOO));
-2026-05-02T11:18:11.7650180Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7650783Z | |
-2026-05-02T11:18:11.7651177Z | int
-2026-05-02T11:18:11.7652411Z /home/runner/work/public/public/src/board.cpp:190:52: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7653519Z 190 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:11.7654069Z | ^
-2026-05-02T11:18:11.7654791Z | |
-2026-05-02T11:18:11.7655338Z | long unsigned int
-2026-05-02T11:18:11.7656982Z /home/runner/work/public/public/src/board.cpp:196:60: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7658114Z 196 | st.key ^= ZobristPiece[make_piece(~us, PAWN)][capsq];
-2026-05-02T11:18:11.7658694Z | ^
-2026-05-02T11:18:11.7659396Z | |
-2026-05-02T11:18:11.7659935Z | long unsigned int
-2026-05-02T11:18:11.7661313Z /home/runner/work/public/public/src/board.cpp:219:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7662437Z 219 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:11.7662994Z | ^
-2026-05-02T11:18:11.7663486Z | |
-2026-05-02T11:18:11.7664018Z | long unsigned int
-2026-05-02T11:18:11.7665766Z /home/runner/work/public/public/src/board.cpp:222:80: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Rank' [-fpermissive]
-2026-05-02T11:18:11.7666940Z 222 | st.epSquare = make_square(file_of(from), (rank_of(from) + rank_of(to)) / 2);
-2026-05-02T11:18:11.7667716Z | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
-2026-05-02T11:18:11.7668290Z | |
-2026-05-02T11:18:11.7668867Z | int
-2026-05-02T11:18:11.7670271Z /home/runner/work/public/public/src/types.h:61:43: note: khởi tạo đối số 2 của 'constexpr Nexus::Square Nexus::make_square(File, Rank)'
-2026-05-02T11:18:11.7671531Z 61 | constexpr Square make_square(File f, Rank r) { return Square((r << 3) | f); }
-2026-05-02T11:18:11.7672257Z | ~~~~^
-2026-05-02T11:18:11.7673580Z /home/runner/work/public/public/src/board.cpp:223:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7675042Z 223 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:11.7675629Z | ^
-2026-05-02T11:18:11.7676111Z | |
-2026-05-02T11:18:11.7676646Z | long unsigned int
-2026-05-02T11:18:11.7678035Z /home/runner/work/public/public/src/board.cpp:235:12: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7679073Z 235 | st.key ^= ZobristSide;
-2026-05-02T11:18:11.7679466Z | ~~~~~~^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7679825Z | |
-2026-05-02T11:18:11.7680179Z | long unsigned int
-2026-05-02T11:18:11.7681123Z /home/runner/work/public/public/src/board.cpp:169:9: cảnh báo: biến 'key' không được sử dụng [-Wunused-variable]
-2026-05-02T11:18:11.7681959Z 169 | Key key = st.key;
-2026-05-02T11:18:11.7682316Z | ^~~
-2026-05-02T11:18:11.7683433Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_null_move(Nexus::StateInfo&)':
-2026-05-02T11:18:11.7685669Z /home/runner/work/public/public/src/board.cpp:290:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7686798Z 290 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:11.7687370Z | ^
-2026-05-02T11:18:11.7687861Z | |
-2026-05-02T11:18:11.7688384Z | long unsigned int
-2026-05-02T11:18:11.7690025Z /home/runner/work/public/public/src/board.cpp:294:12: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7691050Z 294 | st.key ^= ZobristSide;
-2026-05-02T11:18:11.7691451Z | ~~~~~~~^~~~~~~~~~~~~~
-2026-05-02T11:18:11.7691810Z | |
-2026-05-02T11:18:11.7692140Z | long unsigned int
-2026-05-02T11:18:11.7693674Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::update_castling_rights(Nexus::Square, Nexus::Square)':
-2026-05-02T11:18:11.7695893Z /home/runner/work/public/public/src/board.cpp:310:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7696989Z 310 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:11.7697527Z | ^
-2026-05-02T11:18:11.7697985Z | |
-2026-05-02T11:18:11.7698472Z | long unsigned int
-2026-05-02T11:18:11.7699823Z /home/runner/work/public/public/src/board.cpp:312:42: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7700976Z 312 | if (from == SQ_E1) st.castlingRights &= ~(WHITE_OO | WHITE_OOO);
-2026-05-02T11:18:11.7701624Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7702119Z | |
-2026-05-02T11:18:11.7702559Z | int
-2026-05-02T11:18:11.7703879Z /home/runner/work/public/public/src/board.cpp:313:47: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7705412Z 313 | else if (from == SQ_E8) st.castlingRights &= ~(BLACK_OO | BLACK_OOO);
-2026-05-02T11:18:11.7706078Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7706601Z | |
-2026-05-02T11:18:11.7707078Z | int
-2026-05-02T11:18:11.7708454Z /home/runner/work/public/public/src/board.cpp:314:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7709619Z 314 | else if (from == SQ_A1 || to == SQ_A1) st.castlingRights &= ~WHITE_OOO;
-2026-05-02T11:18:11.7710279Z |                                             ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
-2026-05-02T11:18:11.7710812Z | |
-2026-05-02T11:18:11.7711326Z | int
-2026-05-02T11:18:11.7712653Z /home/runner/work/public/public/src/board.cpp:315:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7713808Z 315 | else if (from == SQ_H1 || to == SQ_H1) st.castlingRights &= ~WHITE_OO;
-2026-05-02T11:18:11.7714678Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:11.7715250Z | |
-2026-05-02T11:18:11.7715767Z | int
-2026-05-02T11:18:11.7717132Z /home/runner/work/public/public/src/board.cpp:316:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7718305Z 316 | else if (from == SQ_A8 || to == SQ_A8) st.castlingRights &= ~BLACK_OOO;
-2026-05-02T11:18:11.7718970Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
-2026-05-02T11:18:11.7719517Z | |
-2026-05-02T11:18:11.7720034Z | int
-2026-05-02T11:18:11.7721355Z /home/runner/work/public/public/src/board.cpp:317:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7722741Z 317 | else if (from == SQ_H8 || to == SQ_H8) st.castlingRights &= ~BLACK_OO;
-2026-05-02T11:18:11.7723391Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:11.7723923Z | |
-2026-05-02T11:18:11.7724831Z | int
-2026-05-02T11:18:11.7726196Z /home/runner/work/public/public/src/board.cpp:319:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7727292Z 319 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:11.7727825Z | ^
-2026-05-02T11:18:11.7728278Z | |
-2026-05-02T11:18:11.7728757Z | long unsigned int
-2026-05-02T11:18:11.7729985Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::set_fen(const std::string&)':
-2026-05-02T11:18:11.7731800Z /home/runner/work/public/public/src/board.cpp:404:16: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7732838Z 404 | st.key ^= ZobristSide;
-2026-05-02T11:18:11.7733252Z | ~~~~~~^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.7733660Z | |
-2026-05-02T11:18:11.7734020Z | long unsigned int
-2026-05-02T11:18:11.7735692Z /home/runner/work/public/public/src/board.cpp:410:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7736819Z 410 | if (c == 'K') st.castlingRights |= WHITE_OO;
-2026-05-02T11:18:11.7737339Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
-2026-05-02T11:18:11.7737798Z | |
-2026-05-02T11:18:11.7738242Z | int
-2026-05-02T11:18:11.7739648Z /home/runner/work/public/public/src/board.cpp:411:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7740730Z 411 | if (c == 'Q') st.castlingRights |= WHITE_OOO;
-2026-05-02T11:18:11.7741253Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:11.7741718Z | |
-2026-05-02T11:18:11.7742178Z | int
-2026-05-02T11:18:11.7743485Z /home/runner/work/public/public/src/board.cpp:412:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7744797Z 412 | if (c == 'k') st.castlingRights |= BLACK_OO;
-2026-05-02T11:18:11.7745335Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
-2026-05-02T11:18:11.7745806Z | |
-2026-05-02T11:18:11.7746257Z | int
-2026-05-02T11:18:11.7747623Z /home/runner/work/public/public/src/board.cpp:413:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:11.7748741Z 413 | if (c == 'q') st.castlingRights |= BLACK_OOO;
-2026-05-02T11:18:11.7749284Z | ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:11.7749750Z | |
-2026-05-02T11:18:11.7750210Z | int
-2026-05-02T11:18:11.7751528Z /home/runner/work/public/public/src/board.cpp:415:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7752614Z 415 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:11.7753146Z | ^
-2026-05-02T11:18:11.7753600Z | |
-2026-05-02T11:18:11.7754104Z | long unsigned int
-2026-05-02T11:18:11.7755813Z /home/runner/work/public/public/src/board.cpp:421:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:11.7757239Z 421 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:11.7757812Z | ^
-2026-05-02T11:18:11.7758468Z | |
-2026-05-02T11:18:11.7759025Z | long unsigned int
-2026-05-02T11:18:11.7759944Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:93: CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o] Lỗi 1
-2026-05-02T11:18:11.7760848Z make[2]: *** Đang chờ các công việc chưa hoàn thành....
-2026-05-02T11:18:11.8413659Z make[2]: *** [CMakeFiles/nexus.dir/build.make:93: CMakeFiles/nexus.dir/src/board.cpp.o] Lỗi 1
-2026-05-02T11:18:11.8416000Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Lỗi 2
-2026-05-02T11:18:11.8417234Z make[1]: *** Đang chờ các công việc chưa hoàn thành....
-2026-05-02T11:18:11.8851176Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)':
-2026-05-02T11:18:11.8853839Z /home/runner/work/public/public/src/bitboard.cpp:130:15: lỗi: không tìm thấy toán tử 'operator+=' (kiểu toán hạng là 'Nexus::Square' và 'Nexus::Direction')
-2026-05-02T11:18:11.8855747Z 130 | s += d;
-2026-05-02T11:18:11.8856171Z | ~~^~~~
-2026-05-02T11:18:11.8858164Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)':
-2026-05-02T11:18:11.8860570Z /home/runner/work/public/public/src/bitboard.cpp:167:63: cảnh báo: so sánh giữa 'enum Nexus::Square' và 'enum Nexus::Direction' [-Wenum-compare]
-2026-05-02T11:18:11.8862045Z 167 | magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
-2026-05-02T11:18:11.8862955Z | ~~~~~~~~~^~~~~~~~
-2026-05-02T11:18:11.8864881Z /home/runner/work/public/public/src/bitboard.cpp:167:52: lỗi: lời gọi hàm quá tải 'sliding_attack(Nexus::PieceType, Nexus::Square&, Nexus::u64&)' không rõ ràng
-2026-05-02T11:18:11.8866507Z 167 | magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
-2026-05-02T11:18:11.8867481Z | ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:11.8869277Z /home/runner/work/public/public/src/bitboard.cpp:117:5: note: ứng viên: 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)'
-2026-05-02T11:18:11.8870704Z 117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
-2026-05-02T11:18:11.8871301Z | ^~~~~~~~~~~~~~
-2026-05-02T11:18:11.8871896Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/bitboard.cpp:1:
-2026-05-02T11:18:11.8873471Z /home/runner/work/public/public/src/bitboard.h:71:5: note: ứng viên: 'Nexus::u64 Nexus::sliding_attack(PieceType, Square, u64)'
-2026-05-02T11:18:11.8891272Z 71 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied);
-2026-05-02T11:18:11.8891896Z | ^~~~~~~~~~~~~~
-2026-05-02T11:18:11.8892995Z /home/runner/work/public/public/src/bitboard.cpp:150:13: cảnh báo: biến 'shift' không được sử dụng [-Wunused-variable]
-2026-05-02T11:18:11.8893967Z 150 | int shift = 64 - shifts[s];
-2026-05-02T11:18:11.8894788Z | ^~~~~
-2026-05-02T11:18:11.8895904Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics_bb()':
-2026-05-02T11:18:11.8897767Z /home/runner/work/public/public/src/bitboard.cpp:174:31: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8898979Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.8899565Z | ^~~~~
-2026-05-02T11:18:11.8900829Z | |
-2026-05-02T11:18:11.8901319Z | Nexus::Direction
-2026-05-02T11:18:11.8902717Z /home/runner/work/public/public/src/bitboard.cpp:174:38: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8904499Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.8905147Z | ^~~~
-2026-05-02T11:18:11.8905721Z | |
-2026-05-02T11:18:11.8906235Z | Nexus::Direction
-2026-05-02T11:18:11.8907682Z /home/runner/work/public/public/src/bitboard.cpp:174:44: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8908896Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.8909504Z | ^~~~~
-2026-05-02T11:18:11.8910025Z | |
-2026-05-02T11:18:11.8910567Z | Nexus::Direction
-2026-05-02T11:18:11.8912018Z /home/runner/work/public/public/src/bitboard.cpp:174:51: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8913246Z 174 | Square rook_deltas[4] = { NORTH, EAST, SOUTH, WEST };
-2026-05-02T11:18:11.8913859Z | ^~~~
-2026-05-02T11:18:11.8915335Z | |
-2026-05-02T11:18:11.8917030Z | Nexus::Direction
-2026-05-02T11:18:11.8918553Z /home/runner/work/public/public/src/bitboard.cpp:175:33: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8919891Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.8920652Z | ^~~~~~~~~~
-2026-05-02T11:18:11.8921127Z | |
-2026-05-02T11:18:11.8921622Z | Nexus::Direction
-2026-05-02T11:18:11.8922994Z /home/runner/work/public/public/src/bitboard.cpp:175:45: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8924712Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.8925454Z | ^~~~~~~~~~
-2026-05-02T11:18:11.8925954Z | |
-2026-05-02T11:18:11.8926481Z | Nexus::Direction
-2026-05-02T11:18:11.8927899Z /home/runner/work/public/public/src/bitboard.cpp:175:57: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8929173Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.8929963Z | ^~~~~~~~~~~
-2026-05-02T11:18:11.8930515Z | |
-2026-05-02T11:18:11.8931088Z | Nexus::Direction
-2026-05-02T11:18:11.8932585Z /home/runner/work/public/public/src/bitboard.cpp:175:69: lỗi: không thể chuyển đổi 'Nexus::Direction' sang 'Nexus::Square' trong quá trình khởi tạo
-2026-05-02T11:18:11.8933876Z 175 | Square bishop_deltas[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
-2026-05-02T11:18:11.8935039Z | ^~~~~~~~~~
-2026-05-02T11:18:11.8935639Z | |
-2026-05-02T11:18:11.8936268Z | Nexus::Direction
-2026-05-02T11:18:11.9246475Z /home/runner/work/public/public/src/bitboard.cpp: Tại phạm vi toàn cục:
-2026-05-02T11:18:11.9248894Z /home/runner/work/public/public/src/bitboard.cpp:137:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T11:18:11.9250242Z 137 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T11:18:11.9250756Z | ^~~~~~~~~~~~~
-2026-05-02T11:18:11.9252692Z /home/runner/work/public/public/src/bitboard.cpp:117:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T11:18:11.9254746Z 117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
-2026-05-02T11:18:11.9255321Z | ^~~~~~~~~~~~~~~
-2026-05-02T11:18:11.9299178Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:107: CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o] Lỗi 1
-2026-05-02T11:18:12.0090914Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/board.cpp:1:
-2026-05-02T11:18:12.0093117Z /home/runner/work/public/public/src/board.h:87:10: lỗi: 'bool Nexus::BoardState::is_check() const' không thể được nạp chồng với 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:12.0094725Z 87 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:12.0095253Z | ^~~~~~~~
-2026-05-02T11:18:12.0096486Z /home/runner/work/public/public/src/board.h:68:10: note: khai báo trước đó 'bool Nexus::BoardState::is_check() const'
-2026-05-02T11:18:12.0097548Z 68 | bool is_check() const { return checkers(); }
-2026-05-02T11:18:12.0098063Z | ^~~~~~~~
-2026-05-02T11:18:12.0855686Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::set_piece(Nexus::Square, Nexus::Piece)':
-2026-05-02T11:18:12.0858197Z /home/runner/work/public/public/src/board.cpp:129:32: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0859539Z 129 | st.key ^= ZobristPiece[p][s];
-2026-05-02T11:18:12.0860137Z | ^
-2026-05-02T11:18:12.0860573Z | |
-2026-05-02T11:18:12.0861040Z | long unsigned int
-2026-05-02T11:18:12.0862474Z /home/runner/work/public/public/src/board.cpp:132:40: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0863646Z 132 | st.pawnKey ^= ZobristPiece[p][s];
-2026-05-02T11:18:12.0864554Z | ^
-2026-05-02T11:18:12.0865082Z | |
-2026-05-02T11:18:12.0865563Z | long unsigned int
-2026-05-02T11:18:12.0866989Z /home/runner/work/public/public/src/board.cpp:134:66: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Value' [-fpermissive]
-2026-05-02T11:18:12.0868267Z 134 | st.nonPawnMaterial[color_of(p)] += piece_value[type_of(p)];
-2026-05-02T11:18:12.0869053Z | ~~~~~~~~~~~~~~~~~~~~~~^
-2026-05-02T11:18:12.0869651Z | |
-2026-05-02T11:18:12.0870235Z | int
-2026-05-02T11:18:12.0870914Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/board.h:3:
-2026-05-02T11:18:12.0872428Z /home/runner/work/public/public/src/types.h:119:42: note: khởi tạo đối số 2 của 'Nexus::Value& Nexus::operator+=(Value&, Value)'
-2026-05-02T11:18:12.0873684Z 119 | inline Value& operator+=(Value& a, Value b) { a = a + b; return a; }
-2026-05-02T11:18:12.0874604Z | ~~~~~~^
-2026-05-02T11:18:12.0875901Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::remove_piece(Nexus::Square)':
-2026-05-02T11:18:12.0877681Z /home/runner/work/public/public/src/board.cpp:142:32: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0878869Z 142 | st.key ^= ZobristPiece[p][s];
-2026-05-02T11:18:12.0879313Z | ^
-2026-05-02T11:18:12.0879698Z | |
-2026-05-02T11:18:12.0880121Z | long unsigned int
-2026-05-02T11:18:12.0881650Z /home/runner/work/public/public/src/board.cpp:145:40: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0882780Z 145 | st.pawnKey ^= ZobristPiece[p][s];
-2026-05-02T11:18:12.0883247Z | ^
-2026-05-02T11:18:12.0883659Z | |
-2026-05-02T11:18:12.0884018Z | long unsigned int
-2026-05-02T11:18:12.0884966Z /home/runner/work/public/public/src/board.cpp:147:66: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Value' [-fpermissive]
-2026-05-02T11:18:12.0885613Z 147 | st.nonPawnMaterial[color_of(p)] -= piece_value[type_of(p)];
-2026-05-02T11:18:12.0886018Z | ~~~~~~~~~~~~~~~~~~~~~~^
-2026-05-02T11:18:12.0886323Z | |
-2026-05-02T11:18:12.0886629Z | int
-2026-05-02T11:18:12.0887372Z /home/runner/work/public/public/src/types.h:120:42: note: khởi tạo đối số 2 của 'Nexus::Value& Nexus::operator-=(Value&, Value)'
-2026-05-02T11:18:12.0888039Z 120 | inline Value& operator-=(Value& a, Value b) { a = a - b; return a; }
-2026-05-02T11:18:12.0888400Z | ~~~~~~^
-2026-05-02T11:18:12.0889090Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::move_piece(Nexus::Square, Nexus::Square)':
-2026-05-02T11:18:12.0890096Z /home/runner/work/public/public/src/board.cpp:157:57: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0890739Z 157 | st.key ^= ZobristPiece[p][from] ^ ZobristPiece[p][to];
-2026-05-02T11:18:12.0891072Z | ^
-2026-05-02T11:18:12.0891358Z | |
-2026-05-02T11:18:12.0891915Z | long unsigned int
-2026-05-02T11:18:12.0893130Z /home/runner/work/public/public/src/board.cpp:160:65: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0893822Z 160 | st.pawnKey ^= ZobristPiece[p][from] ^ ZobristPiece[p][to];
-2026-05-02T11:18:12.0894493Z | ^
-2026-05-02T11:18:12.0895020Z | |
-2026-05-02T11:18:12.0895569Z | long unsigned int
-2026-05-02T11:18:12.0896902Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)':
-2026-05-02T11:18:12.0898697Z /home/runner/work/public/public/src/board.cpp:188:52: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0899761Z 188 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:12.0900300Z | ^
-2026-05-02T11:18:12.0900772Z | |
-2026-05-02T11:18:12.0901082Z | long unsigned int
-2026-05-02T11:18:12.0901839Z /home/runner/work/public/public/src/board.cpp:189:27: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0902585Z 189 | st.castlingRights &= ~(us == WHITE ? (WHITE_OO | WHITE_OOO) : (BLACK_OO | BLACK_OOO));
-2026-05-02T11:18:12.0903079Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:12.0903624Z | |
-2026-05-02T11:18:12.0903851Z | int
-2026-05-02T11:18:12.0904721Z /home/runner/work/public/public/src/board.cpp:190:52: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0905538Z 190 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:12.0905865Z | ^
-2026-05-02T11:18:12.0906138Z | |
-2026-05-02T11:18:12.0906424Z | long unsigned int
-2026-05-02T11:18:12.0907190Z /home/runner/work/public/public/src/board.cpp:196:60: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0907853Z 196 | st.key ^= ZobristPiece[make_piece(~us, PAWN)][capsq];
-2026-05-02T11:18:12.0908197Z | ^
-2026-05-02T11:18:12.0908489Z | |
-2026-05-02T11:18:12.0908793Z | long unsigned int
-2026-05-02T11:18:12.0909550Z /home/runner/work/public/public/src/board.cpp:219:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0910195Z 219 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:12.0910515Z | ^
-2026-05-02T11:18:12.0910800Z | |
-2026-05-02T11:18:12.0911100Z | long unsigned int
-2026-05-02T11:18:12.0911796Z /home/runner/work/public/public/src/board.cpp:222:80: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::Rank' [-fpermissive]
-2026-05-02T11:18:12.0912471Z 222 | st.epSquare = make_square(file_of(from), (rank_of(from) + rank_of(to)) / 2);
-2026-05-02T11:18:12.0912892Z | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
-2026-05-02T11:18:12.0913231Z | |
-2026-05-02T11:18:12.0913572Z | int
-2026-05-02T11:18:12.0914471Z /home/runner/work/public/public/src/types.h:61:43: note: khởi tạo đối số 2 của 'constexpr Nexus::Square Nexus::make_square(File, Rank)'
-2026-05-02T11:18:12.0915191Z 61 | constexpr Square make_square(File f, Rank r) { return Square((r << 3) | f); }
-2026-05-02T11:18:12.0915577Z | ~~~~~^
-2026-05-02T11:18:12.0916287Z /home/runner/work/public/public/src/board.cpp:223:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0916912Z 223 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:12.0917245Z | ^
-2026-05-02T11:18:12.0917518Z | |
-2026-05-02T11:18:12.0917816Z | long unsigned int
-2026-05-02T11:18:12.0918558Z /home/runner/work/public/public/src/board.cpp:235:12: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0919124Z 235 | st.key ^= ZobristSide;
-2026-05-02T11:18:12.0919352Z | ~~~~~~~^~~~~~~~~~~~~~
-2026-05-02T11:18:12.0919557Z | |
-2026-05-02T11:18:12.0919750Z | long unsigned int
-2026-05-02T11:18:12.0920268Z /home/runner/work/public/public/src/board.cpp:169:9: cảnh báo: biến 'key' không được sử dụng [-Wunused-variable]
-2026-05-02T11:18:12.0920729Z 169 | Key key = st.key;
-2026-05-02T11:18:12.0920937Z | ^~~
-2026-05-02T11:18:12.0921668Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_null_move(Nexus::StateInfo&)':
-2026-05-02T11:18:12.0922639Z /home/runner/work/public/public/src/board.cpp:290:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0923256Z 290 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:12.0923711Z | ^
-2026-05-02T11:18:12.0923996Z | |
-2026-05-02T11:18:12.0924426Z | long unsigned int
-2026-05-02T11:18:12.0925176Z /home/runner/work/public/public/src/board.cpp:294:12: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0925739Z 294 | st.key ^= ZobristSide;
-2026-05-02T11:18:12.0925962Z | ~~~~~~^~~~~~~~~~~~~~~
-2026-05-02T11:18:12.0926163Z | |
-2026-05-02T11:18:12.0926370Z | long unsigned int
-2026-05-02T11:18:12.0927076Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::update_castling_rights(Nexus::Square, Nexus::Square)':
-2026-05-02T11:18:12.0928126Z /home/runner/work/public/public/src/board.cpp:310:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0928739Z 310 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:12.0929043Z | ^
-2026-05-02T11:18:12.0929305Z | |
-2026-05-02T11:18:12.0929583Z | long unsigned int
-2026-05-02T11:18:12.0930302Z /home/runner/work/public/public/src/board.cpp:312:42: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0930962Z 312 | if (from == SQ_E1) st.castlingRights &= ~(WHITE_OO | WHITE_OOO);
-2026-05-02T11:18:12.0931335Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:12.0931627Z | |
-2026-05-02T11:18:12.0931885Z | int
-2026-05-02T11:18:12.0932573Z /home/runner/work/public/public/src/board.cpp:313:47: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0933227Z 313 | else if (from == SQ_E8) st.castlingRights &= ~(BLACK_OO | BLACK_OOO);
-2026-05-02T11:18:12.0933614Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T11:18:12.0933919Z | |
-2026-05-02T11:18:12.0934348Z | int
-2026-05-02T11:18:12.0935067Z /home/runner/work/public/public/src/board.cpp:314:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0935867Z 314 | else if (from == SQ_A1 || to == SQ_A1) st.castlingRights &= ~WHITE_OOO;
-2026-05-02T11:18:12.0936251Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
-2026-05-02T11:18:12.0936568Z | |
-2026-05-02T11:18:12.0936882Z | int
-2026-05-02T11:18:12.0937606Z /home/runner/work/public/public/src/board.cpp:315:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0938270Z 315 | else if (from == SQ_H1 || to == SQ_H1) st.castlingRights &= ~WHITE_OO;
-2026-05-02T11:18:12.0938647Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:12.0938951Z | |
-2026-05-02T11:18:12.0939250Z | int
-2026-05-02T11:18:12.0939981Z /home/runner/work/public/public/src/board.cpp:316:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0940624Z 316 | else if (from == SQ_A8 || to == SQ_A8) st.castlingRights &= ~BLACK_OOO;
-2026-05-02T11:18:12.0941001Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
-2026-05-02T11:18:12.0941614Z | |
-2026-05-02T11:18:12.0942153Z | int
-2026-05-02T11:18:12.0943100Z /home/runner/work/public/public/src/board.cpp:317:62: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0943760Z 317 | else if (from == SQ_H8 || to == SQ_H8) st.castlingRights &= ~BLACK_OO;
-2026-05-02T11:18:12.0944265Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:12.0944572Z | |
-2026-05-02T11:18:12.0944988Z | int
-2026-05-02T11:18:12.0946258Z /home/runner/work/public/public/src/board.cpp:319:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0947321Z 319 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:12.0947843Z | ^
-2026-05-02T11:18:12.0948219Z | |
-2026-05-02T11:18:12.0948741Z | long unsigned int
-2026-05-02T11:18:12.0949628Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::set_fen(const std::string&)':
-2026-05-02T11:18:12.0950734Z /home/runner/work/public/public/src/board.cpp:404:16: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0951718Z 404 | st.key ^= ZobristSide;
-2026-05-02T11:18:12.0951967Z | ~~~~~~^~~~~~~~~~~~~~~
-2026-05-02T11:18:12.0952192Z | |
-2026-05-02T11:18:12.0952389Z | long unsigned int
-2026-05-02T11:18:12.0953114Z /home/runner/work/public/public/src/board.cpp:410:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0953719Z 410 | if (c == 'K') st.castlingRights |= WHITE_OO;
-2026-05-02T11:18:12.0954028Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
-2026-05-02T11:18:12.0954431Z | |
-2026-05-02T11:18:12.0954687Z | int
-2026-05-02T11:18:12.0955382Z /home/runner/work/public/public/src/board.cpp:411:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0955983Z 411 | if (c == 'Q') st.castlingRights |= WHITE_OOO;
-2026-05-02T11:18:12.0956288Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:12.0956727Z | |
-2026-05-02T11:18:12.0956980Z | int
-2026-05-02T11:18:12.0957684Z /home/runner/work/public/public/src/board.cpp:412:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0958298Z 412 | if (c == 'k') st.castlingRights |= BLACK_OO;
-2026-05-02T11:18:12.0958591Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
-2026-05-02T11:18:12.0958859Z | |
-2026-05-02T11:18:12.0959105Z | int
-2026-05-02T11:18:12.0959788Z /home/runner/work/public/public/src/board.cpp:413:41: lỗi: chuyển đổi không hợp lệ từ 'int' sang 'Nexus::CastlingRights' [-fpermissive]
-2026-05-02T11:18:12.0960384Z 413 | if (c == 'q') st.castlingRights |= BLACK_OOO;
-2026-05-02T11:18:12.0960689Z | ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
-2026-05-02T11:18:12.0960966Z | |
-2026-05-02T11:18:12.0961216Z | int
-2026-05-02T11:18:12.0961918Z /home/runner/work/public/public/src/board.cpp:415:48: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0962646Z 415 | st.key ^= ZobristCastling[st.castlingRights];
-2026-05-02T11:18:12.0962971Z | ^
-2026-05-02T11:18:12.0963231Z | |
-2026-05-02T11:18:12.0963515Z | long unsigned int
-2026-05-02T11:18:12.0964401Z /home/runner/work/public/public/src/board.cpp:421:56: lỗi: chuyển đổi không hợp lệ từ 'long unsigned int' sang 'Nexus::Key' [-fpermissive]
-2026-05-02T11:18:12.0965028Z 421 | st.key ^= ZobristEnpassant[file_of(st.epSquare)];
-2026-05-02T11:18:12.0965351Z | ^
-2026-05-02T11:18:12.0965637Z | |
-2026-05-02T11:18:12.0965939Z | long unsigned int
-2026-05-02T11:18:12.1467436Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:121: CMakeFiles/nexus_tests.dir/src/board.cpp.o] Lỗi 1
-2026-05-02T11:18:12.1470430Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Lỗi 2
-2026-05-02T11:18:12.1472688Z make: *** [Makefile:101: all] Lỗi 2
-2026-05-02T11:18:12.1491689Z ##[error]Quá trình hoàn tất với mã thoát 2.
-2026-05-02T11:18:12.1611888Z Dọn dẹp sau khi hoàn thành công việc.
-2026-05-02T11:18:12.2598067Z [command]/usr/bin/git version
-2026-05-02T11:18:12.2636791Z git version 2.53.0
-2026-05-02T11:18:12.2682770Z Tạm thời ghi đè HOME='/home/runner/work/_temp/6483f0f2-a0a0-4eb3-9d20-283115e9eaf8' trước khi thực hiện các thay đổi cấu hình git toàn cục
-2026-05-02T11:18:12.2684129Z Thêm thư mục kho lưu trữ vào cấu hình toàn cục tạm thời của git như một thư mục an toàn.
-2026-05-02T11:18:12.2689652Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T11:18:12.2728636Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T11:18:12.2762325Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T11:18:12.2990480Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T11:18:12.3012411Z http.https://github.com/.extraheader
-2026-05-02T11:18:12.3025649Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-05-02T11:18:12.3057401Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T11:18:12.3277892Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T11:18:12.3308967Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T11:18:12.3643154Z Dọn dẹp các tiến trình mồ côi
-2026-05-02T11:18:12.4037886Z ##[cảnh báo]Các hành động Node.js 20 đã lỗi thời. Các hành động sau đang chạy trên Node.js 20 và có thể không hoạt động như mong đợi: actions/checkout@v4. Các hành động sẽ bị buộc phải chạy với Node.js 24 theo mặc định bắt đầu từ ngày 2 tháng 6 năm 2026. Node.js 20 sẽ bị xóa khỏi trình chạy vào ngày 16 tháng 9 năm 2026. Vui lòng kiểm tra xem có phiên bản cập nhật nào của các hành động này hỗ trợ Node.js 24 hay không. Để chọn sử dụng Node.js 24 ngay bây giờ, hãy đặt biến môi trường FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true trên trình chạy hoặc trong tệp quy trình làm việc của bạn. Sau khi Node.js 24 trở thành mặc định, bạn có thể tạm thời chọn không sử dụng bằng cách đặt ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. Để biết thêm thông tin chi tiết, vui lòng xem: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-05-02T11:20:35.8563993Z Current runner version: '2.334.0'
+2026-05-02T11:20:35.8588088Z ##[group]Runner Image Provisioner
+2026-05-02T11:20:35.8588830Z Hosted Compute Agent
+2026-05-02T11:20:35.8589318Z Version: 20260213.493
+2026-05-02T11:20:35.8589904Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-02T11:20:35.8590531Z Build Date: 2026-02-13T00:28:41Z
+2026-05-02T11:20:35.8591084Z Worker ID: {2e107d6c-5e50-455e-9ec5-a3bb04702723}
+2026-05-02T11:20:35.8591719Z Azure Region: westcentralus
+2026-05-02T11:20:35.8592216Z ##[endgroup]
+2026-05-02T11:20:35.8593583Z ##[group]Operating System
+2026-05-02T11:20:35.8594284Z Ubuntu
+2026-05-02T11:20:35.8594750Z 24.04.4
+2026-05-02T11:20:35.8595143Z LTS
+2026-05-02T11:20:35.8595573Z ##[endgroup]
+2026-05-02T11:20:35.8595999Z ##[group]Runner Image
+2026-05-02T11:20:35.8596518Z Image: ubuntu-24.04
+2026-05-02T11:20:35.8597009Z Version: 20260413.86.1
+2026-05-02T11:20:35.8598065Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-02T11:20:35.8599324Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-02T11:20:35.8600143Z ##[endgroup]
+2026-05-02T11:20:35.8601101Z ##[group]GITHUB_TOKEN Permissions
+2026-05-02T11:20:35.8602961Z Contents: read
+2026-05-02T11:20:35.8603405Z Metadata: read
+2026-05-02T11:20:35.8603856Z Packages: read
+2026-05-02T11:20:35.8604725Z ##[endgroup]
+2026-05-02T11:20:35.8606807Z Secret source: Actions
+2026-05-02T11:20:35.8607385Z Prepare workflow directory
+2026-05-02T11:20:35.8980054Z Prepare all required actions
+2026-05-02T11:20:35.9018253Z Getting action download info
+2026-05-02T11:20:36.2888950Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-02T11:20:36.4039129Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-02T11:20:36.5785793Z Complete job name: build-and-test
+2026-05-02T11:20:36.6472661Z ##[group]Run actions/checkout@v4
+2026-05-02T11:20:36.6473696Z with:
+2026-05-02T11:20:36.6474412Z   fetch-depth: 0
+2026-05-02T11:20:36.6474913Z   repository: Longnononn/public
+2026-05-02T11:20:36.6475744Z   token: ***
+2026-05-02T11:20:36.6476263Z   ssh-strict: true
+2026-05-02T11:20:36.6476730Z   ssh-user: git
+2026-05-02T11:20:36.6477243Z   persist-credentials: true
+2026-05-02T11:20:36.6477779Z   clean: true
+2026-05-02T11:20:36.6478285Z   sparse-checkout-cone-mode: true
+2026-05-02T11:20:36.6478847Z   fetch-tags: false
+2026-05-02T11:20:36.6479415Z   show-progress: true
+2026-05-02T11:20:36.6479942Z   lfs: false
+2026-05-02T11:20:36.6480363Z   submodules: false
+2026-05-02T11:20:36.6480910Z   set-safe-directory: true
+2026-05-02T11:20:36.6481735Z ##[endgroup]
+2026-05-02T11:20:36.7506936Z Syncing repository: Longnononn/public
+2026-05-02T11:20:36.7509243Z ##[group]Getting Git version info
+2026-05-02T11:20:36.7510041Z Working directory is '/home/runner/work/public/public'
+2026-05-02T11:20:36.7511358Z [command]/usr/bin/git version
+2026-05-02T11:20:36.7534574Z git version 2.53.0
+2026-05-02T11:20:36.7557270Z ##[endgroup]
+2026-05-02T11:20:36.7577668Z Temporarily overriding HOME='/home/runner/work/_temp/12fce24a-93b0-46ec-a02f-59c39cbf536c' before making global git config changes
+2026-05-02T11:20:36.7579139Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T11:20:36.7582733Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T11:20:36.7608833Z Deleting the contents of '/home/runner/work/public/public'
+2026-05-02T11:20:36.7611872Z ##[group]Initializing the repository
+2026-05-02T11:20:36.7615636Z [command]/usr/bin/git init /home/runner/work/public/public
+2026-05-02T11:20:36.7675387Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-02T11:20:36.7676583Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-02T11:20:36.7678033Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-02T11:20:36.7679153Z hint: call:
+2026-05-02T11:20:36.7679729Z hint:
+2026-05-02T11:20:36.7680480Z hint: 	git config --global init.defaultBranch <name>
+2026-05-02T11:20:36.7681193Z hint:
+2026-05-02T11:20:36.7681799Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-02T11:20:36.7682790Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-02T11:20:36.7683839Z hint:
+2026-05-02T11:20:36.7684627Z hint: 	git branch -m <name>
+2026-05-02T11:20:36.7685522Z hint:
+2026-05-02T11:20:36.7686207Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-02T11:20:36.7687300Z Initialized empty Git repository in /home/runner/work/public/public/.git/
+2026-05-02T11:20:36.7689311Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
+2026-05-02T11:20:36.7712850Z ##[endgroup]
+2026-05-02T11:20:36.7714620Z ##[group]Disabling automatic garbage collection
+2026-05-02T11:20:36.7718114Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-02T11:20:36.7740864Z ##[endgroup]
+2026-05-02T11:20:36.7742722Z ##[group]Setting up auth
+2026-05-02T11:20:36.7856462Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T11:20:36.7858894Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T11:20:36.8006982Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T11:20:36.8030638Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T11:20:36.8197087Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T11:20:36.8231448Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T11:20:36.8409866Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-02T11:20:36.8437159Z ##[endgroup]
+2026-05-02T11:20:36.8438410Z ##[group]Fetching the repository
+2026-05-02T11:20:36.8445259Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-02T11:20:37.3937725Z From https://github.com/Longnononn/public
+2026-05-02T11:20:37.3938942Z  * [new branch]      main       -> origin/main
+2026-05-02T11:20:37.3966938Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-02T11:20:37.3985041Z   origin/main
+2026-05-02T11:20:37.3993027Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-02T11:20:37.4009282Z 6721ede9bb8157e947ea7a52644e3513025dd970
+2026-05-02T11:20:37.4012479Z ##[endgroup]
+2026-05-02T11:20:37.4013791Z ##[group]Determining the checkout info
+2026-05-02T11:20:37.4015147Z ##[endgroup]
+2026-05-02T11:20:37.4017403Z [command]/usr/bin/git sparse-checkout disable
+2026-05-02T11:20:37.4043350Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-02T11:20:37.4063924Z ##[group]Checking out the ref
+2026-05-02T11:20:37.4067407Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-02T11:20:37.4143846Z Switched to a new branch 'main'
+2026-05-02T11:20:37.4145238Z branch 'main' set up to track 'origin/main'.
+2026-05-02T11:20:37.4149855Z ##[endgroup]
+2026-05-02T11:20:37.4180407Z [command]/usr/bin/git log -1 --format=%H
+2026-05-02T11:20:37.4198821Z 6721ede9bb8157e947ea7a52644e3513025dd970
+2026-05-02T11:20:37.4356425Z ##[group]Run sudo apt-get update
+2026-05-02T11:20:37.4357117Z [36;1msudo apt-get update[0m
+2026-05-02T11:20:37.4357784Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
+2026-05-02T11:20:37.4358458Z [36;1mpip3 install numpy scipy[0m
+2026-05-02T11:20:37.4374911Z shell: /usr/bin/bash -e {0}
+2026-05-02T11:20:37.4375639Z ##[endgroup]
+2026-05-02T11:20:37.5026523Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T11:20:37.5365192Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-05-02T11:20:37.5367829Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-05-02T11:20:37.5370062Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-05-02T11:20:37.5386454Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-05-02T11:20:37.5445764Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-05-02T11:20:37.5475847Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-05-02T11:20:37.6421454Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
+2026-05-02T11:20:37.6919471Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
+2026-05-02T11:20:37.6997789Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
+2026-05-02T11:20:37.7043963Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
+2026-05-02T11:20:37.7330216Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
+2026-05-02T11:20:37.7418902Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
+2026-05-02T11:20:37.7444711Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-05-02T11:20:37.7460963Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+2026-05-02T11:20:37.7469467Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
+2026-05-02T11:20:37.7663455Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
+2026-05-02T11:20:37.7686436Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-05-02T11:20:37.7710346Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+2026-05-02T11:20:37.7746707Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
+2026-05-02T11:20:37.7885798Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
+2026-05-02T11:20:37.8397341Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-05-02T11:20:37.8406543Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+2026-05-02T11:20:37.8414801Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+2026-05-02T11:20:37.8428249Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
+2026-05-02T11:20:37.8437090Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-05-02T11:20:37.8468019Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+2026-05-02T11:20:37.8491832Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
+2026-05-02T11:20:37.8497277Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+2026-05-02T11:20:37.8507051Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-05-02T11:20:37.8522761Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-05-02T11:20:37.8535649Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
+2026-05-02T11:20:37.8546372Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-05-02T11:20:37.8554669Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+2026-05-02T11:20:37.8562118Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
+2026-05-02T11:20:37.8990818Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+2026-05-02T11:20:37.8997337Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+2026-05-02T11:20:37.9004267Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-05-02T11:20:37.9011880Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
+2026-05-02T11:20:37.9085221Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
+2026-05-02T11:20:37.9105009Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+2026-05-02T11:20:37.9113404Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+2026-05-02T11:20:37.9124686Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
+2026-05-02T11:20:37.9154902Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
+2026-05-02T11:20:37.9185172Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
+2026-05-02T11:20:37.9202381Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-05-02T11:20:37.9213842Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+2026-05-02T11:20:37.9221453Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
+2026-05-02T11:20:37.9340669Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
+2026-05-02T11:20:37.9372749Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-05-02T11:20:37.9379656Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+2026-05-02T11:20:37.9875781Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
+2026-05-02T11:20:37.9881996Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-05-02T11:20:46.3391095Z Fetched 16.5 MB in 2s (8817 kB/s)
+2026-05-02T11:20:47.1770123Z Reading package lists...
+2026-05-02T11:20:47.2071709Z Reading package lists...
+2026-05-02T11:20:47.3821254Z Building dependency tree...
+2026-05-02T11:20:47.3829451Z Reading state information...
+2026-05-02T11:20:47.5465630Z g++ is already the newest version (4:13.2.0-7ubuntu1).
+2026-05-02T11:20:47.5466260Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-05-02T11:20:47.5466729Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+2026-05-02T11:20:47.5467135Z Suggested packages:
+2026-05-02T11:20:47.5637418Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
+2026-05-02T11:20:47.5637894Z The following NEW packages will be installed:
+2026-05-02T11:20:47.5650680Z   cmake cmake-data libjsoncpp25 librhash0
+2026-05-02T11:20:47.5829798Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
+2026-05-02T11:20:47.5830464Z Need to get 13.6 MB of archives.
+2026-05-02T11:20:47.5831203Z After this operation, 49.1 MB of additional disk space will be used.
+2026-05-02T11:20:47.5831921Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T11:20:47.6454631Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-05-02T11:20:47.6982581Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-05-02T11:20:47.7470482Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-05-02T11:20:47.8735220Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-05-02T11:20:48.5987673Z Fetched 13.6 MB in 1s (17.1 MB/s)
+2026-05-02T11:20:48.6208427Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-05-02T11:20:48.6378171Z (Reading database ... 
+2026-05-02T11:20:48.6378593Z (Reading database ... 5%
+2026-05-02T11:20:48.6379017Z (Reading database ... 10%
+2026-05-02T11:20:48.6379478Z (Reading database ... 15%
+2026-05-02T11:20:48.6379945Z (Reading database ... 20%
+2026-05-02T11:20:48.6380285Z (Reading database ... 25%
+2026-05-02T11:20:48.6380623Z (Reading database ... 30%
+2026-05-02T11:20:48.6381127Z (Reading database ... 35%
+2026-05-02T11:20:48.6381614Z (Reading database ... 40%
+2026-05-02T11:20:48.6381928Z (Reading database ... 45%
+2026-05-02T11:20:48.6382334Z (Reading database ... 50%
+2026-05-02T11:20:48.6439208Z (Reading database ... 55%
+2026-05-02T11:20:48.7443867Z (Reading database ... 60%
+2026-05-02T11:20:48.9440212Z (Reading database ... 65%
+2026-05-02T11:20:49.1338284Z (Reading database ... 70%
+2026-05-02T11:20:49.2972164Z (Reading database ... 75%
+2026-05-02T11:20:49.4850755Z (Reading database ... 80%
+2026-05-02T11:20:49.6905574Z (Reading database ... 85%
+2026-05-02T11:20:49.9428877Z (Reading database ... 90%
+2026-05-02T11:20:50.1133578Z (Reading database ... 95%
+2026-05-02T11:20:50.1181387Z (Reading database ... 100%
+2026-05-02T11:20:50.1181976Z (Reading database ... 220764 files and directories currently installed.)
+2026-05-02T11:20:50.1182660Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-05-02T11:20:50.1218964Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T11:20:50.1404714Z Selecting previously unselected package librhash0:amd64.
+2026-05-02T11:20:50.1521846Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
+2026-05-02T11:20:50.1531154Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T11:20:50.1743490Z Selecting previously unselected package cmake-data.
+2026-05-02T11:20:50.1859811Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
+2026-05-02T11:20:50.1920129Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-05-02T11:20:50.6201979Z Selecting previously unselected package cmake.
+2026-05-02T11:20:50.6338728Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
+2026-05-02T11:20:50.6351458Z Unpacking cmake (3.28.3-1build7) ...
+2026-05-02T11:20:50.8361866Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T11:20:50.8390172Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T11:20:50.8413082Z Setting up cmake-data (3.28.3-1build7) ...
+2026-05-02T11:20:50.8468249Z Setting up cmake (3.28.3-1build7) ...
+2026-05-02T11:20:50.8492817Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-05-02T11:20:50.8511004Z Not building database; man-db/auto-update is not 'true'.
+2026-05-02T11:20:50.8524338Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-05-02T11:20:51.3855981Z 
+2026-05-02T11:20:51.3856544Z Running kernel seems to be up-to-date.
+2026-05-02T11:20:51.3856877Z 
+2026-05-02T11:20:51.3857025Z No services need to be restarted.
+2026-05-02T11:20:51.3857312Z 
+2026-05-02T11:20:51.3857413Z No containers need to be restarted.
+2026-05-02T11:20:51.3857598Z 
+2026-05-02T11:20:51.3857713Z No user sessions are running outdated binaries.
+2026-05-02T11:20:51.3857909Z 
+2026-05-02T11:20:51.3858084Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-05-02T11:20:54.1317801Z Defaulting to user installation because normal site-packages is not writeable
+2026-05-02T11:20:55.7125223Z Collecting numpy
+2026-05-02T11:20:55.8115120Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-05-02T11:20:55.9535022Z Collecting scipy
+2026-05-02T11:20:55.9720235Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-05-02T11:20:55.9963968Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 2.8 MB/s eta 0:00:00
+2026-05-02T11:20:56.0510898Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2026-05-02T11:20:56.2852673Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 157.3 MB/s eta 0:00:00
+2026-05-02T11:20:56.3039292Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
+2026-05-02T11:20:56.4228432Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 185.3 MB/s eta 0:00:00
+2026-05-02T11:20:56.7568899Z Installing collected packages: numpy, scipy
+2026-05-02T11:21:01.9500976Z Successfully installed numpy-2.4.4 scipy-1.17.1
+2026-05-02T11:21:02.0566178Z ##[group]Run git checkout main
+2026-05-02T11:21:02.0566487Z [36;1mgit checkout main[0m
+2026-05-02T11:21:02.0566715Z [36;1mmkdir -p build_baseline[0m
+2026-05-02T11:21:02.0566952Z [36;1mcd build_baseline[0m
+2026-05-02T11:21:02.0567178Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-02T11:21:02.0567433Z [36;1mmake -j$(nproc)[0m
+2026-05-02T11:21:02.0567637Z [36;1mcp nexus ../nexus_base[0m
+2026-05-02T11:21:02.0567853Z [36;1mcd ..[0m
+2026-05-02T11:21:02.0581970Z shell: /usr/bin/bash -e {0}
+2026-05-02T11:21:02.0582203Z ##[endgroup]
+2026-05-02T11:21:02.0662933Z Already on 'main'
+2026-05-02T11:21:02.0665103Z Your branch is up to date with 'origin/main'.
+2026-05-02T11:21:03.6981304Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-02T11:21:03.8014739Z -- Detecting CXX compiler ABI info
+2026-05-02T11:21:03.8929785Z -- Detecting CXX compiler ABI info - done
+2026-05-02T11:21:03.9079396Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-02T11:21:03.9147831Z -- Detecting CXX compile features
+2026-05-02T11:21:03.9208378Z -- Detecting CXX compile features - done
+2026-05-02T11:21:03.9611026Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-02T11:21:04.0963594Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-02T11:21:04.0970725Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-02T11:21:04.1487775Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-02T11:21:04.1496799Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-02T11:21:04.2006929Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-02T11:21:04.2011133Z -- Configuring done (1.7s)
+2026-05-02T11:21:04.2071077Z -- Generating done (0.0s)
+2026-05-02T11:21:04.2073666Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
+2026-05-02T11:21:04.2226713Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-02T11:21:04.2227736Z [  5%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-02T11:21:04.2229793Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-02T11:21:04.2230658Z [ 10%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-02T11:21:05.0233513Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’:
+2026-05-02T11:21:05.0236183Z /home/runner/work/public/public/src/bitboard.cpp:167:63: warning: comparison between ‘enum Nexus::Square’ and ‘enum Nexus::Direction’ [-Wenum-compare]
+2026-05-02T11:21:05.0255224Z   167 |             magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
+2026-05-02T11:21:05.0264734Z       |                                                     ~~~~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.0325808Z /home/runner/work/public/public/src/bitboard.cpp:167:52: error: call of overloaded ‘sliding_attack(Nexus::PieceType, Nexus::Square&, Nexus::u64&)’ is ambiguous
+2026-05-02T11:21:05.0354954Z   167 |             magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
+2026-05-02T11:21:05.0365174Z       |                                      ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T11:21:05.0395739Z /home/runner/work/public/public/src/bitboard.cpp:117:5: note: candidate: ‘Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)’
+2026-05-02T11:21:05.0397010Z   117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
+2026-05-02T11:21:05.0397536Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.0398534Z In file included from /home/runner/work/public/public/src/bitboard.cpp:1:
+2026-05-02T11:21:05.0399901Z /home/runner/work/public/public/src/bitboard.h:71:5: note: candidate: ‘Nexus::u64 Nexus::sliding_attack(PieceType, Square, u64)’
+2026-05-02T11:21:05.0400885Z    71 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied);
+2026-05-02T11:21:05.0401396Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.0402625Z /home/runner/work/public/public/src/bitboard.cpp:150:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T11:21:05.0403472Z   150 |         int shift = 64 - shifts[s];
+2026-05-02T11:21:05.0403868Z       |             ^~~~~
+2026-05-02T11:21:05.0405017Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics_bb()’:
+2026-05-02T11:21:05.0406454Z /home/runner/work/public/public/src/bitboard.cpp:177:104: error: cannot convert ‘Nexus::Direction*’ to ‘Nexus::Square*’
+2026-05-02T11:21:05.0407609Z   177 |     init_magics(RookMagics, RookTable, (u64*)RookMasks, (u64*)RookMagics_const, (unsigned*)RookShifts, rook_deltas);
+2026-05-02T11:21:05.0408431Z       |                                                                                                        ^~~~~~~~~~~
+2026-05-02T11:21:05.0408983Z       |                                                                                                        |
+2026-05-02T11:21:05.0409824Z       |                                                                                                        Nexus::Direction*
+2026-05-02T11:21:05.0435948Z /home/runner/work/public/public/src/bitboard.cpp:147:115: note:   initializing argument 6 of ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’
+2026-05-02T11:21:05.0464977Z   147 | void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Square deltas[]) {
+2026-05-02T11:21:05.0494744Z       |                                                                                                            ~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.0525431Z /home/runner/work/public/public/src/bitboard.cpp:178:114: error: cannot convert ‘Nexus::Direction*’ to ‘Nexus::Square*’
+2026-05-02T11:21:05.0555044Z   178 |     init_magics(BishopMagics, BishopTable, (u64*)BishopMasks, (u64*)BishopMagics_const, (unsigned*)BishopShifts, bishop_deltas);
+2026-05-02T11:21:05.0584831Z       |                                                                                                                  ^~~~~~~~~~~~~
+2026-05-02T11:21:05.0614880Z       |                                                                                                                  |
+2026-05-02T11:21:05.0644813Z       |                                                                                                                  Nexus::Direction*
+2026-05-02T11:21:05.0676031Z /home/runner/work/public/public/src/bitboard.cpp:147:115: note:   initializing argument 6 of ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’
+2026-05-02T11:21:05.0705083Z   147 | void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Square deltas[]) {
+2026-05-02T11:21:05.0734733Z       |                                                                                                            ~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.0754370Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T11:21:05.0756272Z /home/runner/work/public/public/src/bitboard.cpp:137:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:21:05.0757652Z   137 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T11:21:05.0758234Z       |     ^~~~~~~~~~~~
+2026-05-02T11:21:05.0759773Z /home/runner/work/public/public/src/bitboard.cpp:117:5: warning: ‘Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:21:05.0761467Z   117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
+2026-05-02T11:21:05.0762079Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.0762817Z make[2]: *** [CMakeFiles/nexus.dir/build.make:79: CMakeFiles/nexus.dir/src/bitboard.cpp.o] Error 1
+2026-05-02T11:21:05.0763826Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T11:21:05.0793521Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-02T11:21:05.1261826Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-02T11:21:05.1285754Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-02T11:21:05.1314816Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-02T11:21:05.1344564Z       |         ^~~~~~~
+2026-05-02T11:21:05.1785382Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::set_piece(Nexus::Square, Nexus::Piece)’:
+2026-05-02T11:21:05.1787420Z /home/runner/work/public/public/src/board.cpp:134:66: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
+2026-05-02T11:21:05.1814971Z   134 |         st.nonPawnMaterial[color_of(p)] += piece_value[type_of(p)];
+2026-05-02T11:21:05.1844711Z       |                                            ~~~~~~~~~~~~~~~~~~~~~~^
+2026-05-02T11:21:05.1874657Z       |                                                                  |
+2026-05-02T11:21:05.1904669Z       |                                                                  int
+2026-05-02T11:21:05.1934767Z [ 15%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-02T11:21:05.1935607Z In file included from /home/runner/work/public/public/src/board.h:3,
+2026-05-02T11:21:05.1955015Z                  from /home/runner/work/public/public/src/board.cpp:1:
+2026-05-02T11:21:05.1965756Z /home/runner/work/public/public/src/types.h:127:42: note:   initializing argument 2 of ‘Nexus::Value& Nexus::operator+=(Value&, Value)’
+2026-05-02T11:21:05.1967019Z   127 | inline Value& operator+=(Value& a, Value b) { a = a + b; return a; }
+2026-05-02T11:21:05.1967628Z       |                                    ~~~~~~^
+2026-05-02T11:21:05.1968785Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::remove_piece(Nexus::Square)’:
+2026-05-02T11:21:05.1970375Z /home/runner/work/public/public/src/board.cpp:147:66: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
+2026-05-02T11:21:05.1971432Z   147 |         st.nonPawnMaterial[color_of(p)] -= piece_value[type_of(p)];
+2026-05-02T11:21:05.1972057Z       |                                            ~~~~~~~~~~~~~~~~~~~~~~^
+2026-05-02T11:21:05.1972567Z       |                                                                  |
+2026-05-02T11:21:05.1973094Z       |                                                                  int
+2026-05-02T11:21:05.1974580Z /home/runner/work/public/public/src/types.h:128:42: note:   initializing argument 2 of ‘Nexus::Value& Nexus::operator-=(Value&, Value)’
+2026-05-02T11:21:05.1975738Z   128 | inline Value& operator-=(Value& a, Value b) { a = a - b; return a; }
+2026-05-02T11:21:05.1976330Z       |                                    ~~~~~~^
+2026-05-02T11:21:05.1977582Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T11:21:05.1978974Z /home/runner/work/public/public/src/board.cpp:222:80: error: invalid conversion from ‘int’ to ‘Nexus::Rank’ [-fpermissive]
+2026-05-02T11:21:05.1979851Z   222 |         st.epSquare = make_square(file_of(from), (rank_of(from) + rank_of(to)) / 2);
+2026-05-02T11:21:05.1980494Z       |                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+2026-05-02T11:21:05.1981017Z       |                                                                                |
+2026-05-02T11:21:05.1981540Z       |                                                                                int
+2026-05-02T11:21:05.1983194Z /home/runner/work/public/public/src/types.h:61:43: note:   initializing argument 2 of ‘constexpr Nexus::Square Nexus::make_square(File, Rank)’
+2026-05-02T11:21:05.1984508Z    61 | constexpr Square make_square(File f, Rank r) { return Square((r << 3) | f); }
+2026-05-02T11:21:05.1985357Z       |                                      ~~~~~^
+2026-05-02T11:21:05.1986333Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T11:21:05.1994673Z   169 |     Key key = st.key;
+2026-05-02T11:21:05.2024596Z       |         ^~~
+2026-05-02T11:21:05.2385110Z [ 17%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-02T11:21:05.2666385Z make[2]: *** [CMakeFiles/nexus.dir/build.make:93: CMakeFiles/nexus.dir/src/board.cpp.o] Error 1
+2026-05-02T11:21:05.2667669Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
+2026-05-02T11:21:05.2670129Z make[1]: *** Waiting for unfinished jobs....
+2026-05-02T11:21:05.2695048Z [ 20%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-02T11:21:05.4886392Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’:
+2026-05-02T11:21:05.4936179Z /home/runner/work/public/public/src/bitboard.cpp:167:63: warning: comparison between ‘enum Nexus::Square’ and ‘enum Nexus::Direction’ [-Wenum-compare]
+2026-05-02T11:21:05.4974994Z   167 |             magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
+2026-05-02T11:21:05.5004677Z       |                                                     ~~~~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.5006480Z /home/runner/work/public/public/src/bitboard.cpp:167:52: error: call of overloaded ‘sliding_attack(Nexus::PieceType, Nexus::Square&, Nexus::u64&)’ is ambiguous
+2026-05-02T11:21:05.5034894Z   167 |             magics[s].attacks[idx] = sliding_attack(deltas[0] == NORTH ? ROOK : BISHOP, s, occupied);
+2026-05-02T11:21:05.5035776Z       |                                      ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T11:21:05.5037537Z /home/runner/work/public/public/src/bitboard.cpp:117:5: note: candidate: ‘Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)’
+2026-05-02T11:21:05.5038814Z   117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
+2026-05-02T11:21:05.5064623Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.5094814Z In file included from /home/runner/work/public/public/src/bitboard.cpp:1:
+2026-05-02T11:21:05.5096554Z /home/runner/work/public/public/src/bitboard.h:71:5: note: candidate: ‘Nexus::u64 Nexus::sliding_attack(PieceType, Square, u64)’
+2026-05-02T11:21:05.5097636Z    71 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied);
+2026-05-02T11:21:05.5098143Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.5099116Z /home/runner/work/public/public/src/bitboard.cpp:150:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T11:21:05.5099925Z   150 |         int shift = 64 - shifts[s];
+2026-05-02T11:21:05.5100340Z       |             ^~~~~
+2026-05-02T11:21:05.5101274Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics_bb()’:
+2026-05-02T11:21:05.5102929Z /home/runner/work/public/public/src/bitboard.cpp:177:104: error: cannot convert ‘Nexus::Direction*’ to ‘Nexus::Square*’
+2026-05-02T11:21:05.5104354Z   177 |     init_magics(RookMagics, RookTable, (u64*)RookMasks, (u64*)RookMagics_const, (unsigned*)RookShifts, rook_deltas);
+2026-05-02T11:21:05.5105319Z       |                                                                                                        ^~~~~~~~~~~
+2026-05-02T11:21:05.5105987Z       |                                                                                                        |
+2026-05-02T11:21:05.5106727Z       |                                                                                                        Nexus::Direction*
+2026-05-02T11:21:05.5109079Z /home/runner/work/public/public/src/bitboard.cpp:147:115: note:   initializing argument 6 of ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’
+2026-05-02T11:21:05.5135489Z   147 | void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Square deltas[]) {
+2026-05-02T11:21:05.5164791Z       |                                                                                                            ~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.5195487Z /home/runner/work/public/public/src/bitboard.cpp:178:114: error: cannot convert ‘Nexus::Direction*’ to ‘Nexus::Square*’
+2026-05-02T11:21:05.5225145Z   178 |     init_magics(BishopMagics, BishopTable, (u64*)BishopMasks, (u64*)BishopMagics_const, (unsigned*)BishopShifts, bishop_deltas);
+2026-05-02T11:21:05.5254793Z       |                                                                                                                  ^~~~~~~~~~~~~
+2026-05-02T11:21:05.5284701Z       |                                                                                                                  |
+2026-05-02T11:21:05.5285692Z       |                                                                                                                  Nexus::Direction*
+2026-05-02T11:21:05.5306303Z /home/runner/work/public/public/src/bitboard.cpp:147:115: note:   initializing argument 6 of ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Square*)’
+2026-05-02T11:21:05.5335186Z   147 | void init_magics(Magic magics[SQUARE_NB], u64 table[], u64 masks[], u64 magics_const[], unsigned shifts[], Square deltas[]) {
+2026-05-02T11:21:05.5364879Z       |                                                                                                            ~~~~~~~^~~~~~~~
+2026-05-02T11:21:05.5395205Z /home/runner/work/public/public/tests/test_perft.cpp: In function ‘int main()’:
+2026-05-02T11:21:05.5396637Z /home/runner/work/public/public/tests/test_perft.cpp:14:5: error: ‘test_bitboard_main’ was not declared in this scope
+2026-05-02T11:21:05.5417551Z    14 |     test_bitboard_main();
+2026-05-02T11:21:05.5418102Z       |     ^~~~~~~~~~~~~~~~~~
+2026-05-02T11:21:05.5418812Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T11:21:05.5420641Z /home/runner/work/public/public/src/bitboard.cpp:137:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:21:05.5421971Z   137 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T11:21:05.5422528Z       |     ^~~~~~~~~~~~
+2026-05-02T11:21:05.5424298Z /home/runner/work/public/public/src/bitboard.cpp:117:5: warning: ‘Nexus::u64 Nexus::{anonymous}::sliding_attack(Nexus::PieceType, Nexus::Square, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T11:21:05.5426076Z   117 | u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
+2026-05-02T11:21:05.5426647Z       |     ^~~~~~~~~~~~~~
+2026-05-02T11:21:05.5427378Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:107: CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o] Error 1
+2026-05-02T11:21:05.5428240Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T11:21:05.5614632Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:93: CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o] Error 1
+2026-05-02T11:21:05.6495543Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::set_piece(Nexus::Square, Nexus::Piece)’:
+2026-05-02T11:21:05.6497324Z /home/runner/work/public/public/src/board.cpp:134:66: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
+2026-05-02T11:21:05.6498352Z   134 |         st.nonPawnMaterial[color_of(p)] += piece_value[type_of(p)];
+2026-05-02T11:21:05.6499007Z       |                                            ~~~~~~~~~~~~~~~~~~~~~~^
+2026-05-02T11:21:05.6499959Z       |                                                                  |
+2026-05-02T11:21:05.6500485Z       |                                                                  int
+2026-05-02T11:21:05.6501154Z In file included from /home/runner/work/public/public/src/board.h:3,
+2026-05-02T11:21:05.6501992Z                  from /home/runner/work/public/public/src/board.cpp:1:
+2026-05-02T11:21:05.6503343Z /home/runner/work/public/public/src/types.h:127:42: note:   initializing argument 2 of ‘Nexus::Value& Nexus::operator+=(Value&, Value)’
+2026-05-02T11:21:05.6504672Z   127 | inline Value& operator+=(Value& a, Value b) { a = a + b; return a; }
+2026-05-02T11:21:05.6505278Z       |                                    ~~~~~~^
+2026-05-02T11:21:05.6506472Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::remove_piece(Nexus::Square)’:
+2026-05-02T11:21:05.6508072Z /home/runner/work/public/public/src/board.cpp:147:66: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
+2026-05-02T11:21:05.6509169Z   147 |         st.nonPawnMaterial[color_of(p)] -= piece_value[type_of(p)];
+2026-05-02T11:21:05.6509825Z       |                                            ~~~~~~~~~~~~~~~~~~~~~~^
+2026-05-02T11:21:05.6510348Z       |                                                                  |
+2026-05-02T11:21:05.6510868Z       |                                                                  int
+2026-05-02T11:21:05.6512166Z /home/runner/work/public/public/src/types.h:128:42: note:   initializing argument 2 of ‘Nexus::Value& Nexus::operator-=(Value&, Value)’
+2026-05-02T11:21:05.6513407Z   128 | inline Value& operator-=(Value& a, Value b) { a = a - b; return a; }
+2026-05-02T11:21:05.6513985Z       |                                    ~~~~~~^
+2026-05-02T11:21:05.6515384Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T11:21:05.6517042Z /home/runner/work/public/public/src/board.cpp:222:80: error: invalid conversion from ‘int’ to ‘Nexus::Rank’ [-fpermissive]
+2026-05-02T11:21:05.6518080Z   222 |         st.epSquare = make_square(file_of(from), (rank_of(from) + rank_of(to)) / 2);
+2026-05-02T11:21:05.6518778Z       |                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+2026-05-02T11:21:05.6519369Z       |                                                                                |
+2026-05-02T11:21:05.6519939Z       |                                                                                int
+2026-05-02T11:21:05.6521354Z /home/runner/work/public/public/src/types.h:61:43: note:   initializing argument 2 of ‘constexpr Nexus::Square Nexus::make_square(File, Rank)’
+2026-05-02T11:21:05.6522564Z    61 | constexpr Square make_square(File f, Rank r) { return Square((r << 3) | f); }
+2026-05-02T11:21:05.6523213Z       |                                      ~~~~~^
+2026-05-02T11:21:05.6524276Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T11:21:05.6525088Z   169 |     Key key = st.key;
+2026-05-02T11:21:05.6525450Z       |         ^~~
+2026-05-02T11:21:05.7054484Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:121: CMakeFiles/nexus_tests.dir/src/board.cpp.o] Error 1
+2026-05-02T11:21:05.7055966Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
+2026-05-02T11:21:05.7057727Z make: *** [Makefile:101: all] Error 2
+2026-05-02T11:21:05.7073586Z ##[error]Process completed with exit code 2.
+2026-05-02T11:21:05.7178997Z Post job cleanup.
+2026-05-02T11:21:05.8065842Z [command]/usr/bin/git version
+2026-05-02T11:21:05.8097653Z git version 2.53.0
+2026-05-02T11:21:05.8136280Z Temporarily overriding HOME='/home/runner/work/_temp/ed81da3c-06cb-428c-9d9d-d749c8fac383' before making global git config changes
+2026-05-02T11:21:05.8137545Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T11:21:05.8142745Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T11:21:05.8174654Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T11:21:05.8201843Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T11:21:05.8377209Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T11:21:05.8394443Z http.https://github.com/.extraheader
+2026-05-02T11:21:05.8405120Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-02T11:21:05.8429870Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T11:21:05.8596648Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T11:21:05.8621859Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T11:21:05.8876021Z Cleaning up orphan processes
+2026-05-02T11:21:05.9115491Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

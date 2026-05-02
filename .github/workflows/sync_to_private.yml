@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: Longnononn/Private
-        token: ${{ secrets.nexusinfinitecore }}
+        token: ${{ secrets.NEXUSINFINITECORE }}
         path: private_storage
         ref: main
         fetch-depth: 1

@@ -40,26 +40,14 @@ env:
   CUDA_VISIBLE_DEVICES: 0
 
 jobs:
-  # ======== Clone Source from Private ========
-  clone-source:
-    name: Clone Source from Private Repo
-    uses: ./.github/workflows/clone_from_private.yml
-
   # ======== Prepare Environment ========
   setup:
-    needs: clone-source
     name: Setup Training Environment
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Download Source Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: source-code-${{ github.run_id }}
-        path: ./
 
     - name: Install Python Dependencies
       run: |
@@ -219,12 +207,4 @@ get_latest_dataset()
             "model_size": "${{ steps.metrics.outputs.model_size }}"
           }
 
-  # ======== Sync to Private Storage ========
-  sync-private:
-    name: Sync Weights to Private Repo
-    needs: [clone-source, train]
-    if: always() && needs.train.result == 'success'
-    uses: ./.github/workflows/sync_to_private.yml
-    with:
-      weights_file: models/candidate.nnue
-    secrets: inherit
+  # Open source - weights stay in this repo

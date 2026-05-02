@@ -1,0 +1,130 @@
+# ============================================================================
+# NEXUS INFINITE - PUBLIC REPO .GITIGNORE
+# ABSOLUTE BLOCK: No source code, no training data, no weights on public repo
+# ============================================================================
+
+# === SOURCE CODE (100% BLOCKED) ===
+*.cpp
+*.c
+*.h
+*.hpp
+*.cc
+*.py
+*.rs
+*.go
+*.java
+*.cs
+*.swift
+*.kt
+*.scala
+*.rb
+*.js
+*.ts
+*.m
+*.mm
+
+# === BUILD SYSTEM ===
+CMakeLists.txt
+Makefile
+makefile
+*.cmake
+*.make
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.xcodeproj
+*.pro
+*.pri
+*.gradle
+build/
+cmake-build-*/
+out/
+Debug/
+Release/
+x64/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.elf
+
+# === SCRIPTS & TOOLS ===
+scripts/
+tests/
+tools/
+benchmarks/
+docs/internal/
+
+# === DATA & MODELS (ZERO TOLERANCE) ===
+*.nnue
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.binpack
+*.pb
+*.tflite
+*.mlmodel
+data/
+models/
+checkpoints/
+weights/
+datasets/
+*.csv
+*.tsv
+*.jsonl
+data-*/
+
+# === TRAINING ARTIFACTS ===
+elo_history.json
+arena_pool.json
+pruning_summary.json
+search_telemetry.json
+*.log
+*.out
+runs/
+tensorboard/
+wandb/
+mlruns/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# === SECRETS & KEYS ===
+*.pem
+*.key
+*.env
+.env.*
+secrets/
+credentials/
+*.token
+
+# === IDE & SYSTEM ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === ARCHIVE FILES ===
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# === DOCUMENTATION EXCEPTIONS ===
+# Only README.md and ELO_DASHBOARD.md allowed
+# All other .md files should be reviewed before committing
+*.md
+!README.md
+!ELO_DASHBOARD.md

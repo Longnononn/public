@@ -13,24 +13,13 @@ on:
         default: '5'
 
 jobs:
-  clone-source:
-    name: Clone Source from Private Repo
-    uses: ./.github/workflows/clone_from_private.yml
-
   build-and-test:
-    needs: clone-source
     runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Full history for comparison
-
-    - name: Download Source Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: source-code-${{ github.run_id }}
-        path: ./
 
     - name: Install dependencies
       run: |

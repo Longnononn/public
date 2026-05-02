@@ -46,26 +46,14 @@ env:
   DATASET_TAG: ${{ github.event.inputs.output_tag || github.run_id }}
 
 jobs:
-  # ======== Clone Source from Private ========
-  clone-source:
-    name: Clone Source from Private Repo
-    uses: ./.github/workflows/clone_from_private.yml
-
   # ======== Build Engine ========
   build:
-    needs: clone-source
     name: Build Engine
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Download Source Artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: source-code-${{ github.run_id }}
-        path: ./
 
     - name: Install Build Tools
       run: |
@@ -248,11 +236,4 @@ except Exception as e:
         path: data/dataset_${{ env.DATASET_TAG }}.txt
         retention-days: 7
 
-  # ======== Sync to Private Storage ========
-  sync-private:
-    name: Sync Dataset to Private Repo
-    needs: [clone-source, merge]
-    uses: ./.github/workflows/sync_to_private.yml
-    with:
-      dataset_file: data/dataset_${{ env.DATASET_TAG }}.txt
-    secrets: inherit
+  # Open source - no private repo sync needed

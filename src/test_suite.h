@@ -8,6 +8,8 @@
 
 namespace TestSuite {
 
+using namespace Nexus;
+
 // Test result
 struct TestResult {
     std::string name;

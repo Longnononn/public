@@ -7,6 +7,8 @@
 
 namespace NNUE {
 
+using namespace Nexus;
+
 // NNUE Architecture Constants
 constexpr int INPUT_FEATURES = 41024;  // HalfKP: 64 king squares × 640 piece positions
 constexpr int L1_SIZE = 256;           // Hidden layer size

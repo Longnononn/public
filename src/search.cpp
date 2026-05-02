@@ -16,7 +16,7 @@
 #include <sstream>
 
 // Initialize history manager
-static HistoryManager History;
+static Nexus::HistoryManager History;
 
 // Use NNUE if available
 static bool useNNUE = false;
@@ -39,20 +39,20 @@ static inline Value evaluate_position(const BoardState& pos) {
 }
 
 // TT score adjustment for mate distance
-int score_to_tt(int s, int ply) {
-    return s >= VALUE_MATE_IN_MAX_PLY  ? s + ply
-         : s <= VALUE_MATED_IN_MAX_PLY ? s - ply : s;
+Value score_to_tt(Value s, int ply) {
+    return s >= VALUE_MATE_IN_MAX_PLY  ? Value(int(s) + ply)
+         : s <= VALUE_MATED_IN_MAX_PLY ? Value(int(s) - ply) : s;
 }
 
-int score_from_tt(int s, int ply) {
+Value score_from_tt(int s, int ply) {
     return s == VALUE_NONE             ? VALUE_NONE
-         : s >= VALUE_MATE_IN_MAX_PLY  ? s - ply
-         : s <= VALUE_MATED_IN_MAX_PLY ? s + ply : s;
+         : s >= VALUE_MATE_IN_MAX_PLY  ? Value(s - ply)
+         : s <= VALUE_MATED_IN_MAX_PLY ? Value(s + ply) : Value(s);
 }
 
 // Mate distance pruning
 Value mate_distance(int ply) {
-    return VALUE_MATE - ply;
+    return Value(int(VALUE_MATE) - ply);
 }
 
 Search::Search() : running(false), stopOnPonderhit(false), nodesSearched(0), 
@@ -276,7 +276,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         return qsearch<PvNode>(pos, ss, alpha, beta);
     
     if (depth <= 0)
-        depth = 0;
+        depth = Depth(0);
     
     // Mate distance pruning
     alpha = std::max(alpha, (Value)(-VALUE_MATE + ss->ply));
@@ -325,7 +325,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         eval = VALUE_NONE;
         ss->staticEval = VALUE_NONE;
     } else if (ttHit) {
-        eval = tte->eval != VALUE_NONE ? tte->eval : evaluate_position(pos);
+        eval = tte->eval != VALUE_NONE ? Value(tte->eval) : evaluate_position(pos);
         ss->staticEval = eval;
         if (ttValue != VALUE_NONE && 
             ((ttBound == BOUND_UPPER && ttValue < eval) ||
@@ -335,7 +335,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         eval = ss->staticEval = evaluate_position(pos);
         // Store static eval in TT
         if (ss->excludedMove == Move::none())
-            TT.store(pos.st.key, VALUE_NONE, false, BOUND_NONE, 0, Move::none(), eval);
+            TT.store(pos.st.key, VALUE_NONE, false, BOUND_NONE, Depth(0), Move::none(), eval);
     }
     
     // Improving flag
@@ -375,7 +375,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         // Razoring
         if (eval + Value(256 * depth) <= alpha && eval < VALUE_KNOWN_WIN && !pos.is_material_draw()) {
             if (depth <= 3) {
-                Value qval = qsearch<false>(pos, ss, alpha, alpha+1);
+                Value qval = qsearch<false>(pos, ss, alpha, Value(int(alpha) + 1));
                 if (qval <= alpha)
                     return qval;
             }
@@ -388,7 +388,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         && std::abs(beta) < VALUE_TB_WIN_IN_MAX_PLY && ss->excludedMove == Move::none()) {
         
         Value probCutBeta = beta + Value(PruningThresholds::ProbCutMargin);
-        Depth probCutDepth = depth - 3;
+        Depth probCutDepth = Depth(int(depth) - 3);
         
         // Try captures first with SEE >= probCutMargin
         ExtMove captureList[MAX_MOVES];
@@ -498,7 +498,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         if (PvNode && !rootNode && depth >= 7 && m == ttMove && ttHit && std::abs((int)ttValue) < VALUE_TB_WIN_IN_MAX_PLY
             && (ttBound & BOUND_LOWER) && ttDepth >= depth - 3) {
             Value singularBeta = ttValue - Value(2 * depth);
-            Depth singularDepth = (depth - 1) / 2;
+            Depth singularDepth = Depth((int(depth) - 1) / 2);
             ss->excludedMove = m;
             Value singularValue = negamax<false>(pos, ss, singularBeta - Value(1), singularBeta, singularDepth, cutNode);
             ss->excludedMove = Move::none();
@@ -517,7 +517,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         else if (givesCheck)
             extension = 1;
         
-        Depth newDepth = depth - 1 + extension;
+        Depth newDepth = Depth(int(depth) - 1 + extension);
         
         // Make move
         StateInfo st;
@@ -549,7 +549,7 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
             }
             
             // Clamp to valid range
-            R = std::clamp(R, 0, newDepth);
+            R = std::clamp(R, 0, int(newDepth));
         }
         
         // PVS / Full window search
@@ -558,15 +558,15 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
         } else {
             // Reduced/zero-window search
             if (R > 0) {
-                value = -negamax<false>(pos, ss+1, -(alpha+1), -alpha, newDepth - R, true);
+                value = -negamax<false>(pos, ss+1, Value(-(int(alpha)+1)), -alpha, Depth(int(newDepth) - R), true);
             } else {
-                value = -negamax<false>(pos, ss+1, -(alpha+1), -alpha, newDepth, !PvNode);
+                value = -negamax<false>(pos, ss+1, Value(-(int(alpha)+1)), -alpha, newDepth, !PvNode);
             }
             
             // Re-search if reduced depth or zero-window beat alpha
             if (value > alpha) {
                 if (R > 0)
-                    value = -negamax<false>(pos, ss+1, -(alpha+1), -alpha, newDepth, true);
+                    value = -negamax<false>(pos, ss+1, Value(-(int(alpha)+1)), -alpha, newDepth, true);
                 
                 // Full window search for PV nodes
                 if (PvNode && value > alpha)
@@ -682,7 +682,7 @@ Value Search::qsearch(BoardState& pos, SearchStack* ss, Value alpha, Value beta)
     // Stand pat
     Value bestValue;
     if (inCheck) {
-        bestValue = -VALUE_MATE + ss->ply;
+        bestValue = Value(-int(VALUE_MATE) + ss->ply);
     } else {
         bestValue = evaluate_position(pos);
         ss->staticEval = bestValue;
@@ -751,7 +751,7 @@ Value Search::qsearch(BoardState& pos, SearchStack* ss, Value alpha, Value beta)
     if (PvNode && bestValue > alpha && bestValue < beta)
         b = BOUND_EXACT;
     
-    TT.store(pos.st.key, score_to_tt(bestValue, ss->ply), PvNode, b, 0, bestMove, ss->staticEval);
+    TT.store(pos.st.key, score_to_tt(bestValue, ss->ply), PvNode, b, Depth(0), bestMove, ss->staticEval);
     
     return bestValue;
 }
@@ -768,7 +768,7 @@ void Search::update_quiet_stats(BoardState& pos, SearchStack* ss, Move bestMove,
         
         // Update counter-move history
         if (ss->ply > 0 && (ss-1)->currentMove.is_ok()) {
-            Piece prevPiece = type_of(pos.piece_on((ss-1)->currentMove.to_sq()));
+            Piece prevPiece = pos.piece_on((ss-1)->currentMove.to_sq());
             Square prevTo = (ss-1)->currentMove.to_sq();
             History.counterMove.set(prevPiece, prevTo, bestMove);
         }

@@ -7,6 +7,8 @@
 
 namespace Syzygy {
 
+using namespace Nexus;
+
 // WDL probing results
 enum WDLResult {
     WDL_LOSS = -2,

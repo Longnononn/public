@@ -30,7 +30,7 @@ struct PackedPosition {
     // Full move counter (2 bytes)
     uint16_t move50;
     
-    padding to 32 bytes for alignment
+    // padding to 32 bytes for alignment
     uint8_t padding[9];
 };
 static_assert(sizeof(PackedPosition) == 32, "PackedPosition must be 32 bytes");

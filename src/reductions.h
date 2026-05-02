@@ -47,14 +47,14 @@ private:
 struct PruningThresholds {
     // ProbCut: beta cutoff prediction
     static constexpr int ProbCutMargin = 176;
-    static constexpr Depth ProbCutDepth = 5;
+    static constexpr Depth ProbCutDepth = Depth(5);
     
     // MultiCut: multiple fail-high threshold
     static constexpr int MultiCutCount = 3;
     static constexpr Value MultiCutMargin = Value(200);
     
     // Internal Iterative Deepening (IID) depth reduction
-    static constexpr Depth IidDepthReduction = 4;
+    static constexpr Depth IidDepthReduction = Depth(4);
     
     // Futility pruning margins indexed by depth
     static constexpr int FutilityMargins[8] = {
@@ -82,7 +82,7 @@ struct SearchParams {
     static constexpr int DoubleExtensionMax = 6;
     
     // Null move pruning constants
-    static constexpr Depth NullMoveMinDepth = 3;
+    static constexpr Depth NullMoveMinDepth = Depth(3);
     static constexpr int NullMoveBaseR = 4;
     static constexpr int NullMoveDepthDivisor = 3;
     static constexpr int NullMoveEvalDivisor = 200;

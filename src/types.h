@@ -152,8 +152,8 @@ inline Key& operator^=(Key& a, Key b) { a = a ^ b; return a; }
 constexpr int MAX_MOVES = 256;
 constexpr int MAX_PLY   = 246;
 
-inline int mate_in(int ply) { return VALUE_MATE - ply; }
-inline int mated_in(int ply) { return -VALUE_MATE + ply; }
+inline Value mate_in(int ply) { return Value(int(VALUE_MATE) - ply); }
+inline Value mated_in(int ply) { return Value(-int(VALUE_MATE) + ply); }
 
 constexpr u64 FileABB = 0x0101010101010101ULL;
 constexpr u64 FileBBB = FileABB << 1;

@@ -65,7 +65,7 @@ public:
     u64 nodes_searched() const { return nodesSearched; }
     
     // Bench command for testing
-    static u64 bench(int depth = 14);
+    u64 bench(int depth = 14);
     
     // MultiPV support
     void set_multi_pv(int n) { multiPV = std::max(1, n); }

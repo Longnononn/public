@@ -19,6 +19,24 @@ u64 BishopTable[0x1480]; // 5248 entries
 Magic RookMagics[SQUARE_NB];
 Magic BishopMagics[SQUARE_NB];
 
+u64 sliding_attack(PieceType pt, Square sq, u64 occupied) {
+    u64 attacks = 0;
+    Direction rookDirs[4] = { NORTH, EAST, SOUTH, WEST };
+    Direction bishopDirs[4] = { NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST };
+    Direction* dirs = (pt == ROOK) ? rookDirs : bishopDirs;
+    for (int i = 0; i < 4; ++i) {
+        Direction d = dirs[i];
+        Square s = sq;
+        while (true) {
+            s = s + d;
+            if (s < SQ_A1 || s > SQ_H8) break;
+            attacks |= (1ULL << s);
+            if (occupied & (1ULL << s)) break;
+        }
+    }
+    return attacks;
+}
+
 namespace {
 
 // Rook and bishop occupancy masks (excluding edges)

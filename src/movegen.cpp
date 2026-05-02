@@ -193,10 +193,10 @@ bool is_legal_move(const BoardState& pos, Move m) {
 
 } // anonymous namespace
 
+bool is_legal(const BoardState& pos, Move m);
+
 template<GenType Type>
 ExtMove* generate(const BoardState& pos, ExtMove* moveList) {
-    static_assert(Type != LEGAL, "LEGAL generation uses pseudolegal + filter");
-    
     Color us = pos.sideToMove;
     u64 targets;
     
@@ -301,5 +301,6 @@ template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<NON_EVASIONS>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<QUIET_CHECKS>(const BoardState& pos, ExtMove* moveList);
+template ExtMove* generate<LEGAL>(const BoardState& pos, ExtMove* moveList);
 
 } // namespace Nexus

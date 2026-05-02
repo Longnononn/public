@@ -22,8 +22,30 @@ jobs:
       commit_sha: ${{ steps.clone.outputs.commit_sha }}
     
     steps:
+    - name: Debug Secret Availability
+      run: |
+        if [ -n "${{ secrets.NEXUSINFINITECORE }}" ]; then
+          echo "Secret NEXUSINFINITECORE is available (length: ${#TOKEN})"
+        else
+          echo "ERROR: Secret NEXUSINFINITECORE is NOT available"
+          echo "Available secrets: ${{ toJson(secrets) }}"
+          exit 1
+        fi
+      env:
+        TOKEN: ${{ secrets.NEXUSINFINITECORE }}
+
     - name: Checkout Public Repo
       uses: actions/checkout@v4
+
+    - name: Set Branch
+      id: vars
+      run: |
+        if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.branch }}" ]; then
+          echo "branch=${{ github.event.inputs.branch }}" >> $GITHUB_OUTPUT
+        else
+          echo "branch=main" >> $GITHUB_OUTPUT
+        fi
+        echo "Event: ${{ github.event_name }}"
 
     - name: Checkout Private Repo Source
       uses: actions/checkout@v4
@@ -31,7 +53,7 @@ jobs:
         repository: Longnononn/Private
         token: ${{ secrets.NEXUSINFINITECORE }}
         path: private_source
-        ref: ${{ github.event.inputs.branch || 'main' }}
+        ref: ${{ steps.vars.outputs.branch }}
         fetch-depth: 1
 
     - name: Copy Source Files

@@ -25,7 +25,8 @@ void Accumulator::refresh(const BoardState& pos, const Network& net) {
         Square kingSq = pos.king_square(perspective);
         
         // Add all non-king pieces
-        for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+        for (int sq_i = SQ_A1; sq_i <= SQ_H8; ++sq_i) {
+            Square sq = Square(sq_i);
             Piece pc = pos.piece_on(sq);
             if (pc != NO_PIECE && type_of(pc) != KING) {
                 int idx = make_index(perspective, kingSq, sq, 
@@ -289,25 +290,26 @@ void Evaluator::update(Move m, const BoardState& pos) {
         int idxTo = make_index(perspective, kingSq, to, pt, side);
         
         // Handle promotion
-        if (m.promotion() != NO_PIECE_TYPE) {
-            idxTo = make_index(perspective, kingSq, to, m.promotion(), side);
+        if (m.is_promotion()) {
+            idxTo = make_index(perspective, kingSq, to, m.promotion_type(), side);
         }
         
         // Handle capture
-        if (m.is_capture()) {
-            Square capSq = m.is_enpassant() ? Square(to + (side == WHITE ? -8 : 8)) : to;
-            Piece captured = pos.piece_on(capSq);
-            if (captured != NO_PIECE) {
-                PieceType capPt = type_of(captured);
-                Color capColor = color_of(captured);
-                int idxCap = make_index(perspective, kingSq, capSq, capPt, capColor);
-                // Remove captured piece
-                acc.update_remove(idxCap, net);
-            }
+        Square capSq = to;
+        if (m.is_enpassant()) {
+            capSq = Square(to + (side == WHITE ? -8 : 8));
+        }
+        Piece captured = pos.piece_on(capSq);
+        if (captured != NO_PIECE) {
+            PieceType capPt = type_of(captured);
+            Color capColor = color_of(captured);
+            int idxCap = make_index(perspective, kingSq, capSq, capPt, capColor);
+            // Remove captured piece
+            acc.update_remove(idxCap, net);
         }
         
         // Update moving piece
-        if (m.promotion() != NO_PIECE_TYPE) {
+        if (m.is_promotion()) {
             acc.update_remove(idxFrom, net);
             acc.update_add(idxTo, net);
         } else {
@@ -323,7 +325,8 @@ void Evaluator::undo() {
 int Evaluator::get_bucket(const BoardState& pos) const {
     // Bucket based on material count (simple phase calculation)
     int material = 0;
-    for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+    for (int sq_i = SQ_A1; sq_i <= SQ_H8; ++sq_i) {
+        Square sq = Square(sq_i);
         Piece pc = pos.piece_on(sq);
         if (pc != NO_PIECE) {
             PieceType pt = type_of(pc);

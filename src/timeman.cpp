@@ -1,6 +1,7 @@
 #include "timeman.h"
 #include <algorithm>
 #include <cmath>
+#include <climits>
 
 namespace Nexus {
 

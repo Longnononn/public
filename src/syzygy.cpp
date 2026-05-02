@@ -8,6 +8,7 @@
 #else
 #include <dirent.h>
 #endif
+#include <vector>
 
 namespace Syzygy {
 
@@ -93,7 +94,8 @@ bool Tablebases::is_tb_position(const BoardState& pos) const {
     
     // Count pieces
     int pieceCount = 0;
-    for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+    for (int sq_i = SQ_A1; sq_i <= SQ_H8; ++sq_i) {
+        Square sq = Square(sq_i);
         if (pos.piece_on(sq) != NO_PIECE) {
             pieceCount++;
         }

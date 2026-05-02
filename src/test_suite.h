@@ -21,6 +21,17 @@ struct TestResult {
     Move bestMove;
 };
 
+// Test position database
+struct TestPosition {
+    const char* name;
+    const char* fen;
+    const char* bestMove;  // Expected best move (if known)
+    int depth;
+    u64 expectedNodes;     // For perft
+    Value expectedScore;   // For eval tests
+    int timeLimit;         // Time limit in ms
+};
+
 // Complete test suite
 class TestSuite {
 public:
@@ -43,16 +54,6 @@ public:
                      const std::vector<TestResult>& results);
     
 private:
-    // Test position database
-    struct TestPosition {
-        std::string name;
-        std::string fen;
-        std::string bestMove;  // Expected best move (if known)
-        int depth;
-        u64 expectedNodes;     // For perft
-        Value expectedScore;   // For eval tests
-        int timeLimit;         // Time limit in ms
-    };
     
     std::vector<TestPosition> perftPositions;
     std::vector<TestPosition> tacticalPositions;

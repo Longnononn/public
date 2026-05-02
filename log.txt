@@ -1,634 +1,507 @@
-2026-05-02T12:37:55.7481525Z Current runner version: '2.334.0'
-2026-05-02T12:37:55.7514711Z ##[group]Runner Image Provisioner
-2026-05-02T12:37:55.7516017Z Hosted Compute Agent
-2026-05-02T12:37:55.7516875Z Version: 20260213.493
-2026-05-02T12:37:55.7517864Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-05-02T12:37:55.7518981Z Build Date: 2026-02-13T00:28:41Z
-2026-05-02T12:37:55.7520224Z Worker ID: {3019b3d5-78a5-4325-9a31-a58d97c077b8}
-2026-05-02T12:37:55.7521218Z Azure Region: eastus
-2026-05-02T12:37:55.7522089Z ##[endgroup]
-2026-05-02T12:37:55.7524100Z ##[group]Operating System
-2026-05-02T12:37:55.7525048Z Ubuntu
-2026-05-02T12:37:55.7525839Z 24.04.4
-2026-05-02T12:37:55.7526468Z LTS
-2026-05-02T12:37:55.7527131Z ##[endgroup]
-2026-05-02T12:37:55.7527948Z ##[group]Runner Image
-2026-05-02T12:37:55.7528781Z Image: ubuntu-24.04
-2026-05-02T12:37:55.7529481Z Version: 20260413.86.1
-2026-05-02T12:37:55.7531818Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
-2026-05-02T12:37:55.7534240Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
-2026-05-02T12:37:55.7535672Z ##[endgroup]
-2026-05-02T12:37:55.7537206Z ##[group]GITHUB_TOKEN Permissions
-2026-05-02T12:37:55.7540340Z Contents: read
-2026-05-02T12:37:55.7541148Z Metadata: read
-2026-05-02T12:37:55.7542374Z Packages: read
-2026-05-02T12:37:55.7543138Z ##[endgroup]
-2026-05-02T12:37:55.7546023Z Secret source: Actions
-2026-05-02T12:37:55.7547646Z Prepare workflow directory
-2026-05-02T12:37:55.8031923Z Prepare all required actions
-2026-05-02T12:37:55.8086611Z Getting action download info
-2026-05-02T12:37:56.0554110Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-05-02T12:37:56.1980400Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2026-05-02T12:37:56.4103152Z Complete job name: build-and-test
-2026-05-02T12:37:56.4814124Z ##[group]Run actions/checkout@v4
-2026-05-02T12:37:56.4814921Z with:
-2026-05-02T12:37:56.4815285Z   fetch-depth: 0
-2026-05-02T12:37:56.4815682Z   repository: Longnononn/public
-2026-05-02T12:37:56.4816315Z   token: ***
-2026-05-02T12:37:56.4816693Z   ssh-strict: true
-2026-05-02T12:37:56.4817064Z   ssh-user: git
-2026-05-02T12:37:56.4817456Z   persist-credentials: true
-2026-05-02T12:37:56.4817874Z   clean: true
-2026-05-02T12:37:56.4818258Z   sparse-checkout-cone-mode: true
-2026-05-02T12:37:56.4818717Z   fetch-tags: false
-2026-05-02T12:37:56.4819114Z   show-progress: true
-2026-05-02T12:37:56.4819500Z   lfs: false
-2026-05-02T12:37:56.4820033Z   submodules: false
-2026-05-02T12:37:56.4820421Z   set-safe-directory: true
-2026-05-02T12:37:56.4821020Z ##[endgroup]
-2026-05-02T12:37:56.5915857Z Syncing repository: Longnononn/public
-2026-05-02T12:37:56.5917597Z ##[group]Getting Git version info
-2026-05-02T12:37:56.5918237Z Working directory is '/home/runner/work/public/public'
-2026-05-02T12:37:56.5919186Z [command]/usr/bin/git version
-2026-05-02T12:37:56.5956322Z git version 2.53.0
-2026-05-02T12:37:56.5981620Z ##[endgroup]
-2026-05-02T12:37:56.5995988Z Temporarily overriding HOME='/home/runner/work/_temp/17d66bce-1653-4d86-8da4-246a736cf215' before making global git config changes
-2026-05-02T12:37:56.5997454Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T12:37:56.6010318Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T12:37:56.6045720Z Deleting the contents of '/home/runner/work/public/public'
-2026-05-02T12:37:56.6049540Z ##[group]Initializing the repository
-2026-05-02T12:37:56.6054096Z [command]/usr/bin/git init /home/runner/work/public/public
-2026-05-02T12:37:56.6156422Z hint: Using 'master' as the name for the initial branch. This default branch name
-2026-05-02T12:37:56.6157829Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-2026-05-02T12:37:56.6158760Z hint: to use in all of your new repositories, which will suppress this warning,
-2026-05-02T12:37:56.6159981Z hint: call:
-2026-05-02T12:37:56.6160330Z hint:
-2026-05-02T12:37:56.6161113Z hint: 	git config --global init.defaultBranch <name>
-2026-05-02T12:37:56.6161672Z hint:
-2026-05-02T12:37:56.6162200Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2026-05-02T12:37:56.6163437Z hint: 'development'. The just-created branch can be renamed via this command:
-2026-05-02T12:37:56.6164301Z hint:
-2026-05-02T12:37:56.6164676Z hint: 	git branch -m <name>
-2026-05-02T12:37:56.6165085Z hint:
-2026-05-02T12:37:56.6165651Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2026-05-02T12:37:56.6166556Z Initialized empty Git repository in /home/runner/work/public/public/.git/
-2026-05-02T12:37:56.6169426Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
-2026-05-02T12:37:56.6201866Z ##[endgroup]
-2026-05-02T12:37:56.6202585Z ##[group]Disabling automatic garbage collection
-2026-05-02T12:37:56.6205893Z [command]/usr/bin/git config --local gc.auto 0
-2026-05-02T12:37:56.6236998Z ##[endgroup]
-2026-05-02T12:37:56.6238001Z ##[group]Setting up auth
-2026-05-02T12:37:56.6245167Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T12:37:56.6277333Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T12:37:56.6578586Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T12:37:56.6610644Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T12:37:56.6841851Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T12:37:56.6875399Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T12:37:56.7132898Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-05-02T12:37:56.7172276Z ##[endgroup]
-2026-05-02T12:37:56.7173344Z ##[group]Fetching the repository
-2026-05-02T12:37:56.7181530Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-2026-05-02T12:37:57.0688085Z From https://github.com/Longnononn/public
-2026-05-02T12:37:57.0689475Z  * [new branch]      main       -> origin/main
-2026-05-02T12:37:57.0726986Z [command]/usr/bin/git branch --list --remote origin/main
-2026-05-02T12:37:57.0753588Z   origin/main
-2026-05-02T12:37:57.0784882Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
-2026-05-02T12:37:57.0785958Z 76739903205f52f99c7675f8c0da585613f17173
-2026-05-02T12:37:57.0789442Z ##[endgroup]
-2026-05-02T12:37:57.0790863Z ##[group]Determining the checkout info
-2026-05-02T12:37:57.0792197Z ##[endgroup]
-2026-05-02T12:37:57.0797133Z [command]/usr/bin/git sparse-checkout disable
-2026-05-02T12:37:57.0835772Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-05-02T12:37:57.0864188Z ##[group]Checking out the ref
-2026-05-02T12:37:57.0869157Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-05-02T12:37:57.0972804Z Switched to a new branch 'main'
-2026-05-02T12:37:57.0974794Z branch 'main' set up to track 'origin/main'.
-2026-05-02T12:37:57.0981652Z ##[endgroup]
-2026-05-02T12:37:57.1016045Z [command]/usr/bin/git log -1 --format=%H
-2026-05-02T12:37:57.1039988Z 76739903205f52f99c7675f8c0da585613f17173
-2026-05-02T12:37:57.1246606Z ##[group]Run sudo apt-get update
-2026-05-02T12:37:57.1247817Z [36;1msudo apt-get update[0m
-2026-05-02T12:37:57.1249199Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
-2026-05-02T12:37:57.1251073Z [36;1mpip3 install numpy scipy[0m
-2026-05-02T12:37:57.1278729Z shell: /usr/bin/bash -e {0}
-2026-05-02T12:37:57.1280380Z ##[endgroup]
-2026-05-02T12:37:57.2542040Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T12:37:57.3076018Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2026-05-02T12:37:57.3091170Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2026-05-02T12:37:57.3117708Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
-2026-05-02T12:37:57.3560967Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2026-05-02T12:37:57.3571430Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2026-05-02T12:37:57.3599095Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2026-05-02T12:37:57.3618203Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2026-05-02T12:37:57.4651894Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
-2026-05-02T12:37:57.4870002Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
-2026-05-02T12:37:57.4969573Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
-2026-05-02T12:37:57.5363110Z Get:12 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
-2026-05-02T12:37:57.6333288Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
-2026-05-02T12:37:57.6432756Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
-2026-05-02T12:37:57.6458145Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
-2026-05-02T12:37:57.6483793Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
-2026-05-02T12:37:57.6494024Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
-2026-05-02T12:37:57.6585106Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
-2026-05-02T12:37:57.6622474Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
-2026-05-02T12:37:57.6651268Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
-2026-05-02T12:37:57.6664574Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
-2026-05-02T12:37:57.6825776Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
-2026-05-02T12:37:57.7319345Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2026-05-02T12:37:57.7327643Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
-2026-05-02T12:37:57.7338415Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
-2026-05-02T12:37:57.7355049Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
-2026-05-02T12:37:57.7368157Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2026-05-02T12:37:57.7376037Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
-2026-05-02T12:37:57.7391277Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
-2026-05-02T12:37:57.7403217Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
-2026-05-02T12:37:57.7453165Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
-2026-05-02T12:37:57.7464097Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
-2026-05-02T12:37:57.7474709Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
-2026-05-02T12:37:57.7482983Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
-2026-05-02T12:37:57.7493731Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
-2026-05-02T12:37:57.7510817Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
-2026-05-02T12:37:57.7962042Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-2026-05-02T12:37:57.7970480Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
-2026-05-02T12:37:57.7980688Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2026-05-02T12:37:57.7998623Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
-2026-05-02T12:37:57.8109619Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
-2026-05-02T12:37:57.8117328Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
-2026-05-02T12:37:57.8131333Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
-2026-05-02T12:37:57.8146140Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
-2026-05-02T12:37:57.8215127Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
-2026-05-02T12:37:57.8239081Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
-2026-05-02T12:37:57.8283889Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
-2026-05-02T12:37:57.8294217Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
-2026-05-02T12:37:57.8479348Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
-2026-05-02T12:37:57.8522613Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2026-05-02T12:37:57.8535506Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
-2026-05-02T12:37:57.8958696Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
-2026-05-02T12:37:57.8978127Z Get:53 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2026-05-02T12:38:08.3224243Z Fetched 16.5 MB in 2s (7775 kB/s)
-2026-05-02T12:38:09.1743458Z Reading package lists...
-2026-05-02T12:38:09.2081416Z Reading package lists...
-2026-05-02T12:38:09.4244738Z Building dependency tree...
-2026-05-02T12:38:09.4252344Z Reading state information...
-2026-05-02T12:38:09.6077566Z g++ is already the newest version (4:13.2.0-7ubuntu1).
-2026-05-02T12:38:09.6078857Z python3 is already the newest version (3.12.3-0ubuntu2.1).
-2026-05-02T12:38:09.6079439Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
-2026-05-02T12:38:09.6080027Z Suggested packages:
-2026-05-02T12:38:09.6080294Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
-2026-05-02T12:38:09.6428271Z The following NEW packages will be installed:
-2026-05-02T12:38:09.6435234Z   cmake cmake-data libjsoncpp25 librhash0
-2026-05-02T12:38:09.6624971Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
-2026-05-02T12:38:09.6625692Z Need to get 13.6 MB of archives.
-2026-05-02T12:38:09.6626183Z After this operation, 49.1 MB of additional disk space will be used.
-2026-05-02T12:38:09.6626770Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T12:38:09.7140716Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
-2026-05-02T12:38:09.7232448Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
-2026-05-02T12:38:09.7309875Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
-2026-05-02T12:38:09.7515895Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
-2026-05-02T12:38:10.0968758Z Fetched 13.6 MB in 0s (79.5 MB/s)
-2026-05-02T12:38:10.1302489Z Selecting previously unselected package libjsoncpp25:amd64.
-2026-05-02T12:38:10.2264333Z (Reading database ... 
-2026-05-02T12:38:10.2264843Z (Reading database ... 5%
-2026-05-02T12:38:10.2265158Z (Reading database ... 10%
-2026-05-02T12:38:10.2265501Z (Reading database ... 15%
-2026-05-02T12:38:10.2266367Z (Reading database ... 20%
-2026-05-02T12:38:10.2266630Z (Reading database ... 25%
-2026-05-02T12:38:10.2266877Z (Reading database ... 30%
-2026-05-02T12:38:10.2267119Z (Reading database ... 35%
-2026-05-02T12:38:10.2267370Z (Reading database ... 40%
-2026-05-02T12:38:10.2267567Z (Reading database ... 45%
-2026-05-02T12:38:10.2267802Z (Reading database ... 50%
-2026-05-02T12:38:10.2616473Z (Reading database ... 55%
-2026-05-02T12:38:10.5488647Z (Reading database ... 60%
-2026-05-02T12:38:10.7775948Z (Reading database ... 65%
-2026-05-02T12:38:11.0478752Z (Reading database ... 70%
-2026-05-02T12:38:11.3277134Z (Reading database ... 75%
-2026-05-02T12:38:11.7371799Z (Reading database ... 80%
-2026-05-02T12:38:12.2733977Z (Reading database ... 85%
-2026-05-02T12:38:12.8969045Z (Reading database ... 90%
-2026-05-02T12:38:13.5068600Z (Reading database ... 95%
-2026-05-02T12:38:13.5069031Z (Reading database ... 100%
-2026-05-02T12:38:13.5069514Z (Reading database ... 220764 files and directories currently installed.)
-2026-05-02T12:38:13.5123786Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
-2026-05-02T12:38:13.5161810Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T12:38:13.5484621Z Selecting previously unselected package librhash0:amd64.
-2026-05-02T12:38:13.5631046Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
-2026-05-02T12:38:13.5640663Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T12:38:13.5882722Z Selecting previously unselected package cmake-data.
-2026-05-02T12:38:13.6028114Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
-2026-05-02T12:38:13.6196521Z Unpacking cmake-data (3.28.3-1build7) ...
-2026-05-02T12:38:14.1455937Z Selecting previously unselected package cmake.
-2026-05-02T12:38:14.1630184Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
-2026-05-02T12:38:14.1638138Z Unpacking cmake (3.28.3-1build7) ...
-2026-05-02T12:38:14.3670771Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T12:38:14.3694093Z Setting up librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T12:38:14.3723875Z Setting up cmake-data (3.28.3-1build7) ...
-2026-05-02T12:38:14.3791147Z Setting up cmake (3.28.3-1build7) ...
-2026-05-02T12:38:14.3816229Z Processing triggers for man-db (2.12.0-4build2) ...
-2026-05-02T12:38:14.3836967Z Not building database; man-db/auto-update is not 'true'.
-2026-05-02T12:38:14.3851445Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
-2026-05-02T12:38:15.5330286Z 
-2026-05-02T12:38:15.5330823Z Running kernel seems to be up-to-date.
-2026-05-02T12:38:15.5331173Z 
-2026-05-02T12:38:15.5331330Z No services need to be restarted.
-2026-05-02T12:38:15.5331515Z 
-2026-05-02T12:38:15.5331603Z No containers need to be restarted.
-2026-05-02T12:38:15.5331807Z 
-2026-05-02T12:38:15.5331922Z No user sessions are running outdated binaries.
-2026-05-02T12:38:15.5332115Z 
-2026-05-02T12:38:15.5332295Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
-2026-05-02T12:38:17.7770043Z Defaulting to user installation because normal site-packages is not writeable
-2026-05-02T12:38:18.6100886Z Collecting numpy
-2026-05-02T12:38:18.8680653Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
-2026-05-02T12:38:18.9931847Z Collecting scipy
-2026-05-02T12:38:18.9973131Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
-2026-05-02T12:38:19.0082638Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 6.1 MB/s eta 0:00:00
-2026-05-02T12:38:19.0511386Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
-2026-05-02T12:38:19.1580207Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 175.5 MB/s eta 0:00:00
-2026-05-02T12:38:19.1618600Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
-2026-05-02T12:38:19.3658302Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 124.0 MB/s eta 0:00:00
-2026-05-02T12:38:19.7147131Z Installing collected packages: numpy, scipy
-2026-05-02T12:38:25.4164031Z Successfully installed numpy-2.4.4 scipy-1.17.1
-2026-05-02T12:38:25.5477687Z ##[group]Run git checkout main
-2026-05-02T12:38:25.5477975Z [36;1mgit checkout main[0m
-2026-05-02T12:38:25.5478206Z [36;1mmkdir -p build_baseline[0m
-2026-05-02T12:38:25.5478435Z [36;1mcd build_baseline[0m
-2026-05-02T12:38:25.5478675Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
-2026-05-02T12:38:25.5478940Z [36;1mmake -j$(nproc)[0m
-2026-05-02T12:38:25.5479146Z [36;1mcp nexus ../nexus_base[0m
-2026-05-02T12:38:25.5479360Z [36;1mcd ..[0m
-2026-05-02T12:38:25.5502638Z shell: /usr/bin/bash -e {0}
-2026-05-02T12:38:25.5502886Z ##[endgroup]
-2026-05-02T12:38:25.5681425Z Already on 'main'
-2026-05-02T12:38:25.5684129Z Your branch is up to date with 'origin/main'.
-2026-05-02T12:38:26.4924860Z -- The CXX compiler identification is GNU 13.3.0
-2026-05-02T12:38:26.5783687Z -- Detecting CXX compiler ABI info
-2026-05-02T12:38:26.6845777Z -- Detecting CXX compiler ABI info - done
-2026-05-02T12:38:26.7021394Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
-2026-05-02T12:38:26.7074092Z -- Detecting CXX compile features
-2026-05-02T12:38:26.7124540Z -- Detecting CXX compile features - done
-2026-05-02T12:38:26.7480647Z -- Performing Test COMPILER_SUPPORTS_AVX2
-2026-05-02T12:38:26.8774723Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
-2026-05-02T12:38:26.8782420Z -- Performing Test COMPILER_SUPPORTS_BMI2
-2026-05-02T12:38:26.9434598Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
-2026-05-02T12:38:26.9442351Z -- Performing Test COMPILER_SUPPORTS_POPCNT
-2026-05-02T12:38:27.0095502Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
-2026-05-02T12:38:27.0100648Z -- Configuring done (1.4s)
-2026-05-02T12:38:27.0178567Z -- Generating done (0.0s)
-2026-05-02T12:38:27.0182263Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
-2026-05-02T12:38:27.0383062Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
-2026-05-02T12:38:27.0384038Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
-2026-05-02T12:38:27.0386441Z [  7%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
-2026-05-02T12:38:27.0387704Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
-2026-05-02T12:38:27.6639602Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T12:38:27.6671150Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T12:38:27.6700355Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T12:38:27.6730279Z       |             ^~~~~
-2026-05-02T12:38:27.7117028Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T12:38:27.7142546Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T12:38:27.7160550Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T12:38:27.7170628Z       |     ^~~~~~~~~~~~
-2026-05-02T12:38:27.7427587Z [ 12%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
-2026-05-02T12:38:27.7891734Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
-2026-05-02T12:38:27.7911191Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
-2026-05-02T12:38:27.7930682Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
-2026-05-02T12:38:27.7960331Z       |         ^~~~~~~
-2026-05-02T12:38:27.8441916Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T12:38:27.8471376Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T12:38:27.8472167Z   169 |     Key key = st.key;
-2026-05-02T12:38:27.8472519Z       |         ^~~
-2026-05-02T12:38:27.8637241Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
-2026-05-02T12:38:27.9044832Z [ 17%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
-2026-05-02T12:38:28.0598482Z [ 20%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
-2026-05-02T12:38:28.1770059Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T12:38:28.1801229Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T12:38:28.1810770Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T12:38:28.1840415Z       |             ^~~~~
-2026-05-02T12:38:28.2280880Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T12:38:28.2292363Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T12:38:28.2320782Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T12:38:28.2350669Z       |     ^~~~~~~~~~~~
-2026-05-02T12:38:28.2400595Z [ 22%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
-2026-05-02T12:38:28.2594571Z [ 25%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
-2026-05-02T12:38:28.3841036Z [ 27%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
-2026-05-02T12:38:28.5026252Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T12:38:28.5041232Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T12:38:28.5070597Z   169 |     Key key = st.key;
-2026-05-02T12:38:28.5082558Z       |         ^~~
-2026-05-02T12:38:28.5788024Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T12:38:28.5790651Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T12:38:28.5820461Z    94 |     Color them = ~us;
-2026-05-02T12:38:28.5824258Z       |           ^~~~
-2026-05-02T12:38:28.6330519Z [ 30%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
-2026-05-02T12:38:28.7159578Z [ 32%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
-2026-05-02T12:38:28.7351156Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
-2026-05-02T12:38:29.0712248Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T12:38:29.0731364Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T12:38:29.0740676Z    94 |     Color them = ~us;
-2026-05-02T12:38:29.0770537Z       |           ^~~~
-2026-05-02T12:38:29.1390860Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
-2026-05-02T12:38:29.1931010Z [ 40%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
-2026-05-02T12:38:29.7570955Z In file included from /home/runner/work/public/public/src/search.cpp:7:
-2026-05-02T12:38:29.7602188Z /home/runner/work/public/public/src/history.h:91:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
-2026-05-02T12:38:29.7635971Z    91 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T12:38:29.7660401Z       |                                        ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T12:38:29.7690863Z In file included from /home/runner/work/public/public/src/search.cpp:8:
-2026-05-02T12:38:29.7701486Z /home/runner/work/public/public/src/reductions.h:78:44: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:29.7702455Z    78 |     static constexpr Depth SingularDepth = 7;
-2026-05-02T12:38:29.7703310Z       |                                            ^
-2026-05-02T12:38:29.7703746Z       |                                            |
-2026-05-02T12:38:29.7704160Z       |                                            int
-2026-05-02T12:38:29.7705372Z /home/runner/work/public/public/src/reductions.h:79:47: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:29.7706311Z    79 |     static constexpr Depth SingularDepthMin = 4;
-2026-05-02T12:38:29.7706773Z       |                                               ^
-2026-05-02T12:38:29.7707171Z       |                                               |
-2026-05-02T12:38:29.7707585Z       |                                               int
-2026-05-02T12:38:29.7821039Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T12:38:29.7823300Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T12:38:29.7824899Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T12:38:29.7825458Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:29.7826115Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T12:38:29.7850751Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T12:38:29.7880180Z    26 | struct TTCluster {
-2026-05-02T12:38:29.7890350Z       |        ^~~~~~~~~
-2026-05-02T12:38:29.8771031Z [ 42%] Building CXX object CMakeFiles/nexus.dir/src/uci.cpp.o
-2026-05-02T12:38:30.2190745Z /home/runner/work/public/public/src/timeman.cpp: In member function ‘void Nexus::TimeManager::init(const Nexus::TimeControl&, Nexus::Color, int)’:
-2026-05-02T12:38:30.2231326Z /home/runner/work/public/public/src/timeman.cpp:19:37: error: ‘INT_MAX’ was not declared in this scope
-2026-05-02T12:38:30.2232477Z    19 |         optimumTime = maximumTime = INT_MAX;
-2026-05-02T12:38:30.2260552Z       |                                     ^~~~~~~
-2026-05-02T12:38:30.2291479Z /home/runner/work/public/public/src/timeman.cpp:4:1: note: ‘INT_MAX’ is defined in header ‘<climits>’; did you forget to ‘#include <climits>’?
-2026-05-02T12:38:30.2320400Z     3 | #include <cmath>
-2026-05-02T12:38:30.2320945Z   +++ |+#include <climits>
-2026-05-02T12:38:30.2350349Z     4 | 
-2026-05-02T12:38:30.2381063Z /home/runner/work/public/public/src/timeman.cpp:31:23: error: no matching function for call to ‘min(int, double)’
-2026-05-02T12:38:30.2410470Z    31 |         1.0 + std::min(inc / timeLeft, 0.4);
-2026-05-02T12:38:30.2411187Z       |               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.2440499Z In file included from /usr/include/c++/13/string:51,
-2026-05-02T12:38:30.2470504Z                  from /home/runner/work/public/public/src/types.h:5,
-2026-05-02T12:38:30.2480436Z                  from /home/runner/work/public/public/src/timeman.h:3,
-2026-05-02T12:38:30.2500522Z                  from /home/runner/work/public/public/src/timeman.cpp:1:
-2026-05-02T12:38:30.2531684Z /usr/include/c++/13/bits/stl_algobase.h:233:5: note: candidate: ‘template<class _Tp> constexpr const _Tp& std::min(const _Tp&, const _Tp&)’
-2026-05-02T12:38:30.2560426Z   233 |     min(const _Tp& __a, const _Tp& __b)
-2026-05-02T12:38:30.2600277Z       |     ^~~
-2026-05-02T12:38:30.2601171Z /usr/include/c++/13/bits/stl_algobase.h:233:5: note:   template argument deduction/substitution failed:
-2026-05-02T12:38:30.2631231Z /home/runner/work/public/public/src/timeman.cpp:31:23: note:   deduced conflicting types for parameter ‘const _Tp’ (‘int’ and ‘double’)
-2026-05-02T12:38:30.2660553Z    31 |         1.0 + std::min(inc / timeLeft, 0.4);
-2026-05-02T12:38:30.2664877Z       |               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.2691988Z /usr/include/c++/13/bits/stl_algobase.h:281:5: note: candidate: ‘template<class _Tp, class _Compare> constexpr const _Tp& std::min(const _Tp&, const _Tp&, _Compare)’
-2026-05-02T12:38:30.2711844Z   281 |     min(const _Tp& __a, const _Tp& __b, _Compare __comp)
-2026-05-02T12:38:30.2750352Z       |     ^~~
-2026-05-02T12:38:30.2780614Z /usr/include/c++/13/bits/stl_algobase.h:281:5: note:   template argument deduction/substitution failed:
-2026-05-02T12:38:30.2782345Z /home/runner/work/public/public/src/timeman.cpp:31:23: note:   deduced conflicting types for parameter ‘const _Tp’ (‘int’ and ‘double’)
-2026-05-02T12:38:30.2810479Z    31 |         1.0 + std::min(inc / timeLeft, 0.4);
-2026-05-02T12:38:30.2840325Z       |               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.2841055Z In file included from /usr/include/c++/13/chrono:48,
-2026-05-02T12:38:30.2870483Z                  from /home/runner/work/public/public/src/timeman.h:4:
-2026-05-02T12:38:30.2901484Z /usr/include/c++/13/bits/stl_algo.h:5775:5: note: candidate: ‘template<class _Tp> constexpr _Tp std::min(initializer_list<_Tp>)’
-2026-05-02T12:38:30.2930394Z  5775 |     min(initializer_list<_Tp> __l)
-2026-05-02T12:38:30.2930952Z       |     ^~~
-2026-05-02T12:38:30.2960663Z /usr/include/c++/13/bits/stl_algo.h:5775:5: note:   template argument deduction/substitution failed:
-2026-05-02T12:38:30.2991228Z /home/runner/work/public/public/src/timeman.cpp:31:23: note:   mismatched types ‘std::initializer_list<_Tp>’ and ‘int’
-2026-05-02T12:38:30.3020388Z    31 |         1.0 + std::min(inc / timeLeft, 0.4);
-2026-05-02T12:38:30.3020986Z       |               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.3051274Z /usr/include/c++/13/bits/stl_algo.h:5785:5: note: candidate: ‘template<class _Tp, class _Compare> constexpr _Tp std::min(initializer_list<_Tp>, _Compare)’
-2026-05-02T12:38:30.3060362Z  5785 |     min(initializer_list<_Tp> __l, _Compare __comp)
-2026-05-02T12:38:30.3060860Z       |     ^~~
-2026-05-02T12:38:30.3061446Z /usr/include/c++/13/bits/stl_algo.h:5785:5: note:   template argument deduction/substitution failed:
-2026-05-02T12:38:30.3062951Z /home/runner/work/public/public/src/timeman.cpp:31:23: note:   mismatched types ‘std::initializer_list<_Tp>’ and ‘int’
-2026-05-02T12:38:30.3063833Z    31 |         1.0 + std::min(inc / timeLeft, 0.4);
-2026-05-02T12:38:30.3064252Z       |               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.3721966Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T12:38:30.3732111Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T12:38:30.3807789Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T12:38:30.3808590Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.3826196Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T12:38:30.3830739Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T12:38:30.3849251Z    26 | struct TTCluster {
-2026-05-02T12:38:30.3854216Z       |        ^~~~~~~~~
-2026-05-02T12:38:30.4141113Z In file included from /home/runner/work/public/public/src/search.cpp:11:
-2026-05-02T12:38:30.4171438Z /home/runner/work/public/public/src/syzygy.h: In function ‘Nexus::Value Syzygy::wdl_to_value(WDLResult)’:
-2026-05-02T12:38:30.4201529Z /home/runner/work/public/public/src/syzygy.h:86:41: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:30.4260608Z    86 |         case WDL_WIN: return VALUE_MATE - 2;
-2026-05-02T12:38:30.4261576Z       |                              ~~~~~~~~~~~^~~
-2026-05-02T12:38:30.4290313Z       |                                         |
-2026-05-02T12:38:30.4350357Z       |                                         int
-2026-05-02T12:38:30.4352166Z /home/runner/work/public/public/src/syzygy.h:87:48: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:30.4380837Z    87 |         case WDL_CURSED_WIN: return VALUE_DRAW + 200;
-2026-05-02T12:38:30.4381428Z       |                                     ~~~~~~~~~~~^~~~~
-2026-05-02T12:38:30.4410443Z       |                                                |
-2026-05-02T12:38:30.4440311Z       |                                                int
-2026-05-02T12:38:30.4441982Z /home/runner/work/public/public/src/syzygy.h:89:50: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:30.4442895Z    89 |         case WDL_BLESSED_LOSS: return VALUE_DRAW - 200;
-2026-05-02T12:38:30.4443383Z       |                                       ~~~~~~~~~~~^~~~~
-2026-05-02T12:38:30.4443820Z       |                                                  |
-2026-05-02T12:38:30.4444229Z       |                                                  int
-2026-05-02T12:38:30.4445309Z /home/runner/work/public/public/src/syzygy.h:90:43: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:30.4446169Z    90 |         case WDL_LOSS: return -VALUE_MATE + 2;
-2026-05-02T12:38:30.4446612Z       |                               ~~~~~~~~~~~~^~~
-2026-05-02T12:38:30.4446974Z       |                                           |
-2026-05-02T12:38:30.4447380Z       |                                           int
-2026-05-02T12:38:30.4760867Z [ 45%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
-2026-05-02T12:38:30.5055462Z /home/runner/work/public/public/src/search.cpp: In constructor ‘Nexus::Search::Search()’:
-2026-05-02T12:38:30.5071515Z /home/runner/work/public/public/src/search.cpp:59:48: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.5080756Z    59 |                    selDepth(0), completedDepth(0), previousScore(VALUE_NONE), multiPV(1) {
-2026-05-02T12:38:30.5130366Z       |                                                ^
-2026-05-02T12:38:30.5140470Z       |                                                |
-2026-05-02T12:38:30.5160492Z       |                                                int
-2026-05-02T12:38:30.5197002Z /home/runner/work/public/public/src/search.cpp: In member function ‘void Nexus::Search::start(Nexus::BoardState&, const Nexus::SearchLimits&, bool)’:
-2026-05-02T12:38:30.5201012Z /home/runner/work/public/public/src/search.cpp:94:22: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.5230232Z    94 |     completedDepth = 0;
-2026-05-02T12:38:30.5250446Z       |                      ^
-2026-05-02T12:38:30.5280317Z       |                      |
-2026-05-02T12:38:30.5290235Z       |                      int
-2026-05-02T12:38:30.5321210Z /home/runner/work/public/public/src/search.cpp: In member function ‘void Nexus::Search::iterative_deepening(Nexus::BoardState&)’:
-2026-05-02T12:38:30.5341207Z /home/runner/work/public/public/src/search.cpp:166:24: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.5350281Z   166 |     for (Depth depth = 1; depth <= 64; ++depth) {
-2026-05-02T12:38:30.5380247Z       |                        ^
-2026-05-02T12:38:30.5400348Z       |                        |
-2026-05-02T12:38:30.5430311Z       |                        int
-2026-05-02T12:38:30.5441110Z /home/runner/work/public/public/src/search.cpp:166:40: error: no match for ‘operator++’ (operand type is ‘Nexus::Depth’)
-2026-05-02T12:38:30.5470299Z   166 |     for (Depth depth = 1; depth <= 64; ++depth) {
-2026-05-02T12:38:30.5490391Z       |                                        ^~~~~~~
-2026-05-02T12:38:30.5501402Z /home/runner/work/public/public/src/search.cpp: In member function ‘Nexus::Value Nexus::Search::aspiration_window(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Depth)’:
-2026-05-02T12:38:30.5531184Z /home/runner/work/public/public/src/search.cpp:238:50: error: ambiguous overload for ‘operator*’ (operand types are ‘Nexus::Value’ and ‘const double’)
-2026-05-02T12:38:30.5551112Z   238 |             delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
-2026-05-02T12:38:30.5580437Z       |                                            ~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.5590277Z       |                                            |                     |
-2026-05-02T12:38:30.5620302Z       |                                            Nexus::Value          const double
-2026-05-02T12:38:30.5641047Z /home/runner/work/public/public/src/search.cpp:238:50: note: candidate: ‘operator*(int, double)’ (built-in)
-2026-05-02T12:38:30.5650557Z   238 |             delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
-2026-05-02T12:38:30.5680300Z       |                                            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.5700572Z In file included from /home/runner/work/public/public/src/search.h:3,
-2026-05-02T12:38:30.5730457Z                  from /home/runner/work/public/public/src/search.cpp:1:
-2026-05-02T12:38:30.5741131Z /home/runner/work/public/public/src/types.h:130:17: note: candidate: ‘constexpr Nexus::Value Nexus::operator*(Value, int)’
-2026-05-02T12:38:30.5770422Z   130 | constexpr Value operator*(Value a, int b) { return Value((int)a * b); }
-2026-05-02T12:38:30.5790403Z       |                 ^~~~~~~~
-2026-05-02T12:38:30.5821366Z /home/runner/work/public/public/src/search.cpp:246:50: error: ambiguous overload for ‘operator*’ (operand types are ‘Nexus::Value’ and ‘const double’)
-2026-05-02T12:38:30.5830598Z   246 |             delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
-2026-05-02T12:38:30.5860333Z       |                                            ~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.5880538Z       |                                            |                     |
-2026-05-02T12:38:30.5890423Z       |                                            Nexus::Value          const double
-2026-05-02T12:38:30.5920984Z /home/runner/work/public/public/src/search.cpp:246:50: note: candidate: ‘operator*(int, double)’ (built-in)
-2026-05-02T12:38:30.5940716Z   246 |             delta = Value(static_cast<int>(delta * SearchParams::AspirationGrowth) + (failCount++ * 5));
-2026-05-02T12:38:30.5970377Z       |                                            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T12:38:30.5981128Z /home/runner/work/public/public/src/types.h:130:17: note: candidate: ‘constexpr Nexus::Value Nexus::operator*(Value, int)’
-2026-05-02T12:38:30.6010465Z   130 | constexpr Value operator*(Value a, int b) { return Value((int)a * b); }
-2026-05-02T12:38:30.6030358Z       |                 ^~~~~~~~
-2026-05-02T12:38:30.6041455Z /home/runner/work/public/public/src/search.cpp: In member function ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool)’:
-2026-05-02T12:38:30.6070890Z /home/runner/work/public/public/src/search.cpp:363:79: error: cannot convert ‘int’ to ‘Nexus::Depth’
-2026-05-02T12:38:30.6090757Z   363 |             Value nullValue = -negamax<false>(pos, ss+1, -beta, -beta+1, depth-R, !cutNode);
-2026-05-02T12:38:30.6120377Z       |                                                                          ~~~~~^~
-2026-05-02T12:38:30.6130287Z       |                                                                               |
-2026-05-02T12:38:30.6160307Z       |                                                                               int
-2026-05-02T12:38:30.6181979Z /home/runner/work/public/public/src/search.cpp:259:88: note:   initializing argument 5 of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’
-2026-05-02T12:38:30.6190621Z   259 | Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta, Depth depth, bool cutNode) {
-2026-05-02T12:38:30.6220309Z       |                                                                                  ~~~~~~^~~~~
-2026-05-02T12:38:30.6251535Z /home/runner/work/public/public/src/search.cpp:410:81: error: cannot convert ‘int’ to ‘Nexus::Value’
-2026-05-02T12:38:30.6280589Z   410 |             Value value = -negamax<false>(pos, ss+1, -probCutBeta, -probCutBeta + 1, probCutDepth, !cutNode);
-2026-05-02T12:38:30.6300443Z       |                                                                    ~~~~~~~~~~~~~^~~
-2026-05-02T12:38:30.6340303Z       |                                                                                 |
-2026-05-02T12:38:30.6370321Z       |                                                                                 int
-2026-05-02T12:38:30.6401939Z /home/runner/work/public/public/src/search.cpp:259:76: note:   initializing argument 4 of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’
-2026-05-02T12:38:30.6430641Z   259 | Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta, Depth depth, bool cutNode) {
-2026-05-02T12:38:30.6450376Z       |                                                                      ~~~~~~^~~~
-2026-05-02T12:38:30.6451997Z /home/runner/work/public/public/src/search.cpp:420:14: error: no ‘operator--(int)’ declared for postfix ‘--’ [-fpermissive]
-2026-05-02T12:38:30.6452860Z   420 |         depth--;
-2026-05-02T12:38:30.6453172Z       |         ~~~~~^~
-2026-05-02T12:38:30.6454090Z /home/runner/work/public/public/src/search.cpp: In member function ‘Nexus::u64 Nexus::Search::bench(int)’:
-2026-05-02T12:38:30.6455578Z /home/runner/work/public/public/src/search.cpp:862:69: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.6456598Z   862 |             negamax<true>(pos, ss, -VALUE_INFINITE, VALUE_INFINITE, d, false);
-2026-05-02T12:38:30.6457215Z       |                                                                     ^
-2026-05-02T12:38:30.6457689Z       |                                                                     |
-2026-05-02T12:38:30.6458240Z       |                                                                     int
-2026-05-02T12:38:30.6460439Z /home/runner/work/public/public/src/search.h:78:84: note:   initializing argument 5 of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’
-2026-05-02T12:38:30.6462338Z    78 |     Value negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta, Depth depth, bool cutNode);
-2026-05-02T12:38:30.6463149Z       |                                                                              ~~~~~~^~~~~
-2026-05-02T12:38:30.6464762Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
-2026-05-02T12:38:30.6466178Z /home/runner/work/public/public/src/search.cpp:226:36:   required from here
-2026-05-02T12:38:30.6467322Z /home/runner/work/public/public/src/search.cpp:431:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
-2026-05-02T12:38:30.6468164Z   431 |     int moveCount = end - moveList;
-2026-05-02T12:38:30.6468541Z       |         ^~~~~~~~~
-2026-05-02T12:38:30.6470304Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
-2026-05-02T12:38:30.6471750Z /home/runner/work/public/public/src/search.cpp:806:91:   required from here
-2026-05-02T12:38:30.6472825Z /home/runner/work/public/public/src/search.cpp:431:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
-2026-05-02T12:38:30.6493278Z make[2]: *** [CMakeFiles/nexus.dir/build.make:177: CMakeFiles/nexus.dir/src/timeman.cpp.o] Error 1
-2026-05-02T12:38:30.6520382Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T12:38:30.6533669Z [ 47%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
-2026-05-02T12:38:30.9301508Z [ 50%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
-2026-05-02T12:38:30.9861140Z In file included from /home/runner/work/public/public/src/reductions.cpp:1:
-2026-05-02T12:38:30.9891784Z /home/runner/work/public/public/src/reductions.h:78:44: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.9920612Z    78 |     static constexpr Depth SingularDepth = 7;
-2026-05-02T12:38:30.9946046Z       |                                            ^
-2026-05-02T12:38:30.9950365Z       |                                            |
-2026-05-02T12:38:30.9950763Z       |                                            int
-2026-05-02T12:38:30.9952070Z /home/runner/work/public/public/src/reductions.h:79:47: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:30.9980660Z    79 |     static constexpr Depth SingularDepthMin = 4;
-2026-05-02T12:38:30.9993940Z [ 52%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
-2026-05-02T12:38:31.0010489Z       |                                               ^
-2026-05-02T12:38:31.0011195Z       |                                               |
-2026-05-02T12:38:31.0040436Z       |                                               int
-2026-05-02T12:38:31.0070843Z make[2]: *** [CMakeFiles/nexus.dir/build.make:163: CMakeFiles/nexus.dir/src/search.cpp.o] Error 1
-2026-05-02T12:38:31.1436431Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:205: CMakeFiles/nexus_tests.dir/src/reductions.cpp.o] Error 1
-2026-05-02T12:38:31.1441436Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T12:38:31.1963280Z In file included from /home/runner/work/public/public/src/history.cpp:1:
-2026-05-02T12:38:31.1965449Z /home/runner/work/public/public/src/history.h: In member function ‘void Nexus::ButterflyHistory::update(Nexus::Color, Nexus::Move, int)’:
-2026-05-02T12:38:31.1967113Z /home/runner/work/public/public/src/history.h:28:22: error: ‘clamp’ is not a member of ‘std’
-2026-05-02T12:38:31.1968099Z    28 |         entry = std::clamp(entry, (int16_t)-8192, (int16_t)8192);
-2026-05-02T12:38:31.1968703Z       |                      ^~~~~
-2026-05-02T12:38:31.1974281Z /home/runner/work/public/public/src/history.h: In member function ‘void Nexus::CaptureHistory::update(Nexus::Color, Nexus::PieceType, Nexus::Square, Nexus::PieceType, int)’:
-2026-05-02T12:38:31.1980193Z /home/runner/work/public/public/src/history.h:52:22: error: ‘clamp’ is not a member of ‘std’
-2026-05-02T12:38:31.1981106Z    52 |         entry = std::clamp(entry, (int16_t)-8192, (int16_t)8192);
-2026-05-02T12:38:31.1981805Z       |                      ^~~~~
-2026-05-02T12:38:31.1982513Z /home/runner/work/public/public/src/history.h: At global scope:
-2026-05-02T12:38:31.1984361Z /home/runner/work/public/public/src/history.h:91:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
-2026-05-02T12:38:31.1985971Z    91 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T12:38:31.1986691Z       |                                        ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T12:38:31.1988404Z /home/runner/work/public/public/src/history.h: In member function ‘void Nexus::ContinuationHistory::update(Nexus::Piece, Nexus::Square, Nexus::Piece, Nexus::Square, int)’:
-2026-05-02T12:38:31.1990442Z /home/runner/work/public/public/src/history.h:85:22: error: ‘clamp’ is not a member of ‘std’
-2026-05-02T12:38:31.1991479Z    85 |         entry = std::clamp(entry, (int16_t)-8192, (int16_t)8192);
-2026-05-02T12:38:31.1992176Z       |                      ^~~~~
-2026-05-02T12:38:31.2500951Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:219: CMakeFiles/nexus_tests.dir/src/history.cpp.o] Error 1
-2026-05-02T12:38:31.4952551Z In file included from /home/runner/work/public/public/src/uci.cpp:9:
-2026-05-02T12:38:31.4954299Z /home/runner/work/public/public/src/reductions.h:78:44: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:31.4955815Z    78 |     static constexpr Depth SingularDepth = 7;
-2026-05-02T12:38:31.4956289Z       |                                            ^
-2026-05-02T12:38:31.4956662Z       |                                            |
-2026-05-02T12:38:31.4957033Z       |                                            int
-2026-05-02T12:38:31.4958178Z /home/runner/work/public/public/src/reductions.h:79:47: error: invalid conversion from ‘int’ to ‘Nexus::Depth’ [-fpermissive]
-2026-05-02T12:38:31.4959085Z    79 |     static constexpr Depth SingularDepthMin = 4;
-2026-05-02T12:38:31.4959556Z       |                                               ^
-2026-05-02T12:38:31.4960317Z       |                                               |
-2026-05-02T12:38:31.4960713Z       |                                               int
-2026-05-02T12:38:31.4963429Z In file included from /home/runner/work/public/public/src/uci.cpp:11:
-2026-05-02T12:38:31.4964654Z /home/runner/work/public/public/src/syzygy.h: In function ‘Nexus::Value Syzygy::wdl_to_value(WDLResult)’:
-2026-05-02T12:38:31.4966010Z /home/runner/work/public/public/src/syzygy.h:86:41: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:31.4966774Z    86 |         case WDL_WIN: return VALUE_MATE - 2;
-2026-05-02T12:38:31.4967125Z       |                              ~~~~~~~~~~~^~~
-2026-05-02T12:38:31.4967463Z       |                                         |
-2026-05-02T12:38:31.4967778Z       |                                         int
-2026-05-02T12:38:31.4968656Z /home/runner/work/public/public/src/syzygy.h:87:48: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:31.4969448Z    87 |         case WDL_CURSED_WIN: return VALUE_DRAW + 200;
-2026-05-02T12:38:31.4970070Z       |                                     ~~~~~~~~~~~^~~~~
-2026-05-02T12:38:31.4970425Z       |                                                |
-2026-05-02T12:38:31.4970770Z       |                                                int
-2026-05-02T12:38:31.4971711Z /home/runner/work/public/public/src/syzygy.h:89:50: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:31.4972531Z    89 |         case WDL_BLESSED_LOSS: return VALUE_DRAW - 200;
-2026-05-02T12:38:31.4972967Z       |                                       ~~~~~~~~~~~^~~~~
-2026-05-02T12:38:31.4973327Z       |                                                  |
-2026-05-02T12:38:31.4973685Z       |                                                  int
-2026-05-02T12:38:31.4974632Z /home/runner/work/public/public/src/syzygy.h:90:43: error: invalid conversion from ‘int’ to ‘Nexus::Value’ [-fpermissive]
-2026-05-02T12:38:31.4975430Z    90 |         case WDL_LOSS: return -VALUE_MATE + 2;
-2026-05-02T12:38:31.4975865Z       |                               ~~~~~~~~~~~~^~~
-2026-05-02T12:38:31.4976238Z       |                                           |
-2026-05-02T12:38:31.4976632Z       |                                           int
-2026-05-02T12:38:31.5576508Z In file included from /home/runner/work/public/public/src/uci.cpp:14:
-2026-05-02T12:38:31.5577262Z /home/runner/work/public/public/src/training.h: At global scope:
-2026-05-02T12:38:31.5578424Z /home/runner/work/public/public/src/training.h:42:5: error: ‘Value’ does not name a type
-2026-05-02T12:38:31.5579176Z    42 |     Value score;           // Search score or qsearch score
-2026-05-02T12:38:31.5579632Z       |     ^~~~~
-2026-05-02T12:38:31.5606822Z /home/runner/work/public/public/src/training.h:88:9: error: ‘u64’ does not name a type
-2026-05-02T12:38:31.5607488Z    88 |         u64 totalPositions;
-2026-05-02T12:38:31.5607828Z       |         ^~~
-2026-05-02T12:38:31.5619988Z /home/runner/work/public/public/src/training.h:89:9: error: ‘u64’ does not name a type
-2026-05-02T12:38:31.5620670Z    89 |         u64 gamesGenerated;
-2026-05-02T12:38:31.5620999Z       |         ^~~
-2026-05-02T12:38:31.5631651Z /home/runner/work/public/public/src/training.h:90:9: error: ‘u64’ does not name a type
-2026-05-02T12:38:31.5632299Z    90 |         u64 wins;
-2026-05-02T12:38:31.5632862Z       |         ^~~
-2026-05-02T12:38:31.5642763Z /home/runner/work/public/public/src/training.h:91:9: error: ‘u64’ does not name a type
-2026-05-02T12:38:31.5643556Z    91 |         u64 draws;
-2026-05-02T12:38:31.5643840Z       |         ^~~
-2026-05-02T12:38:31.5653421Z /home/runner/work/public/public/src/training.h:92:9: error: ‘u64’ does not name a type
-2026-05-02T12:38:31.5654100Z    92 |         u64 losses;
-2026-05-02T12:38:31.5654413Z       |         ^~~
-2026-05-02T12:38:31.5665918Z /home/runner/work/public/public/src/training.h:111:5: error: ‘Value’ does not name a type
-2026-05-02T12:38:31.5666692Z   111 |     Value score_position(const BoardState& pos);
-2026-05-02T12:38:31.5667149Z       |     ^~~~~
-2026-05-02T12:38:31.5680862Z /home/runner/work/public/public/src/training.h:112:35: error: ‘BoardState’ does not name a type
-2026-05-02T12:38:31.5681671Z   112 |     int evaluate_game_phase(const BoardState& pos);
-2026-05-02T12:38:31.5682138Z       |                                   ^~~~~~~~~~
-2026-05-02T12:38:31.5696150Z /home/runner/work/public/public/src/training.h:113:34: error: ‘BoardState’ does not name a type
-2026-05-02T12:38:31.5696909Z   113 |     bool should_adjudicate(const BoardState& pos, int ply);
-2026-05-02T12:38:31.5697402Z       |                                  ^~~~~~~~~~
-2026-05-02T12:38:31.9035812Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
-2026-05-02T12:38:31.9036271Z make[1]: *** Waiting for unfinished jobs....
-2026-05-02T12:38:31.9608657Z make[2]: *** [CMakeFiles/nexus.dir/build.make:191: CMakeFiles/nexus.dir/src/uci.cpp.o] Error 1
-2026-05-02T12:38:31.9610445Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
-2026-05-02T12:38:31.9612980Z make: *** [Makefile:101: all] Error 2
-2026-05-02T12:38:31.9631017Z ##[error]Process completed with exit code 2.
-2026-05-02T12:38:31.9742521Z Post job cleanup.
-2026-05-02T12:38:32.0737799Z [command]/usr/bin/git version
-2026-05-02T12:38:32.0774517Z git version 2.53.0
-2026-05-02T12:38:32.0816062Z Temporarily overriding HOME='/home/runner/work/_temp/40bfd8e1-4c40-44e4-b020-40c5e803185c' before making global git config changes
-2026-05-02T12:38:32.0816789Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T12:38:32.0821698Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T12:38:32.0864246Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T12:38:32.0897031Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T12:38:32.1133052Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T12:38:32.1155245Z http.https://github.com/.extraheader
-2026-05-02T12:38:32.1167930Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-05-02T12:38:32.1199378Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T12:38:32.1433171Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T12:38:32.1465432Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T12:38:32.1826988Z Cleaning up orphan processes
-2026-05-02T12:38:32.2123302Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-05-02T13:08:45.7036956Z Current runner version: '2.334.0'
+2026-05-02T13:08:45.7062122Z ##[group]Runner Image Provisioner
+2026-05-02T13:08:45.7062960Z Hosted Compute Agent
+2026-05-02T13:08:45.7063482Z Version: 20260213.493
+2026-05-02T13:08:45.7064112Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-02T13:08:45.7064745Z Build Date: 2026-02-13T00:28:41Z
+2026-05-02T13:08:45.7065766Z Worker ID: {952879e8-746e-4cf6-afd4-ceb465c8981c}
+2026-05-02T13:08:45.7066462Z Azure Region: eastus
+2026-05-02T13:08:45.7066962Z ##[endgroup]
+2026-05-02T13:08:45.7068788Z ##[group]Operating System
+2026-05-02T13:08:45.7069355Z Ubuntu
+2026-05-02T13:08:45.7069807Z 24.04.4
+2026-05-02T13:08:45.7070355Z LTS
+2026-05-02T13:08:45.7070804Z ##[endgroup]
+2026-05-02T13:08:45.7071252Z ##[group]Runner Image
+2026-05-02T13:08:45.7071852Z Image: ubuntu-24.04
+2026-05-02T13:08:45.7072363Z Version: 20260413.86.1
+2026-05-02T13:08:45.7073573Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-02T13:08:45.7075734Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-02T13:08:45.7076712Z ##[endgroup]
+2026-05-02T13:08:45.7077793Z ##[group]GITHUB_TOKEN Permissions
+2026-05-02T13:08:45.7079881Z Contents: read
+2026-05-02T13:08:45.7080515Z Metadata: read
+2026-05-02T13:08:45.7081017Z Packages: read
+2026-05-02T13:08:45.7081469Z ##[endgroup]
+2026-05-02T13:08:45.7083885Z Secret source: Actions
+2026-05-02T13:08:45.7084937Z Prepare workflow directory
+2026-05-02T13:08:45.7423052Z Prepare all required actions
+2026-05-02T13:08:45.7461849Z Getting action download info
+2026-05-02T13:08:46.0712566Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-02T13:08:46.2011488Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-02T13:08:46.4026702Z Complete job name: build-and-test
+2026-05-02T13:08:46.4769562Z ##[group]Run actions/checkout@v4
+2026-05-02T13:08:46.4770422Z with:
+2026-05-02T13:08:46.4770792Z   fetch-depth: 0
+2026-05-02T13:08:46.4771209Z   repository: Longnononn/public
+2026-05-02T13:08:46.4771827Z   token: ***
+2026-05-02T13:08:46.4772250Z   ssh-strict: true
+2026-05-02T13:08:46.4772643Z   ssh-user: git
+2026-05-02T13:08:46.4773033Z   persist-credentials: true
+2026-05-02T13:08:46.4773481Z   clean: true
+2026-05-02T13:08:46.4773868Z   sparse-checkout-cone-mode: true
+2026-05-02T13:08:46.4774349Z   fetch-tags: false
+2026-05-02T13:08:46.4774747Z   show-progress: true
+2026-05-02T13:08:46.4775145Z   lfs: false
+2026-05-02T13:08:46.4775706Z   submodules: false
+2026-05-02T13:08:46.4776129Z   set-safe-directory: true
+2026-05-02T13:08:46.4776816Z ##[endgroup]
+2026-05-02T13:08:46.5881818Z Syncing repository: Longnononn/public
+2026-05-02T13:08:46.5883486Z ##[group]Getting Git version info
+2026-05-02T13:08:46.5884186Z Working directory is '/home/runner/work/public/public'
+2026-05-02T13:08:46.5885186Z [command]/usr/bin/git version
+2026-05-02T13:08:46.5932181Z git version 2.53.0
+2026-05-02T13:08:46.5960017Z ##[endgroup]
+2026-05-02T13:08:46.5984066Z Temporarily overriding HOME='/home/runner/work/_temp/70ed5072-db8e-483b-ba5f-025bbaf67538' before making global git config changes
+2026-05-02T13:08:46.5986898Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T13:08:46.5990844Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T13:08:46.6023535Z Deleting the contents of '/home/runner/work/public/public'
+2026-05-02T13:08:46.6027987Z ##[group]Initializing the repository
+2026-05-02T13:08:46.6032696Z [command]/usr/bin/git init /home/runner/work/public/public
+2026-05-02T13:08:46.6126801Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-02T13:08:46.6128639Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-02T13:08:46.6130317Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-02T13:08:46.6132041Z hint: call:
+2026-05-02T13:08:46.6132667Z hint:
+2026-05-02T13:08:46.6133732Z hint: 	git config --global init.defaultBranch <name>
+2026-05-02T13:08:46.6134783Z hint:
+2026-05-02T13:08:46.6136016Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-02T13:08:46.6137532Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-02T13:08:46.6138736Z hint:
+2026-05-02T13:08:46.6139424Z hint: 	git branch -m <name>
+2026-05-02T13:08:46.6140187Z hint:
+2026-05-02T13:08:46.6141249Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-02T13:08:46.6142960Z Initialized empty Git repository in /home/runner/work/public/public/.git/
+2026-05-02T13:08:46.6145804Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
+2026-05-02T13:08:46.6172968Z ##[endgroup]
+2026-05-02T13:08:46.6174396Z ##[group]Disabling automatic garbage collection
+2026-05-02T13:08:46.6178215Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-02T13:08:46.6207394Z ##[endgroup]
+2026-05-02T13:08:46.6208569Z ##[group]Setting up auth
+2026-05-02T13:08:46.6215007Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T13:08:46.6245726Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T13:08:46.6525117Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T13:08:46.6556476Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T13:08:46.6792382Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T13:08:46.6825202Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T13:08:46.7066008Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-02T13:08:46.7101956Z ##[endgroup]
+2026-05-02T13:08:46.7103207Z ##[group]Fetching the repository
+2026-05-02T13:08:46.7111448Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-02T13:08:46.9834189Z From https://github.com/Longnononn/public
+2026-05-02T13:08:46.9835682Z  * [new branch]      main       -> origin/main
+2026-05-02T13:08:46.9869517Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-02T13:08:46.9891684Z   origin/main
+2026-05-02T13:08:46.9900287Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-02T13:08:46.9919455Z c68648d787648ddba7473db263a22f895342ae06
+2026-05-02T13:08:46.9923691Z ##[endgroup]
+2026-05-02T13:08:46.9924482Z ##[group]Determining the checkout info
+2026-05-02T13:08:46.9925614Z ##[endgroup]
+2026-05-02T13:08:46.9929929Z [command]/usr/bin/git sparse-checkout disable
+2026-05-02T13:08:46.9963826Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-02T13:08:46.9989907Z ##[group]Checking out the ref
+2026-05-02T13:08:46.9994714Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-02T13:08:47.0094509Z Switched to a new branch 'main'
+2026-05-02T13:08:47.0097773Z branch 'main' set up to track 'origin/main'.
+2026-05-02T13:08:47.0103425Z ##[endgroup]
+2026-05-02T13:08:47.0135276Z [command]/usr/bin/git log -1 --format=%H
+2026-05-02T13:08:47.0156442Z c68648d787648ddba7473db263a22f895342ae06
+2026-05-02T13:08:47.0334506Z ##[group]Run sudo apt-get update
+2026-05-02T13:08:47.0335117Z [36;1msudo apt-get update[0m
+2026-05-02T13:08:47.0336086Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
+2026-05-02T13:08:47.0336763Z [36;1mpip3 install numpy scipy[0m
+2026-05-02T13:08:47.0361295Z shell: /usr/bin/bash -e {0}
+2026-05-02T13:08:47.0361991Z ##[endgroup]
+2026-05-02T13:08:47.1627287Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T13:08:47.2217938Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-05-02T13:08:47.2220391Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-05-02T13:08:47.2438620Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
+2026-05-02T13:08:47.2789562Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-05-02T13:08:47.2798921Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-05-02T13:08:47.2823728Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-05-02T13:08:47.2841906Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-05-02T13:08:47.3888506Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
+2026-05-02T13:08:47.4014994Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
+2026-05-02T13:08:47.4036606Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
+2026-05-02T13:08:47.4460834Z Get:12 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
+2026-05-02T13:08:47.5539408Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
+2026-05-02T13:08:47.5652543Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
+2026-05-02T13:08:47.5694646Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-05-02T13:08:47.5707149Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+2026-05-02T13:08:47.5737516Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
+2026-05-02T13:08:47.5821232Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
+2026-05-02T13:08:47.5849540Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-05-02T13:08:47.5878101Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+2026-05-02T13:08:47.5895175Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
+2026-05-02T13:08:47.6062075Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
+2026-05-02T13:08:47.6540150Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-05-02T13:08:47.6557269Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+2026-05-02T13:08:47.6570797Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+2026-05-02T13:08:47.6581546Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
+2026-05-02T13:08:47.6592140Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-05-02T13:08:47.6602385Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+2026-05-02T13:08:47.6620662Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
+2026-05-02T13:08:47.6630530Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+2026-05-02T13:08:47.6639561Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-05-02T13:08:47.6654473Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-05-02T13:08:47.6667874Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
+2026-05-02T13:08:47.6672540Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-05-02T13:08:47.6684106Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+2026-05-02T13:08:47.6703866Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
+2026-05-02T13:08:47.7132155Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+2026-05-02T13:08:47.7141832Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+2026-05-02T13:08:47.7150075Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-05-02T13:08:47.7160998Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
+2026-05-02T13:08:47.7240821Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
+2026-05-02T13:08:47.7259790Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+2026-05-02T13:08:47.7267561Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+2026-05-02T13:08:47.7276657Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
+2026-05-02T13:08:47.7335226Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
+2026-05-02T13:08:47.7351706Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-05-02T13:08:47.7362138Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+2026-05-02T13:08:47.7371601Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
+2026-05-02T13:08:47.7502207Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
+2026-05-02T13:08:47.7538361Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-05-02T13:08:47.7545562Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+2026-05-02T13:08:47.7968685Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
+2026-05-02T13:08:47.7975083Z Get:53 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-05-02T13:08:57.5880308Z Fetched 16.5 MB in 2s (8266 kB/s)
+2026-05-02T13:08:58.4080424Z Reading package lists...
+2026-05-02T13:08:58.4393057Z Reading package lists...
+2026-05-02T13:08:58.6486015Z Building dependency tree...
+2026-05-02T13:08:58.6493926Z Reading state information...
+2026-05-02T13:08:58.8299065Z g++ is already the newest version (4:13.2.0-7ubuntu1).
+2026-05-02T13:08:58.8299852Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-05-02T13:08:58.8300928Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+2026-05-02T13:08:58.8301583Z Suggested packages:
+2026-05-02T13:08:58.8302069Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
+2026-05-02T13:08:58.8674241Z The following NEW packages will be installed:
+2026-05-02T13:08:58.8682409Z   cmake cmake-data libjsoncpp25 librhash0
+2026-05-02T13:08:58.8861068Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
+2026-05-02T13:08:58.8861785Z Need to get 13.6 MB of archives.
+2026-05-02T13:08:58.8862404Z After this operation, 49.1 MB of additional disk space will be used.
+2026-05-02T13:08:58.8863140Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T13:08:58.9091115Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-05-02T13:08:58.9199106Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-05-02T13:08:58.9336351Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-05-02T13:08:59.0110473Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-05-02T13:08:59.8397993Z Fetched 13.6 MB in 1s (19.6 MB/s)
+2026-05-02T13:08:59.8730091Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-05-02T13:08:59.9887901Z (Reading database ... 
+2026-05-02T13:08:59.9888405Z (Reading database ... 5%
+2026-05-02T13:08:59.9888862Z (Reading database ... 10%
+2026-05-02T13:08:59.9889264Z (Reading database ... 15%
+2026-05-02T13:08:59.9889587Z (Reading database ... 20%
+2026-05-02T13:08:59.9890021Z (Reading database ... 25%
+2026-05-02T13:08:59.9890594Z (Reading database ... 30%
+2026-05-02T13:08:59.9891158Z (Reading database ... 35%
+2026-05-02T13:08:59.9891692Z (Reading database ... 40%
+2026-05-02T13:08:59.9892162Z (Reading database ... 45%
+2026-05-02T13:08:59.9892681Z (Reading database ... 50%
+2026-05-02T13:09:00.0350315Z (Reading database ... 55%
+2026-05-02T13:09:00.3726446Z (Reading database ... 60%
+2026-05-02T13:09:00.6380030Z (Reading database ... 65%
+2026-05-02T13:09:00.9471655Z (Reading database ... 70%
+2026-05-02T13:09:01.2518260Z (Reading database ... 75%
+2026-05-02T13:09:01.7434371Z (Reading database ... 80%
+2026-05-02T13:09:02.3650127Z (Reading database ... 85%
+2026-05-02T13:09:03.4586637Z (Reading database ... 90%
+2026-05-02T13:09:04.1323990Z (Reading database ... 95%
+2026-05-02T13:09:04.1324478Z (Reading database ... 100%
+2026-05-02T13:09:04.1325109Z (Reading database ... 220764 files and directories currently installed.)
+2026-05-02T13:09:04.1382773Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-05-02T13:09:04.1426834Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T13:09:04.1758620Z Selecting previously unselected package librhash0:amd64.
+2026-05-02T13:09:04.1912260Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
+2026-05-02T13:09:04.1936146Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T13:09:04.2223848Z Selecting previously unselected package cmake-data.
+2026-05-02T13:09:04.2378392Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
+2026-05-02T13:09:04.2553215Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-05-02T13:09:04.7794546Z Selecting previously unselected package cmake.
+2026-05-02T13:09:04.7961527Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
+2026-05-02T13:09:04.7973982Z Unpacking cmake (3.28.3-1build7) ...
+2026-05-02T13:09:05.0218189Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T13:09:05.0262234Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T13:09:05.0306086Z Setting up cmake-data (3.28.3-1build7) ...
+2026-05-02T13:09:05.0387121Z Setting up cmake (3.28.3-1build7) ...
+2026-05-02T13:09:05.0427784Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-05-02T13:09:05.0455765Z Not building database; man-db/auto-update is not 'true'.
+2026-05-02T13:09:05.0472747Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-05-02T13:09:06.3358338Z 
+2026-05-02T13:09:06.3359227Z Running kernel seems to be up-to-date.
+2026-05-02T13:09:06.3359592Z 
+2026-05-02T13:09:06.3359734Z No services need to be restarted.
+2026-05-02T13:09:06.3360022Z 
+2026-05-02T13:09:06.3360169Z No containers need to be restarted.
+2026-05-02T13:09:06.3360474Z 
+2026-05-02T13:09:06.3360641Z No user sessions are running outdated binaries.
+2026-05-02T13:09:06.3360976Z 
+2026-05-02T13:09:06.3361277Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-05-02T13:09:08.5277549Z Defaulting to user installation because normal site-packages is not writeable
+2026-05-02T13:09:09.7993807Z Collecting numpy
+2026-05-02T13:09:09.8344638Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-05-02T13:09:09.9766607Z Collecting scipy
+2026-05-02T13:09:09.9804491Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-05-02T13:09:09.9933435Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 5.0 MB/s eta 0:00:00
+2026-05-02T13:09:10.0386355Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2026-05-02T13:09:10.1654514Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 115.3 MB/s eta 0:00:00
+2026-05-02T13:09:10.1711834Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
+2026-05-02T13:09:10.3771436Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 119.2 MB/s eta 0:00:00
+2026-05-02T13:09:10.7570056Z Installing collected packages: numpy, scipy
+2026-05-02T13:09:16.1576650Z Successfully installed numpy-2.4.4 scipy-1.17.1
+2026-05-02T13:09:16.2675862Z ##[group]Run git checkout main
+2026-05-02T13:09:16.2676206Z [36;1mgit checkout main[0m
+2026-05-02T13:09:16.2676463Z [36;1mmkdir -p build_baseline[0m
+2026-05-02T13:09:16.2676738Z [36;1mcd build_baseline[0m
+2026-05-02T13:09:16.2677009Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-02T13:09:16.2677311Z [36;1mmake -j$(nproc)[0m
+2026-05-02T13:09:16.2677540Z [36;1mcp nexus ../nexus_base[0m
+2026-05-02T13:09:16.2677779Z [36;1mcd ..[0m
+2026-05-02T13:09:16.2699354Z shell: /usr/bin/bash -e {0}
+2026-05-02T13:09:16.2699591Z ##[endgroup]
+2026-05-02T13:09:16.2863954Z Already on 'main'
+2026-05-02T13:09:16.2867190Z Your branch is up to date with 'origin/main'.
+2026-05-02T13:09:17.6443271Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-02T13:09:17.7404923Z -- Detecting CXX compiler ABI info
+2026-05-02T13:09:17.8515264Z -- Detecting CXX compiler ABI info - done
+2026-05-02T13:09:17.8690369Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-02T13:09:17.8736946Z -- Detecting CXX compile features
+2026-05-02T13:09:17.8790326Z -- Detecting CXX compile features - done
+2026-05-02T13:09:17.9160199Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-02T13:09:18.0415290Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-02T13:09:18.0423289Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-02T13:09:18.1043731Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-02T13:09:18.1051729Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-02T13:09:18.1669289Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-02T13:09:18.1674697Z -- Configuring done (1.4s)
+2026-05-02T13:09:18.1756966Z -- Generating done (0.0s)
+2026-05-02T13:09:18.1760118Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
+2026-05-02T13:09:18.1953992Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-02T13:09:18.1955179Z [  5%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-02T13:09:18.1956657Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-02T13:09:18.1957626Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-02T13:09:18.8846241Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T13:09:18.8876981Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T13:09:18.8878157Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T13:09:18.8905987Z       |             ^~~~~
+2026-05-02T13:09:18.9376755Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T13:09:18.9387712Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T13:09:18.9416271Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T13:09:18.9446011Z       |     ^~~~~~~~~~~~
+2026-05-02T13:09:18.9696565Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-02T13:09:19.0117152Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-02T13:09:19.0147045Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-02T13:09:19.0176006Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-02T13:09:19.0195969Z       |         ^~~~~~~
+2026-05-02T13:09:19.0828107Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T13:09:19.0856737Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T13:09:19.0886293Z   169 |     Key key = st.key;
+2026-05-02T13:09:19.0887217Z [ 15%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-02T13:09:19.0915876Z       |         ^~~
+2026-05-02T13:09:19.1326592Z [ 17%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-02T13:09:19.2908129Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T13:09:19.2926997Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T13:09:19.2956068Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T13:09:19.2985933Z       |             ^~~~~
+2026-05-02T13:09:19.3146617Z [ 20%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
+2026-05-02T13:09:19.3476623Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T13:09:19.3507640Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T13:09:19.3536238Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T13:09:19.3565942Z       |     ^~~~~~~~~~~~
+2026-05-02T13:09:19.3772822Z [ 22%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-02T13:09:19.5577615Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T13:09:19.5606816Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T13:09:19.5636029Z   169 |     Key key = st.key;
+2026-05-02T13:09:19.5666209Z       |         ^~~
+2026-05-02T13:09:19.6606644Z [ 25%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
+2026-05-02T13:09:19.7836712Z [ 27%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
+2026-05-02T13:09:19.8841903Z [ 30%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
+2026-05-02T13:09:19.8909309Z [ 32%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
+2026-05-02T13:09:20.0453722Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T13:09:20.0456535Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T13:09:20.0457378Z    94 |     Color them = ~us;
+2026-05-02T13:09:20.0457694Z       |           ^~~~
+2026-05-02T13:09:20.0964434Z [ 35%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
+2026-05-02T13:09:20.3536810Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
+2026-05-02T13:09:20.7667718Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T13:09:20.7696878Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T13:09:20.7726071Z    94 |     Color them = ~us;
+2026-05-02T13:09:20.7755993Z       |           ^~~~
+2026-05-02T13:09:20.8376643Z [ 40%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
+2026-05-02T13:09:21.1606831Z In file included from /home/runner/work/public/public/src/search.cpp:7:
+2026-05-02T13:09:21.1637882Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-02T13:09:21.1696128Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-02T13:09:21.1696813Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-02T13:09:21.2247690Z /home/runner/work/public/public/src/timeman.cpp: In member function ‘void Nexus::TimeManager::init(const Nexus::TimeControl&, Nexus::Color, int)’:
+2026-05-02T13:09:21.2266712Z /home/runner/work/public/public/src/timeman.cpp:19:37: error: ‘INT_MAX’ was not declared in this scope
+2026-05-02T13:09:21.2296108Z    19 |         optimumTime = maximumTime = INT_MAX;
+2026-05-02T13:09:21.2326530Z       |                                     ^~~~~~~
+2026-05-02T13:09:21.2337066Z /home/runner/work/public/public/src/timeman.cpp:4:1: note: ‘INT_MAX’ is defined in header ‘<climits>’; did you forget to ‘#include <climits>’?
+2026-05-02T13:09:21.2366148Z     3 | #include <cmath>
+2026-05-02T13:09:21.2383533Z   +++ |+#include <climits>
+2026-05-02T13:09:21.2419745Z     4 | 
+2026-05-02T13:09:21.3697657Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-02T13:09:21.3717982Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-02T13:09:21.3746186Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-02T13:09:21.3756130Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:09:21.3776157Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-02T13:09:21.3806682Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-02T13:09:21.3816041Z    26 | struct TTCluster {
+2026-05-02T13:09:21.3846007Z       |        ^~~~~~~~~
+2026-05-02T13:09:21.4706660Z [ 42%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
+2026-05-02T13:09:21.6401317Z make[2]: *** [CMakeFiles/nexus.dir/build.make:177: CMakeFiles/nexus.dir/src/timeman.cpp.o] Error 1
+2026-05-02T13:09:21.6402529Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T13:09:21.6439300Z [ 45%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
+2026-05-02T13:09:22.1038595Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
+2026-05-02T13:09:22.1056503Z /home/runner/work/public/public/src/search.cpp:227:36:   required from here
+2026-05-02T13:09:22.1086869Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-02T13:09:22.1116078Z   432 |     int moveCount = end - moveList;
+2026-05-02T13:09:22.1125884Z       |         ^~~~~~~~~
+2026-05-02T13:09:22.1147803Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
+2026-05-02T13:09:22.1176235Z /home/runner/work/public/public/src/search.cpp:807:91:   required from here
+2026-05-02T13:09:22.1206752Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-02T13:09:22.1564632Z [ 47%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
+2026-05-02T13:09:22.2386541Z [ 50%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
+2026-05-02T13:09:22.3917519Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-02T13:09:22.3977869Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-02T13:09:22.3996544Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-02T13:09:22.4036070Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:09:22.4036828Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-02T13:09:22.4066852Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-02T13:09:22.4095929Z    26 | struct TTCluster {
+2026-05-02T13:09:22.4096352Z       |        ^~~~~~~~~
+2026-05-02T13:09:22.5066646Z [ 52%] Building CXX object CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
+2026-05-02T13:09:22.7276981Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-02T13:09:22.7298492Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-02T13:09:22.7336123Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-02T13:09:22.7366006Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-02T13:09:22.8523461Z [ 55%] Building CXX object CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
+2026-05-02T13:09:22.8576892Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
+2026-05-02T13:09:22.8596189Z make[1]: *** Waiting for unfinished jobs....
+2026-05-02T13:09:22.8626260Z [ 57%] Building CXX object CMakeFiles/nexus_tests.dir/src/thread.cpp.o
+2026-05-02T13:09:23.3286667Z In file included from /home/runner/work/public/public/src/syzygy.cpp:1:
+2026-05-02T13:09:23.3317137Z /home/runner/work/public/public/src/syzygy.h:62:51: error: ‘std::vector’ has not been declared
+2026-05-02T13:09:23.3346566Z    62 |     void filter_root_moves(const BoardState& pos, std::vector<Move>& moves) const;
+2026-05-02T13:09:23.3376055Z       |                                                   ^~~
+2026-05-02T13:09:23.3406654Z /home/runner/work/public/public/src/syzygy.h:62:62: error: expected ‘,’ or ‘...’ before ‘<’ token
+2026-05-02T13:09:23.3407881Z    62 |     void filter_root_moves(const BoardState& pos, std::vector<Move>& moves) const;
+2026-05-02T13:09:23.3436053Z       |                                                              ^
+2026-05-02T13:09:23.6616640Z [ 60%] Building CXX object CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
+2026-05-02T13:09:23.7069846Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::is_tb_position(const Nexus::BoardState&) const’:
+2026-05-02T13:09:23.7109783Z /home/runner/work/public/public/src/syzygy.cpp:96:42: error: no match for ‘operator++’ (operand type is ‘Nexus::Square’)
+2026-05-02T13:09:23.7136191Z    96 |     for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+2026-05-02T13:09:23.7166041Z       |                                          ^~~~
+2026-05-02T13:09:23.7187202Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-02T13:09:23.7196649Z /home/runner/work/public/public/src/syzygy.cpp:134:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-02T13:09:23.7226035Z   134 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-02T13:09:23.7256077Z       |               ^~~~~~~
+2026-05-02T13:09:23.7256829Z /home/runner/work/public/public/src/syzygy.cpp: At global scope:
+2026-05-02T13:09:23.7286872Z /home/runner/work/public/public/src/syzygy.cpp:151:59: error: ‘std::vector’ has not been declared
+2026-05-02T13:09:23.7316465Z   151 | void Tablebases::filter_root_moves(const BoardState& pos, std::vector<Move>& moves) const {
+2026-05-02T13:09:23.7376136Z       |                                                           ^~~
+2026-05-02T13:09:23.7379664Z /home/runner/work/public/public/src/syzygy.cpp:151:70: error: expected ‘,’ or ‘...’ before ‘<’ token
+2026-05-02T13:09:23.7406635Z   151 | void Tablebases::filter_root_moves(const BoardState& pos, std::vector<Move>& moves) const {
+2026-05-02T13:09:23.7436144Z       |                                                                      ^
+2026-05-02T13:09:23.7487177Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘void Syzygy::Tablebases::filter_root_moves(const Nexus::BoardState&, int) const’:
+2026-05-02T13:09:23.7513228Z /home/runner/work/public/public/src/syzygy.cpp:157:10: error: ‘vector’ is not a member of ‘std’
+2026-05-02T13:09:23.7536042Z   157 |     std::vector<Move> filtered;
+2026-05-02T13:09:23.7565945Z       |          ^~~~~~
+2026-05-02T13:09:23.7567917Z /home/runner/work/public/public/src/syzygy.cpp:10:1: note: ‘std::vector’ is defined in header ‘<vector>’; did you forget to ‘#include <vector>’?
+2026-05-02T13:09:23.7596078Z     9 | #include <dirent.h>
+2026-05-02T13:09:23.7626124Z   +++ |+#include <vector>
+2026-05-02T13:09:23.7655960Z    10 | #endif
+2026-05-02T13:09:23.7657141Z /home/runner/work/public/public/src/syzygy.cpp:157:21: error: expected primary-expression before ‘>’ token
+2026-05-02T13:09:23.7686101Z   157 |     std::vector<Move> filtered;
+2026-05-02T13:09:23.7715950Z       |                     ^
+2026-05-02T13:09:23.7746643Z /home/runner/work/public/public/src/syzygy.cpp:157:23: error: ‘filtered’ was not declared in this scope
+2026-05-02T13:09:23.7747677Z   157 |     std::vector<Move> filtered;
+2026-05-02T13:09:23.7775926Z       |                       ^~~~~~~~
+2026-05-02T13:09:23.7807496Z /home/runner/work/public/public/src/syzygy.cpp:158:26: error: ‘moves’ was not declared in this scope
+2026-05-02T13:09:23.7836004Z   158 |     for (const Move& m : moves) {
+2026-05-02T13:09:23.7836651Z       |                          ^~~~~
+2026-05-02T13:09:23.7866673Z /home/runner/work/public/public/src/syzygy.cpp:164:5: error: ‘moves’ was not declared in this scope
+2026-05-02T13:09:23.7895993Z   164 |     moves = std::move(filtered);
+2026-05-02T13:09:23.7896439Z       |     ^~~~~
+2026-05-02T13:09:23.8437210Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:261: CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o] Error 1
+2026-05-02T13:09:23.8438174Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T13:09:24.0988013Z /home/runner/work/public/public/src/nnue.cpp: In member function ‘void NNUE::Accumulator::refresh(const Nexus::BoardState&, const NNUE::Network&)’:
+2026-05-02T13:09:24.0990142Z /home/runner/work/public/public/src/nnue.cpp:28:46: error: no match for ‘operator++’ (operand type is ‘Nexus::Square’)
+2026-05-02T13:09:24.0991403Z    28 |         for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+2026-05-02T13:09:24.0992167Z       |                                              ^~~~
+2026-05-02T13:09:24.1047160Z /home/runner/work/public/public/src/nnue.cpp: In member function ‘void NNUE::Evaluator::update(Nexus::Move, const Nexus::BoardState&)’:
+2026-05-02T13:09:24.1049199Z /home/runner/work/public/public/src/nnue.cpp:292:15: error: ‘class Nexus::Move’ has no member named ‘promotion’; did you mean ‘is_promotion’?
+2026-05-02T13:09:24.1050503Z   292 |         if (m.promotion() != NO_PIECE_TYPE) {
+2026-05-02T13:09:24.1051218Z       |               ^~~~~~~~~
+2026-05-02T13:09:24.1051767Z       |               is_promotion
+2026-05-02T13:09:24.1053211Z /home/runner/work/public/public/src/nnue.cpp:293:59: error: ‘class Nexus::Move’ has no member named ‘promotion’; did you mean ‘is_promotion’?
+2026-05-02T13:09:24.1054547Z   293 |             idxTo = make_index(perspective, kingSq, to, m.promotion(), side);
+2026-05-02T13:09:24.1055597Z       |                                                           ^~~~~~~~~
+2026-05-02T13:09:24.1056308Z       |                                                           is_promotion
+2026-05-02T13:09:24.1057768Z /home/runner/work/public/public/src/nnue.cpp:297:15: error: ‘class Nexus::Move’ has no member named ‘is_capture’
+2026-05-02T13:09:24.1058795Z   297 |         if (m.is_capture()) {
+2026-05-02T13:09:24.1059361Z       |               ^~~~~~~~~~
+2026-05-02T13:09:24.1060703Z /home/runner/work/public/public/src/nnue.cpp:310:15: error: ‘class Nexus::Move’ has no member named ‘promotion’; did you mean ‘is_promotion’?
+2026-05-02T13:09:24.1061939Z   310 |         if (m.promotion() != NO_PIECE_TYPE) {
+2026-05-02T13:09:24.1062587Z       |               ^~~~~~~~~
+2026-05-02T13:09:24.1063166Z       |               is_promotion
+2026-05-02T13:09:24.1064539Z /home/runner/work/public/public/src/nnue.cpp: In member function ‘int NNUE::Evaluator::get_bucket(const Nexus::BoardState&) const’:
+2026-05-02T13:09:24.1067243Z /home/runner/work/public/public/src/nnue.cpp:326:42: error: no match for ‘operator++’ (operand type is ‘Nexus::Square’)
+2026-05-02T13:09:24.1068444Z   326 |     for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
+2026-05-02T13:09:24.1069397Z       |                                          ^~~~
+2026-05-02T13:09:24.1070866Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-02T13:09:24.1073138Z /home/runner/work/public/public/src/nnue.cpp:386:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-02T13:09:24.1074716Z   386 |     return size >= expectedSize;
+2026-05-02T13:09:24.1075312Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-02T13:09:24.1844645Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:247: CMakeFiles/nexus_tests.dir/src/nnue.cpp.o] Error 1
+2026-05-02T13:09:24.4675632Z /home/runner/work/public/public/src/test_suite.cpp:15:14: error: ‘TestPosition’ does not name a type
+2026-05-02T13:09:24.4676766Z    15 | static const TestPosition PERFT_POSITIONS[] = {
+2026-05-02T13:09:24.4677314Z       |              ^~~~~~~~~~~~
+2026-05-02T13:09:24.4688057Z /home/runner/work/public/public/src/test_suite.cpp:32:14: error: ‘TestPosition’ does not name a type
+2026-05-02T13:09:24.4689034Z    32 | static const TestPosition TACTICAL_POSITIONS[] = {
+2026-05-02T13:09:24.4689527Z       |              ^~~~~~~~~~~~
+2026-05-02T13:09:24.4700924Z /home/runner/work/public/public/src/test_suite.cpp:59:14: error: ‘TestPosition’ does not name a type
+2026-05-02T13:09:24.4701896Z    59 | static const TestPosition ENDGAME_POSITIONS[] = {
+2026-05-02T13:09:24.4702378Z       |              ^~~~~~~~~~~~
+2026-05-02T13:09:24.4712688Z /home/runner/work/public/public/src/test_suite.cpp:88:14: error: ‘TestPosition’ does not name a type
+2026-05-02T13:09:24.4713709Z    88 | static const TestPosition REGRESSION_POSITIONS[] = {
+2026-05-02T13:09:24.4714240Z       |              ^~~~~~~~~~~~
+2026-05-02T13:09:24.4753827Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘void TestSuite::TestSuite::load_perft_positions()’:
+2026-05-02T13:09:24.4755724Z /home/runner/work/public/public/src/test_suite.cpp:117:21: error: ‘PERFT_POSITIONS’ was not declared in this scope
+2026-05-02T13:09:24.4756770Z   117 |     for (int i = 0; PERFT_POSITIONS[i].name != nullptr; ++i) {
+2026-05-02T13:09:24.4757321Z       |                     ^~~~~~~~~~~~~~~
+2026-05-02T13:09:24.4793153Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘void TestSuite::TestSuite::load_tactical_positions()’:
+2026-05-02T13:09:24.4794813Z /home/runner/work/public/public/src/test_suite.cpp:123:21: error: ‘TACTICAL_POSITIONS’ was not declared in this scope
+2026-05-02T13:09:24.4796126Z   123 |     for (int i = 0; TACTICAL_POSITIONS[i].name != nullptr; ++i) {
+2026-05-02T13:09:24.4796731Z       |                     ^~~~~~~~~~~~~~~~~~
+2026-05-02T13:09:24.4830626Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘void TestSuite::TestSuite::load_endgame_positions()’:
+2026-05-02T13:09:24.4832374Z /home/runner/work/public/public/src/test_suite.cpp:129:21: error: ‘ENDGAME_POSITIONS’ was not declared in this scope
+2026-05-02T13:09:24.4833442Z   129 |     for (int i = 0; ENDGAME_POSITIONS[i].name != nullptr; ++i) {
+2026-05-02T13:09:24.4834194Z       |                     ^~~~~~~~~~~~~~~~~
+2026-05-02T13:09:24.4869818Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘void TestSuite::TestSuite::load_regression_positions()’:
+2026-05-02T13:09:24.4871455Z /home/runner/work/public/public/src/test_suite.cpp:135:21: error: ‘REGRESSION_POSITIONS’ was not declared in this scope
+2026-05-02T13:09:24.4872497Z   135 |     for (int i = 0; REGRESSION_POSITIONS[i].name != nullptr; ++i) {
+2026-05-02T13:09:24.4873061Z       |                     ^~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:09:24.4984289Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-02T13:09:24.4985588Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-02T13:09:24.4986424Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-02T13:09:24.4986744Z       |                  ^~~
+2026-05-02T13:09:24.7688893Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:289: CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o] Error 1
+2026-05-02T13:09:24.7690388Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
+2026-05-02T13:09:24.7692766Z make: *** [Makefile:101: all] Error 2
+2026-05-02T13:09:24.7711051Z ##[error]Process completed with exit code 2.
+2026-05-02T13:09:24.7834271Z Post job cleanup.
+2026-05-02T13:09:24.8824127Z [command]/usr/bin/git version
+2026-05-02T13:09:24.8861116Z git version 2.53.0
+2026-05-02T13:09:24.8906242Z Temporarily overriding HOME='/home/runner/work/_temp/96d1a9c4-4d32-4f0f-97a7-a0568d7c4207' before making global git config changes
+2026-05-02T13:09:24.8907570Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T13:09:24.8912887Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T13:09:24.8949066Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T13:09:24.8980192Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T13:09:24.9201596Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T13:09:24.9223006Z http.https://github.com/.extraheader
+2026-05-02T13:09:24.9235171Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-02T13:09:24.9265859Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T13:09:24.9480794Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T13:09:24.9510800Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T13:09:24.9863376Z Cleaning up orphan processes
+2026-05-02T13:09:25.0158737Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -4,6 +4,7 @@
 #include "board.h"
 #include "move.h"
 #include <string>
+#include <vector>
 
 namespace Syzygy {
 

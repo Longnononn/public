@@ -1,0 +1,110 @@
+name: Build Engine
+
+on:
+  push:
+    branches: [main, develop]
+    paths: 
+      - 'src/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'Build profile'
+        required: true
+        default: 'release'
+        type: choice
+        options: [debug, release, benchmark]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [g++-11, clang++-14]
+        cxx_standard: [20]
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      
+      - name: Cache build dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.conan2/p
+            /usr/local/include/boost
+          key: build-deps-${{ matrix.compiler }}-${{ hashFiles('conanfile.txt') }}
+          restore-keys: |
+            build-deps-${{ matrix.compiler }}-
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build ${{ matrix.compiler }} libboost-all-dev
+      
+      - name: Create build directory
+        run: mkdir -p build
+      
+      - name: CMake configure
+        working-directory: build
+        run: |
+          cmake -G Ninja \
+            -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
+            -DCMAKE_CXX_STANDARD=${{ matrix.cxx_standard }} \
+            -DCMAKE_BUILD_TYPE=${{ inputs.profile || 'Release' }} \
+            -DCMAKE_CXX_FLAGS="-march=native -O3 -flto=auto" \
+            -DBUILD_TESTS=ON \
+            -DWITH_AVX512=OFF \
+            ..
+      
+      - name: Build engine
+        working-directory: build
+        run: |
+          ninja -j4 nexus_engine
+          ls -lh bin/nexus_engine
+      
+      - name: Build tests
+        working-directory: build
+        run: ninja -j4 nexus_tests
+      
+      - name: Run unit tests
+        working-directory: build
+        run: ./bin/nexus_tests --gtest_shuffle
+      
+      - name: Benchmark NPS
+        working-directory: build
+        run: |
+          echo "Running NPS benchmark (depth 20)..."
+          timeout 60 ./bin/nexus_engine << 'EOF' || true
+          uci
+          position startpos
+          go depth 20
+          quit
+          EOF
+      
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: nexus-binary-${{ matrix.compiler }}
+          path: build/bin/nexus_engine
+          retention-days: 5
+          if-no-files-found: error
+
+  build-summary:
+    runs-on: ubuntu-latest
+    needs: build
+    if: always()
+    
+    steps:
+      - name: Check build status
+        run: |
+          if [ "${{ needs.build.result }}" = "failure" ]; then
+            echo "❌ Build FAILED"
+            exit 1
+          else
+            echo "✅ Build SUCCEEDED"
+          fi

@@ -1,0 +1,196 @@
+name: Gauntlet Evaluation
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 12 * * *'  # Daily at noon UTC
+  workflow_dispatch:
+    inputs:
+      total_games:
+        description: 'Total games to play'
+        required: true
+        default: '200'
+        type: choice
+        options: ['50', '100', '200', '400']
+      time_control:
+        description: 'Time control in seconds'
+        required: true
+        default: '1.0'
+        type: choice
+        options: ['0.5', '1.0', '2.0', '5.0']
+
+jobs:
+  gauntlet:
+    runs-on: ubuntu-latest
+    needs: build  # Requires build workflow
+    
+    strategy:
+      matrix:
+        batch: [0, 1, 2, 3]
+      max-parallel: 2
+    
+    env:
+      GAMES_PER_BATCH: ${{ (inputs.total_games || 200) / 4 }}
+      TIME_PER_MOVE: ${{ inputs.time_control || 1.0 }}
+      OPENING_COUNT: 10
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download Nexus engine
+        uses: actions/download-artifact@v3
+        with:
+          name: nexus-binary-g++-11
+          path: ./engines/nexus
+      
+      - name: Download Stockfish 18
+        run: |
+          mkdir -p engines/stockfish
+          wget -q https://github.com/official-stockfish/Stockfish/releases/download/sf_18/stockfish-18-linux/stockfish-18 \
+            -O engines/stockfish/stockfish-18
+          chmod +x engines/stockfish/stockfish-18
+      
+      - name: Cache opening book for gauntlet
+        uses: actions/cache@v3
+        with:
+          path: data/gauntlet_book/
+          key: gauntlet-book-v1
+      
+      - name: Download opening book
+        run: |
+          mkdir -p data/gauntlet_book/
+          # Download or generate opening book
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install cutechess or fastchess
+        run: |
+          pip install python-chess
+          # Download or build cutechess-cli if needed
+      
+      - name: Run gauntlet batch ${{ matrix.batch }}
+        run: |
+          chmod +x ./engines/nexus/nexus_engine ./engines/stockfish/stockfish-18
+          
+          python3 scripts/run_gauntlet.py \
+            --engine1 ./engines/nexus/nexus_engine \
+            --engine2 ./engines/stockfish/stockfish-18 \
+            --games $GAMES_PER_BATCH \
+            --time $TIME_PER_MOVE \
+            --opening-count $OPENING_COUNT \
+            --seed $((42 + ${{ matrix.batch }})) \
+            --output gauntlet_batch_${{ matrix.batch }}.pgn \
+            --stats gauntlet_stats_${{ matrix.batch }}.json \
+            --batch-id ${{ matrix.batch }}
+      
+      - name: Upload batch results
+        uses: actions/upload-artifact@v3
+        with:
+          name: gauntlet-batch-${{ matrix.batch }}
+          path: |
+            gauntlet_batch_${{ matrix.batch }}.pgn
+            gauntlet_stats_${{ matrix.batch }}.json
+          retention-days: 30
+
+  aggregate-results:
+    runs-on: ubuntu-latest
+    needs: gauntlet
+    if: always()
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download all gauntlet results
+        uses: actions/download-artifact@v3
+        with:
+          path: ./results
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: pip install python-chess numpy scipy
+      
+      - name: Aggregate results
+        run: |
+          python3 scripts/aggregate_gauntlet.py \
+            --results-dir ./results/gauntlet-batch-* \
+            --output-json gauntlet_summary.json \
+            --output-pgn gauntlet_all_games.pgn
+      
+      - name: Calculate Elo delta
+        run: |
+          python3 scripts/calculate_elo.py \
+            --pgn gauntlet_all_games.pgn \
+            --output elo_estimate.json \
+            --confidence 0.95
+      
+      - name: Display results
+        run: |
+          python3 -c "
+          import json
+          with open('elo_estimate.json') as f:
+              elo = json.load(f)
+          
+          print('=== GAUNTLET RESULTS ===')
+          print(f'Nexus Infinite vs Stockfish 18')
+          print(f'Games: {elo[\"total_games\"]}')
+          print(f'Elo delta: {elo[\"elo_delta\"]:.1f} ± {elo[\"elo_stdev\"]:.1f}')
+          print(f'Win rate: {elo[\"win_rate\"]:.1f}%')
+          print(f'Draw rate: {elo[\"draw_rate\"]:.1f}%')
+          print(f'Loss rate: {elo[\"loss_rate\"]:.1f}%')
+          "
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let elo = {elo_delta: 0, elo_stdev: 0, win_rate: 0, draw_rate: 0};
+            try {
+              elo = JSON.parse(fs.readFileSync('elo_estimate.json'));
+            } catch(e) {
+              console.log('Could not read Elo file');
+            }
+            
+            const comment = `### ⚔️ Gauntlet Results
+            - **Nexus Infinite vs Stockfish 18**
+            - Total games: 200
+            - **Elo delta: ${elo.elo_delta?.toFixed(1) || '?'} ± ${elo.elo_stdev?.toFixed(1) || '?'} cp**
+            - Win%: ${elo.win_rate?.toFixed(1) || '?'}%
+            - Draw%: ${elo.draw_rate?.toFixed(1) || '?'}%
+            - Loss%: ${elo.loss_rate?.toFixed(1) || '?'}%
+            
+            ${elo.elo_delta > 20 ? '✅ Significant improvement' : elo.elo_delta > -20 ? '✓ No regression' : '❌ Performance regression'}`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      
+      - name: Upload summary
+        uses: actions/upload-artifact@v3
+        with:
+          name: gauntlet-summary
+          path: |
+            gauntlet_summary.json
+            elo_estimate.json
+            gauntlet_all_games.pgn
+          retention-days: 90
+      
+      - name: Fail if regression
+        run: |
+          python3 scripts/check_regression.py \
+            --elo-file elo_estimate.json \
+            --threshold -20

@@ -1,0 +1,30 @@
+NEXUS INFINITE BINARY LICENSE
+
+Copyright (c) 2026 Longnononn
+
+1. GRANT OF LICENSE
+   This license grants you the right to use the Nexus Infinite chess engine 
+   binaries (the "Software") for personal, educational, or research purposes.
+
+2. RESTRICTIONS
+   You MAY NOT:
+   - Decompile, reverse engineer, or disassemble the Software
+   - Distribute modified versions of the Software
+   - Use the Software for commercial purposes without written permission
+   - Access or attempt to access the source code or training infrastructure
+
+3. NO SOURCE CODE
+   This repository contains ONLY compiled binaries and documentation.
+   Source code is proprietary and not available for distribution.
+
+4. TRAINING DATA
+   All neural network weights, training data, and related artifacts are 
+   proprietary and confidential.
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+
+6. GOVERNING LAW
+   This license shall be governed by the laws of Vietnam.
+
+For licensing inquiries: [contact information]

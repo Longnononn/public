@@ -40,6 +40,9 @@ constexpr PieceType type_of(Piece pc) {
     return PieceType(pc & 7);
 }
 
+enum File : i32 { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NB };
+enum Rank : i32 { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NB };
+
 enum Square : i32 {
     SQ_A1, SQ_B1, SQ_C1, SQ_D1, SQ_E1, SQ_F1, SQ_G1, SQ_H1,
     SQ_A2, SQ_B2, SQ_C2, SQ_D2, SQ_E2, SQ_F2, SQ_G2, SQ_H2,
@@ -64,9 +67,6 @@ constexpr int square_distance(Square a, Square b) {
     return std::max(std::abs(file_of(a) - file_of(b)), std::abs(rank_of(a) - rank_of(b)));
 }
 constexpr bool is_ok(Square s) { return s >= SQ_A1 && s <= SQ_H8; }
-
-enum File : i32 { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NB };
-enum Rank : i32 { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NB };
 
 enum CastlingRights : i32 {
     NO_CASTLING,

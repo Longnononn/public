@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.h"
+#include "training.h"
 #include <string>
 #include <vector>
 #include <unordered_set>

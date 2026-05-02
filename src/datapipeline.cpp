@@ -339,8 +339,8 @@ QualityMetrics DataPipeline::analyze(
         if (pos.ply < 20) opening++;
         
         totalEntropy += pos.entropy;
-        scoreSum += pos.score;
-        scoreSqSum += pos.score * pos.score;
+        scoreSum += static_cast<int>(pos.score);
+        scoreSqSum += static_cast<int>(pos.score) * static_cast<int>(pos.score);
     }
     
     m.quietPositions = quiet;

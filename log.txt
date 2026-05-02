@@ -1,1152 +1,564 @@
-2026-05-02T13:12:44.3652786Z Current runner version: '2.334.0'
-2026-05-02T13:12:44.3687338Z ##[group]Runner Image Provisioner
-2026-05-02T13:12:44.3688671Z Hosted Compute Agent
-2026-05-02T13:12:44.3689618Z Version: 20260213.493
-2026-05-02T13:12:44.3690670Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-05-02T13:12:44.3692766Z Build Date: 2026-02-13T00:28:41Z
-2026-05-02T13:12:44.3693883Z Worker ID: {39c872da-1e6d-4aa4-b5ff-dad780f135df}
-2026-05-02T13:12:44.3695028Z Azure Region: northcentralus
-2026-05-02T13:12:44.3696198Z ##[endgroup]
-2026-05-02T13:12:44.3698443Z ##[group]Operating System
-2026-05-02T13:12:44.3699451Z Ubuntu
-2026-05-02T13:12:44.3700288Z 24.04.4
-2026-05-02T13:12:44.3700860Z LTS
-2026-05-02T13:12:44.3701296Z ##[endgroup]
-2026-05-02T13:12:44.3702238Z ##[group]Runner Image
-2026-05-02T13:12:44.3702849Z Image: ubuntu-24.04
-2026-05-02T13:12:44.3703324Z Version: 20260413.86.1
-2026-05-02T13:12:44.3704593Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
-2026-05-02T13:12:44.3705960Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
-2026-05-02T13:12:44.3706882Z ##[endgroup]
-2026-05-02T13:12:44.3707942Z ##[group]GITHUB_TOKEN Permissions
-2026-05-02T13:12:44.3709995Z Contents: read
-2026-05-02T13:12:44.3710645Z Metadata: read
-2026-05-02T13:12:44.3711124Z Packages: read
-2026-05-02T13:12:44.3711596Z ##[endgroup]
-2026-05-02T13:12:44.3713959Z Secret source: Actions
-2026-05-02T13:12:44.3714985Z Prepare workflow directory
-2026-05-02T13:12:44.4119670Z Prepare all required actions
-2026-05-02T13:12:44.4173852Z Getting action download info
-2026-05-02T13:12:44.7936712Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-05-02T13:12:44.9149424Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2026-05-02T13:12:45.1190402Z Complete job name: build-and-test
-2026-05-02T13:12:45.1949583Z ##[group]Run actions/checkout@v4
-2026-05-02T13:12:45.1950500Z with:
-2026-05-02T13:12:45.1950904Z   fetch-depth: 0
-2026-05-02T13:12:45.1951341Z   repository: Longnononn/public
-2026-05-02T13:12:45.1952252Z   token: ***
-2026-05-02T13:12:45.1952659Z   ssh-strict: true
-2026-05-02T13:12:45.1953071Z   ssh-user: git
-2026-05-02T13:12:45.1953489Z   persist-credentials: true
-2026-05-02T13:12:45.1953959Z   clean: true
-2026-05-02T13:12:45.1954376Z   sparse-checkout-cone-mode: true
-2026-05-02T13:12:45.1954888Z   fetch-tags: false
-2026-05-02T13:12:45.1955316Z   show-progress: true
-2026-05-02T13:12:45.1955743Z   lfs: false
-2026-05-02T13:12:45.1956124Z   submodules: false
-2026-05-02T13:12:45.1956535Z   set-safe-directory: true
-2026-05-02T13:12:45.1957289Z ##[endgroup]
-2026-05-02T13:12:45.3057107Z Syncing repository: Longnononn/public
-2026-05-02T13:12:45.3058926Z ##[group]Getting Git version info
-2026-05-02T13:12:45.3059642Z Working directory is '/home/runner/work/public/public'
-2026-05-02T13:12:45.3060700Z [command]/usr/bin/git version
-2026-05-02T13:12:45.3102149Z git version 2.53.0
-2026-05-02T13:12:45.3128811Z ##[endgroup]
-2026-05-02T13:12:45.3144957Z Temporarily overriding HOME='/home/runner/work/_temp/554f263e-f241-4999-965b-18740c8c762f' before making global git config changes
-2026-05-02T13:12:45.3158871Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T13:12:45.3160993Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T13:12:45.3192350Z Deleting the contents of '/home/runner/work/public/public'
-2026-05-02T13:12:45.3196838Z ##[group]Initializing the repository
-2026-05-02T13:12:45.3201479Z [command]/usr/bin/git init /home/runner/work/public/public
-2026-05-02T13:12:45.3282916Z hint: Using 'master' as the name for the initial branch. This default branch name
-2026-05-02T13:12:45.3284646Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-2026-05-02T13:12:45.3285669Z hint: to use in all of your new repositories, which will suppress this warning,
-2026-05-02T13:12:45.3286695Z hint: call:
-2026-05-02T13:12:45.3287220Z hint:
-2026-05-02T13:12:45.3287737Z hint: 	git config --global init.defaultBranch <name>
-2026-05-02T13:12:45.3288332Z hint:
-2026-05-02T13:12:45.3289200Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2026-05-02T13:12:45.3290672Z hint: 'development'. The just-created branch can be renamed via this command:
-2026-05-02T13:12:45.3291405Z hint:
-2026-05-02T13:12:45.3292081Z hint: 	git branch -m <name>
-2026-05-02T13:12:45.3292573Z hint:
-2026-05-02T13:12:45.3293187Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2026-05-02T13:12:45.3294137Z Initialized empty Git repository in /home/runner/work/public/public/.git/
-2026-05-02T13:12:45.3296245Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
-2026-05-02T13:12:45.3328685Z ##[endgroup]
-2026-05-02T13:12:45.3329586Z ##[group]Disabling automatic garbage collection
-2026-05-02T13:12:45.3333134Z [command]/usr/bin/git config --local gc.auto 0
-2026-05-02T13:12:45.3374046Z ##[endgroup]
-2026-05-02T13:12:45.3374752Z ##[group]Setting up auth
-2026-05-02T13:12:45.3375491Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T13:12:45.3412500Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T13:12:45.3687898Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T13:12:45.3718349Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T13:12:45.3937623Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T13:12:45.3972478Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T13:12:45.4221298Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-05-02T13:12:45.4256113Z ##[endgroup]
-2026-05-02T13:12:45.4257773Z ##[group]Fetching the repository
-2026-05-02T13:12:45.4266056Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-2026-05-02T13:12:45.8351086Z From https://github.com/Longnononn/public
-2026-05-02T13:12:45.8352914Z  * [new branch]      main       -> origin/main
-2026-05-02T13:12:45.8387429Z [command]/usr/bin/git branch --list --remote origin/main
-2026-05-02T13:12:45.8410857Z   origin/main
-2026-05-02T13:12:45.8419730Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
-2026-05-02T13:12:45.8439401Z 21d3c99b2b4d085286405e498dd7ca3087fb94e8
-2026-05-02T13:12:45.8444240Z ##[endgroup]
-2026-05-02T13:12:45.8445555Z ##[group]Determining the checkout info
-2026-05-02T13:12:45.8446838Z ##[endgroup]
-2026-05-02T13:12:45.8451238Z [command]/usr/bin/git sparse-checkout disable
-2026-05-02T13:12:45.8487504Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-05-02T13:12:45.8514331Z ##[group]Checking out the ref
-2026-05-02T13:12:45.8518784Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-05-02T13:12:45.8620610Z Switched to a new branch 'main'
-2026-05-02T13:12:45.8623008Z branch 'main' set up to track 'origin/main'.
-2026-05-02T13:12:45.8630496Z ##[endgroup]
-2026-05-02T13:12:45.8662983Z [command]/usr/bin/git log -1 --format=%H
-2026-05-02T13:12:45.8684962Z 21d3c99b2b4d085286405e498dd7ca3087fb94e8
-2026-05-02T13:12:45.8893788Z ##[group]Run sudo apt-get update
-2026-05-02T13:12:45.8894989Z [36;1msudo apt-get update[0m
-2026-05-02T13:12:45.8896364Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
-2026-05-02T13:12:45.8897864Z [36;1mpip3 install numpy scipy[0m
-2026-05-02T13:12:45.8923728Z shell: /usr/bin/bash -e {0}
-2026-05-02T13:12:45.8925017Z ##[endgroup]
-2026-05-02T13:12:45.9705374Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T13:12:46.0001191Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2026-05-02T13:12:46.0079266Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2026-05-02T13:12:46.0114051Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2026-05-02T13:12:46.0155592Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2026-05-02T13:12:46.0178394Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2026-05-02T13:12:46.0230533Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2026-05-02T13:12:46.0535408Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
-2026-05-02T13:12:46.1406038Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
-2026-05-02T13:12:46.1629555Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
-2026-05-02T13:12:46.1666711Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
-2026-05-02T13:12:46.1680795Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
-2026-05-02T13:12:46.1699517Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
-2026-05-02T13:12:46.1793158Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
-2026-05-02T13:12:46.1838448Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
-2026-05-02T13:12:46.1855811Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
-2026-05-02T13:12:46.1867037Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
-2026-05-02T13:12:46.2043216Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
-2026-05-02T13:12:46.2551620Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2026-05-02T13:12:46.2564121Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
-2026-05-02T13:12:46.2578211Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
-2026-05-02T13:12:46.2591246Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
-2026-05-02T13:12:46.2605700Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2026-05-02T13:12:46.2618675Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
-2026-05-02T13:12:46.2631500Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
-2026-05-02T13:12:46.2645516Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
-2026-05-02T13:12:46.2657033Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
-2026-05-02T13:12:46.2669770Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
-2026-05-02T13:12:46.2680962Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
-2026-05-02T13:12:46.2694526Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
-2026-05-02T13:12:46.2706195Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
-2026-05-02T13:12:46.2718426Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
-2026-05-02T13:12:46.3192984Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-2026-05-02T13:12:46.3207985Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
-2026-05-02T13:12:46.3219012Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2026-05-02T13:12:46.3229115Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
-2026-05-02T13:12:46.3320609Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
-2026-05-02T13:12:46.3351071Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
-2026-05-02T13:12:46.3364074Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
-2026-05-02T13:12:46.3376899Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
-2026-05-02T13:12:46.3449254Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
-2026-05-02T13:12:46.3482324Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
-2026-05-02T13:12:46.3488924Z Get:50 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
-2026-05-02T13:12:46.3499116Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
-2026-05-02T13:12:46.3509302Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
-2026-05-02T13:12:46.3584122Z Get:51 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
-2026-05-02T13:12:46.3614350Z Get:52 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
-2026-05-02T13:12:46.3694835Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
-2026-05-02T13:12:46.3723393Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2026-05-02T13:12:46.3733928Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
-2026-05-02T13:12:46.4210863Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
-2026-05-02T13:12:46.4215390Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2026-05-02T13:12:46.4296091Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
-2026-05-02T13:12:55.9461402Z Fetched 16.5 MB in 2s (9148 kB/s)
-2026-05-02T13:12:56.6853753Z Reading package lists...
-2026-05-02T13:12:56.7160452Z Reading package lists...
-2026-05-02T13:12:56.8697913Z Building dependency tree...
-2026-05-02T13:12:56.8704337Z Reading state information...
-2026-05-02T13:12:57.0129920Z g++ is already the newest version (4:13.2.0-7ubuntu1).
-2026-05-02T13:12:57.0130837Z python3 is already the newest version (3.12.3-0ubuntu2.1).
-2026-05-02T13:12:57.0132174Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
-2026-05-02T13:12:57.0132937Z Suggested packages:
-2026-05-02T13:12:57.0133680Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
-2026-05-02T13:12:57.0353023Z The following NEW packages will be installed:
-2026-05-02T13:12:57.0360422Z   cmake cmake-data libjsoncpp25 librhash0
-2026-05-02T13:12:57.0525768Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
-2026-05-02T13:12:57.0526584Z Need to get 13.6 MB of archives.
-2026-05-02T13:12:57.0527861Z After this operation, 49.1 MB of additional disk space will be used.
-2026-05-02T13:12:57.0528704Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T13:12:57.0914673Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
-2026-05-02T13:12:57.1147646Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
-2026-05-02T13:12:57.1378550Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
-2026-05-02T13:12:57.1762985Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
-2026-05-02T13:12:57.4990224Z Fetched 13.6 MB in 0s (63.1 MB/s)
-2026-05-02T13:12:57.5240557Z Selecting previously unselected package libjsoncpp25:amd64.
-2026-05-02T13:12:57.5564861Z (Reading database ... 
-2026-05-02T13:12:57.5565295Z (Reading database ... 5%
-2026-05-02T13:12:57.5565641Z (Reading database ... 10%
-2026-05-02T13:12:57.5566054Z (Reading database ... 15%
-2026-05-02T13:12:57.5566349Z (Reading database ... 20%
-2026-05-02T13:12:57.5566736Z (Reading database ... 25%
-2026-05-02T13:12:57.5567360Z (Reading database ... 30%
-2026-05-02T13:12:57.5567860Z (Reading database ... 35%
-2026-05-02T13:12:57.5568146Z (Reading database ... 40%
-2026-05-02T13:12:57.5568365Z (Reading database ... 45%
-2026-05-02T13:12:57.5568594Z (Reading database ... 50%
-2026-05-02T13:12:57.5653813Z (Reading database ... 55%
-2026-05-02T13:12:57.9098446Z (Reading database ... 60%
-2026-05-02T13:12:58.0875155Z (Reading database ... 65%
-2026-05-02T13:12:58.2926131Z (Reading database ... 70%
-2026-05-02T13:12:58.4432401Z (Reading database ... 75%
-2026-05-02T13:12:58.6451256Z (Reading database ... 80%
-2026-05-02T13:12:58.8469964Z (Reading database ... 85%
-2026-05-02T13:12:58.9985425Z (Reading database ... 90%
-2026-05-02T13:12:59.1590945Z (Reading database ... 95%
-2026-05-02T13:12:59.1591491Z (Reading database ... 100%
-2026-05-02T13:12:59.1592416Z (Reading database ... 220764 files and directories currently installed.)
-2026-05-02T13:12:59.1632867Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
-2026-05-02T13:12:59.1674316Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T13:12:59.1914802Z Selecting previously unselected package librhash0:amd64.
-2026-05-02T13:12:59.2046461Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
-2026-05-02T13:12:59.2057207Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T13:12:59.2307266Z Selecting previously unselected package cmake-data.
-2026-05-02T13:12:59.2439597Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
-2026-05-02T13:12:59.2506728Z Unpacking cmake-data (3.28.3-1build7) ...
-2026-05-02T13:12:59.8093410Z Selecting previously unselected package cmake.
-2026-05-02T13:12:59.8242961Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
-2026-05-02T13:12:59.8250570Z Unpacking cmake (3.28.3-1build7) ...
-2026-05-02T13:12:59.9949174Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T13:12:59.9977149Z Setting up librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T13:13:00.0002092Z Setting up cmake-data (3.28.3-1build7) ...
-2026-05-02T13:13:00.0071132Z Setting up cmake (3.28.3-1build7) ...
-2026-05-02T13:13:00.0099084Z Processing triggers for man-db (2.12.0-4build2) ...
-2026-05-02T13:13:00.0125550Z Not building database; man-db/auto-update is not 'true'.
-2026-05-02T13:13:00.0140313Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
-2026-05-02T13:13:00.6345924Z 
-2026-05-02T13:13:00.6346363Z Running kernel seems to be up-to-date.
-2026-05-02T13:13:00.6346741Z 
-2026-05-02T13:13:00.6346906Z No services need to be restarted.
-2026-05-02T13:13:00.6347195Z 
-2026-05-02T13:13:00.6347342Z No containers need to be restarted.
-2026-05-02T13:13:00.6347574Z 
-2026-05-02T13:13:00.6347713Z No user sessions are running outdated binaries.
-2026-05-02T13:13:00.6347949Z 
-2026-05-02T13:13:00.6348171Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
-2026-05-02T13:13:01.7890840Z Defaulting to user installation because normal site-packages is not writeable
-2026-05-02T13:13:02.3246444Z Collecting numpy
-2026-05-02T13:13:02.3595645Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
-2026-05-02T13:13:02.4994690Z Collecting scipy
-2026-05-02T13:13:02.5030763Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
-2026-05-02T13:13:02.5169317Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 4.5 MB/s eta 0:00:00
-2026-05-02T13:13:02.5602065Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
-2026-05-02T13:13:02.6971285Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 149.4 MB/s eta 0:00:00
-2026-05-02T13:13:02.7006555Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
-2026-05-02T13:13:02.8901475Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 120.7 MB/s eta 0:00:00
-2026-05-02T13:13:03.2444771Z Installing collected packages: numpy, scipy
-2026-05-02T13:13:08.4146630Z Successfully installed numpy-2.4.4 scipy-1.17.1
-2026-05-02T13:13:08.5037415Z ##[group]Run git checkout main
-2026-05-02T13:13:08.5037721Z [36;1mgit checkout main[0m
-2026-05-02T13:13:08.5037960Z [36;1mmkdir -p build_baseline[0m
-2026-05-02T13:13:08.5038191Z [36;1mcd build_baseline[0m
-2026-05-02T13:13:08.5038443Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
-2026-05-02T13:13:08.5038717Z [36;1mmake -j$(nproc)[0m
-2026-05-02T13:13:08.5038930Z [36;1mcp nexus ../nexus_base[0m
-2026-05-02T13:13:08.5039151Z [36;1mcd ..[0m
-2026-05-02T13:13:08.5061200Z shell: /usr/bin/bash -e {0}
-2026-05-02T13:13:08.5061436Z ##[endgroup]
-2026-05-02T13:13:08.5153086Z Already on 'main'
-2026-05-02T13:13:08.5217719Z Your branch is up to date with 'origin/main'.
-2026-05-02T13:13:09.4189092Z -- The CXX compiler identification is GNU 13.3.0
-2026-05-02T13:13:09.5160902Z -- Detecting CXX compiler ABI info
-2026-05-02T13:13:09.6074605Z -- Detecting CXX compiler ABI info - done
-2026-05-02T13:13:09.6245843Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
-2026-05-02T13:13:09.6297454Z -- Detecting CXX compile features
-2026-05-02T13:13:09.6350611Z -- Detecting CXX compile features - done
-2026-05-02T13:13:09.6701273Z -- Performing Test COMPILER_SUPPORTS_AVX2
-2026-05-02T13:13:09.7963365Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
-2026-05-02T13:13:09.7970765Z -- Performing Test COMPILER_SUPPORTS_BMI2
-2026-05-02T13:13:09.8549975Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
-2026-05-02T13:13:09.8557726Z -- Performing Test COMPILER_SUPPORTS_POPCNT
-2026-05-02T13:13:09.9139119Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
-2026-05-02T13:13:09.9144121Z -- Configuring done (1.1s)
-2026-05-02T13:13:09.9223000Z -- Generating done (0.0s)
-2026-05-02T13:13:09.9226193Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
-2026-05-02T13:13:09.9406191Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
-2026-05-02T13:13:09.9408731Z [  7%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
-2026-05-02T13:13:09.9409756Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
-2026-05-02T13:13:09.9410793Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
-2026-05-02T13:13:10.5295906Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T13:13:10.5323329Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T13:13:10.5352429Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T13:13:10.5382294Z       |             ^~~~~
-2026-05-02T13:13:10.5822704Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T13:13:10.5825026Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T13:13:10.5852504Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T13:13:10.5882297Z       |     ^~~~~~~~~~~~
-2026-05-02T13:13:10.6122524Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
-2026-05-02T13:13:10.6723152Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
-2026-05-02T13:13:10.6763239Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
-2026-05-02T13:13:10.6764491Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
-2026-05-02T13:13:10.6792277Z       |         ^~~~~~~
-2026-05-02T13:13:10.6996003Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T13:13:10.6998268Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T13:13:10.7022209Z   169 |     Key key = st.key;
-2026-05-02T13:13:10.7022628Z       |         ^~~
-2026-05-02T13:13:10.7523577Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
-2026-05-02T13:13:10.7742639Z [ 17%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
-2026-05-02T13:13:10.8982982Z [ 20%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
-2026-05-02T13:13:10.9253938Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
-2026-05-02T13:13:10.9283016Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
-2026-05-02T13:13:10.9342416Z   131 |         int shift = 64 - shifts[s];
-2026-05-02T13:13:10.9372277Z       |             ^~~~~
-2026-05-02T13:13:10.9762702Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
-2026-05-02T13:13:10.9793983Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
-2026-05-02T13:13:10.9795369Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T13:13:10.9795915Z       |     ^~~~~~~~~~~~
-2026-05-02T13:13:11.0062548Z [ 22%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
-2026-05-02T13:13:11.2742918Z [ 25%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
-2026-05-02T13:13:11.3093742Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T13:13:11.3123130Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T13:13:11.3144185Z    94 |     Color them = ~us;
-2026-05-02T13:13:11.3149366Z       |           ^~~~
-2026-05-02T13:13:11.3242592Z [ 27%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
-2026-05-02T13:13:11.3715846Z [ 30%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
-2026-05-02T13:13:11.4723984Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
-2026-05-02T13:13:11.4725929Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
-2026-05-02T13:13:11.4752229Z   169 |     Key key = st.key;
-2026-05-02T13:13:11.4764388Z       |         ^~~
-2026-05-02T13:13:11.6905636Z [ 32%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
-2026-05-02T13:13:11.7512947Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
-2026-05-02T13:13:11.7872001Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
-2026-05-02T13:13:12.0933963Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
-2026-05-02T13:13:12.0993057Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
-2026-05-02T13:13:12.1002383Z    94 |     Color them = ~us;
-2026-05-02T13:13:12.1032331Z       |           ^~~~
-2026-05-02T13:13:12.1665217Z [ 40%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
-2026-05-02T13:13:12.8560554Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T13:13:12.8594091Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T13:13:12.8612518Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T13:13:12.8642507Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:12.8672555Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T13:13:12.8682860Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T13:13:12.8702379Z    26 | struct TTCluster {
-2026-05-02T13:13:12.8732843Z       |        ^~~~~~~~~
-2026-05-02T13:13:12.9379546Z In file included from /home/runner/work/public/public/src/search.cpp:7:
-2026-05-02T13:13:12.9404049Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:13:12.9432534Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:13:12.9457765Z       |                                        ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:13:12.9582668Z [ 42%] Building CXX object CMakeFiles/nexus.dir/src/uci.cpp.o
-2026-05-02T13:13:13.0971006Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
-2026-05-02T13:13:13.0994235Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
-2026-05-02T13:13:13.1022574Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T13:13:13.1052434Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:13.1053493Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T13:13:13.1082982Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
-2026-05-02T13:13:13.1112292Z    26 | struct TTCluster {
-2026-05-02T13:13:13.1142170Z       |        ^~~~~~~~~
-2026-05-02T13:13:13.1832025Z [ 45%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
-2026-05-02T13:13:13.6712966Z [ 47%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
-2026-05-02T13:13:13.7569375Z [ 50%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
-2026-05-02T13:13:13.8424627Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
-2026-05-02T13:13:13.8482706Z /home/runner/work/public/public/src/search.cpp:227:36:   required from here
-2026-05-02T13:13:13.8513080Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
-2026-05-02T13:13:13.8514404Z   432 |     int moveCount = end - moveList;
-2026-05-02T13:13:13.8542407Z       |         ^~~~~~~~~
-2026-05-02T13:13:13.8573960Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
-2026-05-02T13:13:13.8602520Z /home/runner/work/public/public/src/search.cpp:807:91:   required from here
-2026-05-02T13:13:13.8622960Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
-2026-05-02T13:13:14.1522860Z In file included from /home/runner/work/public/public/src/history.cpp:1:
-2026-05-02T13:13:14.1544353Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:13:14.1582475Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:13:14.1603410Z       |                                        ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:13:14.1772630Z [ 52%] Building CXX object CMakeFiles/nexus.dir/src/see.cpp.o
-2026-05-02T13:13:14.2463220Z [ 55%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
-2026-05-02T13:13:14.5275590Z [ 57%] Building CXX object CMakeFiles/nexus.dir/src/reductions.cpp.o
-2026-05-02T13:13:14.6672611Z [ 60%] Building CXX object CMakeFiles/nexus.dir/src/history.cpp.o
-2026-05-02T13:13:15.0323114Z [ 62%] Building CXX object CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
-2026-05-02T13:13:15.0622810Z In file included from /home/runner/work/public/public/src/history.cpp:1:
-2026-05-02T13:13:15.0625692Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:13:15.0627302Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:13:15.0627921Z       |                                        ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:13:15.1612538Z [ 65%] Building CXX object CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
-2026-05-02T13:13:15.5102774Z [ 67%] Building CXX object CMakeFiles/nexus.dir/src/simd.cpp.o
-2026-05-02T13:13:15.6692593Z [ 70%] Building CXX object CMakeFiles/nexus_tests.dir/src/thread.cpp.o
-2026-05-02T13:13:15.9464226Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
-2026-05-02T13:13:15.9493230Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
-2026-05-02T13:13:15.9522616Z   136 |     WDLResult bestWdl = WDL_FAIL;
-2026-05-02T13:13:15.9552310Z       |               ^~~~~~~
-2026-05-02T13:13:16.1409575Z [ 72%] Building CXX object CMakeFiles/nexus.dir/src/nnue.cpp.o
-2026-05-02T13:13:16.2573619Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
-2026-05-02T13:13:16.2603835Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
-2026-05-02T13:13:16.2632254Z   389 |     return size >= expectedSize;
-2026-05-02T13:13:16.2662445Z       |            ~~~~~^~~~~~~~~~~~~~~
-2026-05-02T13:13:16.4202293Z [ 75%] Building CXX object CMakeFiles/nexus.dir/src/syzygy.cpp.o
-2026-05-02T13:13:16.8022999Z [ 77%] Building CXX object CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
-2026-05-02T13:13:17.1593985Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
-2026-05-02T13:13:17.1622988Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
-2026-05-02T13:13:17.1623974Z   136 |     WDLResult bestWdl = WDL_FAIL;
-2026-05-02T13:13:17.1652234Z       |               ^~~~~~~
-2026-05-02T13:13:17.3532834Z [ 80%] Building CXX object CMakeFiles/nexus_tests.dir/src/training.cpp.o
-2026-05-02T13:13:17.3902863Z [ 82%] Building CXX object CMakeFiles/nexus.dir/src/thread.cpp.o
-2026-05-02T13:13:17.4157375Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
-2026-05-02T13:13:17.4184173Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
-2026-05-02T13:13:17.4212338Z   389 |     return size >= expectedSize;
-2026-05-02T13:13:17.4232282Z       |            ~~~~~^~~~~~~~~~~~~~~
-2026-05-02T13:13:17.5526098Z [ 85%] Building CXX object CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o
-2026-05-02T13:13:17.8714345Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_perft_tests()’:
-2026-05-02T13:13:17.8743458Z /home/runner/work/public/public/src/test_suite.cpp:178:33: error: invalid operands of types ‘const char [8]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:17.8744756Z   178 |         result.name = "Perft: " + pos.name;
-2026-05-02T13:13:17.8772233Z       |                       ~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:17.8772760Z       |                       |               |
-2026-05-02T13:13:17.8773268Z       |                       const char [8]  const char* const
-2026-05-02T13:13:17.8775258Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
-2026-05-02T13:13:17.8802905Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
-2026-05-02T13:13:17.8832330Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
-2026-05-02T13:13:17.8862157Z       |                  ^~~
-2026-05-02T13:13:17.8913288Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_tactical_tests()’:
-2026-05-02T13:13:17.8916278Z /home/runner/work/public/public/src/test_suite.cpp:277:36: error: invalid operands of types ‘const char [11]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:17.8918010Z   277 |         result.name = "Tactical: " + pos.name;
-2026-05-02T13:13:17.8918745Z       |                       ~~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:17.8919400Z       |                       |                  |
-2026-05-02T13:13:17.8920077Z       |                       const char [11]    const char* const
-2026-05-02T13:13:17.8922586Z /home/runner/work/public/public/src/test_suite.cpp:293:27: error: request for member ‘empty’ in ‘pos.TestSuite::TestPosition::bestMove’, which is of non-class type ‘const char* const’
-2026-05-02T13:13:17.8923813Z   293 |         if (!pos.bestMove.empty()) {
-2026-05-02T13:13:17.8924210Z       |                           ^~~~~
-2026-05-02T13:13:17.8925428Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_endgame_tests()’:
-2026-05-02T13:13:17.8927248Z /home/runner/work/public/public/src/test_suite.cpp:312:35: error: invalid operands of types ‘const char [10]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:17.8928335Z   312 |         result.name = "Endgame: " + pos.name;
-2026-05-02T13:13:17.8928798Z       |                       ~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:17.8929223Z       |                       |                 |
-2026-05-02T13:13:17.8929686Z       |                       const char [10]   const char* const
-2026-05-02T13:13:17.8931278Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_regression_tests()’:
-2026-05-02T13:13:17.8933426Z /home/runner/work/public/public/src/test_suite.cpp:332:38: error: invalid operands of types ‘const char [13]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:17.8934661Z   332 |         result.name = "Regression: " + pos.name;
-2026-05-02T13:13:17.8935197Z       |                       ~~~~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:17.8935666Z       |                       |                    |
-2026-05-02T13:13:17.8936206Z       |                       const char [13]      const char* const
-2026-05-02T13:13:18.0873071Z In file included from /home/runner/work/public/public/src/datapipeline.cpp:1:
-2026-05-02T13:13:18.0923086Z /home/runner/work/public/public/src/datapipeline.h:27:5: error: ‘Value’ does not name a type
-2026-05-02T13:13:18.1016035Z    27 |     Value score;
-2026-05-02T13:13:18.1016655Z       |     ^~~~~
-2026-05-02T13:13:18.1024439Z /home/runner/work/public/public/src/datapipeline.h:60:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1029638Z    60 |     u64 totalPositions;
-2026-05-02T13:13:18.1072117Z       |     ^~~
-2026-05-02T13:13:18.1104799Z /home/runner/work/public/public/src/datapipeline.h:61:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1105522Z    61 |     u64 afterFiltering;
-2026-05-02T13:13:18.1105893Z       |     ^~~
-2026-05-02T13:13:18.1106686Z /home/runner/work/public/public/src/datapipeline.h:62:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1107909Z    62 |     u64 duplicatesRemoved;
-2026-05-02T13:13:18.1108317Z       |     ^~~
-2026-05-02T13:13:18.1109131Z /home/runner/work/public/public/src/datapipeline.h:63:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1109915Z    63 |     u64 forcedMatesRemoved;
-2026-05-02T13:13:18.1110321Z       |     ^~~
-2026-05-02T13:13:18.1111385Z /home/runner/work/public/public/src/datapipeline.h:64:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1112522Z    64 |     u64 quietPositions;
-2026-05-02T13:13:18.1112896Z       |     ^~~
-2026-05-02T13:13:18.1113700Z /home/runner/work/public/public/src/datapipeline.h:65:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1114508Z    65 |     u64 tacticalPositions;
-2026-05-02T13:13:18.1114891Z       |     ^~~
-2026-05-02T13:13:18.1115685Z /home/runner/work/public/public/src/datapipeline.h:66:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1116470Z    66 |     u64 endgamePositions;
-2026-05-02T13:13:18.1116872Z       |     ^~~
-2026-05-02T13:13:18.1117696Z /home/runner/work/public/public/src/datapipeline.h:67:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1118439Z    67 |     u64 openingPositions;
-2026-05-02T13:13:18.1118843Z       |     ^~~
-2026-05-02T13:13:18.1119567Z /home/runner/work/public/public/src/datapipeline.h:68:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1120347Z    68 |     u64 lowEntropyRemoved;
-2026-05-02T13:13:18.1120721Z       |     ^~~
-2026-05-02T13:13:18.1121459Z /home/runner/work/public/public/src/datapipeline.h:85:30: error: ‘Value’ has not been declared
-2026-05-02T13:13:18.1122603Z    85 |     void set_score_threshold(Value v) { scoreThreshold = v; }
-2026-05-02T13:13:18.1123160Z       |                              ^~~~~
-2026-05-02T13:13:18.1124164Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:18.1125445Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1125969Z       |                           ^~~~~~~~
-2026-05-02T13:13:18.1126716Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:18.1127721Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1128322Z       |                                                     ^
-2026-05-02T13:13:18.1129116Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:18.1130576Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:18.1131585Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1162621Z       |                           ^~~~~~~~
-2026-05-02T13:13:18.1163455Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:18.1164467Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1165113Z       |                                                     ^
-2026-05-02T13:13:18.1165943Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:18.1167391Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:18.1168421Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1168975Z       |                           ^~~~~~~~
-2026-05-02T13:13:18.1169754Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:18.1170652Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1171232Z       |                                                     ^
-2026-05-02T13:13:18.1172313Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:18.1173729Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:18.1175003Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1175571Z       |                           ^~~~~~~~
-2026-05-02T13:13:18.1176325Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:18.1177538Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1178252Z       |                                                     ^
-2026-05-02T13:13:18.1179078Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:18.1180141Z /home/runner/work/public/public/src/datapipeline.h:92:15: error: invalid template-id
-2026-05-02T13:13:18.1181004Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1181553Z       |               ^~~
-2026-05-02T13:13:18.1182807Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ has not been declared
-2026-05-02T13:13:18.1183860Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1184500Z       |                           ^~~~~~~~
-2026-05-02T13:13:18.1186123Z /home/runner/work/public/public/src/datapipeline.h:92:9: error: missing template argument list after ‘std::vector’; template placeholder not permitted in parameter
-2026-05-02T13:13:18.1187490Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:18.1188032Z       |         ^~~~~
-2026-05-02T13:13:18.1188357Z       |              <>
-2026-05-02T13:13:18.1189309Z /home/runner/work/public/public/src/datapipeline.h:92:9: note: or use ‘auto’ for an abbreviated function template
-2026-05-02T13:13:18.1190262Z In file included from /usr/include/c++/13/vector:66,
-2026-05-02T13:13:18.1190904Z                  from /home/runner/work/public/public/src/datapipeline.h:5:
-2026-05-02T13:13:18.1222792Z /usr/include/c++/13/bits/stl_vector.h:428:11: note: ‘template<class _Tp, class _Alloc> class std::vector’ declared here
-2026-05-02T13:13:18.1223877Z   428 |     class vector : protected _Vector_base<_Tp, _Alloc>
-2026-05-02T13:13:18.1224425Z       |           ^~~~~~
-2026-05-02T13:13:18.1225326Z /home/runner/work/public/public/src/datapipeline.h:131:5: error: ‘Value’ does not name a type
-2026-05-02T13:13:18.1226137Z   131 |     Value scoreThreshold;
-2026-05-02T13:13:18.1252504Z       |     ^~~~~
-2026-05-02T13:13:18.1253852Z /home/runner/work/public/public/src/datapipeline.h: In member function ‘void DataPipeline::DataPipeline::set_score_threshold(int)’:
-2026-05-02T13:13:18.1255858Z /home/runner/work/public/public/src/datapipeline.h:85:41: error: ‘scoreThreshold’ was not declared in this scope; did you mean ‘set_score_threshold’?
-2026-05-02T13:13:18.1257159Z    85 |     void set_score_threshold(Value v) { scoreThreshold = v; }
-2026-05-02T13:13:18.1257783Z       |                                         ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.1258313Z       |                                         set_score_threshold
-2026-05-02T13:13:18.1259012Z /home/runner/work/public/public/src/datapipeline.h: At global scope:
-2026-05-02T13:13:18.1260142Z /home/runner/work/public/public/src/datapipeline.h:154:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1261073Z   154 |     u64 get_processed_count() const { return processedCount; }
-2026-05-02T13:13:18.1261898Z       |     ^~~
-2026-05-02T13:13:18.1262762Z /home/runner/work/public/public/src/datapipeline.h:155:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1263682Z   155 |     u64 get_written_count() const { return writtenCount; }
-2026-05-02T13:13:18.1264236Z       |     ^~~
-2026-05-02T13:13:18.1265045Z /home/runner/work/public/public/src/datapipeline.h:161:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1265858Z   161 |     u64 processedCount;
-2026-05-02T13:13:18.1266214Z       |     ^~~
-2026-05-02T13:13:18.1267043Z /home/runner/work/public/public/src/datapipeline.h:162:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:18.1268172Z   162 |     u64 writtenCount;
-2026-05-02T13:13:18.1268562Z       |     ^~~
-2026-05-02T13:13:18.3028656Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:289: CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o] Error 1
-2026-05-02T13:13:18.3029672Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T13:13:18.3072466Z [ 87%] Building CXX object CMakeFiles/nexus.dir/src/test_suite.cpp.o
-2026-05-02T13:13:18.4344360Z /home/runner/work/public/public/src/datapipeline.cpp: In constructor ‘DataPipeline::DataPipeline::DataPipeline(uint32_t)’:
-2026-05-02T13:13:18.4373481Z /home/runner/work/public/public/src/datapipeline.cpp:33:7: error: class ‘DataPipeline::DataPipeline’ does not have any field named ‘scoreThreshold’
-2026-05-02T13:13:18.4402354Z    33 |     , scoreThreshold(Value(500))
-2026-05-02T13:13:18.4432279Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.4463216Z /home/runner/work/public/public/src/datapipeline.cpp:33:22: error: ‘Value’ was not declared in this scope; did you mean ‘Nexus::Value’?
-2026-05-02T13:13:18.4492235Z    33 |     , scoreThreshold(Value(500))
-2026-05-02T13:13:18.4492656Z       |                      ^~~~~
-2026-05-02T13:13:18.4493055Z       |                      Nexus::Value
-2026-05-02T13:13:18.4493644Z In file included from /home/runner/work/public/public/src/datapipeline.h:3:
-2026-05-02T13:13:18.4494798Z /home/runner/work/public/public/src/types.h:107:6: note: ‘Nexus::Value’ declared here
-2026-05-02T13:13:18.4495467Z   107 | enum Value : i32 {
-2026-05-02T13:13:18.4495774Z       |      ^~~~~
-2026-05-02T13:13:18.4496238Z /home/runner/work/public/public/src/datapipeline.cpp: At global scope:
-2026-05-02T13:13:18.4498133Z /home/runner/work/public/public/src/datapipeline.cpp:40:31: error: no declaration matches ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(const std::vector<Training::TrainingPosition>&)’
-2026-05-02T13:13:18.4499667Z    40 | std::vector<FilteredPosition> DataPipeline::process(
-2026-05-02T13:13:18.4500202Z       |                               ^~~~~~~~~~~~
-2026-05-02T13:13:18.4512276Z /home/runner/work/public/public/src/datapipeline.h:91:35: note: candidate is: ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(...)’
-2026-05-02T13:13:18.4513476Z    91 |     std::vector<FilteredPosition> process(
-2026-05-02T13:13:18.4513980Z       |                                   ^~~~~~~
-2026-05-02T13:13:18.4515052Z /home/runner/work/public/public/src/datapipeline.h:78:7: note: ‘class DataPipeline::DataPipeline’ defined here
-2026-05-02T13:13:18.4515908Z    78 | class DataPipeline {
-2026-05-02T13:13:18.4516257Z       |       ^~~~~~~~~~~~
-2026-05-02T13:13:18.4516876Z /home/runner/work/public/public/src/datapipeline.cpp: In lambda function:
-2026-05-02T13:13:18.4523325Z /home/runner/work/public/public/src/datapipeline.cpp:162:44: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.4552407Z   162 |                 bool isMate = std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:18.4553111Z       |                                            ^~~~~
-2026-05-02T13:13:18.4554801Z /home/runner/work/public/public/src/datapipeline.cpp:162:54: error: ‘VALUE_MATE_IN_MAX_PLY’ was not declared in this scope; did you mean ‘Nexus::VALUE_MATE_IN_MAX_PLY’?
-2026-05-02T13:13:18.4556282Z   162 |                 bool isMate = std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:18.4582314Z       |                                                      ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.4583000Z       |                                                      Nexus::VALUE_MATE_IN_MAX_PLY
-2026-05-02T13:13:18.4584523Z /home/runner/work/public/public/src/types.h:114:5: note: ‘Nexus::VALUE_MATE_IN_MAX_PLY’ declared here
-2026-05-02T13:13:18.4585449Z   114 |     VALUE_MATE_IN_MAX_PLY = VALUE_MATE - 256,
-2026-05-02T13:13:18.4585957Z       |     ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.4587879Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::balance_results(std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:18.4590471Z /home/runner/work/public/public/src/datapipeline.cpp:233:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:18.4591379Z   233 |     std::random_device rd;
-2026-05-02T13:13:18.4592054Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:18.4593305Z /home/runner/work/public/public/src/datapipeline.cpp:234:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:18.4594183Z   234 |     std::mt19937 g(rd());
-2026-05-02T13:13:18.4594579Z       |          ^~~~~~~
-2026-05-02T13:13:18.4595525Z /home/runner/work/public/public/src/datapipeline.cpp:235:44: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:18.4622299Z   235 |     std::shuffle(data.begin(), data.end(), g);
-2026-05-02T13:13:18.4652189Z       |                                            ^
-2026-05-02T13:13:18.4684064Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::mine_hard_positions(const std::vector<DataPipeline::FilteredPosition>&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:18.4713066Z /home/runner/work/public/public/src/datapipeline.cpp:304:45: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.4742359Z   304 |             double scoreDiff = std::abs(it->score - ep.score);
-2026-05-02T13:13:18.4772197Z       |                                             ^~~~~
-2026-05-02T13:13:18.4803205Z /home/runner/work/public/public/src/datapipeline.cpp:304:56: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.4832356Z   304 |             double scoreDiff = std::abs(it->score - ep.score);
-2026-05-02T13:13:18.4862180Z       |                                                        ^~~~~
-2026-05-02T13:13:18.4893142Z /home/runner/work/public/public/src/datapipeline.cpp:308:27: error: ‘struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.4922257Z   308 |                 corrected.score = it->score;
-2026-05-02T13:13:18.4952198Z       |                           ^~~~~
-2026-05-02T13:13:18.4983217Z /home/runner/work/public/public/src/datapipeline.cpp:308:39: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5012271Z   308 |                 corrected.score = it->score;
-2026-05-02T13:13:18.5042207Z       |                                       ^~~~~
-2026-05-02T13:13:18.5073621Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘DataPipeline::QualityMetrics DataPipeline::DataPipeline::analyze(const std::vector<DataPipeline::FilteredPosition>&) const’:
-2026-05-02T13:13:18.5103108Z /home/runner/work/public/public/src/datapipeline.cpp:323:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘totalPositions’
-2026-05-02T13:13:18.5132221Z   323 |     m.totalPositions = data.size();
-2026-05-02T13:13:18.5162175Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5193157Z /home/runner/work/public/public/src/datapipeline.cpp:324:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘afterFiltering’
-2026-05-02T13:13:18.5222241Z   324 |     m.afterFiltering = data.size();
-2026-05-02T13:13:18.5252172Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5283235Z /home/runner/work/public/public/src/datapipeline.cpp:341:25: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5312225Z   341 |         scoreSum += pos.score;
-2026-05-02T13:13:18.5342177Z       |                         ^~~~~
-2026-05-02T13:13:18.5343646Z /home/runner/work/public/public/src/datapipeline.cpp:342:27: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5362479Z   342 |         scoreSqSum += pos.score * pos.score;
-2026-05-02T13:13:18.5402185Z       |                           ^~~~~
-2026-05-02T13:13:18.5423284Z /home/runner/work/public/public/src/datapipeline.cpp:342:39: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5452274Z   342 |         scoreSqSum += pos.score * pos.score;
-2026-05-02T13:13:18.5492198Z       |                                       ^~~~~
-2026-05-02T13:13:18.5523506Z /home/runner/work/public/public/src/datapipeline.cpp:345:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘quietPositions’
-2026-05-02T13:13:18.5542202Z   345 |     m.quietPositions = quiet;
-2026-05-02T13:13:18.5542627Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5543974Z /home/runner/work/public/public/src/datapipeline.cpp:346:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘tacticalPositions’
-2026-05-02T13:13:18.5545138Z   346 |     m.tacticalPositions = sharp;
-2026-05-02T13:13:18.5545589Z       |       ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5546981Z /home/runner/work/public/public/src/datapipeline.cpp:347:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘endgamePositions’
-2026-05-02T13:13:18.5548173Z   347 |     m.endgamePositions = endgame;
-2026-05-02T13:13:18.5548656Z       |       ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5550029Z /home/runner/work/public/public/src/datapipeline.cpp:348:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘openingPositions’
-2026-05-02T13:13:18.5551206Z   348 |     m.openingPositions = opening;
-2026-05-02T13:13:18.5551938Z       |       ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5553222Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::QualityMetrics::print() const’:
-2026-05-02T13:13:18.5573089Z /home/runner/work/public/public/src/datapipeline.cpp:377:41: error: ‘totalPositions’ was not declared in this scope
-2026-05-02T13:13:18.5603178Z   377 |     std::cout << "Total positions: " << totalPositions << "\n";
-2026-05-02T13:13:18.5642238Z       |                                         ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5670368Z /home/runner/work/public/public/src/datapipeline.cpp:378:43: error: ‘afterFiltering’ was not declared in this scope
-2026-05-02T13:13:18.5702358Z   378 |     std::cout << "After filtering:   " << afterFiltering << "\n";
-2026-05-02T13:13:18.5729339Z       |                                           ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5752925Z /home/runner/work/public/public/src/datapipeline.cpp:379:43: error: ‘duplicatesRemoved’ was not declared in this scope
-2026-05-02T13:13:18.5754069Z   379 |     std::cout << "Duplicates removed:" << duplicatesRemoved << "\n";
-2026-05-02T13:13:18.5754735Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5755964Z /home/runner/work/public/public/src/datapipeline.cpp:380:42: error: ‘forcedMatesRemoved’ was not declared in this scope
-2026-05-02T13:13:18.5757082Z   380 |     std::cout << "Forced mates rem.:" << forcedMatesRemoved << "\n";
-2026-05-02T13:13:18.5757735Z       |                                          ^~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5758934Z /home/runner/work/public/public/src/datapipeline.cpp:381:43: error: ‘quietPositions’ was not declared in this scope
-2026-05-02T13:13:18.5760022Z   381 |     std::cout << "Quiet positions:   " << quietPositions << "\n";
-2026-05-02T13:13:18.5760654Z       |                                           ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5762134Z /home/runner/work/public/public/src/datapipeline.cpp:382:43: error: ‘tacticalPositions’ was not declared in this scope
-2026-05-02T13:13:18.5763273Z   382 |     std::cout << "Tactical positions:" << tacticalPositions << "\n";
-2026-05-02T13:13:18.5763925Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5765118Z /home/runner/work/public/public/src/datapipeline.cpp:383:43: error: ‘endgamePositions’ was not declared in this scope
-2026-05-02T13:13:18.5766256Z   383 |     std::cout << "Endgame positions: " << endgamePositions << "\n";
-2026-05-02T13:13:18.5766936Z       |                                           ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5768567Z /home/runner/work/public/public/src/datapipeline.cpp:384:43: error: ‘openingPositions’ was not declared in this scope
-2026-05-02T13:13:18.5769688Z   384 |     std::cout << "Opening positions: " << openingPositions << "\n";
-2026-05-02T13:13:18.5770344Z       |                                           ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5772113Z /home/runner/work/public/public/src/datapipeline.cpp:385:43: error: ‘lowEntropyRemoved’ was not declared in this scope
-2026-05-02T13:13:18.5773307Z   385 |     std::cout << "Low entropy rem.:  " << lowEntropyRemoved << "\n";
-2026-05-02T13:13:18.5773984Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5775881Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::DataPipeline::export_plain(const std::string&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:18.5778353Z /home/runner/work/public/public/src/datapipeline.cpp:403:21: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5779499Z   403 |              << pos.score << " | "
-2026-05-02T13:13:18.5779978Z       |                     ^~~~~
-2026-05-02T13:13:18.5812109Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::DataPipeline::export_for_nnue(const std::string&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:18.5814585Z /home/runner/work/public/public/src/datapipeline.cpp:433:21: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5815656Z   433 |              << pos.score << " | "
-2026-05-02T13:13:18.5816063Z       |                     ^~~~~
-2026-05-02T13:13:18.5817555Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘double DataPipeline::DataPipeline::compute_entropy(const DataPipeline::FilteredPosition&) const’:
-2026-05-02T13:13:18.5819792Z /home/runner/work/public/public/src/datapipeline.cpp:454:43: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5820988Z   454 |     double scoreNormalized = std::abs(pos.score) / 1000.0;
-2026-05-02T13:13:18.5821593Z       |                                           ^~~~~
-2026-05-02T13:13:18.5823484Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘bool DataPipeline::DataPipeline::is_forced_mate(const DataPipeline::FilteredPosition&) const’:
-2026-05-02T13:13:18.5825758Z /home/runner/work/public/public/src/datapipeline.cpp:463:25: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.5826952Z   463 |     return std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:18.5827467Z       |                         ^~~~~
-2026-05-02T13:13:18.5829032Z /home/runner/work/public/public/src/datapipeline.cpp:463:35: error: ‘VALUE_MATE_IN_MAX_PLY’ was not declared in this scope; did you mean ‘Nexus::VALUE_MATE_IN_MAX_PLY’?
-2026-05-02T13:13:18.5830372Z   463 |     return std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:18.5831039Z       |                                   ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5831570Z       |                                   Nexus::VALUE_MATE_IN_MAX_PLY
-2026-05-02T13:13:18.5832987Z /home/runner/work/public/public/src/types.h:114:5: note: ‘Nexus::VALUE_MATE_IN_MAX_PLY’ declared here
-2026-05-02T13:13:18.5833912Z   114 |     VALUE_MATE_IN_MAX_PLY = VALUE_MATE - 256,
-2026-05-02T13:13:18.5834391Z       |     ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:18.5836003Z /home/runner/work/public/public/src/datapipeline.cpp: In constructor ‘DataPipeline::StreamingPipeline::StreamingPipeline(const std::string&, const std::string&, uint32_t)’:
-2026-05-02T13:13:18.5838358Z /home/runner/work/public/public/src/datapipeline.cpp:490:7: error: class ‘DataPipeline::StreamingPipeline’ does not have any field named ‘processedCount’
-2026-05-02T13:13:18.5839534Z   490 |     , processedCount(0)
-2026-05-02T13:13:18.5839926Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5871991Z /home/runner/work/public/public/src/datapipeline.cpp:491:7: error: class ‘DataPipeline::StreamingPipeline’ does not have any field named ‘writtenCount’
-2026-05-02T13:13:18.5873256Z   491 |     , writtenCount(0)
-2026-05-02T13:13:18.5873648Z       |       ^~~~~~~~~~~~
-2026-05-02T13:13:18.5875127Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::StreamingPipeline::process_stream()’:
-2026-05-02T13:13:18.5876868Z /home/runner/work/public/public/src/datapipeline.cpp:511:9: error: ‘processedCount’ was not declared in this scope
-2026-05-02T13:13:18.5877809Z   511 |         processedCount++;
-2026-05-02T13:13:18.5878213Z       |         ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5879322Z /home/runner/work/public/public/src/datapipeline.cpp:541:9: error: ‘writtenCount’ was not declared in this scope
-2026-05-02T13:13:18.5880230Z   541 |         writtenCount++;
-2026-05-02T13:13:18.5880600Z       |         ^~~~~~~~~~~~
-2026-05-02T13:13:18.5881906Z /home/runner/work/public/public/src/datapipeline.cpp:551:42: error: ‘processedCount’ was not declared in this scope
-2026-05-02T13:13:18.5882994Z   551 |     std::cout << "\nDone. Processed " << processedCount
-2026-05-02T13:13:18.5883578Z       |                                          ^~~~~~~~~~~~~~
-2026-05-02T13:13:18.5884734Z /home/runner/work/public/public/src/datapipeline.cpp:552:32: error: ‘writtenCount’ was not declared in this scope
-2026-05-02T13:13:18.5885739Z   552 |               << ", wrote " << writtenCount << "\n";
-2026-05-02T13:13:18.5886272Z       |                                ^~~~~~~~~~~~
-2026-05-02T13:13:18.5888071Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DiversitySampler::sample_diverse(const std::vector<DataPipeline::FilteredPosition>&, size_t)’:
-2026-05-02T13:13:18.5890414Z /home/runner/work/public/public/src/datapipeline.cpp:567:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:18.5891363Z   567 |     std::random_device rd;
-2026-05-02T13:13:18.5892019Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:18.5893007Z /home/runner/work/public/public/src/datapipeline.cpp:568:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:18.5893865Z   568 |     std::mt19937 g(rd());
-2026-05-02T13:13:18.5894270Z       |          ^~~~~~~
-2026-05-02T13:13:18.5895249Z /home/runner/work/public/public/src/datapipeline.cpp:585:52: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:18.5896215Z   585 |         std::shuffle(bucket.begin(), bucket.end(), g);
-2026-05-02T13:13:18.5896791Z       |                                                    ^
-2026-05-02T13:13:18.5897848Z /home/runner/work/public/public/src/datapipeline.cpp:596:36: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:18.5898751Z   596 |         result.push_back(data[dist(g)]);
-2026-05-02T13:13:18.5899239Z       |                                    ^
-2026-05-02T13:13:18.5932823Z /home/runner/work/public/public/src/datapipeline.cpp:599:48: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:18.5962298Z   599 |     std::shuffle(result.begin(), result.end(), g);
-2026-05-02T13:13:18.5992218Z       |                                                ^
-2026-05-02T13:13:18.6023883Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DiversitySampler::sample_stratified(const std::vector<DataPipeline::FilteredPosition>&, size_t)’:
-2026-05-02T13:13:18.6052840Z /home/runner/work/public/public/src/datapipeline.cpp:620:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:18.6072202Z   620 |     std::random_device rd;
-2026-05-02T13:13:18.6072643Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:18.6073619Z /home/runner/work/public/public/src/datapipeline.cpp:621:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:18.6074468Z   621 |     std::mt19937 g(rd());
-2026-05-02T13:13:18.6074873Z       |          ^~~~~~~
-2026-05-02T13:13:18.6076172Z /home/runner/work/public/public/src/datapipeline.cpp:626:21: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:18.6077234Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:18.6077887Z       |                     ^
-2026-05-02T13:13:18.6078476Z /home/runner/work/public/public/src/datapipeline.cpp: In lambda function:
-2026-05-02T13:13:18.6079893Z /home/runner/work/public/public/src/datapipeline.cpp:627:46: error: ‘g’ is not captured
-2026-05-02T13:13:18.6102245Z   627 |         std::shuffle(vec.begin(), vec.end(), g);
-2026-05-02T13:13:18.6102764Z       |                                              ^
-2026-05-02T13:13:18.6103558Z /home/runner/work/public/public/src/datapipeline.cpp:626:44: note: the lambda has no capture-default
-2026-05-02T13:13:18.6104626Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:18.6105315Z       |                                            ^
-2026-05-02T13:13:18.6106354Z /home/runner/work/public/public/src/datapipeline.cpp:626:21: note: ‘<typeprefixerror>g’ declared here
-2026-05-02T13:13:18.6107399Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:18.6108077Z       |                     ^
-2026-05-02T13:13:18.6133861Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<std::vector<DataPipeline::FilteredPosition> > DataPipeline::DiversitySampler::cluster_positions(const std::vector<DataPipeline::FilteredPosition>&, int)’:
-2026-05-02T13:13:18.6163214Z /home/runner/work/public/public/src/datapipeline.cpp:656:38: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:18.6164431Z   656 |                        (std::abs(pos.score) / 1000.0) * 0.3 +
-2026-05-02T13:13:18.6164978Z       |                                      ^~~~~
-2026-05-02T13:13:18.8331366Z /home/runner/work/public/public/src/training.cpp: In member function ‘Training::GameResult Training::DataGenerator::play_one_game(int)’:
-2026-05-02T13:13:18.8361520Z /home/runner/work/public/public/src/training.cpp:99:47: error: ‘class Nexus::BoardState’ has no member named ‘is_game_over’
-2026-05-02T13:13:18.8392442Z    99 |     for (int i = 0; i < randomMoves && !board.is_game_over(); ++i) {
-2026-05-02T13:13:18.8402402Z       |                                               ^~~~~~~~~~~~
-2026-05-02T13:13:18.8433165Z /home/runner/work/public/public/src/training.cpp:116:19: error: ‘class Nexus::BoardState’ has no member named ‘is_game_over’
-2026-05-02T13:13:18.8452367Z   116 |     while (!board.is_game_over() && moveCounter < 200) {
-2026-05-02T13:13:18.8482168Z       |                   ^~~~~~~~~~~~
-2026-05-02T13:13:18.8493325Z /home/runner/work/public/public/src/training.cpp:176:15: error: ‘class Nexus::BoardState’ has no member named ‘is_checkmate’; did you mean ‘is_check’?
-2026-05-02T13:13:18.8522306Z   176 |     if (board.is_checkmate()) {
-2026-05-02T13:13:18.8542355Z       |               ^~~~~~~~~~~~
-2026-05-02T13:13:18.8552316Z       |               is_check
-2026-05-02T13:13:18.8583028Z /home/runner/work/public/public/src/training.cpp:178:29: error: no matching function for call to ‘Nexus::BoardState::is_draw()’
-2026-05-02T13:13:18.8612219Z   178 |     } else if (board.is_draw()) {
-2026-05-02T13:13:18.8622192Z       |                ~~~~~~~~~~~~~^~
-2026-05-02T13:13:18.8642471Z In file included from /home/runner/work/public/public/src/training.h:4,
-2026-05-02T13:13:18.8672434Z                  from /home/runner/work/public/public/src/training.cpp:1:
-2026-05-02T13:13:18.8682970Z /home/runner/work/public/public/src/board.h:89:10: note: candidate: ‘bool Nexus::BoardState::is_draw(int) const’
-2026-05-02T13:13:18.8712305Z    89 |     bool is_draw(int ply) const;
-2026-05-02T13:13:18.8732327Z       |          ^~~~~~~
-2026-05-02T13:13:18.8762662Z /home/runner/work/public/public/src/board.h:89:10: note:   candidate expects 1 argument, 0 provided
-2026-05-02T13:13:18.8764640Z /home/runner/work/public/public/src/training.cpp: In member function ‘Nexus::Value Training::DataGenerator::score_position(const Nexus::BoardState&)’:
-2026-05-02T13:13:18.8778411Z [ 90%] Building CXX object CMakeFiles/nexus.dir/src/training.cpp.o
-2026-05-02T13:13:18.8793821Z /home/runner/work/public/public/src/training.cpp:207:24: error: binding reference of type ‘Nexus::BoardState&’ to ‘const Nexus::BoardState’ discards qualifiers
-2026-05-02T13:13:18.8822341Z   207 |         searcher.start(pos, limits, false);
-2026-05-02T13:13:18.8852246Z       |                        ^~~
-2026-05-02T13:13:18.8872447Z In file included from /home/runner/work/public/public/src/training.cpp:2:
-2026-05-02T13:13:18.8883508Z /home/runner/work/public/public/src/search.h:58:28: note:   initializing argument 1 of ‘void Nexus::Search::start(Nexus::BoardState&, const Nexus::SearchLimits&, bool)’
-2026-05-02T13:13:18.8912489Z    58 |     void start(BoardState& pos, const SearchLimits& limits, bool ponder);
-2026-05-02T13:13:18.8932223Z       |                ~~~~~~~~~~~~^~~
-2026-05-02T13:13:18.8963200Z /home/runner/work/public/public/src/training.cpp: In member function ‘int Training::DataGenerator::evaluate_game_phase(const Nexus::BoardState&)’:
-2026-05-02T13:13:18.8973283Z /home/runner/work/public/public/src/training.cpp:222:42: error: no match for ‘operator++’ (operand type is ‘Nexus::Square’)
-2026-05-02T13:13:18.9002408Z   222 |     for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
-2026-05-02T13:13:18.9042212Z       |                                          ^~~~
-2026-05-02T13:13:18.9072670Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:317: CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o] Error 1
-2026-05-02T13:13:19.0885679Z [ 92%] Building CXX object CMakeFiles/nexus.dir/src/datapipeline.cpp.o
-2026-05-02T13:13:19.3834159Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_perft_tests()’:
-2026-05-02T13:13:19.3863370Z /home/runner/work/public/public/src/test_suite.cpp:178:33: error: invalid operands of types ‘const char [8]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:19.3892345Z   178 |         result.name = "Perft: " + pos.name;
-2026-05-02T13:13:19.3912387Z       |                       ~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:19.3914779Z       |                       |               |
-2026-05-02T13:13:19.3915684Z       |                       const char [8]  const char* const
-2026-05-02T13:13:19.3917627Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
-2026-05-02T13:13:19.3919734Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
-2026-05-02T13:13:19.3921037Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
-2026-05-02T13:13:19.3922150Z       |                  ^~~
-2026-05-02T13:13:19.3923805Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_tactical_tests()’:
-2026-05-02T13:13:19.3926498Z /home/runner/work/public/public/src/test_suite.cpp:277:36: error: invalid operands of types ‘const char [11]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:19.3927976Z   277 |         result.name = "Tactical: " + pos.name;
-2026-05-02T13:13:19.3928774Z       |                       ~~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:19.3929491Z       |                       |                  |
-2026-05-02T13:13:19.3930238Z       |                       const char [11]    const char* const
-2026-05-02T13:13:19.3932555Z /home/runner/work/public/public/src/test_suite.cpp:293:27: error: request for member ‘empty’ in ‘pos.TestSuite::TestPosition::bestMove’, which is of non-class type ‘const char* const’
-2026-05-02T13:13:19.3934208Z   293 |         if (!pos.bestMove.empty()) {
-2026-05-02T13:13:19.3934920Z       |                           ^~~~~
-2026-05-02T13:13:19.3936590Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_endgame_tests()’:
-2026-05-02T13:13:19.3938950Z /home/runner/work/public/public/src/test_suite.cpp:312:35: error: invalid operands of types ‘const char [10]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:19.3940427Z   312 |         result.name = "Endgame: " + pos.name;
-2026-05-02T13:13:19.3941480Z       |                       ~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:19.3942654Z       |                       |                 |
-2026-05-02T13:13:19.3943426Z       |                       const char [10]   const char* const
-2026-05-02T13:13:19.3945247Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_regression_tests()’:
-2026-05-02T13:13:19.3947672Z /home/runner/work/public/public/src/test_suite.cpp:332:38: error: invalid operands of types ‘const char [13]’ and ‘const char* const’ to binary ‘operator+’
-2026-05-02T13:13:19.3949153Z   332 |         result.name = "Regression: " + pos.name;
-2026-05-02T13:13:19.3949951Z       |                       ~~~~~~~~~~~~~~ ^ ~~~~~~~~
-2026-05-02T13:13:19.3950652Z       |                       |                    |
-2026-05-02T13:13:19.3951404Z       |                       const char [13]      const char* const
-2026-05-02T13:13:19.3952878Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:303: CMakeFiles/nexus_tests.dir/src/training.cpp.o] Error 1
-2026-05-02T13:13:19.3954173Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
-2026-05-02T13:13:19.3955119Z make[1]: *** Waiting for unfinished jobs....
-2026-05-02T13:13:19.3986245Z [ 95%] Building CXX object CMakeFiles/nexus.dir/src/main.cpp.o
-2026-05-02T13:13:19.6332862Z In file included from /home/runner/work/public/public/src/datapipeline.cpp:1:
-2026-05-02T13:13:19.6343124Z /home/runner/work/public/public/src/datapipeline.h:27:5: error: ‘Value’ does not name a type
-2026-05-02T13:13:19.6372333Z    27 |     Value score;
-2026-05-02T13:13:19.6402205Z       |     ^~~~~
-2026-05-02T13:13:19.6403171Z /home/runner/work/public/public/src/datapipeline.h:60:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6452212Z    60 |     u64 totalPositions;
-2026-05-02T13:13:19.6462258Z       |     ^~~
-2026-05-02T13:13:19.6482815Z /home/runner/work/public/public/src/datapipeline.h:61:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6512239Z    61 |     u64 afterFiltering;
-2026-05-02T13:13:19.6522295Z       |     ^~~
-2026-05-02T13:13:19.6552816Z /home/runner/work/public/public/src/datapipeline.h:62:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6572365Z    62 |     u64 duplicatesRemoved;
-2026-05-02T13:13:19.6602170Z       |     ^~~
-2026-05-02T13:13:19.6612890Z /home/runner/work/public/public/src/datapipeline.h:63:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6642267Z    63 |     u64 forcedMatesRemoved;
-2026-05-02T13:13:19.6662274Z       |     ^~~
-2026-05-02T13:13:19.6672849Z /home/runner/work/public/public/src/datapipeline.h:64:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6702276Z    64 |     u64 quietPositions;
-2026-05-02T13:13:19.6722175Z       |     ^~~
-2026-05-02T13:13:19.6752775Z /home/runner/work/public/public/src/datapipeline.h:65:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6762309Z    65 |     u64 tacticalPositions;
-2026-05-02T13:13:19.6792235Z       |     ^~~
-2026-05-02T13:13:19.6812762Z /home/runner/work/public/public/src/datapipeline.h:66:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6842201Z    66 |     u64 endgamePositions;
-2026-05-02T13:13:19.6852266Z       |     ^~~
-2026-05-02T13:13:19.6872756Z /home/runner/work/public/public/src/datapipeline.h:67:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6902219Z    67 |     u64 openingPositions;
-2026-05-02T13:13:19.6912274Z       |     ^~~
-2026-05-02T13:13:19.6932725Z /home/runner/work/public/public/src/datapipeline.h:68:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.6962200Z    68 |     u64 lowEntropyRemoved;
-2026-05-02T13:13:19.6972267Z       |     ^~~
-2026-05-02T13:13:19.7002825Z /home/runner/work/public/public/src/datapipeline.h:85:30: error: ‘Value’ has not been declared
-2026-05-02T13:13:19.7022343Z    85 |     void set_score_threshold(Value v) { scoreThreshold = v; }
-2026-05-02T13:13:19.7052197Z       |                              ^~~~~
-2026-05-02T13:13:19.7063414Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:19.7092404Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7112188Z       |                           ^~~~~~~~
-2026-05-02T13:13:19.7122655Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:19.7152416Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7182827Z       |                                                     ^
-2026-05-02T13:13:19.7183689Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:19.7185182Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:19.7186214Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7186785Z       |                           ^~~~~~~~
-2026-05-02T13:13:19.7187595Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:19.7188534Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7189128Z       |                                                     ^
-2026-05-02T13:13:19.7189947Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:19.7191389Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:19.7192606Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7193173Z       |                           ^~~~~~~~
-2026-05-02T13:13:19.7193895Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:19.7194803Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7195337Z       |                                                     ^
-2026-05-02T13:13:19.7196142Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:19.7197472Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ was not declared in this scope
-2026-05-02T13:13:19.7198418Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7199021Z       |                           ^~~~~~~~
-2026-05-02T13:13:19.7199759Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 1 is invalid
-2026-05-02T13:13:19.7200641Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7201520Z       |                                                     ^
-2026-05-02T13:13:19.7202573Z /home/runner/work/public/public/src/datapipeline.h:92:53: error: template argument 2 is invalid
-2026-05-02T13:13:19.7203637Z /home/runner/work/public/public/src/datapipeline.h:92:15: error: invalid template-id
-2026-05-02T13:13:19.7204451Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7204981Z       |               ^~~
-2026-05-02T13:13:19.7205838Z /home/runner/work/public/public/src/datapipeline.h:92:27: error: ‘Training’ has not been declared
-2026-05-02T13:13:19.7206752Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7207252Z       |                           ^~~~~~~~
-2026-05-02T13:13:19.7208666Z /home/runner/work/public/public/src/datapipeline.h:92:9: error: missing template argument list after ‘std::vector’; template placeholder not permitted in parameter
-2026-05-02T13:13:19.7209867Z    92 |         const std::vector<Training::TrainingPosition>& raw);
-2026-05-02T13:13:19.7210346Z       |         ^~~~~
-2026-05-02T13:13:19.7210632Z       |              <>
-2026-05-02T13:13:19.7211580Z /home/runner/work/public/public/src/datapipeline.h:92:9: note: or use ‘auto’ for an abbreviated function template
-2026-05-02T13:13:19.7243240Z In file included from /usr/include/c++/13/vector:66,
-2026-05-02T13:13:19.7243929Z                  from /home/runner/work/public/public/src/datapipeline.h:5:
-2026-05-02T13:13:19.7245304Z /usr/include/c++/13/bits/stl_vector.h:428:11: note: ‘template<class _Tp, class _Alloc> class std::vector’ declared here
-2026-05-02T13:13:19.7246221Z   428 |     class vector : protected _Vector_base<_Tp, _Alloc>
-2026-05-02T13:13:19.7246745Z       |           ^~~~~~
-2026-05-02T13:13:19.7247547Z /home/runner/work/public/public/src/datapipeline.h:131:5: error: ‘Value’ does not name a type
-2026-05-02T13:13:19.7248320Z   131 |     Value scoreThreshold;
-2026-05-02T13:13:19.7248712Z       |     ^~~~~
-2026-05-02T13:13:19.7249883Z /home/runner/work/public/public/src/datapipeline.h: In member function ‘void DataPipeline::DataPipeline::set_score_threshold(int)’:
-2026-05-02T13:13:19.7251978Z /home/runner/work/public/public/src/datapipeline.h:85:41: error: ‘scoreThreshold’ was not declared in this scope; did you mean ‘set_score_threshold’?
-2026-05-02T13:13:19.7253208Z    85 |     void set_score_threshold(Value v) { scoreThreshold = v; }
-2026-05-02T13:13:19.7253796Z       |                                         ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.7254255Z       |                                         set_score_threshold
-2026-05-02T13:13:19.7254870Z /home/runner/work/public/public/src/datapipeline.h: At global scope:
-2026-05-02T13:13:19.7255830Z /home/runner/work/public/public/src/datapipeline.h:154:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.7256646Z   154 |     u64 get_processed_count() const { return processedCount; }
-2026-05-02T13:13:19.7257131Z       |     ^~~
-2026-05-02T13:13:19.7257835Z /home/runner/work/public/public/src/datapipeline.h:155:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.7258605Z   155 |     u64 get_written_count() const { return writtenCount; }
-2026-05-02T13:13:19.7259069Z       |     ^~~
-2026-05-02T13:13:19.7259723Z /home/runner/work/public/public/src/datapipeline.h:161:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.7260427Z   161 |     u64 processedCount;
-2026-05-02T13:13:19.7260756Z       |     ^~~
-2026-05-02T13:13:19.7261426Z /home/runner/work/public/public/src/datapipeline.h:162:5: error: ‘u64’ does not name a type
-2026-05-02T13:13:19.7262314Z   162 |     u64 writtenCount;
-2026-05-02T13:13:19.7262661Z       |     ^~~
-2026-05-02T13:13:19.8085679Z make[2]: *** [CMakeFiles/nexus.dir/build.make:303: CMakeFiles/nexus.dir/src/test_suite.cpp.o] Error 1
-2026-05-02T13:13:19.8093077Z make[2]: *** Waiting for unfinished jobs....
-2026-05-02T13:13:19.8520298Z /home/runner/work/public/public/src/main.cpp: In function ‘int main(int, char**)’:
-2026-05-02T13:13:19.8522598Z /home/runner/work/public/public/src/main.cpp:5:12: error: ‘TT’ is not a member of ‘Nexus’
-2026-05-02T13:13:19.8523897Z     5 |     Nexus::TT.resize(64);
-2026-05-02T13:13:19.8524616Z       |            ^~
-2026-05-02T13:13:19.8917041Z make[2]: *** [CMakeFiles/nexus.dir/build.make:345: CMakeFiles/nexus.dir/src/main.cpp.o] Error 1
-2026-05-02T13:13:19.9522789Z /home/runner/work/public/public/src/datapipeline.cpp: In constructor ‘DataPipeline::DataPipeline::DataPipeline(uint32_t)’:
-2026-05-02T13:13:19.9524801Z /home/runner/work/public/public/src/datapipeline.cpp:33:7: error: class ‘DataPipeline::DataPipeline’ does not have any field named ‘scoreThreshold’
-2026-05-02T13:13:19.9525874Z    33 |     , scoreThreshold(Value(500))
-2026-05-02T13:13:19.9526282Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9527538Z /home/runner/work/public/public/src/datapipeline.cpp:33:22: error: ‘Value’ was not declared in this scope; did you mean ‘Nexus::Value’?
-2026-05-02T13:13:19.9528574Z    33 |     , scoreThreshold(Value(500))
-2026-05-02T13:13:19.9529053Z       |                      ^~~~~
-2026-05-02T13:13:19.9529480Z       |                      Nexus::Value
-2026-05-02T13:13:19.9530127Z In file included from /home/runner/work/public/public/src/datapipeline.h:3:
-2026-05-02T13:13:19.9531305Z /home/runner/work/public/public/src/types.h:107:6: note: ‘Nexus::Value’ declared here
-2026-05-02T13:13:19.9532342Z   107 | enum Value : i32 {
-2026-05-02T13:13:19.9532703Z       |      ^~~~~
-2026-05-02T13:13:19.9534740Z /home/runner/work/public/public/src/datapipeline.cpp: At global scope:
-2026-05-02T13:13:19.9536892Z /home/runner/work/public/public/src/datapipeline.cpp:40:31: error: no declaration matches ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(const std::vector<Training::TrainingPosition>&)’
-2026-05-02T13:13:19.9538530Z    40 | std::vector<FilteredPosition> DataPipeline::process(
-2026-05-02T13:13:19.9539078Z       |                               ^~~~~~~~~~~~
-2026-05-02T13:13:19.9540600Z /home/runner/work/public/public/src/datapipeline.h:91:35: note: candidate is: ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(...)’
-2026-05-02T13:13:19.9542177Z    91 |     std::vector<FilteredPosition> process(
-2026-05-02T13:13:19.9542683Z       |                                   ^~~~~~~
-2026-05-02T13:13:19.9543890Z /home/runner/work/public/public/src/datapipeline.h:78:7: note: ‘class DataPipeline::DataPipeline’ defined here
-2026-05-02T13:13:19.9544802Z    78 | class DataPipeline {
-2026-05-02T13:13:19.9545173Z       |       ^~~~~~~~~~~~
-2026-05-02T13:13:19.9589174Z /home/runner/work/public/public/src/datapipeline.cpp: In lambda function:
-2026-05-02T13:13:19.9590686Z /home/runner/work/public/public/src/datapipeline.cpp:162:44: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9596092Z   162 |                 bool isMate = std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:19.9596905Z       |                                            ^~~~~
-2026-05-02T13:13:19.9598698Z /home/runner/work/public/public/src/datapipeline.cpp:162:54: error: ‘VALUE_MATE_IN_MAX_PLY’ was not declared in this scope; did you mean ‘Nexus::VALUE_MATE_IN_MAX_PLY’?
-2026-05-02T13:13:19.9600154Z   162 |                 bool isMate = std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:19.9601039Z       |                                                      ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9602146Z       |                                                      Nexus::VALUE_MATE_IN_MAX_PLY
-2026-05-02T13:13:19.9603623Z /home/runner/work/public/public/src/types.h:114:5: note: ‘Nexus::VALUE_MATE_IN_MAX_PLY’ declared here
-2026-05-02T13:13:19.9604777Z   114 |     VALUE_MATE_IN_MAX_PLY = VALUE_MATE - 256,
-2026-05-02T13:13:19.9605493Z       |     ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9630261Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::balance_results(std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:19.9632703Z /home/runner/work/public/public/src/datapipeline.cpp:233:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:19.9633579Z   233 |     std::random_device rd;
-2026-05-02T13:13:19.9633957Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:19.9639777Z /home/runner/work/public/public/src/datapipeline.cpp:234:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:19.9640508Z   234 |     std::mt19937 g(rd());
-2026-05-02T13:13:19.9640826Z       |          ^~~~~~~
-2026-05-02T13:13:19.9672237Z /home/runner/work/public/public/src/datapipeline.cpp:235:44: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:19.9673209Z   235 |     std::shuffle(data.begin(), data.end(), g);
-2026-05-02T13:13:19.9673785Z       |                                            ^
-2026-05-02T13:13:19.9708882Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::mine_hard_positions(const std::vector<DataPipeline::FilteredPosition>&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:19.9712149Z /home/runner/work/public/public/src/datapipeline.cpp:304:45: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9715276Z   304 |             double scoreDiff = std::abs(it->score - ep.score);
-2026-05-02T13:13:19.9716341Z       |                                             ^~~~~
-2026-05-02T13:13:19.9718056Z /home/runner/work/public/public/src/datapipeline.cpp:304:56: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9719616Z   304 |             double scoreDiff = std::abs(it->score - ep.score);
-2026-05-02T13:13:19.9720468Z       |                                                        ^~~~~
-2026-05-02T13:13:19.9722516Z /home/runner/work/public/public/src/datapipeline.cpp:308:27: error: ‘struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9723957Z   308 |                 corrected.score = it->score;
-2026-05-02T13:13:19.9724703Z       |                           ^~~~~
-2026-05-02T13:13:19.9726371Z /home/runner/work/public/public/src/datapipeline.cpp:308:39: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9727854Z   308 |                 corrected.score = it->score;
-2026-05-02T13:13:19.9728618Z       |                                       ^~~~~
-2026-05-02T13:13:19.9730800Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘DataPipeline::QualityMetrics DataPipeline::DataPipeline::analyze(const std::vector<DataPipeline::FilteredPosition>&) const’:
-2026-05-02T13:13:19.9733711Z /home/runner/work/public/public/src/datapipeline.cpp:323:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘totalPositions’
-2026-05-02T13:13:19.9735002Z   323 |     m.totalPositions = data.size();
-2026-05-02T13:13:19.9735608Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9737000Z /home/runner/work/public/public/src/datapipeline.cpp:324:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘afterFiltering’
-2026-05-02T13:13:19.9738220Z   324 |     m.afterFiltering = data.size();
-2026-05-02T13:13:19.9738799Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9740167Z /home/runner/work/public/public/src/datapipeline.cpp:341:25: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9764035Z   341 |         scoreSum += pos.score;
-2026-05-02T13:13:19.9764494Z       |                         ^~~~~
-2026-05-02T13:13:19.9765750Z /home/runner/work/public/public/src/datapipeline.cpp:342:27: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9766790Z   342 |         scoreSqSum += pos.score * pos.score;
-2026-05-02T13:13:19.9767224Z       |                           ^~~~~
-2026-05-02T13:13:19.9768416Z /home/runner/work/public/public/src/datapipeline.cpp:342:39: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:19.9769671Z   342 |         scoreSqSum += pos.score * pos.score;
-2026-05-02T13:13:19.9770111Z       |                                       ^~~~~
-2026-05-02T13:13:19.9771465Z /home/runner/work/public/public/src/datapipeline.cpp:345:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘quietPositions’
-2026-05-02T13:13:19.9772771Z   345 |     m.quietPositions = quiet;
-2026-05-02T13:13:19.9773168Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9774530Z /home/runner/work/public/public/src/datapipeline.cpp:346:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘tacticalPositions’
-2026-05-02T13:13:19.9775628Z   346 |     m.tacticalPositions = sharp;
-2026-05-02T13:13:19.9776043Z       |       ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9777318Z /home/runner/work/public/public/src/datapipeline.cpp:347:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘endgamePositions’
-2026-05-02T13:13:19.9778423Z   347 |     m.endgamePositions = endgame;
-2026-05-02T13:13:19.9778837Z       |       ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9780093Z /home/runner/work/public/public/src/datapipeline.cpp:348:7: error: ‘struct DataPipeline::QualityMetrics’ has no member named ‘openingPositions’
-2026-05-02T13:13:19.9781178Z   348 |     m.openingPositions = opening;
-2026-05-02T13:13:19.9781594Z       |       ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9791139Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::QualityMetrics::print() const’:
-2026-05-02T13:13:19.9792904Z /home/runner/work/public/public/src/datapipeline.cpp:377:41: error: ‘totalPositions’ was not declared in this scope
-2026-05-02T13:13:19.9793883Z   377 |     std::cout << "Total positions: " << totalPositions << "\n";
-2026-05-02T13:13:19.9794444Z       |                                         ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9834468Z /home/runner/work/public/public/src/datapipeline.cpp:378:43: error: ‘afterFiltering’ was not declared in this scope
-2026-05-02T13:13:19.9835490Z   378 |     std::cout << "After filtering:   " << afterFiltering << "\n";
-2026-05-02T13:13:19.9836068Z       |                                           ^~~~~~~~~~~~~~
-2026-05-02T13:13:19.9878949Z /home/runner/work/public/public/src/datapipeline.cpp:379:43: error: ‘duplicatesRemoved’ was not declared in this scope
-2026-05-02T13:13:19.9880011Z   379 |     std::cout << "Duplicates removed:" << duplicatesRemoved << "\n";
-2026-05-02T13:13:19.9880617Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9924313Z /home/runner/work/public/public/src/datapipeline.cpp:380:42: error: ‘forcedMatesRemoved’ was not declared in this scope
-2026-05-02T13:13:19.9925351Z   380 |     std::cout << "Forced mates rem.:" << forcedMatesRemoved << "\n";
-2026-05-02T13:13:19.9925943Z       |                                          ^~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:19.9965973Z /home/runner/work/public/public/src/datapipeline.cpp:381:43: error: ‘quietPositions’ was not declared in this scope
-2026-05-02T13:13:19.9967004Z   381 |     std::cout << "Quiet positions:   " << quietPositions << "\n";
-2026-05-02T13:13:19.9967575Z       |                                           ^~~~~~~~~~~~~~
-2026-05-02T13:13:20.0009466Z /home/runner/work/public/public/src/datapipeline.cpp:382:43: error: ‘tacticalPositions’ was not declared in this scope
-2026-05-02T13:13:20.0010507Z   382 |     std::cout << "Tactical positions:" << tacticalPositions << "\n";
-2026-05-02T13:13:20.0011103Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0052691Z /home/runner/work/public/public/src/datapipeline.cpp:383:43: error: ‘endgamePositions’ was not declared in this scope
-2026-05-02T13:13:20.0053725Z   383 |     std::cout << "Endgame positions: " << endgamePositions << "\n";
-2026-05-02T13:13:20.0054320Z       |                                           ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0096315Z /home/runner/work/public/public/src/datapipeline.cpp:384:43: error: ‘openingPositions’ was not declared in this scope
-2026-05-02T13:13:20.0097634Z   384 |     std::cout << "Opening positions: " << openingPositions << "\n";
-2026-05-02T13:13:20.0098254Z       |                                           ^~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0140621Z /home/runner/work/public/public/src/datapipeline.cpp:385:43: error: ‘lowEntropyRemoved’ was not declared in this scope
-2026-05-02T13:13:20.0142047Z   385 |     std::cout << "Low entropy rem.:  " << lowEntropyRemoved << "\n";
-2026-05-02T13:13:20.0142715Z       |                                           ^~~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0155993Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::DataPipeline::export_plain(const std::string&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:20.0158378Z /home/runner/work/public/public/src/datapipeline.cpp:403:21: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:20.0159528Z   403 |              << pos.score << " | "
-2026-05-02T13:13:20.0159963Z       |                     ^~~~~
-2026-05-02T13:13:20.0171179Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::DataPipeline::export_for_nnue(const std::string&, const std::vector<DataPipeline::FilteredPosition>&)’:
-2026-05-02T13:13:20.0173930Z /home/runner/work/public/public/src/datapipeline.cpp:433:21: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:20.0175068Z   433 |              << pos.score << " | "
-2026-05-02T13:13:20.0175524Z       |                     ^~~~~
-2026-05-02T13:13:20.0177574Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘double DataPipeline::DataPipeline::compute_entropy(const DataPipeline::FilteredPosition&) const’:
-2026-05-02T13:13:20.0179681Z /home/runner/work/public/public/src/datapipeline.cpp:454:43: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:20.0180937Z   454 |     double scoreNormalized = std::abs(pos.score) / 1000.0;
-2026-05-02T13:13:20.0181538Z       |                                           ^~~~~
-2026-05-02T13:13:20.0183420Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘bool DataPipeline::DataPipeline::is_forced_mate(const DataPipeline::FilteredPosition&) const’:
-2026-05-02T13:13:20.0185572Z /home/runner/work/public/public/src/datapipeline.cpp:463:25: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:20.0186791Z   463 |     return std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:20.0187351Z       |                         ^~~~~
-2026-05-02T13:13:20.0188867Z /home/runner/work/public/public/src/datapipeline.cpp:463:35: error: ‘VALUE_MATE_IN_MAX_PLY’ was not declared in this scope; did you mean ‘Nexus::VALUE_MATE_IN_MAX_PLY’?
-2026-05-02T13:13:20.0190218Z   463 |     return std::abs(pos.score) >= VALUE_MATE_IN_MAX_PLY;
-2026-05-02T13:13:20.0190840Z       |                                   ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0191392Z       |                                   Nexus::VALUE_MATE_IN_MAX_PLY
-2026-05-02T13:13:20.0192809Z /home/runner/work/public/public/src/types.h:114:5: note: ‘Nexus::VALUE_MATE_IN_MAX_PLY’ declared here
-2026-05-02T13:13:20.0193708Z   114 |     VALUE_MATE_IN_MAX_PLY = VALUE_MATE - 256,
-2026-05-02T13:13:20.0194219Z       |     ^~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:13:20.0195888Z /home/runner/work/public/public/src/datapipeline.cpp: In constructor ‘DataPipeline::StreamingPipeline::StreamingPipeline(const std::string&, const std::string&, uint32_t)’:
-2026-05-02T13:13:20.0198265Z /home/runner/work/public/public/src/datapipeline.cpp:490:7: error: class ‘DataPipeline::StreamingPipeline’ does not have any field named ‘processedCount’
-2026-05-02T13:13:20.0199484Z   490 |     , processedCount(0)
-2026-05-02T13:13:20.0199874Z       |       ^~~~~~~~~~~~~~
-2026-05-02T13:13:20.0201302Z /home/runner/work/public/public/src/datapipeline.cpp:491:7: error: class ‘DataPipeline::StreamingPipeline’ does not have any field named ‘writtenCount’
-2026-05-02T13:13:20.0203012Z   491 |     , writtenCount(0)
-2026-05-02T13:13:20.0203395Z       |       ^~~~~~~~~~~~
-2026-05-02T13:13:20.0258723Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘void DataPipeline::StreamingPipeline::process_stream()’:
-2026-05-02T13:13:20.0260725Z /home/runner/work/public/public/src/datapipeline.cpp:511:9: error: ‘processedCount’ was not declared in this scope
-2026-05-02T13:13:20.0261925Z   511 |         processedCount++;
-2026-05-02T13:13:20.0262350Z       |         ^~~~~~~~~~~~~~
-2026-05-02T13:13:20.0308431Z /home/runner/work/public/public/src/datapipeline.cpp:541:9: error: ‘writtenCount’ was not declared in this scope
-2026-05-02T13:13:20.0309378Z   541 |         writtenCount++;
-2026-05-02T13:13:20.0309738Z       |         ^~~~~~~~~~~~
-2026-05-02T13:13:20.0350742Z /home/runner/work/public/public/src/datapipeline.cpp:551:42: error: ‘processedCount’ was not declared in this scope
-2026-05-02T13:13:20.0351930Z   551 |     std::cout << "\nDone. Processed " << processedCount
-2026-05-02T13:13:20.0352473Z       |                                          ^~~~~~~~~~~~~~
-2026-05-02T13:13:20.0389722Z /home/runner/work/public/public/src/datapipeline.cpp:552:32: error: ‘writtenCount’ was not declared in this scope
-2026-05-02T13:13:20.0390744Z   552 |               << ", wrote " << writtenCount << "\n";
-2026-05-02T13:13:20.0391278Z       |                                ^~~~~~~~~~~~
-2026-05-02T13:13:20.0410600Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DiversitySampler::sample_diverse(const std::vector<DataPipeline::FilteredPosition>&, size_t)’:
-2026-05-02T13:13:20.0412907Z /home/runner/work/public/public/src/datapipeline.cpp:567:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:20.0413799Z   567 |     std::random_device rd;
-2026-05-02T13:13:20.0414200Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:20.0419242Z /home/runner/work/public/public/src/datapipeline.cpp:568:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:20.0420090Z   568 |     std::mt19937 g(rd());
-2026-05-02T13:13:20.0420463Z       |          ^~~~~~~
-2026-05-02T13:13:20.0497597Z /home/runner/work/public/public/src/datapipeline.cpp:585:52: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:20.0498577Z   585 |         std::shuffle(bucket.begin(), bucket.end(), g);
-2026-05-02T13:13:20.0499126Z       |                                                    ^
-2026-05-02T13:13:20.0527694Z /home/runner/work/public/public/src/datapipeline.cpp:596:36: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:20.0528554Z   596 |         result.push_back(data[dist(g)]);
-2026-05-02T13:13:20.0528994Z       |                                    ^
-2026-05-02T13:13:20.0554031Z /home/runner/work/public/public/src/datapipeline.cpp:599:48: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:20.0555034Z   599 |     std::shuffle(result.begin(), result.end(), g);
-2026-05-02T13:13:20.0555585Z       |                                                ^
-2026-05-02T13:13:20.0573409Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DiversitySampler::sample_stratified(const std::vector<DataPipeline::FilteredPosition>&, size_t)’:
-2026-05-02T13:13:20.0575686Z /home/runner/work/public/public/src/datapipeline.cpp:620:10: error: ‘random_device’ is not a member of ‘std’
-2026-05-02T13:13:20.0576567Z   620 |     std::random_device rd;
-2026-05-02T13:13:20.0576956Z       |          ^~~~~~~~~~~~~
-2026-05-02T13:13:20.0581492Z /home/runner/work/public/public/src/datapipeline.cpp:621:10: error: ‘mt19937’ is not a member of ‘std’
-2026-05-02T13:13:20.0584092Z   621 |     std::mt19937 g(rd());
-2026-05-02T13:13:20.0584808Z       |          ^~~~~~~
-2026-05-02T13:13:20.0609822Z /home/runner/work/public/public/src/datapipeline.cpp:626:21: error: ‘g’ was not declared in this scope
-2026-05-02T13:13:20.0611552Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:20.0612748Z       |                     ^
-2026-05-02T13:13:20.0613618Z /home/runner/work/public/public/src/datapipeline.cpp: In lambda function:
-2026-05-02T13:13:20.0614995Z /home/runner/work/public/public/src/datapipeline.cpp:627:46: error: ‘g’ is not captured
-2026-05-02T13:13:20.0615887Z   627 |         std::shuffle(vec.begin(), vec.end(), g);
-2026-05-02T13:13:20.0616423Z       |                                              ^
-2026-05-02T13:13:20.0617264Z /home/runner/work/public/public/src/datapipeline.cpp:626:44: note: the lambda has no capture-default
-2026-05-02T13:13:20.0618290Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:20.0618942Z       |                                            ^
-2026-05-02T13:13:20.0619962Z /home/runner/work/public/public/src/datapipeline.cpp:626:21: note: ‘<typeprefixerror>g’ declared here
-2026-05-02T13:13:20.0621002Z   626 |     auto sample = [&g, &result, perCategory](std::vector<FilteredPosition>& vec) {
-2026-05-02T13:13:20.0621951Z       |                     ^
-2026-05-02T13:13:20.0690795Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘std::vector<std::vector<DataPipeline::FilteredPosition> > DataPipeline::DiversitySampler::cluster_positions(const std::vector<DataPipeline::FilteredPosition>&, int)’:
-2026-05-02T13:13:20.0693829Z /home/runner/work/public/public/src/datapipeline.cpp:656:38: error: ‘const struct DataPipeline::FilteredPosition’ has no member named ‘score’
-2026-05-02T13:13:20.0695051Z   656 |                        (std::abs(pos.score) / 1000.0) * 0.3 +
-2026-05-02T13:13:20.0695600Z       |                                      ^~~~~
-2026-05-02T13:13:20.1035358Z /home/runner/work/public/public/src/training.cpp: In member function ‘Training::GameResult Training::DataGenerator::play_one_game(int)’:
-2026-05-02T13:13:20.1037350Z /home/runner/work/public/public/src/training.cpp:99:47: error: ‘class Nexus::BoardState’ has no member named ‘is_game_over’
-2026-05-02T13:13:20.1038490Z    99 |     for (int i = 0; i < randomMoves && !board.is_game_over(); ++i) {
-2026-05-02T13:13:20.1039124Z       |                                               ^~~~~~~~~~~~
-2026-05-02T13:13:20.1040474Z /home/runner/work/public/public/src/training.cpp:116:19: error: ‘class Nexus::BoardState’ has no member named ‘is_game_over’
-2026-05-02T13:13:20.1041561Z   116 |     while (!board.is_game_over() && moveCounter < 200) {
-2026-05-02T13:13:20.1042373Z       |                   ^~~~~~~~~~~~
-2026-05-02T13:13:20.1061917Z /home/runner/work/public/public/src/training.cpp:176:15: error: ‘class Nexus::BoardState’ has no member named ‘is_checkmate’; did you mean ‘is_check’?
-2026-05-02T13:13:20.1063135Z   176 |     if (board.is_checkmate()) {
-2026-05-02T13:13:20.1063591Z       |               ^~~~~~~~~~~~
-2026-05-02T13:13:20.1063996Z       |               is_check
-2026-05-02T13:13:20.1065267Z /home/runner/work/public/public/src/training.cpp:178:29: error: no matching function for call to ‘Nexus::BoardState::is_draw()’
-2026-05-02T13:13:20.1066289Z   178 |     } else if (board.is_draw()) {
-2026-05-02T13:13:20.1066750Z       |                ~~~~~~~~~~~~~^~
-2026-05-02T13:13:20.1067373Z In file included from /home/runner/work/public/public/src/training.h:4,
-2026-05-02T13:13:20.1068138Z                  from /home/runner/work/public/public/src/training.cpp:1:
-2026-05-02T13:13:20.1069434Z /home/runner/work/public/public/src/board.h:89:10: note: candidate: ‘bool Nexus::BoardState::is_draw(int) const’
-2026-05-02T13:13:20.1070332Z    89 |     bool is_draw(int ply) const;
-2026-05-02T13:13:20.1070768Z       |          ^~~~~~~
-2026-05-02T13:13:20.1071466Z /home/runner/work/public/public/src/board.h:89:10: note:   candidate expects 1 argument, 0 provided
-2026-05-02T13:13:20.1086563Z /home/runner/work/public/public/src/training.cpp: In member function ‘Nexus::Value Training::DataGenerator::score_position(const Nexus::BoardState&)’:
-2026-05-02T13:13:20.1089300Z /home/runner/work/public/public/src/training.cpp:207:24: error: binding reference of type ‘Nexus::BoardState&’ to ‘const Nexus::BoardState’ discards qualifiers
-2026-05-02T13:13:20.1090591Z   207 |         searcher.start(pos, limits, false);
-2026-05-02T13:13:20.1091341Z       |                        ^~~
-2026-05-02T13:13:20.1092254Z In file included from /home/runner/work/public/public/src/training.cpp:2:
-2026-05-02T13:13:20.1094033Z /home/runner/work/public/public/src/search.h:58:28: note:   initializing argument 1 of ‘void Nexus::Search::start(Nexus::BoardState&, const Nexus::SearchLimits&, bool)’
-2026-05-02T13:13:20.1095448Z    58 |     void start(BoardState& pos, const SearchLimits& limits, bool ponder);
-2026-05-02T13:13:20.1096082Z       |                ~~~~~~~~~~~~^~~
-2026-05-02T13:13:20.1097465Z /home/runner/work/public/public/src/training.cpp: In member function ‘int Training::DataGenerator::evaluate_game_phase(const Nexus::BoardState&)’:
-2026-05-02T13:13:20.1099444Z /home/runner/work/public/public/src/training.cpp:222:42: error: no match for ‘operator++’ (operand type is ‘Nexus::Square’)
-2026-05-02T13:13:20.1100475Z   222 |     for (Square sq = SQ_A1; sq <= SQ_H8; ++sq) {
-2026-05-02T13:13:20.1101007Z       |                                          ^~~~
-2026-05-02T13:13:20.2351086Z make[2]: *** [CMakeFiles/nexus.dir/build.make:331: CMakeFiles/nexus.dir/src/datapipeline.cpp.o] Error 1
-2026-05-02T13:13:20.4504404Z make[2]: *** [CMakeFiles/nexus.dir/build.make:317: CMakeFiles/nexus.dir/src/training.cpp.o] Error 1
-2026-05-02T13:13:20.4506724Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
-2026-05-02T13:13:20.4509673Z make: *** [Makefile:101: all] Error 2
-2026-05-02T13:13:20.4526473Z ##[error]Process completed with exit code 2.
-2026-05-02T13:13:20.4642755Z Post job cleanup.
-2026-05-02T13:13:20.5617306Z [command]/usr/bin/git version
-2026-05-02T13:13:20.5652868Z git version 2.53.0
-2026-05-02T13:13:20.5695308Z Temporarily overriding HOME='/home/runner/work/_temp/a3aff241-8024-465b-b388-d9a12e560b42' before making global git config changes
-2026-05-02T13:13:20.5696217Z Adding repository directory to the temporary git global config as a safe directory
-2026-05-02T13:13:20.5700500Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T13:13:20.5741424Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T13:13:20.5772377Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T13:13:20.5988127Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T13:13:20.6007332Z http.https://github.com/.extraheader
-2026-05-02T13:13:20.6019400Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-05-02T13:13:20.6048294Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T13:13:20.6264636Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T13:13:20.6293199Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T13:13:20.6608079Z Cleaning up orphan processes
-2026-05-02T13:13:20.6888474Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-05-02T13:29:54.1008511Z Current runner version: '2.334.0'
+2026-05-02T13:29:54.1031493Z ##[group]Runner Image Provisioner
+2026-05-02T13:29:54.1032437Z Hosted Compute Agent
+2026-05-02T13:29:54.1033038Z Version: 20260213.493
+2026-05-02T13:29:54.1033628Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-02T13:29:54.1034278Z Build Date: 2026-02-13T00:28:41Z
+2026-05-02T13:29:54.1035018Z Worker ID: {afd283b2-7a5b-4a98-b35d-8a7720e334ee}
+2026-05-02T13:29:54.1035656Z Azure Region: westcentralus
+2026-05-02T13:29:54.1036241Z ##[endgroup]
+2026-05-02T13:29:54.1037672Z ##[group]Operating System
+2026-05-02T13:29:54.1038305Z Ubuntu
+2026-05-02T13:29:54.1038731Z 24.04.4
+2026-05-02T13:29:54.1039211Z LTS
+2026-05-02T13:29:54.1039673Z ##[endgroup]
+2026-05-02T13:29:54.1040148Z ##[group]Runner Image
+2026-05-02T13:29:54.1040892Z Image: ubuntu-24.04
+2026-05-02T13:29:54.1041395Z Version: 20260413.86.1
+2026-05-02T13:29:54.1042541Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-02T13:29:54.1044017Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-02T13:29:54.1044919Z ##[endgroup]
+2026-05-02T13:29:54.1045965Z ##[group]GITHUB_TOKEN Permissions
+2026-05-02T13:29:54.1047697Z Contents: read
+2026-05-02T13:29:54.1048220Z Metadata: read
+2026-05-02T13:29:54.1048776Z Packages: read
+2026-05-02T13:29:54.1049305Z ##[endgroup]
+2026-05-02T13:29:54.1051444Z Secret source: Actions
+2026-05-02T13:29:54.1052230Z Prepare workflow directory
+2026-05-02T13:29:54.1390278Z Prepare all required actions
+2026-05-02T13:29:54.1429248Z Getting action download info
+2026-05-02T13:29:54.5734950Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-02T13:29:54.7175050Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-02T13:29:54.9170358Z Complete job name: build-and-test
+2026-05-02T13:29:54.9878988Z ##[group]Run actions/checkout@v4
+2026-05-02T13:29:54.9879812Z with:
+2026-05-02T13:29:54.9880191Z   fetch-depth: 0
+2026-05-02T13:29:54.9880606Z   repository: Longnononn/public
+2026-05-02T13:29:54.9881808Z   token: ***
+2026-05-02T13:29:54.9882206Z   ssh-strict: true
+2026-05-02T13:29:54.9882602Z   ssh-user: git
+2026-05-02T13:29:54.9882991Z   persist-credentials: true
+2026-05-02T13:29:54.9883423Z   clean: true
+2026-05-02T13:29:54.9883805Z   sparse-checkout-cone-mode: true
+2026-05-02T13:29:54.9884278Z   fetch-tags: false
+2026-05-02T13:29:54.9884669Z   show-progress: true
+2026-05-02T13:29:54.9885052Z   lfs: false
+2026-05-02T13:29:54.9885462Z   submodules: false
+2026-05-02T13:29:54.9886020Z   set-safe-directory: true
+2026-05-02T13:29:54.9886803Z ##[endgroup]
+2026-05-02T13:29:55.0985644Z Syncing repository: Longnononn/public
+2026-05-02T13:29:55.0987326Z ##[group]Getting Git version info
+2026-05-02T13:29:55.0987978Z Working directory is '/home/runner/work/public/public'
+2026-05-02T13:29:55.0988908Z [command]/usr/bin/git version
+2026-05-02T13:29:55.1037426Z git version 2.53.0
+2026-05-02T13:29:55.1063346Z ##[endgroup]
+2026-05-02T13:29:55.1083861Z Temporarily overriding HOME='/home/runner/work/_temp/76844200-3290-4725-aaa5-f02f2fa7315a' before making global git config changes
+2026-05-02T13:29:55.1085173Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T13:29:55.1088940Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T13:29:55.1119078Z Deleting the contents of '/home/runner/work/public/public'
+2026-05-02T13:29:55.1122784Z ##[group]Initializing the repository
+2026-05-02T13:29:55.1126972Z [command]/usr/bin/git init /home/runner/work/public/public
+2026-05-02T13:29:55.1200976Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-02T13:29:55.1202507Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-02T13:29:55.1203616Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-02T13:29:55.1204523Z hint: call:
+2026-05-02T13:29:55.1205002Z hint:
+2026-05-02T13:29:55.1205511Z hint: 	git config --global init.defaultBranch <name>
+2026-05-02T13:29:55.1206067Z hint:
+2026-05-02T13:29:55.1206608Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-02T13:29:55.1207996Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-02T13:29:55.1208717Z hint:
+2026-05-02T13:29:55.1209083Z hint: 	git branch -m <name>
+2026-05-02T13:29:55.1209499Z hint:
+2026-05-02T13:29:55.1210055Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-02T13:29:55.1211285Z Initialized empty Git repository in /home/runner/work/public/public/.git/
+2026-05-02T13:29:55.1213290Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
+2026-05-02T13:29:55.1241443Z ##[endgroup]
+2026-05-02T13:29:55.1242236Z ##[group]Disabling automatic garbage collection
+2026-05-02T13:29:55.1245368Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-02T13:29:55.1272184Z ##[endgroup]
+2026-05-02T13:29:55.1272851Z ##[group]Setting up auth
+2026-05-02T13:29:55.1278688Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T13:29:55.1307155Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T13:29:55.1601851Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T13:29:55.1635429Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T13:29:55.1868636Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T13:29:55.1909543Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T13:29:55.2131399Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-02T13:29:55.2163995Z ##[endgroup]
+2026-05-02T13:29:55.2165216Z ##[group]Fetching the repository
+2026-05-02T13:29:55.2173545Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-02T13:29:55.9021025Z From https://github.com/Longnononn/public
+2026-05-02T13:29:55.9022443Z  * [new branch]      main       -> origin/main
+2026-05-02T13:29:55.9059306Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-02T13:29:55.9082313Z   origin/main
+2026-05-02T13:29:55.9089900Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-02T13:29:55.9110319Z ca83bbf5cee626f45447de650e931fbd5092cb9f
+2026-05-02T13:29:55.9120597Z ##[endgroup]
+2026-05-02T13:29:55.9122028Z ##[group]Determining the checkout info
+2026-05-02T13:29:55.9123201Z ##[endgroup]
+2026-05-02T13:29:55.9125478Z [command]/usr/bin/git sparse-checkout disable
+2026-05-02T13:29:55.9163498Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-02T13:29:55.9191722Z ##[group]Checking out the ref
+2026-05-02T13:29:55.9196080Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-02T13:29:55.9296502Z Switched to a new branch 'main'
+2026-05-02T13:29:55.9298053Z branch 'main' set up to track 'origin/main'.
+2026-05-02T13:29:55.9304827Z ##[endgroup]
+2026-05-02T13:29:55.9336850Z [command]/usr/bin/git log -1 --format=%H
+2026-05-02T13:29:55.9358612Z ca83bbf5cee626f45447de650e931fbd5092cb9f
+2026-05-02T13:29:55.9555023Z ##[group]Run sudo apt-get update
+2026-05-02T13:29:55.9556216Z [36;1msudo apt-get update[0m
+2026-05-02T13:29:55.9557573Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
+2026-05-02T13:29:55.9559101Z [36;1mpip3 install numpy scipy[0m
+2026-05-02T13:29:55.9585064Z shell: /usr/bin/bash -e {0}
+2026-05-02T13:29:55.9586271Z ##[endgroup]
+2026-05-02T13:29:56.0799604Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T13:29:56.1235308Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-05-02T13:29:56.1238776Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-05-02T13:29:56.1242867Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-05-02T13:29:56.1280079Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-05-02T13:29:56.1312382Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-05-02T13:29:56.1316528Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-05-02T13:29:56.2268763Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
+2026-05-02T13:29:56.3312955Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
+2026-05-02T13:29:56.3424202Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
+2026-05-02T13:29:56.3474144Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
+2026-05-02T13:29:56.3789838Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
+2026-05-02T13:29:56.3877923Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
+2026-05-02T13:29:56.3898797Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-05-02T13:29:56.3913355Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+2026-05-02T13:29:56.3919641Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
+2026-05-02T13:29:56.4003373Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
+2026-05-02T13:29:56.4033493Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-05-02T13:29:56.4047358Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+2026-05-02T13:29:56.4064951Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
+2026-05-02T13:29:56.4209030Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
+2026-05-02T13:29:56.4751741Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-05-02T13:29:56.4759100Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+2026-05-02T13:29:56.4801401Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+2026-05-02T13:29:56.4811102Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
+2026-05-02T13:29:56.4814873Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-05-02T13:29:56.4822994Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+2026-05-02T13:29:56.4827175Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
+2026-05-02T13:29:56.4830903Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+2026-05-02T13:29:56.4834676Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-05-02T13:29:56.4839413Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-05-02T13:29:56.4843740Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
+2026-05-02T13:29:56.4851565Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-05-02T13:29:56.4860489Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+2026-05-02T13:29:56.4865611Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
+2026-05-02T13:29:56.5305888Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+2026-05-02T13:29:56.5311107Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+2026-05-02T13:29:56.5317641Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-05-02T13:29:56.5325254Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
+2026-05-02T13:29:56.5395314Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
+2026-05-02T13:29:56.5413259Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+2026-05-02T13:29:56.5420357Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+2026-05-02T13:29:56.5430632Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
+2026-05-02T13:29:56.5485308Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
+2026-05-02T13:29:56.5501173Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-05-02T13:29:56.5511355Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+2026-05-02T13:29:56.5521474Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
+2026-05-02T13:29:56.5641463Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
+2026-05-02T13:29:56.5672851Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-05-02T13:29:56.5677751Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+2026-05-02T13:29:56.5755546Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
+2026-05-02T13:29:56.6105407Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
+2026-05-02T13:29:56.6111053Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-05-02T13:30:05.8647083Z Fetched 16.5 MB in 2s (8583 kB/s)
+2026-05-02T13:30:06.5900541Z Reading package lists...
+2026-05-02T13:30:06.6202080Z Reading package lists...
+2026-05-02T13:30:06.7713697Z Building dependency tree...
+2026-05-02T13:30:06.7721229Z Reading state information...
+2026-05-02T13:30:06.9092033Z g++ is already the newest version (4:13.2.0-7ubuntu1).
+2026-05-02T13:30:06.9092577Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-05-02T13:30:06.9093024Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+2026-05-02T13:30:06.9093396Z Suggested packages:
+2026-05-02T13:30:06.9093684Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
+2026-05-02T13:30:06.9415225Z The following NEW packages will be installed:
+2026-05-02T13:30:06.9421488Z   cmake cmake-data libjsoncpp25 librhash0
+2026-05-02T13:30:06.9587652Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
+2026-05-02T13:30:06.9588395Z Need to get 13.6 MB of archives.
+2026-05-02T13:30:06.9589001Z After this operation, 49.1 MB of additional disk space will be used.
+2026-05-02T13:30:06.9589734Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-02T13:30:07.0671927Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-05-02T13:30:07.2418555Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-05-02T13:30:07.3473413Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-05-02T13:30:07.5746497Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-05-02T13:30:07.9955594Z Fetched 13.6 MB in 1s (16.9 MB/s)
+2026-05-02T13:30:08.0276538Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-05-02T13:30:08.1201538Z (Reading database ... 
+2026-05-02T13:30:08.1202016Z (Reading database ... 5%
+2026-05-02T13:30:08.1206367Z (Reading database ... 10%
+2026-05-02T13:30:08.1206771Z (Reading database ... 15%
+2026-05-02T13:30:08.1207123Z (Reading database ... 20%
+2026-05-02T13:30:08.1207462Z (Reading database ... 25%
+2026-05-02T13:30:08.1207816Z (Reading database ... 30%
+2026-05-02T13:30:08.1208223Z (Reading database ... 35%
+2026-05-02T13:30:08.1208613Z (Reading database ... 40%
+2026-05-02T13:30:08.1208960Z (Reading database ... 45%
+2026-05-02T13:30:08.1209335Z (Reading database ... 50%
+2026-05-02T13:30:08.1503821Z (Reading database ... 55%
+2026-05-02T13:30:08.4027452Z (Reading database ... 60%
+2026-05-02T13:30:08.5984836Z (Reading database ... 65%
+2026-05-02T13:30:08.8454678Z (Reading database ... 70%
+2026-05-02T13:30:09.0880902Z (Reading database ... 75%
+2026-05-02T13:30:09.4258824Z (Reading database ... 80%
+2026-05-02T13:30:09.8880105Z (Reading database ... 85%
+2026-05-02T13:30:10.3979801Z (Reading database ... 90%
+2026-05-02T13:30:10.9251221Z (Reading database ... 95%
+2026-05-02T13:30:10.9251948Z (Reading database ... 100%
+2026-05-02T13:30:10.9252397Z (Reading database ... 220764 files and directories currently installed.)
+2026-05-02T13:30:10.9295335Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-05-02T13:30:10.9345510Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T13:30:10.9662704Z Selecting previously unselected package librhash0:amd64.
+2026-05-02T13:30:10.9791887Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
+2026-05-02T13:30:10.9804341Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T13:30:11.0046602Z Selecting previously unselected package cmake-data.
+2026-05-02T13:30:11.0177287Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
+2026-05-02T13:30:11.0310973Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-05-02T13:30:11.5742223Z Selecting previously unselected package cmake.
+2026-05-02T13:30:11.5889131Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
+2026-05-02T13:30:11.5899640Z Unpacking cmake (3.28.3-1build7) ...
+2026-05-02T13:30:11.7752561Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-02T13:30:11.7780152Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-05-02T13:30:11.7809983Z Setting up cmake-data (3.28.3-1build7) ...
+2026-05-02T13:30:11.7878049Z Setting up cmake (3.28.3-1build7) ...
+2026-05-02T13:30:11.7904505Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-05-02T13:30:11.7927165Z Not building database; man-db/auto-update is not 'true'.
+2026-05-02T13:30:11.7939890Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-05-02T13:30:12.9222093Z 
+2026-05-02T13:30:12.9222783Z Running kernel seems to be up-to-date.
+2026-05-02T13:30:12.9223205Z 
+2026-05-02T13:30:12.9223377Z No services need to be restarted.
+2026-05-02T13:30:12.9223726Z 
+2026-05-02T13:30:12.9223869Z No containers need to be restarted.
+2026-05-02T13:30:12.9224119Z 
+2026-05-02T13:30:12.9224262Z No user sessions are running outdated binaries.
+2026-05-02T13:30:12.9224513Z 
+2026-05-02T13:30:12.9224754Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-05-02T13:30:14.6939374Z Defaulting to user installation because normal site-packages is not writeable
+2026-05-02T13:30:15.9537677Z Collecting numpy
+2026-05-02T13:30:16.0330672Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-05-02T13:30:16.2022775Z Collecting scipy
+2026-05-02T13:30:16.2211925Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-05-02T13:30:16.2454595Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 2.8 MB/s eta 0:00:00
+2026-05-02T13:30:16.3044763Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2026-05-02T13:30:16.5616015Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 125.2 MB/s eta 0:00:00
+2026-05-02T13:30:16.5803426Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
+2026-05-02T13:30:16.7699339Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 125.1 MB/s eta 0:00:00
+2026-05-02T13:30:17.1232508Z Installing collected packages: numpy, scipy
+2026-05-02T13:30:22.2960987Z Successfully installed numpy-2.4.4 scipy-1.17.1
+2026-05-02T13:30:22.3835536Z ##[group]Run git checkout main
+2026-05-02T13:30:22.3835837Z [36;1mgit checkout main[0m
+2026-05-02T13:30:22.3836063Z [36;1mmkdir -p build_baseline[0m
+2026-05-02T13:30:22.3836300Z [36;1mcd build_baseline[0m
+2026-05-02T13:30:22.3836528Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-02T13:30:22.3836803Z [36;1mmake -j$(nproc)[0m
+2026-05-02T13:30:22.3837008Z [36;1mcp nexus ../nexus_base[0m
+2026-05-02T13:30:22.3837222Z [36;1mcd ..[0m
+2026-05-02T13:30:22.3858939Z shell: /usr/bin/bash -e {0}
+2026-05-02T13:30:22.3859167Z ##[endgroup]
+2026-05-02T13:30:22.3955613Z Your branch is up to date with 'origin/main'.
+2026-05-02T13:30:22.3956790Z Already on 'main'
+2026-05-02T13:30:23.1433414Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-02T13:30:23.2183495Z -- Detecting CXX compiler ABI info
+2026-05-02T13:30:23.3112204Z -- Detecting CXX compiler ABI info - done
+2026-05-02T13:30:23.3284159Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-02T13:30:23.3328233Z -- Detecting CXX compile features
+2026-05-02T13:30:23.3374628Z -- Detecting CXX compile features - done
+2026-05-02T13:30:23.3679097Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-02T13:30:23.4648277Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-02T13:30:23.4656285Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-02T13:30:23.5242457Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-02T13:30:23.5249884Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-02T13:30:23.5820347Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-02T13:30:23.5824795Z -- Configuring done (1.0s)
+2026-05-02T13:30:23.5901560Z -- Generating done (0.0s)
+2026-05-02T13:30:23.5905170Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
+2026-05-02T13:30:23.6081609Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-02T13:30:23.6082694Z [  7%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-02T13:30:23.6084934Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-02T13:30:23.6085879Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-02T13:30:24.1219616Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T13:30:24.1242120Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T13:30:24.1261683Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T13:30:24.1291285Z       |             ^~~~~
+2026-05-02T13:30:24.1742072Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T13:30:24.1752752Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T13:30:24.1769838Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T13:30:24.1801309Z       |     ^~~~~~~~~~~~
+2026-05-02T13:30:24.2051533Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-02T13:30:24.2412318Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-02T13:30:24.2422123Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-02T13:30:24.2451364Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-02T13:30:24.2481408Z       |         ^~~~~~~
+2026-05-02T13:30:24.3041365Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T13:30:24.3049742Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T13:30:24.3071312Z   169 |     Key key = st.key;
+2026-05-02T13:30:24.3101446Z       |         ^~~
+2026-05-02T13:30:24.3111712Z [ 15%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-02T13:30:24.3591961Z [ 17%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-02T13:30:24.5171879Z [ 20%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
+2026-05-02T13:30:24.5202968Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-02T13:30:24.5232161Z /home/runner/work/public/public/src/bitboard.cpp:131:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-02T13:30:24.5261392Z   131 |         int shift = 64 - shifts[s];
+2026-05-02T13:30:24.5261889Z       |             ^~~~~
+2026-05-02T13:30:24.5651218Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-02T13:30:24.5682984Z /home/runner/work/public/public/src/bitboard.cpp:118:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-02T13:30:24.5684539Z   118 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-02T13:30:24.5711433Z       |     ^~~~~~~~~~~~
+2026-05-02T13:30:24.5891115Z [ 22%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
+2026-05-02T13:30:24.7862872Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-02T13:30:24.7864610Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-02T13:30:24.7881385Z   169 |     Key key = st.key;
+2026-05-02T13:30:24.7911298Z       |         ^~~
+2026-05-02T13:30:24.8591949Z [ 25%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
+2026-05-02T13:30:24.9699800Z [ 27%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-02T13:30:24.9871964Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T13:30:24.9874042Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T13:30:24.9876707Z    94 |     Color them = ~us;
+2026-05-02T13:30:24.9877299Z       |           ^~~~
+2026-05-02T13:30:25.0531976Z [ 30%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
+2026-05-02T13:30:25.0561459Z [ 32%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
+2026-05-02T13:30:25.3732332Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
+2026-05-02T13:30:25.8841958Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
+2026-05-02T13:30:26.2552000Z In file included from /home/runner/work/public/public/src/search.cpp:7:
+2026-05-02T13:30:26.2583958Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-02T13:30:26.2614367Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-02T13:30:26.2662834Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-02T13:30:26.2822417Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-02T13:30:26.2851889Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-02T13:30:26.2871244Z    94 |     Color them = ~us;
+2026-05-02T13:30:26.2871659Z       |           ^~~~
+2026-05-02T13:30:26.3002040Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-02T13:30:26.3022889Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-02T13:30:26.3024681Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-02T13:30:26.3025646Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:30:26.3026375Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-02T13:30:26.3062085Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-02T13:30:26.3091210Z    26 | struct TTCluster {
+2026-05-02T13:30:26.3111200Z       |        ^~~~~~~~~
+2026-05-02T13:30:26.3499146Z [ 40%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
+2026-05-02T13:30:26.3981954Z [ 42%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
+2026-05-02T13:30:26.5840430Z [ 45%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
+2026-05-02T13:30:26.8791892Z [ 47%] Building CXX object CMakeFiles/nexus.dir/src/uci.cpp.o
+2026-05-02T13:30:27.1061733Z [ 50%] Building CXX object CMakeFiles/nexus.dir/src/see.cpp.o
+2026-05-02T13:30:27.1353381Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
+2026-05-02T13:30:27.1361522Z /home/runner/work/public/public/src/search.cpp:227:36:   required from here
+2026-05-02T13:30:27.1392055Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-02T13:30:27.1411436Z   432 |     int moveCount = end - moveList;
+2026-05-02T13:30:27.1421196Z       |         ^~~~~~~~~
+2026-05-02T13:30:27.1452845Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
+2026-05-02T13:30:27.1471574Z /home/runner/work/public/public/src/search.cpp:807:91:   required from here
+2026-05-02T13:30:27.1501986Z /home/runner/work/public/public/src/search.cpp:432:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-02T13:30:27.5862009Z [ 52%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
+2026-05-02T13:30:27.6392499Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-02T13:30:27.6423004Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-02T13:30:27.6451581Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-02T13:30:27.6481313Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:30:27.6511416Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-02T13:30:27.6541889Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-02T13:30:27.6571222Z    26 | struct TTCluster {
+2026-05-02T13:30:27.6601187Z       |        ^~~~~~~~~
+2026-05-02T13:30:27.7351701Z [ 55%] Building CXX object CMakeFiles/nexus.dir/src/reductions.cpp.o
+2026-05-02T13:30:27.8372008Z [ 57%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
+2026-05-02T13:30:27.9561895Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-02T13:30:27.9593070Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-02T13:30:27.9594642Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-02T13:30:27.9595671Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-02T13:30:28.0511776Z [ 60%] Building CXX object CMakeFiles/nexus.dir/src/history.cpp.o
+2026-05-02T13:30:28.2491752Z [ 62%] Building CXX object CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
+2026-05-02T13:30:28.4291889Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-02T13:30:28.4303375Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-02T13:30:28.4305006Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-02T13:30:28.4305615Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-02T13:30:28.5262003Z [ 65%] Building CXX object CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
+2026-05-02T13:30:29.0921929Z [ 67%] Building CXX object CMakeFiles/nexus.dir/src/simd.cpp.o
+2026-05-02T13:30:29.2633746Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-02T13:30:29.2662169Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-02T13:30:29.2671648Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-02T13:30:29.2691249Z       |               ^~~~~~~
+2026-05-02T13:30:29.4516752Z [ 70%] Building CXX object CMakeFiles/nexus.dir/src/nnue.cpp.o
+2026-05-02T13:30:29.4721809Z [ 72%] Building CXX object CMakeFiles/nexus.dir/src/syzygy.cpp.o
+2026-05-02T13:30:29.4902496Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-02T13:30:29.4922963Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-02T13:30:29.4951414Z   389 |     return size >= expectedSize;
+2026-05-02T13:30:29.4981232Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-02T13:30:29.6402329Z [ 75%] Building CXX object CMakeFiles/nexus_tests.dir/src/thread.cpp.o
+2026-05-02T13:30:30.2123338Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-02T13:30:30.2152084Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-02T13:30:30.2181477Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-02T13:30:30.2204991Z       |               ^~~~~~~
+2026-05-02T13:30:30.3511798Z [ 77%] Building CXX object CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
+2026-05-02T13:30:30.4121768Z [ 80%] Building CXX object CMakeFiles/nexus_tests.dir/src/training.cpp.o
+2026-05-02T13:30:30.6914060Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-02T13:30:30.6942906Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-02T13:30:30.6961607Z   389 |     return size >= expectedSize;
+2026-05-02T13:30:30.6971241Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-02T13:30:30.8502150Z [ 82%] Building CXX object CMakeFiles/nexus.dir/src/thread.cpp.o
+2026-05-02T13:30:31.3191796Z [ 85%] Building CXX object CMakeFiles/nexus.dir/src/test_suite.cpp.o
+2026-05-02T13:30:31.4083405Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-02T13:30:31.4122124Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-02T13:30:31.4151544Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-02T13:30:31.4181208Z       |              ^~~~~
+2026-05-02T13:30:31.4212125Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-02T13:30:31.4233074Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-02T13:30:31.4261189Z       |                  ^~~
+2026-05-02T13:30:32.0352264Z [ 87%] Building CXX object CMakeFiles/nexus.dir/src/training.cpp.o
+2026-05-02T13:30:32.3720131Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-02T13:30:32.3742321Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-02T13:30:32.3771422Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-02T13:30:32.3772261Z       |              ^~~~~
+2026-05-02T13:30:32.3802049Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-02T13:30:32.3811361Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-02T13:30:32.3841201Z       |                  ^~~
+2026-05-02T13:30:32.5361874Z [ 90%] Building CXX object CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o
+2026-05-02T13:30:32.6069175Z [ 92%] Building CXX object CMakeFiles/nexus.dir/src/datapipeline.cpp.o
+2026-05-02T13:30:32.9891790Z [ 95%] Building CXX object CMakeFiles/nexus.dir/src/main.cpp.o
+2026-05-02T13:30:33.0921841Z In file included from /home/runner/work/public/public/src/datapipeline.cpp:1:
+2026-05-02T13:30:33.0923761Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.0981394Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1011202Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.1041597Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.1071585Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1101231Z       |                                                     ^
+2026-05-02T13:30:33.1131698Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.1161909Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.1191388Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1215977Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.1241583Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.1271533Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1301238Z       |                                                     ^
+2026-05-02T13:30:33.1331682Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.1360938Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.1386625Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1411213Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.1412017Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.1413093Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1413678Z       |                                                     ^
+2026-05-02T13:30:33.1451579Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.1477842Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.1501386Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1531236Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.1561693Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.1591414Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1621247Z       |                                                     ^
+2026-05-02T13:30:33.1622411Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.1623545Z /home/runner/work/public/public/src/datapipeline.h:94:15: error: invalid template-id
+2026-05-02T13:30:33.1624438Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1624993Z       |               ^~~
+2026-05-02T13:30:33.1625954Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ has not been declared
+2026-05-02T13:30:33.1626923Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1627492Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.1629131Z /home/runner/work/public/public/src/datapipeline.h:94:9: error: missing template argument list after ‘std::vector’; template placeholder not permitted in parameter
+2026-05-02T13:30:33.1630459Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.1631274Z       |         ^~~~~
+2026-05-02T13:30:33.1631596Z       |              <>
+2026-05-02T13:30:33.1632585Z /home/runner/work/public/public/src/datapipeline.h:94:9: note: or use ‘auto’ for an abbreviated function template
+2026-05-02T13:30:33.1633512Z In file included from /usr/include/c++/13/vector:66,
+2026-05-02T13:30:33.1634167Z                  from /home/runner/work/public/public/src/datapipeline.h:5:
+2026-05-02T13:30:33.1635547Z /usr/include/c++/13/bits/stl_vector.h:428:11: note: ‘template<class _Tp, class _Alloc> class std::vector’ declared here
+2026-05-02T13:30:33.1636557Z   428 |     class vector : protected _Vector_base<_Tp, _Alloc>
+2026-05-02T13:30:33.1637093Z       |           ^~~~~~
+2026-05-02T13:30:33.2366663Z In file included from /home/runner/work/public/public/src/datapipeline.cpp:1:
+2026-05-02T13:30:33.2392186Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.2401443Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2431241Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.2461584Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.2481393Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2491202Z       |                                                     ^
+2026-05-02T13:30:33.2521531Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.2541998Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.2547557Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2571303Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.2621610Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.2631406Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2632026Z       |                                                     ^
+2026-05-02T13:30:33.2632811Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.2634263Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.2635210Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2635724Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.2636449Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.2637709Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2638247Z       |                                                     ^
+2026-05-02T13:30:33.2638993Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.2640467Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ was not declared in this scope
+2026-05-02T13:30:33.2641588Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2642083Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.2642780Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 1 is invalid
+2026-05-02T13:30:33.2643620Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2644150Z       |                                                     ^
+2026-05-02T13:30:33.2644897Z /home/runner/work/public/public/src/datapipeline.h:94:53: error: template argument 2 is invalid
+2026-05-02T13:30:33.2645923Z /home/runner/work/public/public/src/datapipeline.h:94:15: error: invalid template-id
+2026-05-02T13:30:33.2646711Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2647206Z       |               ^~~
+2026-05-02T13:30:33.2671442Z /home/runner/work/public/public/src/datapipeline.h:94:27: error: ‘Training’ has not been declared
+2026-05-02T13:30:33.2672423Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2672952Z       |                           ^~~~~~~~
+2026-05-02T13:30:33.2674527Z /home/runner/work/public/public/src/datapipeline.h:94:9: error: missing template argument list after ‘std::vector’; template placeholder not permitted in parameter
+2026-05-02T13:30:33.2675833Z    94 |         const std::vector<Training::TrainingPosition>& raw);
+2026-05-02T13:30:33.2676339Z       |         ^~~~~
+2026-05-02T13:30:33.2676618Z       |              <>
+2026-05-02T13:30:33.2677513Z /home/runner/work/public/public/src/datapipeline.h:94:9: note: or use ‘auto’ for an abbreviated function template
+2026-05-02T13:30:33.2678470Z In file included from /usr/include/c++/13/vector:66,
+2026-05-02T13:30:33.2679101Z                  from /home/runner/work/public/public/src/datapipeline.h:5:
+2026-05-02T13:30:33.2680333Z /usr/include/c++/13/bits/stl_vector.h:428:11: note: ‘template<class _Tp, class _Alloc> class std::vector’ declared here
+2026-05-02T13:30:33.2683684Z   428 |     class vector : protected _Vector_base<_Tp, _Alloc>
+2026-05-02T13:30:33.2684191Z       |           ^~~~~~
+2026-05-02T13:30:33.5083362Z /home/runner/work/public/public/src/datapipeline.cpp:41:31: error: no declaration matches ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(const std::vector<Training::TrainingPosition>&)’
+2026-05-02T13:30:33.5085614Z    41 | std::vector<FilteredPosition> DataPipeline::process(
+2026-05-02T13:30:33.5111336Z       |                               ^~~~~~~~~~~~
+2026-05-02T13:30:33.5142648Z /home/runner/work/public/public/src/datapipeline.h:93:35: note: candidate is: ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(...)’
+2026-05-02T13:30:33.5147319Z    93 |     std::vector<FilteredPosition> process(
+2026-05-02T13:30:33.5171595Z       |                                   ^~~~~~~
+2026-05-02T13:30:33.5202260Z /home/runner/work/public/public/src/datapipeline.h:80:7: note: ‘class DataPipeline::DataPipeline’ defined here
+2026-05-02T13:30:33.5231323Z    80 | class DataPipeline {
+2026-05-02T13:30:33.5231946Z       |       ^~~~~~~~~~~~
+2026-05-02T13:30:33.5263061Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘DataPipeline::QualityMetrics DataPipeline::DataPipeline::analyze(const std::vector<DataPipeline::FilteredPosition>&) const’:
+2026-05-02T13:30:33.5292873Z /home/runner/work/public/public/src/datapipeline.cpp:342:18: warning: arithmetic between floating-point type ‘double’ and enumeration type ‘Nexus::Value’ is deprecated [-Wdeprecated-enum-float-conversion]
+2026-05-02T13:30:33.5331295Z   342 |         scoreSum += pos.score;
+2026-05-02T13:30:33.5361294Z       |         ~~~~~~~~~^~~~~~~~~~~~
+2026-05-02T13:30:33.5363602Z /home/runner/work/public/public/src/datapipeline.cpp:343:20: warning: arithmetic between floating-point type ‘double’ and enumeration type ‘Nexus::Value’ is deprecated [-Wdeprecated-enum-float-conversion]
+2026-05-02T13:30:33.5391687Z   343 |         scoreSqSum += pos.score * pos.score;
+2026-05-02T13:30:33.5421228Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:30:33.8163624Z /home/runner/work/public/public/src/datapipeline.cpp:41:31: error: no declaration matches ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(const std::vector<Training::TrainingPosition>&)’
+2026-05-02T13:30:33.8191477Z    41 | std::vector<FilteredPosition> DataPipeline::process(
+2026-05-02T13:30:33.8192059Z       |                               ^~~~~~~~~~~~
+2026-05-02T13:30:33.8193766Z /home/runner/work/public/public/src/datapipeline.h:93:35: note: candidate is: ‘std::vector<DataPipeline::FilteredPosition> DataPipeline::DataPipeline::process(...)’
+2026-05-02T13:30:33.8221306Z    93 |     std::vector<FilteredPosition> process(
+2026-05-02T13:30:33.8221836Z       |                                   ^~~~~~~
+2026-05-02T13:30:33.8223084Z /home/runner/work/public/public/src/datapipeline.h:80:7: note: ‘class DataPipeline::DataPipeline’ defined here
+2026-05-02T13:30:33.8223989Z    80 | class DataPipeline {
+2026-05-02T13:30:33.8224352Z       |       ^~~~~~~~~~~~
+2026-05-02T13:30:33.8372762Z /home/runner/work/public/public/src/datapipeline.cpp: In member function ‘DataPipeline::QualityMetrics DataPipeline::DataPipeline::analyze(const std::vector<DataPipeline::FilteredPosition>&) const’:
+2026-05-02T13:30:33.8402896Z /home/runner/work/public/public/src/datapipeline.cpp:342:18: warning: arithmetic between floating-point type ‘double’ and enumeration type ‘Nexus::Value’ is deprecated [-Wdeprecated-enum-float-conversion]
+2026-05-02T13:30:33.8431478Z   342 |         scoreSum += pos.score;
+2026-05-02T13:30:33.8431974Z       |         ~~~~~~~~~^~~~~~~~~~~~
+2026-05-02T13:30:33.8469331Z /home/runner/work/public/public/src/datapipeline.cpp:343:20: warning: arithmetic between floating-point type ‘double’ and enumeration type ‘Nexus::Value’ is deprecated [-Wdeprecated-enum-float-conversion]
+2026-05-02T13:30:33.8471243Z   343 |         scoreSqSum += pos.score * pos.score;
+2026-05-02T13:30:33.8471731Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-02T13:30:33.8472555Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:317: CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o] Error 1
+2026-05-02T13:30:33.8474236Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Error 2
+2026-05-02T13:30:33.8475205Z make[1]: *** Waiting for unfinished jobs....
+2026-05-02T13:30:34.0409401Z make[2]: *** [CMakeFiles/nexus.dir/build.make:331: CMakeFiles/nexus.dir/src/datapipeline.cpp.o] Error 1
+2026-05-02T13:30:34.0410207Z make[2]: *** Waiting for unfinished jobs....
+2026-05-02T13:30:34.0917022Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Error 2
+2026-05-02T13:30:34.0918477Z make: *** [Makefile:101: all] Error 2
+2026-05-02T13:30:34.0936987Z ##[error]Process completed with exit code 2.
+2026-05-02T13:30:34.1052887Z Post job cleanup.
+2026-05-02T13:30:34.2080865Z [command]/usr/bin/git version
+2026-05-02T13:30:34.2123682Z git version 2.53.0
+2026-05-02T13:30:34.2174719Z Temporarily overriding HOME='/home/runner/work/_temp/7ddd03d1-8f74-4c3c-8397-beacfaa60a19' before making global git config changes
+2026-05-02T13:30:34.2175962Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-02T13:30:34.2181490Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-02T13:30:34.2219683Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-02T13:30:34.2254777Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-02T13:30:34.2487576Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-02T13:30:34.2508011Z http.https://github.com/.extraheader
+2026-05-02T13:30:34.2522332Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-02T13:30:34.2553700Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-02T13:30:34.2778475Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-02T13:30:34.2809692Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-02T13:30:34.3157679Z Cleaning up orphan processes
+2026-05-02T13:30:34.3474278Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

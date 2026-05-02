@@ -1,0 +1,173 @@
+name: Infinite Training Orchestrator
+
+# Lightweight scheduler that chains the entire pipeline.
+# Does NOT contain heavy logic - only dispatches to other workflows.
+#
+# Pipeline:
+#   Scheduler (this) -> Self-Play -> Merge -> Micro-Train -> SPRT -> Promote
+#                                                    ^                           |
+#                                                    |___________________________|
+#
+# Trigger methods:
+# - schedule: Every 6 hours (cron)
+# - repository_dispatch: Chained from other workflows (cycle-complete, model-trained)
+# - workflow_dispatch: Manual trigger
+
+on:
+  schedule:
+    # Every 6 hours = 4 cycles/day
+    - cron: "0 */6 * * *"
+  
+  repository_dispatch:
+    types: [cycle-complete, model-trained, promote-complete, train-complete]
+  
+  workflow_dispatch:
+    inputs:
+      start_from:
+        description: 'Start pipeline from'
+        required: true
+        default: 'selfplay'
+        type: choice
+        options:
+          - selfplay
+          - merge
+          - micro-train
+          - sprt
+          - full-cycle
+      games_per_shard:
+        description: 'Games per shard (self-play)'
+        required: false
+        default: '10000'
+      micro_epochs:
+        description: 'Epochs per micro-train job (1 recommended)'
+        required: false
+        default: '1'
+      sprt_games:
+        description: 'SPRT max games'
+        required: false
+        default: '500'
+      enable_chain:
+        description: 'Auto-trigger next workflow after completion'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  # ======== Dispatch Self-Play ========
+  trigger-selfplay:
+    name: Trigger Self-Play Generation
+    runs-on: ubuntu-latest
+    if: github.event.inputs.start_from == 'selfplay' || github.event.inputs.start_from == 'full-cycle' || github.event_name == 'schedule'
+    
+    steps:
+    - name: Dispatch Self-Play Workflow
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: selfplay.yml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        inputs: '{
+          "games": "${{ github.event.inputs.games_per_shard || '10000' }}",
+          "depth": "8",
+          "threads": "4",
+          "shards": "8"
+        }'
+    
+    - name: Log Dispatch
+      run: |
+        echo "Dispatched: Self-Play (${{ github.event.inputs.games_per_shard || '10000' }} games x 8 shards)"
+        echo "Next: Merge will auto-trigger when self-play completes"
+
+  # ======== Dispatch Merge (if starting from merge) ========
+  trigger-merge:
+    name: Trigger Dataset Merge
+    runs-on: ubuntu-latest
+    if: github.event.inputs.start_from == 'merge' || github.event_name == 'repository_dispatch'
+    
+    steps:
+    - name: Dispatch Merge Workflow
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: merge.yml
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Log Dispatch
+      run: echo "Dispatched: Dataset Merge -> will trigger Micro-Train via repository_dispatch"
+
+  # ======== Dispatch Micro-Train (if starting from train) ========
+  trigger-train:
+    name: Trigger Micro-Training
+    runs-on: ubuntu-latest
+    if: github.event.inputs.start_from == 'micro-train' || github.event_name == 'repository_dispatch'
+    
+    steps:
+    - name: Dispatch Micro-Train Workflow
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: micro_train.yml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        inputs: '{
+          "epochs": "${{ github.event.inputs.micro_epochs || '1' }}",
+          "batch_size": "4096",
+          "hidden_size": "128",
+          "max_positions": "500000"
+        }'
+    
+    - name: Log Dispatch
+      run: echo "Dispatched: Micro-Training (1 epoch, resume from checkpoint)"
+
+  # ======== Dispatch SPRT (if starting from SPRT) ========
+  trigger-sprt:
+    name: Trigger SPRT Validation
+    runs-on: ubuntu-latest
+    if: github.event.inputs.start_from == 'sprt'
+    
+    steps:
+    - name: Dispatch SPRT Workflow
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: sprt.yml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        inputs: '{
+          "games": "${{ github.event.inputs.sprt_games || '500' }}",
+          "elo1": "3",
+          "tc": "10+0.1"
+        }'
+    
+    - name: Log Dispatch
+      run: echo "Dispatched: SPRT Validation (H1=+3 Elo)"
+
+  # ======== Summary ========
+  summary:
+    name: Orchestrator Summary
+    needs: [trigger-selfplay, trigger-merge, trigger-train, trigger-sprt]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Pipeline Status
+      run: |
+        echo "=========================================="
+        echo "   NEXUS INFINITE - ORCHESTRATOR"
+        echo "=========================================="
+        echo "Trigger: ${{ github.event_name }}"
+        echo "Start from: ${{ github.event.inputs.start_from || 'auto' }}"
+        echo ""
+        echo "Self-Play:  ${{ needs.trigger-selfplay.result || 'N/A' }}"
+        echo "Merge:      ${{ needs.trigger-merge.result || 'N/A' }}"
+        echo "Micro-Train: ${{ needs.trigger-train.result || 'N/A' }}"
+        echo "SPRT:       ${{ needs.trigger-sprt.result || 'N/A' }}"
+        echo ""
+        echo "Pipeline links:"
+        echo "  Self-Play -> Merge       (workflow_run trigger)"
+        echo "  Merge -> Micro-Train     (repository_dispatch: dataset-ready)"
+        echo "  Micro-Train -> SPRT      (repository_dispatch: model-trained)"
+        echo "  SPRT -> Promote          (repository_dispatch: sprt-accept)"
+        echo "  Promote -> Self-Play     (repository_dispatch: cycle-complete)"
+        echo ""
+        echo "Infinite loop: ACTIVE"
+        echo "Next cycle: ${{ github.event.schedule || 'manual/chain' }}"
+        echo "=========================================="

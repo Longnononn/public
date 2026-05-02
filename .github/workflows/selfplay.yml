@@ -1,0 +1,258 @@
+name: Self-Play Data Generation
+
+# Dedicated workflow for large-scale self-play data generation.
+# Can be triggered manually for burst generation or by scheduler.
+
+on:
+  workflow_dispatch:
+    inputs:
+      games:
+        description: 'Total games to generate'
+        required: true
+        default: '100000'
+      depth:
+        description: 'Search depth per move'
+        required: true
+        default: '8'
+      threads:
+        description: 'Threads per shard'
+        required: true
+        default: '4'
+      shards:
+        description: 'Number of parallel shards'
+        required: true
+        default: '8'
+      output_tag:
+        description: 'Output dataset tag'
+        required: false
+        default: ''
+  
+  workflow_call:
+    inputs:
+      games_per_shard:
+        required: true
+        type: string
+      depth:
+        required: true
+        type: string
+      threads:
+        required: true
+        type: string
+      run_id:
+        required: true
+        type: string
+
+env:
+  DATASET_TAG: ${{ github.event.inputs.output_tag || github.run_id }}
+
+jobs:
+  # ======== Clone Source from Private ========
+  clone-source:
+    name: Clone Source from Private Repo
+    uses: ./.github/workflows/clone_from_private.yml
+
+  # ======== Build Engine ========
+  build:
+    needs: clone-source
+    name: Build Engine
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download Source Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: source-code-${{ github.run_id }}
+        path: ./
+
+    - name: Install Build Tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++
+
+    - name: Build
+      run: |
+        mkdir -p build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_AVX2=ON
+        make -j$(nproc)
+        cd ..
+        mkdir -p artifacts
+        cp build/nexus artifacts/
+
+    - name: Upload Engine
+      uses: actions/upload-artifact@v4
+      with:
+        name: nexus-engine-selfplay
+        path: artifacts/nexus
+        retention-days: 1
+
+  # ======== Generate Games (Matrix Shards) ========
+  generate:
+    name: Generate Shard ${{ matrix.shard }}/${{ github.event.inputs.shards || '8' }}
+    needs: build
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+      max-parallel: 8
+    
+    steps:
+    - name: Download Engine
+      uses: actions/download-artifact@v4
+      with:
+        name: nexus-engine-selfplay
+        path: ./engine
+
+    - name: Make Executable
+      run: chmod +x ./engine/nexus
+
+    - name: Load Best Network
+      run: |
+        mkdir -p models
+        # Try to get latest model from releases
+        python3 -c "
+import requests, os, sys
+
+repo = os.environ.get('GITHUB_REPOSITORY', '')
+if not repo:
+    print('No repo, skipping model download')
+    sys.exit(0)
+
+url = f'https://api.github.com/repos/{repo}/releases/latest'
+try:
+    r = requests.get(url, timeout=10)
+    data = r.json()
+    for asset in data.get('assets', []):
+        if asset['name'].endswith('.nnue'):
+            print(f'Downloading {asset[\"name\"]}...')
+            a = requests.get(asset['browser_download_url'])
+            with open('models/best.nnue', 'wb') as f:
+                f.write(a.content)
+            print('Model downloaded')
+            break
+except Exception as e:
+    print(f'Error: {e}')
+" || true
+
+    - name: Generate Games
+      run: |
+        SHARD=${{ matrix.shard }}
+        GAMES=${{ github.event.inputs.games || '100000' }}
+        DEPTH=${{ github.event.inputs.depth || '8' }}
+        THREADS=${{ github.event.inputs.threads || '4' }}
+        SHARDS=${{ github.event.inputs.shards || '8' }}
+        TAG=${{ env.DATASET_TAG }}
+        
+        # Calculate games for this shard
+        GAMES_PER_SHARD=$((GAMES / SHARDS))
+        
+        mkdir -p data
+        OUTPUT="data/selfplay_shard_${SHARD}_${TAG}.txt"
+        
+        echo "Shard $SHARD/$SHARDS: Generating $GAMES_PER_SHARD games (depth=$DEPTH)"
+        
+        # Run with network if available
+        if [ -f "models/best.nnue" ]; then
+          timeout 7200 bash -c "
+            ./engine/nexus <<< \"
+            setoption name EvalFile value models/best.nnue
+            gensfen $GAMES_PER_SHARD $DEPTH $THREADS
+            quit
+            \"
+          " | tee "$OUTPUT"
+        else
+          echo "No NNUE model, generating with classical eval..."
+          timeout 7200 bash -c "
+            ./engine/nexus <<< \"
+            gensfen $GAMES_PER_SHARD $DEPTH $THREADS
+            quit
+            \"
+          " | tee "$OUTPUT"
+        fi
+        
+        # Count and report
+        LINES=$(wc -l < "$OUTPUT" | tr -d ' ')
+        echo "Shard $SHARD: $LINES positions generated"
+        echo "positions=$LINES" >> "$GITHUB_OUTPUT"
+
+    - name: Compress & Upload
+      run: |
+        SHARD=${{ matrix.shard }}
+        TAG=${{ env.DATASET_TAG }}
+        tar czf "data/selfplay_shard_${SHARD}_${TAG}.tar.gz" \
+          "data/selfplay_shard_${SHARD}_${TAG}.txt"
+
+    - name: Upload Dataset Shard
+      uses: actions/upload-artifact@v4
+      with:
+        name: selfplay-shard-${{ matrix.shard }}-${{ env.DATASET_TAG }}
+        path: data/selfplay_shard_${{ matrix.shard }}_${{ env.DATASET_TAG }}.tar.gz
+        retention-days: 3
+
+  # ======== Merge All Shards ========
+  merge:
+    name: Merge All Shards
+    needs: generate
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Download All Shards
+      uses: actions/download-artifact@v4
+      with:
+        path: ./data/shards
+        pattern: selfplay-shard-*-${{ env.DATASET_TAG }}
+
+    - name: Extract & Merge
+      run: |
+        TAG=${{ env.DATASET_TAG }}
+        mkdir -p data/merged
+        
+        # Extract all shards
+        for tar in data/shards/*/selfplay_shard_*.tar.gz; do
+          tar xzf "$tar" -C data/merged
+        done
+        
+        # Merge using pipeline
+        python3 scripts/merge_dataset.py \
+          --input-dir data/merged \
+          --output data/dataset_${TAG}.txt \
+          --dedup \
+          --filter-entropy \
+          --balance \
+          --filter-check \
+          --min-ply 8 \
+          --max-ply 200 \
+          --max-score 800
+
+    - name: Statistics
+      run: |
+        TAG=${{ env.DATASET_TAG }}
+        echo "=== Dataset ${TAG} ==="
+        wc -l data/dataset_${TAG}.txt
+        head -5 data/dataset_${TAG}.txt
+        echo "..."
+        tail -5 data/dataset_${TAG}.txt
+
+    - name: Upload Merged Dataset
+      uses: actions/upload-artifact@v4
+      with:
+        name: dataset-merged-${{ env.DATASET_TAG }}
+        path: data/dataset_${{ env.DATASET_TAG }}.txt
+        retention-days: 7
+
+  # ======== Sync to Private Storage ========
+  sync-private:
+    name: Sync Dataset to Private Repo
+    needs: [clone-source, merge]
+    uses: ./.github/workflows/sync_to_private.yml
+    with:
+      dataset_file: data/dataset_${{ env.DATASET_TAG }}.txt
+    secrets: inherit

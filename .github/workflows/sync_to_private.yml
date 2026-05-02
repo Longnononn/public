@@ -1,0 +1,92 @@
+name: Sync Weights to Private Repo
+
+# Syncs trained weights and data back to private repo for storage
+on:
+  workflow_call:
+    inputs:
+      weights_file:
+        description: 'Path to weights file'
+        required: true
+        type: string
+      dataset_file:
+        description: 'Path to dataset file'
+        required: false
+        type: string
+  workflow_dispatch:
+    inputs:
+      weights_file:
+        description: 'Path to weights file to sync'
+        required: true
+        default: 'best.nnue'
+      dataset_file:
+        description: 'Path to dataset file to sync'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sync to Private Storage
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Public Repo
+      uses: actions/checkout@v4
+      
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: training-output-${{ github.run_id }}
+        path: ./artifacts
+      continue-on-error: true
+      
+    - name: Clone Private Repo
+      run: |
+        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"
+        TOKEN="${{ secrets.PRIVATE_CORE_TOKEN }}"
+        
+        git clone https://${TOKEN}@github.com/${PRIVATE_REPO}.git private_storage
+        cd private_storage
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+    - name: Copy Weights to Private Repo
+      run: |
+        cd private_storage
+        mkdir -p models data
+        
+        # Copy weights
+        if [ -f "../artifacts/${{ inputs.weights_file }}" ]; then
+          cp "../artifacts/${{ inputs.weights_file }}" models/best.nnue
+          echo "Copied weights: models/best.nnue"
+        elif [ -f "${{ inputs.weights_file }}" ]; then
+          cp "${{ inputs.weights_file }}" models/best.nnue
+          echo "Copied weights: models/best.nnue"
+        fi
+        
+        # Copy dataset if provided
+        if [ -n "${{ inputs.dataset_file }}" ]; then
+          if [ -f "../artifacts/${{ inputs.dataset_file }}" ]; then
+            cp "../artifacts/${{ inputs.dataset_file }}" data/
+            echo "Copied dataset: data/${{ inputs.dataset_file }}"
+          elif [ -f "${{ inputs.dataset_file }}" ]; then
+            cp "${{ inputs.dataset_file }}" data/
+            echo "Copied dataset: data/${{ inputs.dataset_file }}"
+          fi
+        fi
+        
+    - name: Commit and Push to Private Repo
+      run: |
+        cd private_storage
+        
+        git add models/ data/
+        
+        if git diff --staged --quiet; then
+          echo "No changes to sync"
+        else
+          git commit -m "Sync from public training - $(date -u +"%Y-%m-%d %H:%M UTC")"
+          git push origin main
+          echo "Synced to private repo"
+        fi

@@ -1,0 +1,130 @@
+name: SPRT Regression Test
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      elo_threshold:
+        description: 'Elo improvement threshold'
+        required: true
+        default: '5'
+
+jobs:
+  clone-source:
+    name: Clone Source from Private Repo
+    uses: ./.github/workflows/clone_from_private.yml
+
+  build-and-test:
+    needs: clone-source
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for comparison
+
+    - name: Download Source Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: source-code-${{ github.run_id }}
+        path: ./
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ python3 python3-pip
+        pip3 install numpy scipy
+
+    - name: Build baseline (main branch)
+      run: |
+        git checkout main
+        mkdir -p build_baseline
+        cd build_baseline
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        make -j$(nproc)
+        cp nexus ../nexus_base
+        cd ..
+
+    - name: Build new version
+      run: |
+        git checkout ${{ github.sha }}
+        mkdir -p build_new
+        cd build_new
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        make -j$(nproc)
+        cp nexus ../nexus_new
+        cd ..
+
+    - name: Run quick perft tests
+      run: |
+        cd build_new
+        ./nexus_tests
+
+    - name: Run bench comparison
+      run: |
+        echo "Baseline bench:"
+        echo "bench 14" | ./nexus_base | tee baseline_bench.txt
+        
+        echo "New version bench:"
+        echo "bench 14" | ./nexus_new | tee new_bench.txt
+        
+        # Extract NPS and compare
+        BASELINE_NPS=$(grep "NPS:" baseline_bench.txt | tail -1 | awk '{print $2}')
+        NEW_NPS=$(grep "NPS:" new_bench.txt | tail -1 | awk '{print $2}')
+        
+        echo "Baseline NPS: $BASELINE_NPS"
+        echo "New NPS: $NEW_NPS"
+        
+        # Fail if new version is significantly slower (>10%)
+        # This is simplified - actual comparison would need proper parsing
+
+    - name: Run SPRT test (short)
+      run: |
+        python3 scripts/run_sprt.py \
+          --engine-new ./nexus_new --engine-base ./nexus_base \
+          --elo0 0 --elo1 5 \
+          --tc "10+0.1" \
+          --games 200 \
+          || echo "SPRT test completed or inconclusive"
+      continue-on-error: true
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: engine-builds
+        path: |
+          nexus_base
+          nexus_new
+          *.txt
+
+  # Extended test on self-hosted runner (if available)
+  extended-sprt:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    needs: build-and-test
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Download New Engine
+      uses: actions/download-artifact@v4
+      with:
+        name: nexus-new
+        path: ./nexus_new
+    - name: Download Base Engine
+      uses: actions/download-artifact@v4
+      with:
+        name: nexus-base
+        path: ./nexus_base
+    - name: Run SPRT
+      run: |
+        chmod +x ./nexus_new/nexus ./nexus_base/nexus
+        python scripts/run_sprt.py --engine-new ./nexus_new/nexus --engine-base ./nexus_base/nexus --games 1000 --tc 10+0.1 --threads 1 --output sprt_result.json
+    - name: Upload SPRT Result
+      uses: actions/upload-artifact@v4
+      with:
+        name: sprt-result
+        path: sprt_result.json

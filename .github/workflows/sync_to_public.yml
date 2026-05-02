@@ -1,0 +1,46 @@
+name: Sync Release to Public Repo
+
+# Triggered after successful training & validation
+on:
+  workflow_run:
+    workflows: ["Promote Model", "SPRT Validation"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync-release:
+    name: Sync to Public Repo
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    
+    steps:
+    - name: Checkout Private Repo
+      uses: actions/checkout@v4
+      
+    - name: Download Build Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: engine-builds
+        path: ./build
+      continue-on-error: true
+      
+    - name: Dispatch to Public Repo
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        repository: ${{ secrets.PUBLIC_REPO }}
+        event-type: release-ready
+        client-payload: |
+          {
+            "version": "${{ github.ref_name }}",
+            "run_id": "${{ github.run_id }}",
+            "elo": "${{ steps.get_elo.outputs.elo }}",
+            "games": "${{ steps.get_elo.outputs.games }}",
+            "create_release": "true"
+          }
+      
+    - name: Log Sync
+      run: |
+        echo "Synced release to ${{ secrets.PUBLIC_REPO }}"
+        echo "Version: ${{ github.ref_name }}"

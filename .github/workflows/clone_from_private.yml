@@ -1,0 +1,62 @@
+name: Clone Source from Private Repo
+
+# Clones source code from private repo before training
+on:
+  workflow_call:
+    outputs:
+      commit_sha:
+        description: 'Commit SHA from private repo'
+        value: ${{ jobs.clone.outputs.commit_sha }}
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to clone'
+        required: false
+        default: 'main'
+
+jobs:
+  clone:
+    name: Clone Source Code
+    runs-on: ubuntu-latest
+    outputs:
+      commit_sha: ${{ steps.clone.outputs.commit_sha }}
+    
+    steps:
+    - name: Checkout Public Repo
+      uses: actions/checkout@v4
+      
+    - name: Clone Private Repo Source
+      run: |
+        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"
+        TOKEN="${{ secrets.PRIVATE_CORE_TOKEN }}"
+        BRANCH="${{ github.event.inputs.branch || 'main' }}"
+        
+        # Clone source code from private repo
+        git clone --depth 1 --branch $BRANCH https://${TOKEN}@github.com/${PRIVATE_REPO}.git private_source
+        
+        # Copy only source files (not data/weights)
+        mkdir -p src tests scripts
+        cp -r private_source/src/* src/
+        cp -r private_source/tests/* tests/
+        cp -r private_source/scripts/* scripts/
+        cp private_source/CMakeLists.txt .
+        
+        # Get commit SHA
+        cd private_source
+        COMMIT_SHA=$(git rev-parse HEAD)
+        echo "commit_sha=$COMMIT_SHA" >> $GITHUB_ENV
+        echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
+        
+        echo "Cloned source from $PRIVATE_REPO@$BRANCH"
+        echo "Commit: $COMMIT_SHA"
+        
+    - name: Upload Source Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: source-code-${{ github.run_id }}
+        path: |
+          src/
+          tests/
+          scripts/
+          CMakeLists.txt
+        retention-days: 1

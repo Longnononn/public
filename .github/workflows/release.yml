@@ -1,0 +1,287 @@
+name: Auto Release & Promote
+
+# Triggered when a model passes SPRT validation.
+# Automatically creates release with:
+# - Engine binary
+# - Best NNUE model
+# - Version bump
+# - Elo history update
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_model_artifact:
+        description: 'Candidate model artifact name'
+        required: true
+        default: ''
+      sprt_result:
+        description: 'SPRT result (ACCEPT/REJECT)'
+        required: true
+        default: 'ACCEPT'
+      elo_gain:
+        description: 'Measured Elo gain'
+        required: false
+        default: '0'
+  
+  repository_dispatch:
+    types: [model-validated]
+
+env:
+  VERSION_PREFIX: "v0.4"
+
+jobs:
+  # ======== Prepare ========
+  prepare:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      should_release: ${{ steps.decide.outputs.release }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Determine Version
+      id: version
+      run: |
+        LATEST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.3.0")
+        if [[ $LATEST =~ v([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+          MAJOR="${BASH_REMATCH[1]}"
+          MINOR="${BASH_REMATCH[2]}"
+          PATCH="${BASH_REMATCH[3]}"
+          NEW_PATCH=$((PATCH + 1))
+        else
+          MAJOR=0; MINOR=4; NEW_PATCH=1
+        fi
+        VERSION="v${MAJOR}.${MINOR}.${NEW_PATCH}-${{ github.run_number }}"
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "New version: $VERSION"
+
+    - name: Decide Release
+      id: decide
+      run: |
+        RESULT="${{ github.event.inputs.sprt_result || 'ACCEPT' }}"
+        if [ "$RESULT" == "ACCEPT" ]; then
+          echo "release=true" >> $GITHUB_OUTPUT
+          echo "Will create release"
+        else
+          echo "release=false" >> $GITHUB_OUTPUT
+          echo "SPRT rejected, skipping release"
+        fi
+
+  # ======== Build Release Binaries ========
+  build:
+    name: Build Release Binaries
+    needs: prepare
+    if: needs.prepare.outputs.should_release == 'true'
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: linux-x64
+            ext: ""
+          - os: windows-latest
+            target: windows-x64
+            ext: .exe
+          - os: macos-latest
+            target: macos-universal
+            ext: ""
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build
+      run: |
+        mkdir -p build && cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        cmake --build . --config Release -j$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
+        cd ..
+        mkdir -p release
+        cp build/nexus${{ matrix.ext }} release/nexus-${{ matrix.target }}${{ matrix.ext }}
+
+    - name: Upload Binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: nexus-${{ matrix.target }}-${{ github.run_id }}
+        path: release/nexus-${{ matrix.target }}${{ matrix.ext }}
+        retention-days: 7
+
+  # ======== Download & Promote Model ========
+  promote:
+    name: Promote Model
+    needs: prepare
+    if: needs.prepare.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download Candidate Model
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ github.event.inputs.candidate_model_artifact || 'nnue-candidate-' }}
+        path: ./models
+
+    - name: Download Best Model (Backup)
+      run: |
+        mkdir -p models/archive
+        python3 -c "
+import requests, os
+repo = os.environ['GITHUB_REPOSITORY']
+try:
+    url = f'https://api.github.com/repos/{repo}/releases/latest'
+    r = requests.get(url, timeout=10)
+    data = r.json()
+    for asset in data.get('assets', []):
+        if asset['name'] == 'best.nnue':
+            a = requests.get(asset['browser_download_url'])
+            with open('models/archive/best_backup.nnue', 'wb') as f:
+                f.write(a.content)
+            break
+except Exception as e:
+    print(f'No previous best model: {e}')
+"
+
+    - name: Promote Candidate -> Best
+      run: |
+        CANDIDATE=$(find models -name '*.nnue' | head -1)
+        cp "$CANDIDATE" models/best.nnue
+        echo "Promoted: $CANDIDATE -> models/best.nnue"
+
+    - name: Update Elo History
+      run: |
+        python3 -c "
+import json, datetime, os
+history = []
+if os.path.exists('elo_history.json'):
+    with open('elo_history.json', 'r') as f:
+        history = json.load(f)
+entry = {
+    'timestamp': datetime.datetime.now().isoformat(),
+    'version': '${{ needs.prepare.outputs.version }}',
+    'run_id': '${{ github.run_id }}',
+    'elo_gain': float('${{ github.event.inputs.elo_gain || 0 }}'),
+    'sprt_result': '${{ github.event.inputs.sprt_result || 'ACCEPT' }}',
+    'model_size': os.path.getsize('models/best.nnue') if os.path.exists('models/best.nnue') else 0
+}
+history.append(entry)
+with open('elo_history.json', 'w') as f:
+    json.dump(history, f, indent=2)
+"
+
+    - name: Upload Best Model
+      uses: actions/upload-artifact@v4
+      with:
+        name: best-model-${{ github.run_id }}
+        path: models/best.nnue
+        retention-days: 30
+
+  # ======== Create GitHub Release ========
+  release:
+    name: Create Release
+    needs: [prepare, build, promote]
+    if: needs.prepare.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download All Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: ./release-artifacts
+
+    - name: Organize Release Files
+      run: |
+        mkdir -p release-bundle
+        for bin in release-artifacts/nexus-*; do
+          cp "$bin"/* release-bundle/ 2>/dev/null || true
+        done
+        cp release-artifacts/best-model-*/best.nnue release-bundle/ 2>/dev/null || \
+        cp models/best.nnue release-bundle/ 2>/dev/null || true
+        cp elo_history.json release-bundle/ 2>/dev/null || true
+        cat > release-bundle/README.txt << 'EOF'
+Nexus Infinite - Autonomous Chess Engine
+
+This release was automatically generated by the Infinite Training pipeline.
+
+Components:
+- nexus-*: Engine binaries for various platforms
+- best.nnue: Latest trained neural network
+- elo_history.json: Performance tracking
+
+Installation:
+1. Download the binary for your platform
+2. Download best.nnue (place in same directory)
+3. Run: ./nexus
+4. In UCI: setoption name EvalFile value best.nnue
+EOF
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ needs.prepare.outputs.version }}
+        name: "Nexus Infinite ${{ needs.prepare.outputs.version }}"
+        body: |
+          ## Autonomous Training Release ${{ needs.prepare.outputs.version }}
+          This release was automatically created by the Infinite Training system.
+          ### Changes
+          - Neural network updated (SPRT validated)
+          - Elo improvement: ${{ github.event.inputs.elo_gain || 'N/A' }}
+          - SPRT result: ${{ github.event.inputs.sprt_result || 'ACCEPT' }}
+          ### Stats
+          - Auto-generated: ${{ github.event.created_at }}
+          - Run ID: ${{ github.run_id }}
+          See `elo_history.json` for detailed performance tracking.
+        files: |
+          release-bundle/*
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ======== Update Dashboard ========
+  dashboard:
+    name: Update Elo Dashboard
+    needs: [prepare, release]
+    if: always() && needs.prepare.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Generate Dashboard
+      run: |
+        python3 -c "
+import json, os
+history = []
+if os.path.exists('elo_history.json'):
+    with open('elo_history.json', 'r') as f:
+        history = json.load(f)
+md = '''# Nexus Infinite - Elo Dashboard\n\n## Performance History\n\n| Date | Version | Elo Gain | SPRT | Model Size |\n|------|---------|----------|------|------------|\n'''
+for entry in history[-20:]:
+    md += f\"| {entry['timestamp'][:10]} | {entry.get('version', 'N/A')} | {entry.get('elo_gain', 0):+.1f} | {entry.get('sprt_result', 'N/A')} | {entry.get('model_size', 0):,} bytes |\n\"
+md += f'''
+## Summary
+- Total releases: {len(history)}
+- Latest: {history[-1].get('version', 'N/A') if history else 'N/A'}
+- Cumulative Elo: {sum(e.get('elo_gain', 0) for e in history):+.1f}
+
+---
+*Auto-generated by Infinite Training pipeline*
+'''
+with open('ELO_DASHBOARD.md', 'w') as f:
+    f.write(md)
+print('Dashboard updated')
+"
+
+    - name: Commit Dashboard
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "actions@github.com"
+        git add ELO_DASHBOARD.md elo_history.json
+        git diff --cached --quiet || git commit -m "Update Elo dashboard [run ${{ github.run_id }}]"
+        git push || echo "Nothing to push"

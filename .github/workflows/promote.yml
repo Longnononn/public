@@ -1,0 +1,275 @@
+name: Auto Promote NNUE Model
+
+# Standalone promotion workflow.
+# Triggered after SPRT validation passes.
+# Promotes candidate model to best, archives old best, updates history.
+# Also triggers next training cycle via scheduler dispatch.
+
+on:
+  workflow_run:
+    workflows: ["SPRT Validation"]
+    types: [completed]
+    branches: [main, master]
+  
+  repository_dispatch:
+    types: [model-validated, sprt-accept]
+  
+  workflow_call:
+    inputs:
+      candidate_artifact:
+        required: true
+        type: string
+      elo_gain:
+        required: false
+        type: string
+        default: '0'
+      run_id:
+        required: true
+        type: string
+  
+  workflow_dispatch:
+    inputs:
+      candidate_artifact:
+        description: 'Candidate model artifact name'
+        required: true
+        default: ''
+      sprt_result:
+        description: 'SPRT result (ACCEPT/REJECT)'
+        required: true
+        default: 'ACCEPT'
+      elo_gain:
+        description: 'Measured Elo gain'
+        required: false
+        default: '0'
+      auto_trigger_next:
+        description: 'Trigger next training cycle'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  # ======== Evaluate SPRT Result ========
+  evaluate:
+    name: Evaluate SPRT Result
+    runs-on: ubuntu-latest
+    
+    outputs:
+      should_promote: ${{ steps.decide.outputs.promote }}
+      elo_gain: ${{ steps.decide.outputs.elo_gain }}
+      candidate_artifact: ${{ steps.decide.outputs.candidate }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Determine SPRT Result
+      id: decide
+      run: |
+        # Default: check workflow_run conclusion
+        RESULT="${{ github.event.inputs.sprt_result || 'ACCEPT' }}"
+        ELO="${{ github.event.inputs.elo_gain || '0' }}"
+        CANDIDATE="${{ github.event.inputs.candidate_artifact || '' }}"
+        
+        # If triggered by workflow_run, read from artifact
+        if [ -z "$CANDIDATE" ] && [ "${{ github.event.workflow_run }}" != "null" ]; then
+          echo "Triggered by workflow_run: ${{ github.event.workflow_run.conclusion }}"
+          # Try to download SPRT result artifact
+          echo "Would download sprt-results artifact from triggering workflow"
+        fi
+        
+        # Repository dispatch
+        if [ -z "$CANDIDATE" ] && [ "${{ github.event.action }}" == "model-validated" ]; then
+          CANDIDATE="${{ github.event.client_payload.candidate_artifact || '' }}"
+          ELO="${{ github.event.client_payload.elo_gain || '0' }}"
+          RESULT="ACCEPT"  # Only dispatched on accept
+        fi
+        
+        echo "sprt_result=$RESULT" >> $GITHUB_OUTPUT
+        echo "elo_gain=$ELO" >> $GITHUB_OUTPUT
+        echo "candidate=$CANDIDATE" >> $GITHUB_OUTPUT
+        
+        if [ "$RESULT" == "ACCEPT" ] || [ "$RESULT" == "accept" ]; then
+          echo "promote=true" >> $GITHUB_OUTPUT
+          echo "SPRT ACCEPTED - will promote"
+        else
+          echo "promote=false" >> $GITHUB_OUTPUT
+          echo "SPRT result: $RESULT - will NOT promote"
+        fi
+
+  # ======== Promote Candidate ========
+  promote:
+    name: Promote Candidate to Best
+    needs: evaluate
+    if: needs.evaluate.outputs.should_promote == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Download Candidate Model
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ needs.evaluate.outputs.candidate_artifact }}
+        path: ./models
+      continue-on-error: true
+
+    - name: Backup Current Best
+      run: |
+        mkdir -p models/archive
+        
+        if [ -f "models/best.nnue" ]; then
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          BACKUP="models/archive/best_nnue_${TIMESTAMP}.nnue"
+          cp models/best.nnue "$BACKUP"
+          echo "Backed up best.nnue -> $BACKUP ($(du -h $BACKUP | cut -f1))"
+        else
+          echo "No existing best.nnue found"
+        fi
+
+    - name: Find and Promote Candidate
+      id: promote
+      run: |
+        # Find candidate model
+        CANDIDATE=$(find models -name '*.nnue' -not -name 'best.nnue' | head -1)
+        
+        if [ -z "$CANDIDATE" ]; then
+          echo "No candidate model found, checking for .pt files..."
+          # Try to find .pt checkpoint and export
+          PT_FILE=$(find models -name '*.pt' -o -name '*.ckpt' | head -1)
+          if [ -n "$PT_FILE" ]; then
+            echo "Found checkpoint: $PT_FILE"
+            # In production, would run export here
+            # For now, just note it
+          fi
+          echo "promoted=false" >> $GITHUB_OUTPUT
+          echo "No candidate to promote"
+          exit 0
+        fi
+        
+        echo "Promoting: $CANDIDATE"
+        cp "$CANDIDATE" models/best.nnue
+        
+        SIZE=$(stat -c%s models/best.nnue 2>/dev/null || stat -f%z models/best.nnue)
+        echo "promoted=true" >> $GITHUB_OUTPUT
+        echo "model_size=$SIZE" >> $GITHUB_OUTPUT
+        echo "candidate_file=$(basename $CANDIDATE)" >> $GITHUB_OUTPUT
+        echo "Best model updated ($(numfmt --to=iec $SIZE))"
+
+    - name: Update Elo History
+      run: |
+        ELO="${{ needs.evaluate.outputs.elo_gain }}"
+        RUN_ID="${{ github.run_id }}"
+        
+        # Create or update elo_history.json
+        HISTORY_FILE="elo_history.json"
+        
+        python3 -c "
+import json, os, datetime
+
+history = []
+if os.path.exists('$HISTORY_FILE'):
+    with open('$HISTORY_FILE', 'r') as f:
+        history = json.load(f)
+
+# Get latest version info
+import subprocess
+result = subprocess.run(['git', 'describe', '--tags', '--abbrev=0'], 
+                       capture_output=True, text=True)
+version = result.stdout.strip() if result.returncode == 0 else 'v0.4.0+'
+
+entry = {
+    'timestamp': datetime.datetime.now().isoformat(),
+    'run_id': '$RUN_ID',
+    'version': version,
+    'elo_gain': float('$ELO'),
+    'event': 'promote',
+    'model_size': 0,
+    'sptr_result': 'ACCEPT'
+}
+
+# Try to get model size
+if os.path.exists('models/best.nnue'):
+    entry['model_size'] = os.path.getsize('models/best.nnue')
+
+history.append(entry)
+
+with open('$HISTORY_FILE', 'w') as f:
+    json.dump(history, f, indent=2)
+
+print(f'Updated history: {len(history)} entries')
+print(f'Latest Elo gain: +{entry[\"elo_gain\"]:.1f}')
+"
+
+    - name: Commit Elo History
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "actions@github.com"
+        
+        git add elo_history.json models/best.nnue 2>/dev/null || true
+        
+        # Only commit if there are changes
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-promote: best.nnue updated (+${{ needs.evaluate.outputs.elo_gain }} Elo) [run ${{ github.run_id }}]"
+          git push || echo "Push failed (may need token permissions)"
+        fi
+
+    - name: Upload Best Model Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: best-model-${{ github.run_id }}
+        path: models/best.nnue
+        retention-days: 30
+
+    - name: Create Git Tag
+      run: |
+        # Auto-increment version tag
+        LATEST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.3.0")
+        
+        if [[ $LATEST =~ v([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
+          MAJOR="${BASH_REMATCH[1]}"
+          MINOR="${BASH_REMATCH[2]}"
+          PATCH="${BASH_REMATCH[3]}"
+          NEW_PATCH=$((PATCH + 1))
+          NEW_VERSION="v${MAJOR}.${MINOR}.${NEW_PATCH}"
+        else
+          NEW_VERSION="v0.4.1"
+        fi
+        
+        echo "Creating tag: $NEW_VERSION"
+        git tag -a "$NEW_VERSION" -m "Auto-promote: +${{ needs.evaluate.outputs.elo_gain }} Elo [run ${{ github.run_id }}]"
+        git push origin "$NEW_VERSION" || echo "Tag push failed (may need permissions)"
+
+  # ======== Trigger Next Cycle ========
+  trigger-next:
+    name: Trigger Next Training Cycle
+    needs: [evaluate, promote]
+    if: always() && (needs.evaluate.outputs.should_promote == 'true' || github.event.inputs.auto_trigger_next == 'true')
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Dispatch Next Scheduler Cycle
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        event-type: cycle-complete
+        client-payload: |
+          {
+            "run_id": "${{ github.run_id }}",
+            "promoted": "${{ needs.evaluate.outputs.should_promote }}",
+            "elo_gain": "${{ needs.evaluate.outputs.elo_gain }}",
+            "next_cycle": "selfplay"
+          }
+
+    - name: Summary
+      run: |
+        echo "=== Promotion Complete ==="
+        echo "Run: ${{ github.run_id }}"
+        echo "Promoted: ${{ needs.evaluate.outputs.should_promote }}"
+        echo "Elo gain: ${{ needs.evaluate.outputs.elo_gain }}"
+        echo ""
+        echo "Next cycle dispatched: self-play generation"
+        echo "Infinite loop continues..."

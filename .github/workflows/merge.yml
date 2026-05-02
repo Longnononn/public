@@ -1,0 +1,252 @@
+name: Dataset Merge & Clean
+
+# Standalone workflow to merge, deduplicate, filter, and balance training data.
+# Triggered by self-play completion or manually.
+# Outputs a cleaned dataset artifact ready for micro-training.
+
+on:
+  workflow_run:
+    workflows: ["Self-Play Data Generation"]
+    types: [completed]
+    branches: [main, master]
+  
+  workflow_call:
+    inputs:
+      run_id:
+        required: true
+        type: string
+      keep_shards:
+        required: false
+        type: string
+        default: 'true'
+  
+  repository_dispatch:
+    types: [merge-dataset, selfplay-complete]
+  
+  workflow_dispatch:
+    inputs:
+      artifact_pattern:
+        description: 'Shard artifact name pattern'
+        required: false
+        default: 'dataset-shard-*'
+      min_ply:
+        description: 'Minimum ply to keep'
+        required: false
+        default: '8'
+      max_score:
+        description: 'Maximum absolute score'
+        required: false
+        default: '800'
+      balance:
+        description: 'Balance W/D/L results'
+        required: false
+        default: true
+        type: boolean
+      dedup:
+        description: 'Remove duplicate positions'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  MIN_PLY: ${{ github.event.inputs.min_ply || '8' }}
+  MAX_SCORE: ${{ github.event.inputs.max_score || '800' }}
+
+jobs:
+  merge:
+    name: Merge & Clean Dataset
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      run: |
+        python -m pip install --upgrade pip
+        pip install numpy scipy 2>/dev/null || true
+
+    - name: Download All Shard Artifacts
+      id: download
+      run: |
+        mkdir -p data/shards data/merged
+        
+        # In GitHub Actions workflow_run context, artifacts from triggering workflow
+        # are NOT automatically available. We need to download them by pattern.
+        # For workflow_call, inputs.run_id tells us which run produced the shards.
+        
+        RUN_ID="${{ github.event.inputs.run_id || github.event.workflow_run.run_number || '' }}"
+        echo "Looking for shards from run: $RUN_ID"
+        
+        # Try to find and download artifacts
+        # Note: In actual GitHub Actions, we would use gh CLI or API to download
+        # artifacts from the triggering workflow. For now, create a placeholder.
+        
+        # If this is triggered by workflow_dispatch with manual files, check upload
+        echo "Note: In production, use actions/download-artifact with artifact names"
+        echo "Shard download placeholder - artifacts should be uploaded to this workflow"
+
+    - name: Download Shards via API (Production)
+      if: github.event.workflow_run != null
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Download artifacts from the triggering workflow_run
+        RUN_ID="${{ github.event.workflow_run.id }}"
+        
+        if [ -n "$RUN_ID" ]; then
+          echo "Downloading artifacts from run $RUN_ID..."
+          
+          # List artifacts for this run
+          ARTIFACTS=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/$RUN_ID/artifacts")
+          
+          echo "Available artifacts:"
+          echo "$ARTIFACTS" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+for a in data.get('artifacts', []):
+    print(f\"  - {a['name']} ({a['size_in_bytes']} bytes)\")
+" || true
+          
+          # Download each shard artifact
+          echo "$ARTIFACTS" | python3 -c "
+import json, sys, os, urllib.request, zipfile
+
+data = json.load(sys.stdin)
+token = os.environ.get('GH_TOKEN', '')
+
+for artifact in data.get('artifacts', []):
+    name = artifact['name']
+    if 'shard' in name.lower():
+        url = artifact['archive_download_url']
+        print(f'Downloading {name}...')
+        
+        req = urllib.request.Request(url)
+        req.add_header('Authorization', f'token {token}')
+        
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                zip_path = f'data/shards/{name}.zip'
+                with open(zip_path, 'wb') as f:
+                    f.write(resp.read())
+                
+                # Extract
+                with zipfile.ZipFile(zip_path, 'r') as z:
+                    z.extractall('data/shards/')
+                
+                print(f'  Extracted {name}')
+        except Exception as e:
+            print(f'  Error: {e}')
+" || true
+        fi
+
+    - name: Check Downloaded Shards
+      run: |
+        echo "=== Downloaded Shards ==="
+        find data/shards -type f -name '*.txt' -o -name '*.binpack' 2>/dev/null | head -20
+        SHARD_COUNT=$(find data/shards -type f | wc -l)
+        echo "Total shard files: $SHARD_COUNT"
+
+    - name: Merge & Clean
+      id: merge
+      run: |
+        mkdir -p data/merged
+        
+        if [ -f "scripts/merge_dataset.py" ]; then
+          # Use the full merge pipeline
+          python3 scripts/merge_dataset.py \
+            --input-dir data/shards \
+            --output data/merged/cleaned.txt \
+            ${{ github.event.inputs.dedup != 'false' && '--dedup' || '' }} \
+            --filter-entropy \
+            ${{ github.event.inputs.balance != 'false' && '--balance' || '' }} \
+            --filter-check \
+            --min-ply ${{ env.MIN_PLY }} \
+            --max-score ${{ env.MAX_SCORE }} \
+            --shuffle \
+            --seed 42 \
+            2>&1 | tee merge.log
+        else
+          # Fallback: simple merge
+          echo "# Merged dataset" > data/merged/cleaned.txt
+          for f in data/shards/*.txt; do
+            if [ -f "$f" ]; then
+              cat "$f" >> data/merged/cleaned.txt
+            fi
+          done
+          echo "Merged $(wc -l < data/merged/cleaned.txt) positions (simple merge)"
+        fi
+
+    - name: Dataset Statistics
+      id: stats
+      run: |
+        if [ -f "data/merged/cleaned.txt" ]; then
+          TOTAL=$(wc -l < data/merged/cleaned.txt)
+          # Subtract header lines if any
+          TOTAL=$((TOTAL))
+          
+          echo "total_positions=$TOTAL" >> $GITHUB_OUTPUT
+          echo "dataset_file=data/merged/cleaned.txt" >> $GITHUB_OUTPUT
+          
+          echo "=== Dataset Statistics ==="
+          echo "Total positions: $TOTAL"
+          echo "File size: $(du -h data/merged/cleaned.txt | cut -f1)"
+          
+          # Show first few lines
+          head -10 data/merged/cleaned.txt
+          echo "..."
+          tail -5 data/merged/cleaned.txt
+        else
+          echo "ERROR: No cleaned dataset produced"
+          echo "total_positions=0" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+
+    - name: Compress Dataset
+      run: |
+        if [ -f "data/merged/cleaned.txt" ]; then
+          gzip -c data/merged/cleaned.txt > data/merged/cleaned.txt.gz
+          echo "Compressed: $(du -h data/merged/cleaned.txt.gz | cut -f1)"
+        fi
+
+    - name: Upload Merged Dataset
+      uses: actions/upload-artifact@v4
+      with:
+        name: dataset-merged-${{ github.run_id }}
+        path: |
+          data/merged/cleaned.txt
+          merge.log
+        retention-days: 7
+        if-no-files-found: error
+
+    - name: Upload Compressed Dataset
+      uses: actions/upload-artifact@v4
+      with:
+        name: dataset-merged-compressed-${{ github.run_id }}
+        path: data/merged/cleaned.txt.gz
+        retention-days: 7
+        if-no-files-found: warn
+
+    - name: Trigger Micro-Training
+      if: steps.stats.outputs.total_positions != '0'
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        event-type: dataset-ready
+        client-payload: |
+          {
+            "run_id": "${{ github.run_id }}",
+            "dataset_artifact": "dataset-merged-${{ github.run_id }}",
+            "dataset_file": "data/merged/cleaned.txt",
+            "total_positions": "${{ steps.stats.outputs.total_positions }}",
+            "source_run_id": "${{ github.event.workflow_run.id || '' }}"
+          }
+
+    - name: Summary
+      run: |
+        echo "=== Dataset Merge Complete ==="
+        echo "Run ID: ${{ github.run_id }}"
+        echo "Positions: ${{ steps.stats.outputs.total_positions }}"
+        echo "Dataset: ${{ steps.stats.outputs.dataset_file }}"
+        echo ""
+        echo "Next: Micro-Training triggered via repository_dispatch"

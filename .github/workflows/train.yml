@@ -1,0 +1,230 @@
+name: NNUE Auto Training
+
+# Triggered by scheduler or manually.
+# Trains NNUE on latest merged dataset.
+# Uses self-hosted runner with GPU or high-core CPU.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataset_artifact:
+        description: 'Dataset artifact name to train on'
+        required: false
+        default: ''
+      epochs:
+        description: 'Training epochs'
+        required: true
+        default: '5'
+      batch_size:
+        description: 'Batch size'
+        required: true
+        default: '16384'
+      hidden_size:
+        description: 'Hidden layer size'
+        required: true
+        default: '256'
+      learning_rate:
+        description: 'Learning rate'
+        required: true
+        default: '0.001'
+      max_positions:
+        description: 'Max positions (0=all)'
+        required: true
+        default: '0'
+  
+  repository_dispatch:
+    types: [dataset-ready]
+
+env:
+  PYTORCH_CUDA_ALLOC_CONF: max_split_size_mb:512
+  CUDA_VISIBLE_DEVICES: 0
+
+jobs:
+  # ======== Clone Source from Private ========
+  clone-source:
+    name: Clone Source from Private Repo
+    uses: ./.github/workflows/clone_from_private.yml
+
+  # ======== Prepare Environment ========
+  setup:
+    needs: clone-source
+    name: Setup Training Environment
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Download Source Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: source-code-${{ github.run_id }}
+        path: ./
+
+    - name: Install Python Dependencies
+      run: |
+        pip3 install --upgrade pip
+        pip3 install torch torchvision  # CPU-only on GitHub Actions
+        pip3 install tensorboard numpy scipy tqdm
+
+  # ======== Download Dataset ========
+  prepare-data:
+    name: Prepare Training Data
+    needs: setup
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Determine Dataset Source
+      id: dataset
+      run: |
+        # Check if triggered by repository dispatch
+        if [ "${{ github.event.action }}" == "dataset-ready" ]; then
+          DATASET="${{ github.event.client_payload.dataset_file }}"
+          echo "source=dispatch" >> $GITHUB_OUTPUT
+          echo "file=$DATASET" >> $GITHUB_OUTPUT
+        elif [ -n "${{ github.event.inputs.dataset_artifact }}" ]; then
+          echo "source=artifact" >> $GITHUB_OUTPUT
+          echo "artifact=${{ github.event.inputs.dataset_artifact }}" >> $GITHUB_OUTPUT
+        else
+          # Find latest merged dataset
+          echo "source=latest" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Download from Artifact
+      if: steps.dataset.outputs.source == 'artifact'
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ steps.dataset.outputs.artifact }}
+        path: ./data
+
+    - name: Download from Dispatch
+      if: steps.dataset.outputs.source == 'dispatch'
+      run: |
+        # The dataset file path is passed in client payload
+        echo "Dataset file: ${{ steps.dataset.outputs.file }}"
+        # Copy to local training directory
+        mkdir -p data
+        cp "${{ steps.dataset.outputs.file }}" data/training_input.txt 2>/dev/null || \
+        echo "File not found locally, may need artifact download"
+
+    - name: Download Latest Dataset
+      if: steps.dataset.outputs.source == 'latest'
+      run: |
+        mkdir -p data
+        # List available artifacts and find latest dataset
+        python3 -c "
+import requests, os, json, sys
+
+def get_latest_dataset():
+    repo = os.environ['GITHUB_REPOSITORY']
+    # This would require GitHub API token
+    print('Finding latest dataset artifact...')
+    
+get_latest_dataset()
+" || echo "Using default dataset location"
+
+    - name: Data Statistics
+      run: |
+        ls -lh data/
+        wc -l data/*.txt 2>/dev/null || true
+
+  # ======== Train NNUE ========
+  train:
+    name: Train NNUE Network
+    needs: prepare-data
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Restore Dependencies
+      run: |
+        pip3 install torch torchvision tensorboard numpy scipy tqdm 2>/dev/null || true
+
+    - name: Prepare Data File
+      run: |
+        # Find the actual dataset file
+        DATASET=$(find data -name '*.txt' -not -name 'shard*' | head -1)
+        echo "Using dataset: $DATASET"
+        echo "dataset_path=$DATASET" >> $GITHUB_ENV
+
+    - name: Train
+      id: training
+      run: |
+        DATASET="${{ env.dataset_path }}"
+        EPOCHS="${{ github.event.inputs.epochs || '5' }}"
+        BATCH="${{ github.event.inputs.batch_size || '16384' }}"
+        HIDDEN="${{ github.event.inputs.hidden_size || '256' }}"
+        LR="${{ github.event.inputs.learning_rate || '0.001' }}"
+        MAXPOS="${{ github.event.inputs.max_positions || '0' }}"
+        
+        mkdir -p checkpoints models
+        
+        python3 scripts/train_nnue.py \
+          --data "$DATASET" \
+          --output models/candidate.nnue \
+          --epochs $EPOCHS \
+          --batch-size $BATCH \
+          --hidden-size $HIDDEN \
+          --lr $LR \
+          --max-positions $MAXPOS \
+          --checkpoints-dir checkpoints \
+          --val-split 0.05 \
+          2>&1 | tee training.log
+
+    - name: Extract Training Metrics
+      id: metrics
+      run: |
+        # Parse training log for best loss
+        BEST_LOSS=$(grep "best_model" training.log | tail -1 | grep -oP 'val_loss=[\d.]+' | cut -d= -f2 || echo "N/A")
+        echo "best_loss=$BEST_LOSS" >> $GITHUB_OUTPUT
+        
+        # Check final model exists
+        if [ -f "models/candidate.nnue" ]; then
+          SIZE=$(stat -c%s models/candidate.nnue)
+          echo "model_size=$SIZE" >> $GITHUB_OUTPUT
+          echo "model_exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "model_exists=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Upload Training Logs
+      uses: actions/upload-artifact@v4
+      with:
+        name: training-logs-${{ github.run_id }}
+        path: |
+          training.log
+          checkpoints/
+          runs/
+        retention-days: 7
+
+    - name: Upload Candidate Model
+      uses: actions/upload-artifact@v4
+      with:
+        name: nnue-candidate-${{ github.run_id }}
+        path: models/candidate.nnue
+        retention-days: 14
+
+    - name: Trigger SPRT Validation
+      if: steps.metrics.outputs.model_exists == 'true'
+      uses: peter-evans/repository-dispatch@v3
+      with:
+        event-type: model-trained
+        client-payload: |
+          {
+            "run_id": "${{ github.run_id }}",
+            "candidate_model": "nnue-candidate-${{ github.run_id }}",
+            "best_loss": "${{ steps.metrics.outputs.best_loss }}",
+            "model_size": "${{ steps.metrics.outputs.model_size }}"
+          }
+
+  # ======== Sync to Private Storage ========
+  sync-private:
+    name: Sync Weights to Private Repo
+    needs: [clone-source, train]
+    if: always() && needs.train.result == 'success'
+    uses: ./.github/workflows/sync_to_private.yml
+    with:
+      weights_file: models/candidate.nnue
+    secrets: inherit

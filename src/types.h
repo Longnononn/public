@@ -78,6 +78,12 @@ enum CastlingRights : i32 {
     CASTLING_RIGHT_NB = 16
 };
 
+constexpr CastlingRights operator|(CastlingRights a, CastlingRights b) { return CastlingRights((int)a | (int)b); }
+constexpr CastlingRights operator&(CastlingRights a, CastlingRights b) { return CastlingRights((int)a & (int)b); }
+constexpr CastlingRights operator~(CastlingRights a) { return CastlingRights(~(int)a); }
+inline CastlingRights& operator|=(CastlingRights& a, CastlingRights b) { a = a | b; return a; }
+inline CastlingRights& operator&=(CastlingRights& a, CastlingRights b) { a = a & b; return a; }
+
 enum Direction : i32 {
     NORTH = 8, EAST = 1, SOUTH = -8, WEST = -1,
     NORTH_EAST = 9, NORTH_WEST = 7,
@@ -135,6 +141,8 @@ enum MoveType : u16 {
 
 enum Key : u64 {};
 constexpr Key make_key(u64 k) { return Key(k); }
+constexpr Key operator^(Key a, Key b) { return Key((u64)a ^ (u64)b); }
+inline Key& operator^=(Key& a, Key b) { a = a ^ b; return a; }
 
 constexpr int MAX_MOVES = 256;
 constexpr int MAX_PLY   = 246;

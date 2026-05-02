@@ -44,7 +44,7 @@ jobs:
       
     - name: Clone Private Repo
       run: |
-        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"
+        PRIVATE_REPO="${{ secrets.PRIVATE_CORE_REPO }}"  # Should be Longnononn/nexusinfinitecore
         TOKEN="${{ secrets.PRIVATE_CORE_TOKEN }}"
         
         git clone https://${TOKEN}@github.com/${PRIVATE_REPO}.git private_storage

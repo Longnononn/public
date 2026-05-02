@@ -2,6 +2,10 @@
 
 High-performance chess engine with NNUE evaluation and automated training pipeline.
 
+**Repository Architecture:**
+- **Public repo (nexusinfinitepublic)**: Training workflows, releases, documentation
+- **Private repo (nexusinfinitecore)**: Source code, data, weights (storage only)
+
 ## Downloads
 
 | Version | Windows | Linux | macOS | NNUE Weights |

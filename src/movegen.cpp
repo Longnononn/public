@@ -302,7 +302,6 @@ u64 perft(BoardState& pos, int depth) {
 }
 
 // Explicit instantiations
-template ExtMove* generate<LEGAL>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<CAPTURES>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<QUIETS>(const BoardState& pos, ExtMove* moveList);
 template ExtMove* generate<EVASIONS>(const BoardState& pos, ExtMove* moveList);

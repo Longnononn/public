@@ -172,8 +172,8 @@ Value Eval::evaluate_mobility(const BoardState& pos, Color us) {
 
 int Eval::game_phase(const BoardState& pos) {
     int phase = 0;
-    for (PieceType pt = KNIGHT; pt <= QUEEN; ++pt)
-        phase += phase_values[pt] * count_bits(pos.pieces(pt));
+    for (int pt = KNIGHT; pt <= QUEEN; ++pt)
+        phase += phase_values[pt] * count_bits(pos.pieces(PieceType(pt)));
     return phase;
 }
 

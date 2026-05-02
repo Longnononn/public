@@ -78,6 +78,11 @@ enum CastlingRights : i32 {
     CASTLING_RIGHT_NB = 16
 };
 
+enum Depth : i32 {
+    DEPTH_ZERO = 0,
+    DEPTH_MAX = 100
+};
+
 constexpr CastlingRights operator|(CastlingRights a, CastlingRights b) { return CastlingRights((int)a | (int)b); }
 constexpr CastlingRights operator&(CastlingRights a, CastlingRights b) { return CastlingRights((int)a & (int)b); }
 constexpr CastlingRights operator~(CastlingRights a) { return CastlingRights(~(int)a); }

@@ -191,7 +191,7 @@ entry = {
     'elo_gain': float('$ELO'),
     'event': 'promote',
     'model_size': 0,
-    'sptr_result': 'ACCEPT'
+    'sprt_result': 'ACCEPT'
 }
 
 # Try to get model size

@@ -47,6 +47,10 @@ on:
         default: true
         type: boolean
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   # ======== Evaluate SPRT Result ========
   evaluate:
@@ -217,6 +221,18 @@ print(f'Latest Elo gain: +{entry[\"elo_gain\"]:.1f}')
           git commit -m "Auto-promote: best.nnue updated (+${{ needs.evaluate.outputs.elo_gain }} Elo) [run ${{ github.run_id }}]"
           git push || echo "Push failed (may need token permissions)"
         fi
+
+    - name: Trigger Stockfish Gauntlet (post-promote)
+      if: ${{ github.event.inputs.auto_trigger_next != 'false' }}
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: stockfish_gauntlet.yml
+        token: ${{ secrets.GITHUB_TOKEN }}
+        inputs: '{
+          "tc": "10+0.1",
+          "games": "400",
+          "commit_results": "false"
+        }'
 
     - name: Upload Best Model Artifact
       uses: actions/upload-artifact@v4

@@ -8,6 +8,10 @@ name: Auto Release & Promote
 # - Elo history update
 
 on:
+  push:
+    tags:
+      - 'v*'
+
   workflow_dispatch:
     inputs:
       candidate_model_artifact:
@@ -48,6 +52,13 @@ jobs:
     - name: Determine Version
       id: version
       run: |
+        if [ "${{ github.ref_type }}" = "tag" ]; then
+          VERSION="${{ github.ref_name }}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Tag trigger detected. Version: $VERSION"
+          exit 0
+        fi
+
         LATEST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.3.0")
         if [[ $LATEST =~ v([0-9]+)\.([0-9]+)\.([0-9]+) ]]; then
           MAJOR="${BASH_REMATCH[1]}"
@@ -64,6 +75,12 @@ jobs:
     - name: Decide Release
       id: decide
       run: |
+        if [ "${{ github.ref_type }}" = "tag" ]; then
+          echo "release=true" >> $GITHUB_OUTPUT
+          echo "Tag trigger: will create release"
+          exit 0
+        fi
+
         RESULT="${{ github.event.inputs.sprt_result || 'ACCEPT' }}"
         if [ "$RESULT" == "ACCEPT" ]; then
           echo "release=true" >> $GITHUB_OUTPUT
@@ -120,11 +137,21 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Download Candidate Model
-      uses: actions/download-artifact@v4
-      with:
-        name: ${{ github.event.inputs.candidate_model_artifact || 'nnue-candidate-' }}
-        path: ./models
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Prepare Best Model
+      run: |
+        mkdir -p models
+        if [ -f "models/best.nnue" ]; then
+          echo "Found models/best.nnue in repo"
+        elif [ -f "best.nnue" ]; then
+          cp best.nnue models/best.nnue
+          echo "Copied best.nnue -> models/best.nnue"
+        else
+          echo "ERROR: best.nnue not found in repo" >&2
+          exit 1
+        fi
 
     - name: Download Best Model (Backup)
       run: |
@@ -148,9 +175,7 @@ except Exception as e:
 
     - name: Promote Candidate -> Best
       run: |
-        CANDIDATE=$(find models -name '*.nnue' | head -1)
-        cp "$CANDIDATE" models/best.nnue
-        echo "Promoted: $CANDIDATE -> models/best.nnue"
+        echo "Using repo best.nnue as release model"
 
     - name: Update Elo History
       run: |

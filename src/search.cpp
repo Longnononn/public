@@ -262,6 +262,10 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
     
     nodesSearched++;
     
+    // Emergency node limit
+    if (nodesSearched > 5000000)
+        return VALUE_DRAW;
+    
     const bool rootNode = (ss->ply == 0);
     const bool inCheck = pos.is_check();
     
@@ -654,6 +658,10 @@ Value Search::qsearch(BoardState& pos, SearchStack* ss, Value alpha, Value beta)
     if (!running) return VALUE_NONE;
     
     nodesSearched++;
+    
+    // Emergency node limit
+    if (nodesSearched > 5000000)
+        return VALUE_DRAW;
     
     const bool inCheck = pos.is_check();
     

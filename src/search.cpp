@@ -519,6 +519,9 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
             extension = 1;
         
         Depth newDepth = Depth(int(depth) - 1 + extension);
+        // Prevent runaway extensions causing exponential search growth
+        if (int(newDepth) > int(depth) && int(depth) < 4)
+            newDepth = depth;  // Cap at current depth for low depths
         
         // Make move
         StateInfo st;

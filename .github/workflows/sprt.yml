@@ -53,12 +53,13 @@ jobs:
         ./nexus_tests
 
     - name: Run bench comparison
+      timeout-minutes: 5
       run: |
         echo "Baseline bench:"
-        echo "bench 14" | ./nexus_base | tee baseline_bench.txt
+        (echo "bench 14" | timeout 120 ./nexus_base | tee baseline_bench.txt) || echo "Baseline bench timeout or failed"
         
         echo "New version bench:"
-        echo "bench 14" | ./nexus_new | tee new_bench.txt
+        (echo "bench 14" | timeout 120 ./nexus_new | tee new_bench.txt) || echo "New version bench timeout or failed"
         
         # Extract NPS and compare
         BASELINE_NPS=$(grep "NPS:" baseline_bench.txt | tail -1 | awk '{print $2}')

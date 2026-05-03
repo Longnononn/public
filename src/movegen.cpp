@@ -198,8 +198,21 @@ bool is_legal(const BoardState& pos, Move m);
 template<GenType Type>
 ExtMove* generate(const BoardState& pos, ExtMove* moveList) {
     Color us = pos.sideToMove;
-    u64 targets;
-    
+    if constexpr (Type == LEGAL) {
+        ExtMove* pseudoEnd = pos.is_check() ? generate<EVASIONS>(pos, moveList)
+                                           : generate<NON_EVASIONS>(pos, moveList);
+        ExtMove* legalEnd = moveList;
+        for (ExtMove* it = moveList; it != pseudoEnd; ++it) {
+            if (is_legal(pos, it->move)) {
+                *legalEnd = *it;
+                ++legalEnd;
+            }
+        }
+        return legalEnd;
+    }
+
+    u64 targets = 0;
+     
     if (Type == CAPTURES) {
         targets = pos.pieces(~us);
         moveList = generate_pawn_captures(pos, moveList, pos.pieces(us, PAWN), us);

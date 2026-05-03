@@ -1,16 +1,16 @@
-name: Stockfish Gauntlet (6h)
+name: Stockfish Gauntlet (Bullet)
 
 on:
   workflow_dispatch:
     inputs:
       tc:
-        description: 'Time control (cutechess format), e.g. 10+0.1'
+        description: 'Time control (cutechess format), e.g. 2+0.02 (Bullet)'
         required: true
-        default: '10+0.1'
+        default: '2+0.02'
       games:
-        description: 'Number of games (will stop early if timeout)'
+        description: 'Number of games (safe limit for 6h timeout)'
         required: true
-        default: '400'
+        default: '150'
       stockfish_cmd:
         description: 'Stockfish command (default: use apt stockfish)'
         required: false
@@ -35,7 +35,38 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ python3 cutechess-cli stockfish
+          sudo apt-get install -y cmake g++ python3 cutechess-cli
+
+      - name: Download Latest Stockfish
+        run: |
+          # Get latest Stockfish release info
+          SF_URL=$(curl -s https://api.github.com/repos/official-stockfish/Stockfish/releases/latest | \
+            grep -o '"browser_download_url": "[^"]*linux[^"]*.zip"' | head -1 | cut -d'"' -f4)
+          
+          if [ -z "$SF_URL" ]; then
+            # Fallback to Stockfish 18
+            SF_URL="https://github.com/official-stockfish/Stockfish/releases/download/sf_18/stockfish-ubuntu-x86-64-vnni256.tar"
+          fi
+          
+          echo "Downloading Stockfish from: $SF_URL"
+          
+          # Download and extract
+          if [[ "$SF_URL" == *.zip ]]; then
+            curl -L -o stockfish.zip "$SF_URL"
+            unzip -o stockfish.zip -d stockfish_tmp/
+            find stockfish_tmp -name "stockfish*" -type f -executable -exec cp {} ./stockfish \;
+            rm -rf stockfish_tmp stockfish.zip
+          else
+            curl -L -o stockfish.tar "$SF_URL"
+            tar -xf stockfish.tar
+            find . -name "stockfish*" -type f -executable | head -1 | xargs -I {} cp {} ./stockfish
+            rm -f stockfish.tar
+          fi
+          
+          chmod +x ./stockfish
+          ./stockfish --version
+          echo "cmd=./stockfish" >> $GITHUB_OUTPUT
+        id: download_sf
 
       - name: Build Nexus
         run: |
@@ -53,7 +84,7 @@ jobs:
           if [ -n "${{ github.event.inputs.stockfish_cmd }}" ]; then
             echo "cmd=${{ github.event.inputs.stockfish_cmd }}" >> $GITHUB_OUTPUT
           else
-            echo "cmd=stockfish" >> $GITHUB_OUTPUT
+            echo "cmd=./stockfish" >> $GITHUB_OUTPUT
           fi
 
       - name: Run match
@@ -61,12 +92,17 @@ jobs:
           TC="${{ github.event.inputs.tc }}"
           GAMES="${{ github.event.inputs.games }}"
 
+          # Calculate safe game limit based on TC (rough estimate)
+          # Bullet (2+0.02): ~2-3 min/game, 150 games = ~5 hours max
+          echo "Running gauntlet: $GAMES games at $TC"
+          echo "Estimated time: $(($GAMES * 3 / 60)) hours max (conservative)"
+          
           cutechess-cli \
             -engine name=Nexus cmd=./nexus proto=uci \
             -engine name=Stockfish cmd="${{ steps.sf.outputs.cmd }}" proto=uci \
             -each tc=$TC \
             -games $GAMES \
-            -rounds $GAMES \
+            -rounds $((GAMES / 2)) \
             -repeat \
             -concurrency 1 \
             -pgnout match.pgn \

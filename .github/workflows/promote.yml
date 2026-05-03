@@ -111,7 +111,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Download Candidate Model
       uses: actions/download-artifact@v4
@@ -223,18 +224,22 @@ PYEOF
           echo "No changes to commit"
         else
           git commit -m "Auto-promote: best.nnue updated (+${{ needs.evaluate.outputs.elo_gain }} Elo) [run ${{ github.run_id }}]"
-          git push || echo "Push failed (may need token permissions)"
+          git push || echo "Push failed"
         fi
+
+    - name: Setup Git Authentication
+      run: |
+        git remote set-url origin https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git
 
     - name: Trigger Stockfish Gauntlet (post-promote)
       if: ${{ github.event.inputs.auto_trigger_next != 'false' }}
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: stockfish_gauntlet.yml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         inputs: '{
-          "tc": "10+0.1",
-          "games": "400",
+          "tc": "2+0.02",
+          "games": "150",
           "commit_results": "false"
         }'
 
@@ -262,7 +267,7 @@ PYEOF
         
         echo "Creating tag: $NEW_VERSION"
         git tag -a "$NEW_VERSION" -m "Auto-promote: +${{ needs.evaluate.outputs.elo_gain }} Elo [run ${{ github.run_id }}]"
-        git push origin "$NEW_VERSION" || echo "Tag push failed (may need permissions)"
+        git push origin "$NEW_VERSION" || echo "Tag push failed"
 
   # ======== Trigger Next Cycle ========
   trigger-next:
@@ -275,6 +280,7 @@ PYEOF
     - name: Dispatch Next Scheduler Cycle
       uses: peter-evans/repository-dispatch@v3
       with:
+        token: ${{ secrets.PAT_TOKEN }}
         event-type: cycle-complete
         client-payload: |
           {

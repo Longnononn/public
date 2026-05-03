@@ -68,7 +68,7 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: selfplay.yml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         inputs: >-
           {"games":"${{ github.event.inputs.games_per_shard || 10000 }}","depth":"8","threads":"4","shards":"8"}
     
@@ -88,7 +88,7 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: merge.yml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
     
     - name: Log Dispatch
       run: echo "Dispatched: Dataset Merge -> will trigger Micro-Train via repository_dispatch"
@@ -104,7 +104,7 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: micro_train.yml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         inputs: '{
           "epochs": "${{ github.event.inputs.micro_epochs || '1' }}",
           "batch_size": "4096",
@@ -126,7 +126,7 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         workflow: sprt.yml
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         inputs: '{
           "games": "${{ github.event.inputs.sprt_games || '500' }}",
           "elo1": "3",

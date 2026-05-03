@@ -1,0 +1,142 @@
+name: Stockfish Gauntlet (6h)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tc:
+        description: 'Time control (cutechess format), e.g. 10+0.1'
+        required: true
+        default: '10+0.1'
+      games:
+        description: 'Number of games (will stop early if timeout)'
+        required: true
+        default: '400'
+      stockfish_cmd:
+        description: 'Stockfish command (default: use apt stockfish)'
+        required: false
+        default: ''
+      commit_results:
+        description: 'Commit elo result json into repo'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  gauntlet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ python3 cutechess-cli stockfish
+
+      - name: Build Nexus
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release
+          make -j$(nproc)
+          cd ..
+          cp build/nexus ./nexus
+          chmod +x ./nexus
+
+      - name: Determine Stockfish command
+        id: sf
+        run: |
+          if [ -n "${{ github.event.inputs.stockfish_cmd }}" ]; then
+            echo "cmd=${{ github.event.inputs.stockfish_cmd }}" >> $GITHUB_OUTPUT
+          else
+            echo "cmd=stockfish" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run match
+        run: |
+          TC="${{ github.event.inputs.tc }}"
+          GAMES="${{ github.event.inputs.games }}"
+
+          cutechess-cli \
+            -engine name=Nexus cmd=./nexus proto=uci \
+            -engine name=Stockfish cmd="${{ steps.sf.outputs.cmd }}" proto=uci \
+            -each tc=$TC \
+            -games $GAMES \
+            -rounds $GAMES \
+            -repeat \
+            -concurrency 1 \
+            -pgnout match.pgn \
+            -recover \
+            -site "GitHub Actions" \
+            | tee match.log
+
+      - name: Compute Elo estimate
+        run: |
+          python3 - << 'PY'
+import json, re, time
+
+log = open('match.log', 'r', encoding='utf-8', errors='ignore').read().splitlines()
+
+# cutechess summary usually contains:
+# "Score of Nexus vs Stockfish: W - L - D  [P]"
+pat = re.compile(r"^Score of (.+?) vs (.+?):\s*(\d+)\s*-\s*(\d+)\s*-\s*(\d+)")
+
+w = l = d = None
+for line in reversed(log):
+    m = pat.search(line.strip())
+    if m:
+        w, l, d = map(int, m.group(3,4,5))
+        break
+
+out = {
+    'timestamp': int(time.time()),
+    'tc': '${{ github.event.inputs.tc }}',
+    'games_requested': int('${{ github.event.inputs.games }}'),
+    'wins': w,
+    'losses': l,
+    'draws': d,
+    'score': None,
+    'elo_estimate': None,
+}
+
+if w is not None:
+    n = w + l + d
+    p = (w + 0.5*d) / n if n else 0.5
+    out['score'] = p
+    # Avoid inf
+    eps = 1e-9
+    p = min(max(p, eps), 1 - eps)
+    out['elo_estimate'] = 400.0 * ( (p/(1-p)) ).__float__()
+    # Convert ln odds to log10 odds
+    import math
+    out['elo_estimate'] = 400.0 * math.log10(p/(1-p))
+
+with open('elo_result.json', 'w', encoding='utf-8') as f:
+    json.dump(out, f, indent=2)
+
+print(json.dumps(out, indent=2))
+PY
+
+      - name: Commit result (optional)
+        if: ${{ github.event.inputs.commit_results }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          mkdir -p gauntlet_results
+          cp elo_result.json gauntlet_results/elo_result_${{ github.run_id }}.json
+          git add gauntlet_results/elo_result_${{ github.run_id }}.json
+          git commit -m "Gauntlet vs Stockfish: run ${{ github.run_id }}" || exit 0
+          git push
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: stockfish-gauntlet-${{ github.run_id }}
+          path: |
+            match.log
+            match.pgn
+            elo_result.json

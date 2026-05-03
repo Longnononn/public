@@ -164,18 +164,22 @@ jobs:
 
     - name: Update Elo History
       run: |
-        ELO="${{ needs.evaluate.outputs.elo_gain }}"
-        RUN_ID="${{ github.run_id }}"
+        export ELO="${{ needs.evaluate.outputs.elo_gain }}"
+        export RUN_ID="${{ github.run_id }}"
         
         # Create or update elo_history.json
-        HISTORY_FILE="elo_history.json"
+        export HISTORY_FILE="elo_history.json"
         
-        python3 -c "
+        python3 << 'PYEOF'
 import json, os, datetime
 
+HISTORY_FILE = os.environ.get('HISTORY_FILE', 'elo_history.json')
+RUN_ID = os.environ.get('RUN_ID', '')
+ELO = os.environ.get('ELO', '0')
+
 history = []
-if os.path.exists('$HISTORY_FILE'):
-    with open('$HISTORY_FILE', 'r') as f:
+if os.path.exists(HISTORY_FILE):
+    with open(HISTORY_FILE, 'r') as f:
         history = json.load(f)
 
 # Get latest version info
@@ -186,9 +190,9 @@ version = result.stdout.strip() if result.returncode == 0 else 'v0.4.0+'
 
 entry = {
     'timestamp': datetime.datetime.now().isoformat(),
-    'run_id': '$RUN_ID',
+    'run_id': RUN_ID,
     'version': version,
-    'elo_gain': float('$ELO'),
+    'elo_gain': float(ELO),
     'event': 'promote',
     'model_size': 0,
     'sprt_result': 'ACCEPT'
@@ -200,12 +204,12 @@ if os.path.exists('models/best.nnue'):
 
 history.append(entry)
 
-with open('$HISTORY_FILE', 'w') as f:
+with open(HISTORY_FILE, 'w') as f:
     json.dump(history, f, indent=2)
 
-print(f'Updated history: {len(history)} entries')
-print(f'Latest Elo gain: +{entry[\"elo_gain\"]:.1f}')
-"
+print('Updated history:', len(history), 'entries')
+print('Latest Elo gain: +', entry['elo_gain'])
+PYEOF
 
     - name: Commit Elo History
       run: |

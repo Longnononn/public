@@ -148,11 +148,11 @@ jobs:
       run: |
         echo "Looking for latest dataset artifact..."
         # List recent artifacts
-        python3 -c "
+        python3 -c '
 import json, os, sys
 # In real usage, would query GitHub API for artifact list
-print('Will search for dataset-merged-* artifacts')
-" || true
+print("Will search for dataset-merged-* artifacts")
+' || true
 
     - name: Check Available Data
       run: |

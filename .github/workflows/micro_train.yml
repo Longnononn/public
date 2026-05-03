@@ -396,8 +396,9 @@ except Exception as e:
     - name: Determine Next Action
       id: decide
       run: |
-        # Check if training completed successfully
-        if [ "${{ needs.train.result }}" == "success" ]; then
+        # Check if training completed successfully (fix YAML syntax)
+        TRAIN_RESULT="${{ needs.train.result }}"
+        if [ "$TRAIN_RESULT" = "success" ]; then
           echo "Training succeeded, triggering SPRT validation"
           echo "next_action=sprt" >> $GITHUB_OUTPUT
         else

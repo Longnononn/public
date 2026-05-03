@@ -153,14 +153,25 @@ for artifact in data.get("artifacts", []):
       run: |
         mkdir -p data/merged
         
+        # Build arguments based on inputs (fix YAML syntax issue)
+        DEDUP_ARG=""
+        if [ "${{ github.event.inputs.dedup }}" != "false" ]; then
+          DEDUP_ARG="--dedup"
+        fi
+        
+        BALANCE_ARG=""
+        if [ "${{ github.event.inputs.balance }}" != "false" ]; then
+          BALANCE_ARG="--balance"
+        fi
+        
         if [ -f "scripts/merge_dataset.py" ]; then
           # Use the full merge pipeline
           python3 scripts/merge_dataset.py \
             --input-dir data/shards \
             --output data/merged/cleaned.txt \
-            ${{ github.event.inputs.dedup != 'false' && '--dedup' || '' }} \
+            $DEDUP_ARG \
             --filter-entropy \
-            ${{ github.event.inputs.balance != 'false' && '--balance' || '' }} \
+            $BALANCE_ARG \
             --filter-check \
             --min-ply ${{ env.MIN_PLY }} \
             --max-score ${{ env.MAX_SCORE }} \

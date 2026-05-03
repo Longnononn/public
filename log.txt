@@ -1,455 +1,792 @@
-2026-05-02T13:32:42.3164585Z Phiên bản trình chạy hiện tại: '2.334.0'
-2026-05-02T13:32:42.3191197Z ##[group]Runner Image Provisioner
-2026-05-02T13:32:42.3192065Z Hosted Compute Agent
-2026-05-02T13:32:42.3192723Z Phiên bản: 20260213.493
-2026-05-02T13:32:42.3193386Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
-2026-05-02T13:32:42.3194525Z Ngày xây dựng: 2026-02-13T00:28:41Z
-2026-05-02T13:32:42.3195364Z ID người làm việc: {76acfeee-990c-428f-af7c-e794702ed7a2}
-2026-05-02T13:32:42.3196155Z Vùng Azure: northcentralus
-2026-05-02T13:32:42.3196992Z ##[endgroup]
-2026-05-02T13:32:42.3199024Z ##[group]Hệ điều hành
-2026-05-02T13:32:42.3199739Z Ubuntu
-2026-05-02T13:32:42.3200306Z 24.04.4
-2026-05-02T13:32:42.3200867Z LTS
-2026-05-02T13:32:42.3201399Z ##[endgroup]
-2026-05-02T13:32:42.3202067Z ##[group]Runner Image
-2026-05-02T13:32:42.3202747Z Image: ubuntu-24.04
-2026-05-02T13:32:42.3203345Z Phiên bản: 20260413.86.1
-2026-05-02T13:32:42.3205042Z Phần mềm đi kèm: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
-2026-05-02T13:32:42.3206927Z Bản phát hành hình ảnh: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
-2026-05-02T13:32:42.3208101Z ##[endgroup]
-2026-05-02T13:32:42.3209452Z ##[group]GITHUB_TOKEN Quyền hạn
-2026-05-02T13:32:42.3211510Z Nội dung: đã đọc
-2026-05-02T13:32:42.3212273Z Siêu dữ liệu: đã đọc
-2026-05-02T13:32:42.3212875Z Gói: đã đọc
-2026-05-02T13:32:42.3213467Z ##[endgroup]
-2026-05-02T13:32:42.3215799Z Nguồn bí mật: Hành động
-2026-05-02T13:32:42.3216581Z Chuẩn bị thư mục quy trình làm việc
-2026-05-02T13:32:42.3501540Z Chuẩn bị tất cả các hành động cần thiết
-2026-05-02T13:32:42.3544061Z Đang lấy thông tin tải xuống hành động
-2026-05-02T13:32:42.6458838Z Tải xuống kho lưu trữ hành động 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
-2026-05-02T13:32:42.7732948Z Tải xuống kho lưu trữ hành động 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
-2026-05-02T13:32:42.9869032Z Tên công việc hoàn chỉnh: build-and-test
-2026-05-02T13:32:43.0447399Z ##[group]Run actions/checkout@v4
-2026-05-02T13:32:43.0448029Z với:
-2026-05-02T13:32:43.0448323Z fetch-depth: 0
-2026-05-02T13:32:43.0448634Z kho lưu trữ: Longnononn/public
-2026-05-02T13:32:43.0449135Z token: ***
-2026-05-02T13:32:43.0449448Z ssh-strict: true
-2026-05-02T13:32:43.0449773Z ssh-user: git
-2026-05-02T13:32:43.0450093Z persist-credentials: true
-2026-05-02T13:32:43.0450455Z clean: true
-2026-05-02T13:32:43.0450767Z sparse-checkout-cone-mode: true
-2026-05-02T13:32:43.0451135Z fetch-tags: false
-2026-05-02T13:32:43.0451439Z show-progress: true
-2026-05-02T13:32:43.0451745Z lfs: false
-2026-05-02T13:32:43.0452030Z mô-đun con: sai
-2026-05-02T13:32:43.0452330Z set-safe-directory: true
-2026-05-02T13:32:43.0452798Z ##[endgroup]
-2026-05-02T13:32:43.1329166Z Đồng bộ hóa kho lưu trữ: Longnononn/public
-2026-05-02T13:32:43.1330434Z ##[group]Lấy thông tin phiên bản Git
-2026-05-02T13:32:43.1330938Z Thư mục làm việc hiện tại là '/home/runner/work/public/public'
-2026-05-02T13:32:43.1331726Z [command]/usr/bin/git version
-2026-05-02T13:32:43.1359422Z git version 2.53.0
-2026-05-02T13:32:43.1378116Z ##[endgroup]
-2026-05-02T13:32:43.1389019Z Tạm thời ghi đè HOME='/home/runner/work/_temp/b9ae10a1-1334-449a-9822-72bd3c9d277a' trước khi thực hiện các thay đổi cấu hình git toàn cục
-2026-05-02T13:32:43.1390040Z Thêm thư mục kho lưu trữ vào cấu hình toàn cục tạm thời của git như một thư mục an toàn.
-2026-05-02T13:32:43.1398870Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T13:32:43.1424226Z Đang xóa nội dung của '/home/runner/work/public/public'
-2026-05-02T13:32:43.1427091Z ##[group]Khởi tạo kho lưu trữ
-2026-05-02T13:32:43.1430022Z [command]/usr/bin/git init /home/runner/work/public/public
-2026-05-02T13:32:43.1481021Z gợi ý: Sử dụng 'master' làm tên cho nhánh ban đầu. Đây là tên nhánh mặc định.
-2026-05-02T13:32:43.1482168Z gợi ý: sẽ thay đổi thành "main" trong Git 3.0. Để cấu hình tên nhánh ban đầu
-2026-05-02T13:32:43.1483257Z gợi ý: sử dụng trong tất cả các kho lưu trữ mới của bạn, điều này sẽ loại bỏ cảnh báo này.
-2026-05-02T13:32:43.1484248Z gợi ý: cuộc gọi:
-2026-05-02T13:32:43.1484529Z gợi ý:
-2026-05-02T13:32:43.1484900Z gợi ý: git config --global init.defaultBranch <name>
-2026-05-02T13:32:43.1485341Z gợi ý:
-2026-05-02T13:32:43.1485858Z gợi ý: Các tên thường được chọn thay cho 'master' là 'main', 'trunk' và
-2026-05-02T13:32:43.1486783Z gợi ý: 'development'. Có thể đổi tên nhánh vừa tạo bằng lệnh này:
-2026-05-02T13:32:43.1487308Z gợi ý:
-2026-05-02T13:32:43.1487594Z gợi ý: git branch -m <tên>
-2026-05-02T13:32:43.1487918Z gợi ý:
-2026-05-02T13:32:43.1488353Z gợi ý: Tắt thông báo này bằng lệnh "git config set advice.defaultBranchName false"
-2026-05-02T13:32:43.1489042Z Khởi tạo kho lưu trữ Git trống trong /home/runner/work/public/public/.git/
-2026-05-02T13:32:43.1490418Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
-2026-05-02T13:32:43.1513721Z ##[endgroup]
-2026-05-02T13:32:43.1514451Z ##[group]Vô hiệu hóa việc thu gom rác tự động
-2026-05-02T13:32:43.1516964Z [command]/usr/bin/git config --local gc.auto 0
-2026-05-02T13:32:43.1538933Z ##[endgroup]
-2026-05-02T13:32:43.1539436Z ##[group]Thiết lập xác thực
-2026-05-02T13:32:43.1543957Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T13:32:43.1567355Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T13:32:43.1794880Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T13:32:43.1817097Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T13:32:43.1994137Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T13:32:43.2017883Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T13:32:43.2204015Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2026-05-02T13:32:43.2230248Z ##[endgroup]
-2026-05-02T13:32:43.2230874Z ##[group]Đang tải kho lưu trữ
-2026-05-02T13:32:43.2237135Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-2026-05-02T13:32:43.9474878Z Từ https://github.com/Longnononn/public
-2026-05-02T13:32:43.9475838Z * [nhánh mới] main -> origin/main
-2026-05-02T13:32:43.9504594Z [command]/usr/bin/git branch --list --remote origin/main
-2026-05-02T13:32:43.9524165Z origin/main
-2026-05-02T13:32:43.9531282Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
-2026-05-02T13:32:43.9548174Z 8d246f54faade083b42dc1bc788793f8a578b8f4
-2026-05-02T13:32:43.9552091Z ##[endgroup]
-2026-05-02T13:32:43.9552926Z ##[group]Xác định thông tin thanh toán
-2026-05-02T13:32:43.9554096Z ##[endgroup]
-2026-05-02T13:32:43.9556247Z [command]/usr/bin/git sparse-checkout disable
-2026-05-02T13:32:43.9585021Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2026-05-02T13:32:43.9605849Z ##[group]Kiểm tra tham chiếu
-2026-05-02T13:32:43.9609359Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2026-05-02T13:32:43.9689700Z Đã chuyển sang nhánh mới 'main'
-2026-05-02T13:32:43.9691622Z nhánh 'main' được thiết lập để theo dõi 'origin/main'.
-2026-05-02T13:32:43.9720411Z ##[endgroup]
-2026-05-02T13:32:43.9722470Z [command]/usr/bin/git log -1 --format=%H
-2026-05-02T13:32:43.9741073Z 8d246f54faade083b42dc1bc788793f8a578b8f4
-2026-05-02T13:32:43.9919085Z ##[group]Chạy lệnh sudo apt-get update
-2026-05-02T13:32:43.9920053Z [36;1msudo apt-get update [0m
-2026-05-02T13:32:43.9921127Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip [0m
-2026-05-02T13:32:43.9922335Z [36;1mpip3 install numpy scipy [0m
-2026-05-02T13:32:43.9944926Z shell: /usr/bin/bash -e {0}
-2026-05-02T13:32:43.9945969Z ##[endgroup]
-2026-05-02T13:32:44.3259328Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T13:32:44.3620110Z Lượt truy cập: 2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-2026-05-02T13:32:44.3621550Z Lượt truy cập: 6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-2026-05-02T13:32:44.3629278Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
-2026-05-02T13:32:44.3659421Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-2026-05-02T13:32:44.3679143Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-2026-05-02T13:32:44.3697033Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-2026-05-02T13:32:44.3950010Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
-2026-05-02T13:32:44.5730446Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
-2026-05-02T13:32:44.5809052Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
-2026-05-02T13:32:44.5830046Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
-2026-05-02T13:32:44.6175994Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
-2026-05-02T13:32:44.6415115Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
-2026-05-02T13:32:44.6432564Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
-2026-05-02T13:32:44.6454795Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 cnf Metadata [17.1 kB]
-2026-05-02T13:32:44.6468690Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
-2026-05-02T13:32:44.6558241Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
-2026-05-02T13:32:44.6622421Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
-2026-05-02T13:32:44.6626885Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 cnf Metadata [34.5 kB]
-2026-05-02T13:32:44.6632015Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
-2026-05-02T13:32:44.6771443Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
-2026-05-02T13:32:44.7253419Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-2026-05-02T13:32:44.8362281Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 cnf Metadata [480 B]
-2026-05-02T13:32:44.8374996Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
-2026-05-02T13:32:44.8387426Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
-2026-05-02T13:32:44.8399334Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-2026-05-02T13:32:44.8411295Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 cnf Metadata [656 B]
-2026-05-02T13:32:44.8423545Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
-2026-05-02T13:32:44.8436805Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
-2026-05-02T13:32:44.8448887Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
-2026-05-02T13:32:44.8461324Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 cnf Metadata [368 B]
-2026-05-02T13:32:44.8475708Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
-2026-05-02T13:32:44.8488692Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
-2026-05-02T13:32:44.8501281Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
-2026-05-02T13:32:44.8513984Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 cnf Metadata [1484 B]
-2026-05-02T13:32:44.8606545Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1219 B]
-2026-05-02T13:32:44.8972491Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
-2026-05-02T13:32:44.8984163Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
-2026-05-02T13:32:44.8997355Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-2026-05-02T13:32:44.9010704Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
-2026-05-02T13:32:44.9163387Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
-2026-05-02T13:32:44.9174135Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
-2026-05-02T13:32:44.9185841Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 cnf Metadata [11.0 kB]
-2026-05-02T13:32:44.9197952Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
-2026-05-02T13:32:44.9576777Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
-2026-05-02T13:32:44.9636702Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
-2026-05-02T13:32:44.9651324Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 cnf Metadata [23.1 kB]
-2026-05-02T13:32:44.9665127Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
-2026-05-02T13:32:44.9860305Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
-2026-05-02T13:32:44.9993223Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-2026-05-02T13:32:45.0005416Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
-2026-05-02T13:32:45.0492998Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
-2026-05-02T13:32:45.0505921Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-2026-05-02T13:32:56.1043265Z Đã tải về 16.5 MB trong 2 giây (9620 kB/s)
-2026-05-02T13:32:56.7241696Z Đang đọc danh sách gói hàng...
-2026-05-02T13:32:56.7979590Z Đang đọc danh sách gói hàng...
-2026-05-02T13:32:56.9617249Z Đang xây dựng cây phụ thuộc...
-2026-05-02T13:32:56.9623240Z Đang đọc thông tin trạng thái...
-2026-05-02T13:32:57.1013676Z g++ đã là phiên bản mới nhất (4:13.2.0-7ubuntu1).
-2026-05-02T13:32:57.1014490Z python3 đã là phiên bản mới nhất (3.12.3-0ubuntu2.1).
-2026-05-02T13:32:57.1014910Z python3-pip đã là phiên bản mới nhất (24.0+dfsg-1ubuntu1.3).
-2026-05-02T13:32:57.1015235Z Các gói được đề xuất:
-2026-05-02T13:32:57.1015475Z cmake-doc cmake-format elpa-cmake-mode ninja-build
-2026-05-02T13:32:57.1970083Z Các gói MỚI sau đây sẽ được cài đặt:
-2026-05-02T13:32:57.1975100Z cmake cmake-data libjsoncpp25 librhash0
-2026-05-02T13:32:57.2117383Z 0 được nâng cấp, 4 được cài đặt mới, 0 được gỡ bỏ và 53 không được nâng cấp.
-2026-05-02T13:32:57.2117713Z Cần tải xuống 13.6 MB tệp lưu trữ.
-2026-05-02T13:32:57.2117969Z Sau thao tác này, 49,1 MB dung lượng đĩa bổ sung sẽ được sử dụng.
-2026-05-02T13:32:57.2118274Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
-2026-05-02T13:32:57.2545521Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
-2026-05-02T13:32:57.2985273Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
-2026-05-02T13:32:57.3336252Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
-2026-05-02T13:32:57.4021673Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
-2026-05-02T13:32:57.7968793Z Đã tải về 13.6 MB trong 0 giây (38.7 MB/s)
-2026-05-02T13:32:57.8262490Z Đang chọn gói libjsoncpp25:amd64 chưa được chọn trước đó.
-2026-05-02T13:32:57.9066658Z (Đang đọc cơ sở dữ liệu ...)
-2026-05-02T13:32:57.9066982Z (Đang đọc cơ sở dữ liệu ... 5%)
-2026-05-02T13:32:57.9067223Z (Đang đọc cơ sở dữ liệu ... 10%)
-2026-05-02T13:32:57.9067465Z (Đang đọc cơ sở dữ liệu ... 15%)
-2026-05-02T13:32:57.9067665Z (Đang đọc cơ sở dữ liệu ... 20%)
-2026-05-02T13:32:57.9067923Z (Đang đọc cơ sở dữ liệu ... 25%)
-2026-05-02T13:32:57.9068860Z (Đang đọc cơ sở dữ liệu ... 30%)
-2026-05-02T13:32:57.9069122Z (Đang đọc cơ sở dữ liệu ... 35%)
-2026-05-02T13:32:57.9069361Z (Đang đọc cơ sở dữ liệu ... 40%)
-2026-05-02T13:32:57.9069525Z (Đang đọc cơ sở dữ liệu ... 45%)
-2026-05-02T13:32:57.9069704Z (Đang đọc cơ sở dữ liệu ... 50%)
-2026-05-02T13:32:57.9291870Z (Đang đọc cơ sở dữ liệu ... 55%)
-2026-05-02T13:32:58.2219700Z (Đang đọc cơ sở dữ liệu ... 60%)
-2026-05-02T13:32:58.4013337Z (Đang đọc cơ sở dữ liệu ... 65%)
-2026-05-02T13:32:58.6498914Z (Đang đọc cơ sở dữ liệu ... 70%)
-2026-05-02T13:32:58.9610557Z (Đang đọc cơ sở dữ liệu ... 75%)
-2026-05-02T13:32:59.2849744Z (Đang đọc cơ sở dữ liệu ... 80%)
-2026-05-02T13:33:00.2192647Z (Đang đọc cơ sở dữ liệu ... 85%)
-2026-05-02T13:33:00.9879166Z (Đang đọc cơ sở dữ liệu ... 90%)
-2026-05-02T13:33:01.8396212Z (Đang đọc cơ sở dữ liệu ... 95%)
-2026-05-02T13:33:01.8441839Z (Đang đọc cơ sở dữ liệu ... 100%)
-2026-05-02T13:33:01.8442183Z (Đang đọc cơ sở dữ liệu ... Hiện có 220764 tệp và thư mục được cài đặt.)
-2026-05-02T13:33:01.8442532Z Đang chuẩn bị giải nén .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
-2026-05-02T13:33:01.8629780Z Giải nén libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T13:33:01.8905091Z Đang chọn gói librhash0:amd64 chưa được chọn trước đó.
-2026-05-02T13:33:01.9024544Z Đang chuẩn bị giải nén .../librhash0_1.4.3-3build1_amd64.deb ...
-2026-05-02T13:33:01.9035318Z Giải nén librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T13:33:01.9289780Z Đang chọn gói cmake-data chưa được chọn trước đó.
-2026-05-02T13:33:01.9407736Z Đang chuẩn bị giải nén .../cmake-data_3.28.3-1build7_all.deb ...
-2026-05-02T13:33:01.9537828Z Giải nén cmake-data (3.28.3-1build7) ...
-2026-05-02T13:33:02.9075173Z Đang chọn gói cmake chưa được chọn trước đó.
-2026-05-02T13:33:02.9209871Z Đang chuẩn bị giải nén .../cmake_3.28.3-1build7_amd64.deb ...
-2026-05-02T13:33:02.9219534Z Giải nén cmake (3.28.3-1build7) ...
-2026-05-02T13:33:03.2982324Z Đang thiết lập libjsoncpp25:amd64 (1.9.5-6build1) ...
-2026-05-02T13:33:03.3013897Z Đang thiết lập librhash0:amd64 (1.4.3-3build1) ...
-2026-05-02T13:33:03.3038513Z Đang thiết lập cmake-data (3.28.3-1build7) ...
-2026-05-02T13:33:03.3099762Z Đang thiết lập cmake (3.28.3-1build7) ...
-2026-05-02T13:33:03.3125188Z Đang xử lý các trình kích hoạt cho man-db (2.12.0-4build2) ...
-2026-05-02T13:33:03.3145544Z Không xây dựng cơ sở dữ liệu; man-db/auto-update không phải là 'true'.
-2026-05-02T13:33:03.3157891Z Đang xử lý các trình kích hoạt cho libc-bin (2.39-0ubuntu8.7) ...
-2026-05-02T13:33:18.8802261Z
-2026-05-02T13:33:18.8802718Z Kernel đang chạy có vẻ như đã được cập nhật.
-2026-05-02T13:33:18.8803013Z
-2026-05-02T13:33:18.8803120Z Không cần khởi động lại dịch vụ nào.
-2026-05-02T13:33:18.8803312Z
-2026-05-02T13:33:18.8803423Z Không cần khởi động lại bất kỳ container nào.
-2026-05-02T13:33:18.8803654Z
-2026-05-02T13:33:18.8803931Z Không có phiên người dùng nào đang chạy các tệp nhị phân lỗi thời.
-2026-05-02T13:33:18.8804101Z
-2026-05-02T13:33:18.8804247Z Không có máy ảo nào đang chạy các tệp nhị phân hypervisor (qemu) lỗi thời trên máy chủ này.
-2026-05-02T13:33:23.0108666Z Mặc định cài đặt bởi người dùng vì thư mục site-packages thông thường không thể ghi được.
-2026-05-02T13:33:25.9194859Z Đang thu thập numpy
-2026-05-02T13:33:25.9489493Z Đang tải xuống numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6,6 kB)
-2026-05-02T13:33:26.0466798Z Đang thu thập scipy
-2026-05-02T13:33:26.0497638Z Đang tải xuống scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
-2026-05-02T13:33:26.0574566Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 62,1/62,1 kB 8,8 MB/s trước 0:00:00
-2026-05-02T13:33:26.0896713Z Đang tải xuống numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16,6 MB)
-2026-05-02T13:33:26.3278390Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 16,6/16,6 MB 58,3 MB/giây trước 0:00:00
-2026-05-02T13:33:26.3309282Z Đang tải xuống scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35,2 MB)
-2026-05-02T13:33:26.7146352Z ━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━ 35,2/35,2 MB 32,4 MB/giây trước 0:00:00
-2026-05-02T13:33:26.9821384Z Đang cài đặt các gói đã thu thập: numpy, scipy
-2026-05-02T13:33:31.3003539Z Đã cài đặt thành công numpy-2.4.4 scipy-1.17.1
-2026-05-02T13:33:31.3922885Z ##[group]Run git checkout main
-2026-05-02T13:33:31.3923117Z [36;1mgit checkout main [0m
-2026-05-02T13:33:31.3923308Z [36;1mmkdir -p build_baseline [0m
-2026-05-02T13:33:31.3923495Z [36;1mcd build_baseline [0m
-2026-05-02T13:33:31.3923673Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release [0m
-2026-05-02T13:33:31.3924070Z [36;1mmake -j$(nproc) [0m
-2026-05-02T13:33:31.3924233Z [36;1mcp nexus ../nexus_base [0m
-2026-05-02T13:33:31.3924409Z [36;1mcd .. [0m
-2026-05-02T13:33:31.3943072Z shell: /usr/bin/bash -e {0}
-2026-05-02T13:33:31.3943252Z ##[endgroup]
-2026-05-02T13:33:31.4078298Z Đã ở trên 'chính'
-2026-05-02T13:33:31.4080581Z Nhánh của bạn đã được cập nhật với 'origin/main'.
-2026-05-02T13:33:32.2173990Z -- Trình biên dịch CXX được xác định là GNU 13.3.0
-2026-05-02T13:33:32.2901933Z -- Phát hiện thông tin ABI của trình biên dịch CXX
-2026-05-02T13:33:32.3744519Z -- Phát hiện thông tin ABI của trình biên dịch CXX - hoàn tất
-2026-05-02T13:33:32.3876845Z -- Kiểm tra trình biên dịch C++ hoạt động: /usr/bin/c++ - bỏ qua
-2026-05-02T13:33:32.3918787Z -- Phát hiện các tính năng biên dịch CXX
-2026-05-02T13:33:32.3961068Z -- Phát hiện các tính năng biên dịch CXX - hoàn tất
-2026-05-02T13:33:32.4269663Z -- Đang thực hiện kiểm tra COMPILER_SUPPORTS_AVX2
-2026-05-02T13:33:32.4775942Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_AVX2 - Thành công
-2026-05-02T13:33:32.4781864Z -- Đang thực hiện kiểm thử COMPILER_SUPPORTS_BMI2
-2026-05-02T13:33:32.5283932Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_BMI2 - Thành công
-2026-05-02T13:33:32.5289830Z -- Đang thực hiện kiểm tra COMPILER_SUPPORTS_POPCNT
-2026-05-02T13:33:32.5792900Z -- Thực hiện kiểm tra COMPILER_SUPPORTS_POPCNT - Thành công
-2026-05-02T13:33:32.5796913Z -- Cấu hình hoàn tất (1.0s)
-2026-05-02T13:33:32.5856453Z -- Quá trình tạo hoàn tất (0.0s)
-2026-05-02T13:33:32.5859256Z -- Các tệp xây dựng đã được ghi vào: /home/runner/work/public/public/build_baseline
-2026-05-02T13:33:32.6012048Z [ 2%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/bitboard.cpp.o
-2026-05-02T13:33:32.6012796Z [ 7%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/board.cpp.o
-2026-05-02T13:33:32.6014944Z [ 7%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
-2026-05-02T13:33:32.6015730Z [ 10%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
-2026-05-02T13:33:33.2282491Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)':
-2026-05-02T13:33:33.2315129Z /home/runner/work/public/public/src/bitboard.cpp:131:13: cảnh báo: biến 'shift' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:33.2344436Z 131 | int shift = 64 - shifts[s];
-2026-05-02T13:33:33.2374310Z | ^~~~~
-2026-05-02T13:33:33.2674808Z /home/runner/work/public/public/src/bitboard.cpp: Tại phạm vi toàn cục:
-2026-05-02T13:33:33.2705782Z /home/runner/work/public/public/src/bitboard.cpp:118:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T13:33:33.2734477Z 118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T13:33:33.2764297Z | ^~~~~~~~~~~~~
-2026-05-02T13:33:33.2905717Z [ 12%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/move.cpp.o
-2026-05-02T13:33:33.3485349Z /home/runner/work/public/public/tests/test_bitboard.cpp: Trong hàm 'int test_bitboard_main()':
-2026-05-02T13:33:33.3515089Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: cảnh báo: biến 'attacks' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:33.3534300Z 24 | u64 attacks = rook_attacks(SQ_C3, occ);
-2026-05-02T13:33:33.3544430Z | ^~~~~~~
-2026-05-02T13:33:33.3934705Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)':
-2026-05-02T13:33:33.3964971Z /home/runner/work/public/public/src/board.cpp:169:9: cảnh báo: biến 'key' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:33.3965601Z 169 | Key key = st.key;
-2026-05-02T13:33:33.3994548Z | ^~~
-2026-05-02T13:33:33.4035255Z [ 15%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
-2026-05-02T13:33:33.4414804Z [ 17%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/board.cpp.o
-2026-05-02T13:33:33.5650097Z [ 20%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/move.cpp.o
-2026-05-02T13:33:33.6235726Z /home/runner/work/public/public/src/bitboard.cpp: Trong hàm 'void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)':
-2026-05-02T13:33:33.6264846Z /home/runner/work/public/public/src/bitboard.cpp:131:13: cảnh báo: biến 'shift' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:33.6294300Z 131 | int shift = 64 - shifts[s];
-2026-05-02T13:33:33.6324217Z | ^~~~~
-2026-05-02T13:33:33.6624820Z /home/runner/work/public/public/src/bitboard.cpp: Tại phạm vi toàn cục:
-2026-05-02T13:33:33.6626516Z /home/runner/work/public/public/src/bitboard.cpp:118:5: cảnh báo: 'Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)' được định nghĩa nhưng không được sử dụng [-Wunused-function]
-2026-05-02T13:33:33.6627680Z 118 | u64 index_to_u64(int index, int bits, u64 mask) {
-2026-05-02T13:33:33.6628016Z | ^~~~~~~~~~~~
-2026-05-02T13:33:33.6754612Z [ 22%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/movegen.cpp.o
-2026-05-02T13:33:33.6884862Z [ 25%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/eval.cpp.o
-2026-05-02T13:33:33.7717814Z /home/runner/work/public/public/src/board.cpp: Trong hàm thành viên 'void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)':
-2026-05-02T13:33:33.7718999Z /home/runner/work/public/public/src/board.cpp:169:9: cảnh báo: biến 'key' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:33.7719612Z 169 | Key key = st.key;
-2026-05-02T13:33:33.7719869Z | ^~~
-2026-05-02T13:33:33.9204731Z [ 27%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/tt.cpp.o
-2026-05-02T13:33:33.9474939Z [ 30%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
-2026-05-02T13:33:34.0216860Z /home/runner/work/public/public/src/eval.cpp: Trong hàm thành viên tĩnh 'static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)':
-2026-05-02T13:33:34.0245066Z /home/runner/work/public/public/src/eval.cpp:94:11: cảnh báo: biến 'them' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:34.0253347Z 94 | Tô màu chúng = ~chúng ta;
-2026-05-02T13:33:34.0253974Z | ^~~~
-2026-05-02T13:33:34.0659291Z [ 32%] Đang xây dựng đối tượng CXX CMakeFiles/nexus_tests.dir/src/eval.cpp.o
-2026-05-02T13:33:34.0719521Z [ 35%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/search.cpp.o
-2026-05-02T13:33:34.2985090Z [ 37%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/timeman.cpp.o
-2026-05-02T13:33:34.3113131Z /home/runner/work/public/public/src/eval.cpp: Trong hàm thành viên tĩnh 'static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)':
-2026-05-02T13:33:34.3144897Z /home/runner/work/public/public/src/eval.cpp:94:11: cảnh báo: biến 'them' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:34.3174308Z 94 | Tô màu chúng = ~chúng ta;
-2026-05-02T13:33:34.3184423Z | ^~~~
-2026-05-02T13:33:34.3667207Z [ 40%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/tt.cpp.o
-2026-05-02T13:33:34.8555475Z /home/runner/work/public/public/src/tt.cpp: Trong hàm thành viên 'void Nexus::TranspositionTable::clear()':
-2026-05-02T13:33:34.8585727Z /home/runner/work/public/public/src/tt.cpp:44:20: cảnh báo: 'void* memset(void*, int, size_t)' đang xóa một đối tượng có kiểu không tầm thường 'struct Nexus::TTCluster'; hãy sử dụng phép gán hoặc khởi tạo giá trị thay thế [-Wclass-memaccess]
-2026-05-02T13:33:34.8611595Z 44 | std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T13:33:34.8634332Z | ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:33:34.8664387Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T13:33:34.8688415Z /home/runner/work/public/public/src/tt.h:26:8: note: 'struct Nexus::TTCluster' được khai báo tại đây
-2026-05-02T13:33:34.8714189Z 26 | struct TTCluster {
-2026-05-02T13:33:34.8714775Z | ^~~~~~~~~
-2026-05-02T13:33:34.9324949Z [ 42%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/see.cpp.o
-2026-05-02T13:33:34.9866216Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/search.cpp:7:
-2026-05-02T13:33:34.9895828Z /home/runner/work/public/public/src/history.h:92:49: cảnh báo: phép toán số học giữa các kiểu liệt kê khác nhau 'Nexus::Piece' và 'Nexus::Square' đã lỗi thời [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:33:34.9924469Z 92 | int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:33:34.9925037Z | ~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:33:35.1258103Z /home/runner/work/public/public/src/tt.cpp: Trong hàm thành viên 'void Nexus::TranspositionTable::clear()':
-2026-05-02T13:33:35.1285597Z /home/runner/work/public/public/src/tt.cpp:44:20: cảnh báo: 'void* memset(void*, int, size_t)' đang xóa một đối tượng có kiểu không tầm thường 'struct Nexus::TTCluster'; hãy sử dụng phép gán hoặc khởi tạo giá trị thay thế [-Wclass-memaccess]
-2026-05-02T13:33:35.1306363Z 44 | std::memset(table, 0, clusterCount * sizeof(TTCluster));
-2026-05-02T13:33:35.1344281Z | ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-05-02T13:33:35.1374330Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/tt.cpp:1:
-2026-05-02T13:33:35.1404759Z /home/runner/work/public/public/src/tt.h:26:8: note: 'struct Nexus::TTCluster' được khai báo tại đây
-2026-05-02T13:33:35.1434210Z 26 | struct TTCluster {
-2026-05-02T13:33:35.1464149Z | ^~~~~~~~~
-2026-05-02T13:33:35.1985541Z [ 45%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/uci.cpp.o
-2026-05-02T13:33:35.2824942Z [ 47%] Đang xây dựng đối tượng CXX CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
-2026-05-02T13:33:35.3964768Z [ 50%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/history.cpp.o
-2026-05-02T13:33:35.4326161Z /home/runner/work/public/public/src/search.cpp: Trong quá trình khởi tạo 'Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [với bool PvNode = true]':
-2026-05-02T13:33:35.4354532Z /home/runner/work/public/public/src/search.cpp:227:36: được yêu cầu từ đây
-2026-05-02T13:33:35.4374962Z /home/runner/work/public/public/src/search.cpp:432:9: cảnh báo: biến 'moveCount' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:35.4414274Z 432 | int moveCount = end - moveList;
-2026-05-02T13:33:35.4444210Z | ^~~~~~~~~
-2026-05-02T13:33:35.4475476Z /home/runner/work/public/public/src/search.cpp: Trong quá trình khởi tạo 'Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [với bool PvNode = false]':
-2026-05-02T13:33:35.4484421Z /home/runner/work/public/public/src/search.cpp:807:91: được yêu cầu từ đây
-2026-05-02T13:33:35.4534733Z /home/runner/work/public/public/src/search.cpp:432:9: cảnh báo: biến 'moveCount' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:35.6454919Z [ 52%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/see.cpp.o
-2026-05-02T13:33:35.6704754Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/history.cpp:1:
-2026-05-02T13:33:35.6725686Z /home/runner/work/public/public/src/history.h:92:49: cảnh báo: phép toán số học giữa các kiểu liệt kê khác nhau 'Nexus::Piece' và 'Nexus::Square' đã lỗi thời [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:33:35.6726765Z 92 | int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:33:35.6727150Z | ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:33:35.7434931Z [ 55%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/simd.cpp.o
-2026-05-02T13:33:35.9584943Z [ 57%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
-2026-05-02T13:33:35.9911827Z [ 60%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
-2026-05-02T13:33:36.4785026Z [ 62%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/thread.cpp.o
-2026-05-02T13:33:36.5416084Z /home/runner/work/public/public/src/syzygy.cpp: Trong hàm thành viên 'bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const':
-2026-05-02T13:33:36.5435131Z /home/runner/work/public/public/src/syzygy.cpp:136:15: cảnh báo: biến 'bestWdl' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:36.5464429Z 136 | WDLResult bestWdl = WDL_FAIL;
-2026-05-02T13:33:36.5494356Z | ^~~~~~~
-2026-05-02T13:33:36.6645518Z /home/runner/work/public/public/src/nnue.cpp: Trong hàm 'bool NNUE::verify_network(const std::string&)':
-2026-05-02T13:33:36.6675509Z /home/runner/work/public/public/src/nnue.cpp:389:17: cảnh báo: so sánh các biểu thức số nguyên có dấu khác nhau: 'std::streamoff' {tức là 'long int'} và 'size_t' {tức là 'long unsigned int'} [-Wsign-compare]
-2026-05-02T13:33:36.6704261Z 389 | trả về kích thước >= kích thước dự kiến;
-2026-05-02T13:33:36.6724367Z | ~~~~^~~~~~~~~~~~~~~~~
-2026-05-02T13:33:36.6891632Z [ 65%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/reductions.cpp.o
-2026-05-02T13:33:36.7934853Z [ 67%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/history.cpp.o
-2026-05-02T13:33:36.9961171Z [ 70%] Đang biên dịch đối tượng CXX CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
-2026-05-02T13:33:37.0474741Z [ 72%] Đang xây dựng đối tượng CXX CMakeFiles/nexus_tests.dir/src/training.cpp.o
-2026-05-02T13:33:37.0733899Z Trong tệp được bao gồm từ /home/runner/work/public/public/src/history.cpp:1:
-2026-05-02T13:33:37.0735781Z /home/runner/work/public/public/src/history.h:92:49: cảnh báo: phép toán số học giữa các kiểu liệt kê khác nhau 'Nexus::Piece' và 'Nexus::Square' đã lỗi thời [-Wdeprecated-enum-enum-conversion]
-2026-05-02T13:33:37.0764526Z 92 | int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
-2026-05-02T13:33:37.0794305Z | ~~~~~~~~~^~~~~~~~~~~
-2026-05-02T13:33:37.1454867Z [ 75%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/simd.cpp.o
-2026-05-02T13:33:37.7674970Z [ 77%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/nnue.cpp.o
-2026-05-02T13:33:37.7735707Z /home/runner/work/public/public/src/test_suite.cpp: Trong hàm thành viên 'std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)':
-2026-05-02T13:33:37.7764956Z /home/runner/work/public/public/src/test_suite.cpp:231:14: cảnh báo: biến 'start' được gán giá trị nhưng không được sử dụng [-Wunused-but-set-variable]
-2026-05-02T13:33:37.7794394Z 231 | auto start = std::chrono::steady_clock::now();
-2026-05-02T13:33:37.7794758Z | ^~~~~
-2026-05-02T13:33:37.7795520Z /home/runner/work/public/public/src/test_suite.cpp:238:18: cảnh báo: biến 'end' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:37.7834380Z 238 | ExtMove* end = generate<NON_EVASIONS>(board, moves);
-2026-05-02T13:33:37.7864194Z | ^~~
-2026-05-02T13:33:37.8754994Z [ 80%] Đang xây dựng đối tượng CXX CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o
-2026-05-02T13:33:38.2512720Z [ 82%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/syzygy.cpp.o
-2026-05-02T13:33:38.4925116Z /home/runner/work/public/public/src/nnue.cpp: Trong hàm 'bool NNUE::verify_network(const std::string&)':
-2026-05-02T13:33:38.4935759Z /home/runner/work/public/public/src/nnue.cpp:389:17: cảnh báo: so sánh các biểu thức số nguyên có dấu khác nhau: 'std::streamoff' {tức là 'long int'} và 'size_t' {tức là 'long unsigned int'} [-Wsign-compare]
-2026-05-02T13:33:38.4964517Z 389 | trả về kích thước >= kích thước dự kiến;
-2026-05-02T13:33:38.4994410Z | ~~~~^~~~~~~~~~~~~~~~~
-2026-05-02T13:33:38.6191966Z [ 85%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/thread.cpp.o
-2026-05-02T13:33:38.7074921Z [ 87%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/test_suite.cpp.o
-2026-05-02T13:33:38.7845756Z /home/runner/work/public/public/src/syzygy.cpp: Trong hàm thành viên 'bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const':
-2026-05-02T13:33:38.7875019Z /home/runner/work/public/public/src/syzygy.cpp:136:15: cảnh báo: biến 'bestWdl' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:38.7934352Z 136 | WDLResult bestWdl = WDL_FAIL;
-2026-05-02T13:33:38.7979816Z | ^~~~~~~
-2026-05-02T13:33:38.9362087Z [ 90%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/training.cpp.o
-2026-05-02T13:33:39.2014735Z [ 92%] Liên kết tệp thực thi CXX nexus_tests
-2026-05-02T13:33:39.4964875Z /home/runner/work/public/public/src/test_suite.cpp: Trong hàm thành viên 'std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)':
-2026-05-02T13:33:39.4985094Z /home/runner/work/public/public/src/test_suite.cpp:231:14: cảnh báo: biến 'start' được gán giá trị nhưng không được sử dụng [-Wunused-but-set-variable]
-2026-05-02T13:33:39.5014462Z 231 | auto start = std::chrono::steady_clock::now();
-2026-05-02T13:33:39.5044304Z | ^~~~~
-2026-05-02T13:33:39.5074794Z /home/runner/work/public/public/src/test_suite.cpp:238:18: cảnh báo: biến 'end' không được sử dụng [-Wunused-variable]
-2026-05-02T13:33:39.5075740Z 238 | ExtMove* end = generate<NON_EVASIONS>(board, moves);
-2026-05-02T13:33:39.5104334Z | ^~~
-2026-05-02T13:33:39.7911803Z [ 95%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/datapipeline.cpp.o
-2026-05-02T13:33:39.8115339Z /usr/bin/ld: /tmp/cc7LOZQX.ltrans0.ltrans.o: trong hàm `Nexus::(không gian tên ẩn danh)::init_magics(Nexus::Magic*, unsigned long*, unsigned long*, unsigned long*, unsigned int*, Nexus::Direction*)':
-2026-05-02T13:33:39.8144908Z <artificial>:(.text+0x26b): tham chiếu không xác định đến `Nexus::sliding_attack(Nexus::PieceType, Nexus::Square, unsigned long)'
-2026-05-02T13:33:39.8174535Z /usr/bin/ld: <artificial>:(.text+0x299): tham chiếu không xác định đến `Nexus::sliding_attack(Nexus::PieceType, Nexus::Square, unsigned long)'
-2026-05-02T13:33:39.8204303Z collect2: lỗi: ld trả về trạng thái thoát 1
-2026-05-02T13:33:39.8204752Z [ 97%] Đang biên dịch đối tượng CXX CMakeFiles/nexus.dir/src/main.cpp.o
-2026-05-02T13:33:39.8234224Z make[2]: *** [CMakeFiles/nexus_tests.dir/build.make:373: nexus_tests] Lỗi 1
-2026-05-02T13:33:39.8234826Z make[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/nexus_tests.dir/all] Lỗi 2
-2026-05-02T13:33:39.8264247Z make[1]: *** Đang chờ các công việc chưa hoàn thành....
-2026-05-02T13:33:40.8111074Z [100%] Liên kết tệp thực thi CXX nexus
-2026-05-02T13:33:42.2831289Z /usr/bin/ld: /tmp/ccmbNYBr.ltrans0.ltrans.o: trong hàm `Nexus::(không gian tên ẩn danh)::init_magics(Nexus::Magic*, unsigned long*, unsigned long*, unsigned long*, unsigned int*, Nexus::Direction*)':
-2026-05-02T13:33:42.2832129Z <artificial>:(.text+0x93b): tham chiếu không xác định đến `Nexus::sliding_attack(Nexus::PieceType, Nexus::Square, unsigned long)'
-2026-05-02T13:33:42.2833463Z /usr/bin/ld: <artificial>:(.text+0x969): tham chiếu không xác định đến `Nexus::sliding_attack(Nexus::PieceType, Nexus::Square, unsigned long)'
-2026-05-02T13:33:42.2834326Z /usr/bin/ld: /tmp/ccmbNYBr.ltrans1.ltrans.o: trong hàm `Training::DataGenerator::play_one_game(int)':
-2026-05-02T13:33:42.2834929Z <artificial>:(.text+0xc0d4): tham chiếu không xác định đến `Nexus::ExtMove* Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)'
-2026-05-02T13:33:42.2835632Z /usr/bin/ld: <artificial>:(.text+0xc334): tham chiếu không xác định đến `Nexus::ExtMove* Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)'
-2026-05-02T13:33:42.2836326Z /usr/bin/ld: <artificial>:(.text+0xcb6c): tham chiếu không xác định đến `Nexus::ExtMove* Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)'
-2026-05-02T13:33:42.2880155Z collect2: lỗi: ld trả về trạng thái thoát 1
-2026-05-02T13:33:42.2890107Z make[2]: *** [CMakeFiles/nexus.dir/build.make:405: nexus] Lỗi 1
-2026-05-02T13:33:42.2892331Z make[1]: *** [CMakeFiles/Makefile2:90: CMakeFiles/nexus.dir/all] Lỗi 2
-2026-05-02T13:33:42.2894363Z make: *** [Makefile:101: all] Lỗi 2
-2026-05-02T13:33:42.2907874Z ##[error]Quá trình hoàn tất với mã thoát 2.
-2026-05-02T13:33:42.2995221Z Dọn dẹp sau khi hoàn thành công việc.
-2026-05-02T13:33:42.3756935Z [command]/usr/bin/git version
-2026-05-02T13:33:42.3785079Z git version 2.53.0
-2026-05-02T13:33:42.3816020Z Tạm thời ghi đè HOME='/home/runner/work/_temp/8d87870e-4261-4b21-bb16-4aaafd0478e2' trước khi thực hiện các thay đổi cấu hình git toàn cục
-2026-05-02T13:33:42.3816590Z Thêm thư mục kho lưu trữ vào cấu hình toàn cục tạm thời của git như một thư mục an toàn.
-2026-05-02T13:33:42.3820164Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
-2026-05-02T13:33:42.3848986Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2026-05-02T13:33:42.3874666Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2026-05-02T13:33:42.4059368Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2026-05-02T13:33:42.4076697Z http.https://github.com/.extraheader
-2026-05-02T13:33:42.4086702Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-2026-05-02T13:33:42.4111235Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2026-05-02T13:33:42.4290085Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-2026-05-02T13:33:42.4313689Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-2026-05-02T13:33:42.4586375Z Dọn dẹp các tiến trình mồ côi
-2026-05-02T13:33:42.4827532Z ##[cảnh báo]Các hành động Node.js 20 đã lỗi thời. Các hành động sau đang chạy trên Node.js 20 và có thể không hoạt động như mong đợi: actions/checkout@v4. Các hành động sẽ bị buộc phải chạy với Node.js 24 theo mặc định bắt đầu từ ngày 2 tháng 6 năm 2026. Node.js 20 sẽ bị xóa khỏi trình chạy vào ngày 16 tháng 9 năm 2026. Vui lòng kiểm tra xem có phiên bản cập nhật nào của các hành động này hỗ trợ Node.js 24 hay không. Để chọn sử dụng Node.js 24 ngay bây giờ, hãy đặt biến môi trường FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true trên trình chạy hoặc trong tệp quy trình làm việc của bạn. Sau khi Node.js 24 trở thành mặc định, bạn có thể tạm thời chọn không sử dụng bằng cách đặt ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. Để biết thêm thông tin chi tiết, vui lòng xem: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-05-03T00:41:18.3419860Z Current runner version: '2.334.0'
+2026-05-03T00:41:18.3447311Z ##[group]Runner Image Provisioner
+2026-05-03T00:41:18.3448131Z Hosted Compute Agent
+2026-05-03T00:41:18.3448666Z Version: 20260213.493
+2026-05-03T00:41:18.3449211Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-03T00:41:18.3449952Z Build Date: 2026-02-13T00:28:41Z
+2026-05-03T00:41:18.3450991Z Worker ID: {0b58239c-0fa0-4f97-90c2-c763c9b1cc00}
+2026-05-03T00:41:18.3451689Z Azure Region: northcentralus
+2026-05-03T00:41:18.3452260Z ##[endgroup]
+2026-05-03T00:41:18.3453827Z ##[group]Operating System
+2026-05-03T00:41:18.3454483Z Ubuntu
+2026-05-03T00:41:18.3454999Z 24.04.4
+2026-05-03T00:41:18.3455476Z LTS
+2026-05-03T00:41:18.3455881Z ##[endgroup]
+2026-05-03T00:41:18.3456404Z ##[group]Runner Image
+2026-05-03T00:41:18.3456901Z Image: ubuntu-24.04
+2026-05-03T00:41:18.3457398Z Version: 20260413.86.1
+2026-05-03T00:41:18.3458564Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-03T00:41:18.3460013Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-05-03T00:41:18.3461186Z ##[endgroup]
+2026-05-03T00:41:18.3462266Z ##[group]GITHUB_TOKEN Permissions
+2026-05-03T00:41:18.3464212Z Contents: read
+2026-05-03T00:41:18.3464798Z Metadata: read
+2026-05-03T00:41:18.3465246Z Packages: read
+2026-05-03T00:41:18.3466106Z ##[endgroup]
+2026-05-03T00:41:18.3468334Z Secret source: Actions
+2026-05-03T00:41:18.3469225Z Prepare workflow directory
+2026-05-03T00:41:18.3798444Z Prepare all required actions
+2026-05-03T00:41:18.3835673Z Getting action download info
+2026-05-03T00:41:18.7328783Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-03T00:41:18.8461339Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-05-03T00:41:19.0544508Z Complete job name: build-and-test
+2026-05-03T00:41:19.1277952Z ##[group]Run actions/checkout@v4
+2026-05-03T00:41:19.1278777Z with:
+2026-05-03T00:41:19.1279134Z   fetch-depth: 0
+2026-05-03T00:41:19.1279549Z   repository: Longnononn/public
+2026-05-03T00:41:19.1280150Z   token: ***
+2026-05-03T00:41:19.1280968Z   ssh-strict: true
+2026-05-03T00:41:19.1281361Z   ssh-user: git
+2026-05-03T00:41:19.1281738Z   persist-credentials: true
+2026-05-03T00:41:19.1282172Z   clean: true
+2026-05-03T00:41:19.1282554Z   sparse-checkout-cone-mode: true
+2026-05-03T00:41:19.1283023Z   fetch-tags: false
+2026-05-03T00:41:19.1283403Z   show-progress: true
+2026-05-03T00:41:19.1283788Z   lfs: false
+2026-05-03T00:41:19.1284138Z   submodules: false
+2026-05-03T00:41:19.1284521Z   set-safe-directory: true
+2026-05-03T00:41:19.1285249Z ##[endgroup]
+2026-05-03T00:41:19.2393889Z Syncing repository: Longnononn/public
+2026-05-03T00:41:19.2395580Z ##[group]Getting Git version info
+2026-05-03T00:41:19.2396221Z Working directory is '/home/runner/work/public/public'
+2026-05-03T00:41:19.2397169Z [command]/usr/bin/git version
+2026-05-03T00:41:19.2464590Z git version 2.53.0
+2026-05-03T00:41:19.2490612Z ##[endgroup]
+2026-05-03T00:41:19.2505560Z Temporarily overriding HOME='/home/runner/work/_temp/eca662c0-6c8b-4b35-a10d-25c10b453525' before making global git config changes
+2026-05-03T00:41:19.2506906Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-03T00:41:19.2518057Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-03T00:41:19.2548359Z Deleting the contents of '/home/runner/work/public/public'
+2026-05-03T00:41:19.2552313Z ##[group]Initializing the repository
+2026-05-03T00:41:19.2556144Z [command]/usr/bin/git init /home/runner/work/public/public
+2026-05-03T00:41:19.2644996Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-03T00:41:19.2646953Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-03T00:41:19.2648057Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-03T00:41:19.2649167Z hint: call:
+2026-05-03T00:41:19.2649577Z hint:
+2026-05-03T00:41:19.2650270Z hint: 	git config --global init.defaultBranch <name>
+2026-05-03T00:41:19.2651452Z hint:
+2026-05-03T00:41:19.2652326Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-03T00:41:19.2653318Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-03T00:41:19.2653987Z hint:
+2026-05-03T00:41:19.2654346Z hint: 	git branch -m <name>
+2026-05-03T00:41:19.2654756Z hint:
+2026-05-03T00:41:19.2655329Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-03T00:41:19.2656243Z Initialized empty Git repository in /home/runner/work/public/public/.git/
+2026-05-03T00:41:19.2658170Z [command]/usr/bin/git remote add origin https://github.com/Longnononn/public
+2026-05-03T00:41:19.2685870Z ##[endgroup]
+2026-05-03T00:41:19.2686590Z ##[group]Disabling automatic garbage collection
+2026-05-03T00:41:19.2689840Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-03T00:41:19.2716963Z ##[endgroup]
+2026-05-03T00:41:19.2717588Z ##[group]Setting up auth
+2026-05-03T00:41:19.2724273Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-03T00:41:19.2753135Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-03T00:41:19.3124886Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-03T00:41:19.3154559Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-03T00:41:19.3382408Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-03T00:41:19.3418330Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-03T00:41:19.3670694Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-03T00:41:19.3706272Z ##[endgroup]
+2026-05-03T00:41:19.3707510Z ##[group]Fetching the repository
+2026-05-03T00:41:19.3715723Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-03T00:41:19.7427079Z From https://github.com/Longnononn/public
+2026-05-03T00:41:19.7428577Z  * [new branch]      main       -> origin/main
+2026-05-03T00:41:19.7464133Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-03T00:41:19.7486872Z   origin/main
+2026-05-03T00:41:19.7496503Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-03T00:41:19.7517587Z f4d3c7dcba740775967bdeb63558a2d5857c00a0
+2026-05-03T00:41:19.7523356Z ##[endgroup]
+2026-05-03T00:41:19.7524754Z ##[group]Determining the checkout info
+2026-05-03T00:41:19.7526332Z ##[endgroup]
+2026-05-03T00:41:19.7530158Z [command]/usr/bin/git sparse-checkout disable
+2026-05-03T00:41:19.7567698Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-03T00:41:19.7595099Z ##[group]Checking out the ref
+2026-05-03T00:41:19.7600126Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-03T00:41:19.7702637Z Switched to a new branch 'main'
+2026-05-03T00:41:19.7704473Z branch 'main' set up to track 'origin/main'.
+2026-05-03T00:41:19.7710990Z ##[endgroup]
+2026-05-03T00:41:19.7745043Z [command]/usr/bin/git log -1 --format=%H
+2026-05-03T00:41:19.7766329Z f4d3c7dcba740775967bdeb63558a2d5857c00a0
+2026-05-03T00:41:19.7968735Z ##[group]Run sudo apt-get update
+2026-05-03T00:41:19.7970036Z [36;1msudo apt-get update[0m
+2026-05-03T00:41:19.7971664Z [36;1msudo apt-get install -y cmake g++ python3 python3-pip[0m
+2026-05-03T00:41:19.7973212Z [36;1mpip3 install numpy scipy[0m
+2026-05-03T00:41:19.7999621Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:41:19.8001089Z ##[endgroup]
+2026-05-03T00:41:19.8903026Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-03T00:41:19.9198013Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-05-03T00:41:19.9219404Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-05-03T00:41:19.9247518Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-05-03T00:41:19.9252636Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-05-03T00:41:19.9307770Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-05-03T00:41:19.9346780Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-05-03T00:41:19.9533593Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1825 B]
+2026-05-03T00:41:20.0870217Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.6 kB]
+2026-05-03T00:41:20.0972243Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [132 kB]
+2026-05-03T00:41:20.1022306Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [107 kB]
+2026-05-03T00:41:20.1376869Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1946 kB]
+2026-05-03T00:41:20.1534256Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [348 kB]
+2026-05-03T00:41:20.1562803Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-05-03T00:41:20.1584922Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [17.1 kB]
+2026-05-03T00:41:20.1589618Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1685 kB]
+2026-05-03T00:41:20.1687532Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [324 kB]
+2026-05-03T00:41:20.1729269Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-05-03T00:41:20.1737599Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [34.5 kB]
+2026-05-03T00:41:20.1757450Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3095 kB]
+2026-05-03T00:41:20.2003042Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [715 kB]
+2026-05-03T00:41:20.2377718Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-05-03T00:41:20.2387543Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [480 B]
+2026-05-03T00:41:20.2401198Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [44.4 kB]
+2026-05-03T00:41:20.2413104Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [10.2 kB]
+2026-05-03T00:41:20.2421497Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-05-03T00:41:20.2432883Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]
+2026-05-03T00:41:20.2492358Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [64.5 kB]
+2026-05-03T00:41:20.2494442Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9172 B]
+2026-05-03T00:41:20.2496299Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7368 B]
+2026-05-03T00:41:20.2497943Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-05-03T00:41:20.2499911Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [34.1 kB]
+2026-05-03T00:41:20.2502518Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-05-03T00:41:20.2512460Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+2026-05-03T00:41:20.2524180Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1484 B]
+2026-05-03T00:41:20.2971448Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+2026-05-03T00:41:20.2981423Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [748 B]
+2026-05-03T00:41:20.2988946Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-05-03T00:41:20.3013915Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1625 kB]
+2026-05-03T00:41:20.3083769Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [259 kB]
+2026-05-03T00:41:20.3102539Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.9 kB]
+2026-05-03T00:41:20.3112658Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.0 kB]
+2026-05-03T00:41:20.3123832Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1182 kB]
+2026-05-03T00:41:20.3174000Z Get:53 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1216 B]
+2026-05-03T00:41:20.3193953Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [227 kB]
+2026-05-03T00:41:20.3213735Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+2026-05-03T00:41:20.3227572Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [23.1 kB]
+2026-05-03T00:41:20.3239912Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2844 kB]
+2026-05-03T00:41:20.3377991Z Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [666 kB]
+2026-05-03T00:41:20.3425383Z Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-05-03T00:41:20.3436229Z Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB]
+2026-05-03T00:41:20.3853966Z Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [7172 B]
+2026-05-03T00:41:20.3863818Z Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+2026-05-03T00:41:28.8283389Z Fetched 16.5 MB in 2s (8859 kB/s)
+2026-05-03T00:41:29.6193514Z Reading package lists...
+2026-05-03T00:41:29.6507185Z Reading package lists...
+2026-05-03T00:41:29.8238822Z Building dependency tree...
+2026-05-03T00:41:29.8246859Z Reading state information...
+2026-05-03T00:41:29.9782078Z g++ is already the newest version (4:13.2.0-7ubuntu1).
+2026-05-03T00:41:29.9783188Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-05-03T00:41:29.9783956Z python3-pip is already the newest version (24.0+dfsg-1ubuntu1.3).
+2026-05-03T00:41:29.9784628Z Suggested packages:
+2026-05-03T00:41:29.9785170Z   cmake-doc cmake-format elpa-cmake-mode ninja-build
+2026-05-03T00:41:29.9952804Z The following NEW packages will be installed:
+2026-05-03T00:41:29.9959126Z   cmake cmake-data libjsoncpp25 librhash0
+2026-05-03T00:41:30.0127998Z 0 upgraded, 4 newly installed, 0 to remove and 53 not upgraded.
+2026-05-03T00:41:30.0128654Z Need to get 13.6 MB of archives.
+2026-05-03T00:41:30.0129154Z After this operation, 49.1 MB of additional disk space will be used.
+2026-05-03T00:41:30.0129606Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-05-03T00:41:30.0516252Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+2026-05-03T00:41:30.0760022Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+2026-05-03T00:41:30.0993517Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+2026-05-03T00:41:30.1420544Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+2026-05-03T00:41:30.5019751Z Fetched 13.6 MB in 0s (54.5 MB/s)
+2026-05-03T00:41:30.5253664Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-05-03T00:41:30.5595574Z (Reading database ... 
+2026-05-03T00:41:30.5596518Z (Reading database ... 5%
+2026-05-03T00:41:30.5597407Z (Reading database ... 10%
+2026-05-03T00:41:30.5598086Z (Reading database ... 15%
+2026-05-03T00:41:30.5598765Z (Reading database ... 20%
+2026-05-03T00:41:30.5599248Z (Reading database ... 25%
+2026-05-03T00:41:30.5599735Z (Reading database ... 30%
+2026-05-03T00:41:30.5601155Z (Reading database ... 35%
+2026-05-03T00:41:30.5602003Z (Reading database ... 40%
+2026-05-03T00:41:30.5602544Z (Reading database ... 45%
+2026-05-03T00:41:30.5603113Z (Reading database ... 50%
+2026-05-03T00:41:30.5709979Z (Reading database ... 55%
+2026-05-03T00:41:30.6865038Z (Reading database ... 60%
+2026-05-03T00:41:30.8424147Z (Reading database ... 65%
+2026-05-03T00:41:31.0479441Z (Reading database ... 70%
+2026-05-03T00:41:31.2336703Z (Reading database ... 75%
+2026-05-03T00:41:31.4407064Z (Reading database ... 80%
+2026-05-03T00:41:31.5815997Z (Reading database ... 85%
+2026-05-03T00:41:31.7522480Z (Reading database ... 90%
+2026-05-03T00:41:31.8971099Z (Reading database ... 95%
+2026-05-03T00:41:31.8971733Z (Reading database ... 100%
+2026-05-03T00:41:31.9016102Z (Reading database ... 220764 files and directories currently installed.)
+2026-05-03T00:41:31.9016577Z Preparing to unpack .../libjsoncpp25_1.9.5-6build1_amd64.deb ...
+2026-05-03T00:41:31.9062920Z Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-03T00:41:31.9302804Z Selecting previously unselected package librhash0:amd64.
+2026-05-03T00:41:31.9439516Z Preparing to unpack .../librhash0_1.4.3-3build1_amd64.deb ...
+2026-05-03T00:41:31.9451800Z Unpacking librhash0:amd64 (1.4.3-3build1) ...
+2026-05-03T00:41:31.9701395Z Selecting previously unselected package cmake-data.
+2026-05-03T00:41:31.9836912Z Preparing to unpack .../cmake-data_3.28.3-1build7_all.deb ...
+2026-05-03T00:41:31.9905587Z Unpacking cmake-data (3.28.3-1build7) ...
+2026-05-03T00:41:32.5513879Z Selecting previously unselected package cmake.
+2026-05-03T00:41:32.5665998Z Preparing to unpack .../cmake_3.28.3-1build7_amd64.deb ...
+2026-05-03T00:41:32.5676684Z Unpacking cmake (3.28.3-1build7) ...
+2026-05-03T00:41:32.7354576Z Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+2026-05-03T00:41:32.7388822Z Setting up librhash0:amd64 (1.4.3-3build1) ...
+2026-05-03T00:41:32.7415241Z Setting up cmake-data (3.28.3-1build7) ...
+2026-05-03T00:41:32.7482711Z Setting up cmake (3.28.3-1build7) ...
+2026-05-03T00:41:32.7524222Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-05-03T00:41:32.7562440Z Not building database; man-db/auto-update is not 'true'.
+2026-05-03T00:41:32.7582129Z Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+2026-05-03T00:41:33.4099426Z 
+2026-05-03T00:41:33.4100211Z Running kernel seems to be up-to-date.
+2026-05-03T00:41:33.4100907Z 
+2026-05-03T00:41:33.4101043Z No services need to be restarted.
+2026-05-03T00:41:33.4101275Z 
+2026-05-03T00:41:33.4101389Z No containers need to be restarted.
+2026-05-03T00:41:33.4101651Z 
+2026-05-03T00:41:33.4101792Z No user sessions are running outdated binaries.
+2026-05-03T00:41:33.4102046Z 
+2026-05-03T00:41:33.4102283Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-05-03T00:41:34.7123105Z Defaulting to user installation because normal site-packages is not writeable
+2026-05-03T00:41:35.2754154Z Collecting numpy
+2026-05-03T00:41:35.3118378Z   Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2026-05-03T00:41:35.4576280Z Collecting scipy
+2026-05-03T00:41:35.4617591Z   Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+2026-05-03T00:41:35.4718967Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.1/62.1 kB 6.8 MB/s eta 0:00:00
+2026-05-03T00:41:35.5179828Z Downloading numpy-2.4.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2026-05-03T00:41:35.6382376Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 133.9 MB/s eta 0:00:00
+2026-05-03T00:41:35.6427637Z Downloading scipy-1.17.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.2 MB)
+2026-05-03T00:41:35.8369625Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.2/35.2 MB 121.4 MB/s eta 0:00:00
+2026-05-03T00:41:36.1920251Z Installing collected packages: numpy, scipy
+2026-05-03T00:41:41.4313897Z Successfully installed numpy-2.4.4 scipy-1.17.1
+2026-05-03T00:41:41.5295316Z ##[group]Run git checkout main
+2026-05-03T00:41:41.5295627Z [36;1mgit checkout main[0m
+2026-05-03T00:41:41.5295853Z [36;1mmkdir -p build_baseline[0m
+2026-05-03T00:41:41.5296089Z [36;1mcd build_baseline[0m
+2026-05-03T00:41:41.5296319Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-03T00:41:41.5296587Z [36;1mmake -j$(nproc)[0m
+2026-05-03T00:41:41.5296790Z [36;1mcp nexus ../nexus_base[0m
+2026-05-03T00:41:41.5297003Z [36;1mcd ..[0m
+2026-05-03T00:41:41.5318705Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:41:41.5318934Z ##[endgroup]
+2026-05-03T00:41:41.5476198Z Already on 'main'
+2026-05-03T00:41:41.5479419Z Your branch is up to date with 'origin/main'.
+2026-05-03T00:41:41.6822455Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-03T00:41:41.7001219Z -- Detecting CXX compiler ABI info
+2026-05-03T00:41:41.7630908Z -- Detecting CXX compiler ABI info - done
+2026-05-03T00:41:41.7804337Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-03T00:41:41.7811692Z -- Detecting CXX compile features
+2026-05-03T00:41:41.7831161Z -- Detecting CXX compile features - done
+2026-05-03T00:41:41.8474758Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-03T00:41:41.9782138Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-03T00:41:41.9789689Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-03T00:41:42.0390429Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-03T00:41:42.0398367Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-03T00:41:42.0996563Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-03T00:41:42.1001558Z -- Configuring done (0.5s)
+2026-05-03T00:41:42.1081353Z -- Generating done (0.0s)
+2026-05-03T00:41:42.1084739Z -- Build files have been written to: /home/runner/work/public/public/build_baseline
+2026-05-03T00:41:42.1268806Z [  2%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-03T00:41:42.1271506Z [  5%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-03T00:41:42.1272761Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-03T00:41:42.1273813Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-03T00:41:42.8909473Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-03T00:41:42.8921964Z /home/runner/work/public/public/src/bitboard.cpp:149:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-03T00:41:42.8951058Z   149 |         int shift = 64 - shifts[s];
+2026-05-03T00:41:42.8981065Z       |             ^~~~~
+2026-05-03T00:41:42.9451708Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-03T00:41:42.9462676Z /home/runner/work/public/public/src/bitboard.cpp:136:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-03T00:41:42.9491070Z   136 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-03T00:41:42.9511035Z       |     ^~~~~~~~~~~~
+2026-05-03T00:41:42.9769358Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-03T00:41:43.0151960Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-03T00:41:43.0181943Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-03T00:41:43.0211118Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-03T00:41:43.0240987Z       |         ^~~~~~~
+2026-05-03T00:41:43.0752543Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-03T00:41:43.0781815Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-03T00:41:43.0811377Z   169 |     Key key = st.key;
+2026-05-03T00:41:43.0870912Z       |         ^~~
+2026-05-03T00:41:43.0895812Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-03T00:41:43.1574428Z [ 17%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-03T00:41:43.2821515Z [ 20%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-03T00:41:43.2982639Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-03T00:41:43.3002015Z /home/runner/work/public/public/src/bitboard.cpp:149:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-03T00:41:43.3003235Z   149 |         int shift = 64 - shifts[s];
+2026-05-03T00:41:43.3031041Z       |             ^~~~~
+2026-05-03T00:41:43.3501755Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-03T00:41:43.3512739Z /home/runner/work/public/public/src/bitboard.cpp:136:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-03T00:41:43.3541227Z   136 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-03T00:41:43.3601019Z       |     ^~~~~~~~~~~~
+2026-05-03T00:41:43.3862943Z [ 22%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
+2026-05-03T00:41:43.6017881Z [ 25%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
+2026-05-03T00:41:43.6162508Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-03T00:41:43.6191671Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-03T00:41:43.6220914Z   169 |     Key key = st.key;
+2026-05-03T00:41:43.6230905Z       |         ^~~
+2026-05-03T00:41:43.8045359Z [ 27%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
+2026-05-03T00:41:43.8341614Z [ 30%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
+2026-05-03T00:41:43.8983047Z /home/runner/work/public/public/src/movegen.cpp: In function ‘Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)Nexus::ExtMove*’:
+2026-05-03T00:41:43.9011900Z /home/runner/work/public/public/src/movegen.cpp:236:40: warning: ‘targets’ is used uninitialized [-Wuninitialized]
+2026-05-03T00:41:43.9041180Z   236 |         moveList = generate_piece_moves(pos, moveList, KNIGHT, us, targets);
+2026-05-03T00:41:43.9071022Z       |                    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:43.9101474Z /home/runner/work/public/public/src/movegen.cpp:201:9: note: ‘targets’ was declared here
+2026-05-03T00:41:43.9130897Z   201 |     u64 targets;
+2026-05-03T00:41:43.9157755Z       |         ^~~~~~~
+2026-05-03T00:41:43.9503295Z [ 32%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
+2026-05-03T00:41:44.0867045Z /home/runner/work/public/public/src/movegen.cpp: In function ‘Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)Nexus::ExtMove*’:
+2026-05-03T00:41:44.0873594Z /home/runner/work/public/public/src/movegen.cpp:236:40: warning: ‘targets’ is used uninitialized [-Wuninitialized]
+2026-05-03T00:41:44.0874967Z   236 |         moveList = generate_piece_moves(pos, moveList, KNIGHT, us, targets);
+2026-05-03T00:41:44.0876060Z       |                    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:44.0877672Z /home/runner/work/public/public/src/movegen.cpp:201:9: note: ‘targets’ was declared here
+2026-05-03T00:41:44.0886738Z   201 |     u64 targets;
+2026-05-03T00:41:44.0887380Z       |         ^~~~~~~
+2026-05-03T00:41:44.1356195Z [ 35%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
+2026-05-03T00:41:44.1606914Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-03T00:41:44.1623127Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-03T00:41:44.1624498Z    94 |     Color them = ~us;
+2026-05-03T00:41:44.1627246Z       |           ^~~~
+2026-05-03T00:41:44.2046288Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-03T00:41:44.2048038Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-03T00:41:44.2048850Z    94 |     Color them = ~us;
+2026-05-03T00:41:44.2049195Z       |           ^~~~
+2026-05-03T00:41:44.2176404Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
+2026-05-03T00:41:44.2546306Z [ 40%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
+2026-05-03T00:41:45.4351728Z In file included from /home/runner/work/public/public/src/search.cpp:7:
+2026-05-03T00:41:45.4382541Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:41:45.4411116Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:41:45.4421008Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:41:45.5264536Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-03T00:41:45.5292739Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-03T00:41:45.5311288Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-03T00:41:45.5320986Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:45.5351059Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-03T00:41:45.5371720Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-03T00:41:45.5380875Z    26 | struct TTCluster {
+2026-05-03T00:41:45.5410879Z       |        ^~~~~~~~~
+2026-05-03T00:41:45.5471657Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-03T00:41:45.5492559Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-03T00:41:45.5501058Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-03T00:41:45.5501719Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:45.5502704Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-03T00:41:45.5531503Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-03T00:41:45.5532272Z    26 | struct TTCluster {
+2026-05-03T00:41:45.5532626Z       |        ^~~~~~~~~
+2026-05-03T00:41:45.6241532Z [ 42%] Building CXX object CMakeFiles/nexus.dir/src/uci.cpp.o
+2026-05-03T00:41:45.6451574Z [ 45%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
+2026-05-03T00:41:45.7670308Z [ 47%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
+2026-05-03T00:41:46.1351614Z [ 50%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
+2026-05-03T00:41:46.2681640Z [ 52%] Building CXX object CMakeFiles/nexus.dir/src/see.cpp.o
+2026-05-03T00:41:46.3403564Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
+2026-05-03T00:41:46.3431286Z /home/runner/work/public/public/src/search.cpp:227:36:   required from here
+2026-05-03T00:41:46.3441671Z /home/runner/work/public/public/src/search.cpp:436:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-03T00:41:46.3460933Z   436 |     int moveCount = end - moveList;
+2026-05-03T00:41:46.3461739Z       |         ^~~~~~~~~
+2026-05-03T00:41:46.3463581Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
+2026-05-03T00:41:46.3491110Z /home/runner/work/public/public/src/search.cpp:818:91:   required from here
+2026-05-03T00:41:46.3492346Z /home/runner/work/public/public/src/search.cpp:436:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-03T00:41:46.5281449Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-03T00:41:46.5312473Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:41:46.5341061Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:41:46.5370976Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:41:46.6301446Z [ 55%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
+2026-05-03T00:41:46.7514519Z [ 57%] Building CXX object CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
+2026-05-03T00:41:47.0559006Z [ 60%] Building CXX object CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
+2026-05-03T00:41:47.8266332Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-03T00:41:47.8291785Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-03T00:41:47.8321181Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-03T00:41:47.8351035Z       |               ^~~~~~~
+2026-05-03T00:41:47.9171612Z [ 62%] Building CXX object CMakeFiles/nexus_tests.dir/src/thread.cpp.o
+2026-05-03T00:41:47.9836188Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-03T00:41:47.9862871Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-03T00:41:47.9881008Z   389 |     return size >= expectedSize;
+2026-05-03T00:41:47.9911132Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-03T00:41:48.0161572Z [ 65%] Building CXX object CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
+2026-05-03T00:41:48.1441665Z [ 67%] Building CXX object CMakeFiles/nexus.dir/src/reductions.cpp.o
+2026-05-03T00:41:48.2421754Z [ 70%] Building CXX object CMakeFiles/nexus_tests.dir/src/training.cpp.o
+2026-05-03T00:41:48.6233475Z [ 72%] Building CXX object CMakeFiles/nexus.dir/src/history.cpp.o
+2026-05-03T00:41:49.0101512Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-03T00:41:49.0132875Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:41:49.0161085Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:41:49.0190997Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:41:49.1101608Z [ 75%] Building CXX object CMakeFiles/nexus.dir/src/simd.cpp.o
+2026-05-03T00:41:49.1282592Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-03T00:41:49.1321900Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-03T00:41:49.1341212Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-03T00:41:49.1380894Z       |              ^~~~~
+2026-05-03T00:41:49.1411808Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-03T00:41:49.1431566Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-03T00:41:49.1460973Z       |                  ^~~
+2026-05-03T00:41:49.6566307Z [ 77%] Building CXX object CMakeFiles/nexus.dir/src/nnue.cpp.o
+2026-05-03T00:41:49.7641409Z [ 80%] Building CXX object CMakeFiles/nexus.dir/src/syzygy.cpp.o
+2026-05-03T00:41:50.4181633Z [ 82%] Building CXX object CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o
+2026-05-03T00:41:50.4721636Z [ 85%] Building CXX object CMakeFiles/nexus.dir/src/thread.cpp.o
+2026-05-03T00:41:50.5005588Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-03T00:41:50.5007919Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-03T00:41:50.5009133Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-03T00:41:50.5009760Z       |               ^~~~~~~
+2026-05-03T00:41:50.6911243Z [ 87%] Building CXX object CMakeFiles/nexus.dir/src/test_suite.cpp.o
+2026-05-03T00:41:50.9182538Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-03T00:41:50.9212499Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-03T00:41:50.9214640Z   389 |     return size >= expectedSize;
+2026-05-03T00:41:50.9240941Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-03T00:41:51.0791504Z [ 90%] Building CXX object CMakeFiles/nexus.dir/src/training.cpp.o
+2026-05-03T00:41:51.7852614Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-03T00:41:51.7881854Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-03T00:41:51.7911522Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-03T00:41:51.7931053Z       |              ^~~~~
+2026-05-03T00:41:51.7971637Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-03T00:41:51.8001025Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-03T00:41:51.8023752Z       |                  ^~~
+2026-05-03T00:41:52.1881663Z [ 92%] Building CXX object CMakeFiles/nexus.dir/src/datapipeline.cpp.o
+2026-05-03T00:41:52.2521334Z [ 95%] Linking CXX executable nexus_tests
+2026-05-03T00:41:52.3917417Z [ 97%] Building CXX object CMakeFiles/nexus.dir/src/main.cpp.o
+2026-05-03T00:41:53.0427258Z [ 97%] Built target nexus_tests
+2026-05-03T00:41:53.6316060Z [100%] Linking CXX executable nexus
+2026-05-03T00:41:55.3832604Z [100%] Built target nexus
+2026-05-03T00:41:55.3934019Z ##[group]Run git checkout f4d3c7dcba740775967bdeb63558a2d5857c00a0
+2026-05-03T00:41:55.3934510Z [36;1mgit checkout f4d3c7dcba740775967bdeb63558a2d5857c00a0[0m
+2026-05-03T00:41:55.3934847Z [36;1mmkdir -p build_new[0m
+2026-05-03T00:41:55.3935063Z [36;1mcd build_new[0m
+2026-05-03T00:41:55.3935285Z [36;1mcmake .. -DCMAKE_BUILD_TYPE=Release[0m
+2026-05-03T00:41:55.3935556Z [36;1mmake -j$(nproc)[0m
+2026-05-03T00:41:55.3935772Z [36;1mcp nexus ../nexus_new[0m
+2026-05-03T00:41:55.3935983Z [36;1mcd ..[0m
+2026-05-03T00:41:55.3957150Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:41:55.3957386Z ##[endgroup]
+2026-05-03T00:41:55.4017744Z Note: switching to 'f4d3c7dcba740775967bdeb63558a2d5857c00a0'.
+2026-05-03T00:41:55.4018199Z 
+2026-05-03T00:41:55.4018723Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-05-03T00:41:55.4019247Z changes and commit them, and you can discard any commits you make in this
+2026-05-03T00:41:55.4019780Z state without impacting any branches by switching back to a branch.
+2026-05-03T00:41:55.4020074Z 
+2026-05-03T00:41:55.4020262Z If you want to create a new branch to retain commits you create, you may
+2026-05-03T00:41:55.4020961Z do so (now or later) by using -c with the switch command. Example:
+2026-05-03T00:41:55.4021235Z 
+2026-05-03T00:41:55.4021337Z   git switch -c <new-branch-name>
+2026-05-03T00:41:55.4021603Z 
+2026-05-03T00:41:55.4021748Z Or undo this operation with:
+2026-05-03T00:41:55.4022014Z 
+2026-05-03T00:41:55.4022139Z   git switch -
+2026-05-03T00:41:55.4022317Z 
+2026-05-03T00:41:55.4022655Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-05-03T00:41:55.4023200Z 
+2026-05-03T00:41:55.4023574Z HEAD is now at f4d3c7d Add 5M node limit to prevent runaway searches in negamax/qsearch
+2026-05-03T00:41:55.4560681Z -- The CXX compiler identification is GNU 13.3.0
+2026-05-03T00:41:55.4643879Z -- Detecting CXX compiler ABI info
+2026-05-03T00:41:55.5234412Z -- Detecting CXX compiler ABI info - done
+2026-05-03T00:41:55.5409926Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-05-03T00:41:55.5413764Z -- Detecting CXX compile features
+2026-05-03T00:41:55.5419825Z -- Detecting CXX compile features - done
+2026-05-03T00:41:55.5502418Z -- Performing Test COMPILER_SUPPORTS_AVX2
+2026-05-03T00:41:55.6099101Z -- Performing Test COMPILER_SUPPORTS_AVX2 - Success
+2026-05-03T00:41:55.6107218Z -- Performing Test COMPILER_SUPPORTS_BMI2
+2026-05-03T00:41:55.6696720Z -- Performing Test COMPILER_SUPPORTS_BMI2 - Success
+2026-05-03T00:41:55.6705091Z -- Performing Test COMPILER_SUPPORTS_POPCNT
+2026-05-03T00:41:55.7356303Z -- Performing Test COMPILER_SUPPORTS_POPCNT - Success
+2026-05-03T00:41:55.7361629Z -- Configuring done (0.3s)
+2026-05-03T00:41:55.7442363Z -- Generating done (0.0s)
+2026-05-03T00:41:55.7445944Z -- Build files have been written to: /home/runner/work/public/public/build_new
+2026-05-03T00:41:55.7628286Z [  5%] Building CXX object CMakeFiles/nexus.dir/src/bitboard.cpp.o
+2026-05-03T00:41:55.7632327Z [  5%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_bitboard.cpp.o
+2026-05-03T00:41:55.7633251Z [  7%] Building CXX object CMakeFiles/nexus.dir/src/board.cpp.o
+2026-05-03T00:41:55.7634032Z [ 10%] Building CXX object CMakeFiles/nexus_tests.dir/tests/test_perft.cpp.o
+2026-05-03T00:41:56.0833179Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-03T00:41:56.0861721Z /home/runner/work/public/public/src/bitboard.cpp:149:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-03T00:41:56.0890988Z   149 |         int shift = 64 - shifts[s];
+2026-05-03T00:41:56.0920886Z       |             ^~~~~
+2026-05-03T00:41:56.1341262Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-03T00:41:56.1362842Z /home/runner/work/public/public/src/bitboard.cpp:136:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-03T00:41:56.1364230Z   136 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-03T00:41:56.1391021Z       |     ^~~~~~~~~~~~
+2026-05-03T00:41:56.1652116Z /home/runner/work/public/public/tests/test_bitboard.cpp: In function ‘int test_bitboard_main()’:
+2026-05-03T00:41:56.1662218Z /home/runner/work/public/public/tests/test_bitboard.cpp:24:9: warning: unused variable ‘attacks’ [-Wunused-variable]
+2026-05-03T00:41:56.1663388Z [ 12%] Building CXX object CMakeFiles/nexus_tests.dir/src/bitboard.cpp.o
+2026-05-03T00:41:56.1691028Z    24 |     u64 attacks = rook_attacks(SQ_C3, occ);
+2026-05-03T00:41:56.1691516Z       |         ^~~~~~~
+2026-05-03T00:41:56.2411487Z [ 15%] Building CXX object CMakeFiles/nexus.dir/src/move.cpp.o
+2026-05-03T00:41:56.2542271Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-03T00:41:56.2571655Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-03T00:41:56.2590956Z   169 |     Key key = st.key;
+2026-05-03T00:41:56.2610993Z       |         ^~~
+2026-05-03T00:41:56.3101505Z [ 17%] Building CXX object CMakeFiles/nexus.dir/src/movegen.cpp.o
+2026-05-03T00:41:56.4754448Z [ 20%] Building CXX object CMakeFiles/nexus_tests.dir/src/board.cpp.o
+2026-05-03T00:41:56.4902976Z /home/runner/work/public/public/src/bitboard.cpp: In function ‘void Nexus::{anonymous}::init_magics(Nexus::Magic*, Nexus::u64*, Nexus::u64*, Nexus::u64*, unsigned int*, Nexus::Direction*)’:
+2026-05-03T00:41:56.4931920Z /home/runner/work/public/public/src/bitboard.cpp:149:13: warning: unused variable ‘shift’ [-Wunused-variable]
+2026-05-03T00:41:56.4961268Z   149 |         int shift = 64 - shifts[s];
+2026-05-03T00:41:56.4962011Z       |             ^~~~~
+2026-05-03T00:41:56.5411681Z /home/runner/work/public/public/src/bitboard.cpp: At global scope:
+2026-05-03T00:41:56.5422840Z /home/runner/work/public/public/src/bitboard.cpp:136:5: warning: ‘Nexus::u64 Nexus::{anonymous}::index_to_u64(int, int, Nexus::u64)’ defined but not used [-Wunused-function]
+2026-05-03T00:41:56.5451057Z   136 | u64 index_to_u64(int index, int bits, u64 mask) {
+2026-05-03T00:41:56.5471012Z       |     ^~~~~~~~~~~~
+2026-05-03T00:41:56.5731413Z [ 22%] Building CXX object CMakeFiles/nexus_tests.dir/src/move.cpp.o
+2026-05-03T00:41:56.7590591Z [ 25%] Building CXX object CMakeFiles/nexus_tests.dir/src/movegen.cpp.o
+2026-05-03T00:41:56.7822657Z /home/runner/work/public/public/src/movegen.cpp: In function ‘Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)Nexus::ExtMove*’:
+2026-05-03T00:41:56.7871742Z /home/runner/work/public/public/src/movegen.cpp:236:40: warning: ‘targets’ is used uninitialized [-Wuninitialized]
+2026-05-03T00:41:56.7901241Z   236 |         moveList = generate_piece_moves(pos, moveList, KNIGHT, us, targets);
+2026-05-03T00:41:56.7931246Z       |                    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:56.7961485Z /home/runner/work/public/public/src/movegen.cpp:201:9: note: ‘targets’ was declared here
+2026-05-03T00:41:56.7990905Z   201 |     u64 targets;
+2026-05-03T00:41:56.7991307Z       |         ^~~~~~~
+2026-05-03T00:41:56.8281429Z [ 27%] Building CXX object CMakeFiles/nexus.dir/src/eval.cpp.o
+2026-05-03T00:41:56.9552496Z /home/runner/work/public/public/src/board.cpp: In member function ‘void Nexus::BoardState::do_move(Nexus::Move, Nexus::StateInfo&)’:
+2026-05-03T00:41:56.9581901Z /home/runner/work/public/public/src/board.cpp:169:9: warning: unused variable ‘key’ [-Wunused-variable]
+2026-05-03T00:41:56.9610962Z   169 |     Key key = st.key;
+2026-05-03T00:41:56.9640888Z       |         ^~~
+2026-05-03T00:41:57.1050152Z [ 30%] Building CXX object CMakeFiles/nexus.dir/src/tt.cpp.o
+2026-05-03T00:41:57.1651405Z [ 32%] Building CXX object CMakeFiles/nexus.dir/src/search.cpp.o
+2026-05-03T00:41:57.2383315Z /home/runner/work/public/public/src/movegen.cpp: In function ‘Nexus::generate<(Nexus::GenType)5>(Nexus::BoardState const&, Nexus::ExtMove*)Nexus::ExtMove*’:
+2026-05-03T00:41:57.2401997Z /home/runner/work/public/public/src/movegen.cpp:236:40: warning: ‘targets’ is used uninitialized [-Wuninitialized]
+2026-05-03T00:41:57.2431119Z   236 |         moveList = generate_piece_moves(pos, moveList, KNIGHT, us, targets);
+2026-05-03T00:41:57.2441138Z       |                    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:57.2471516Z /home/runner/work/public/public/src/movegen.cpp:201:9: note: ‘targets’ was declared here
+2026-05-03T00:41:57.2490940Z   201 |     u64 targets;
+2026-05-03T00:41:57.2520852Z       |         ^~~~~~~
+2026-05-03T00:41:57.2532189Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-03T00:41:57.2551502Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-03T00:41:57.2580863Z    94 |     Color them = ~us;
+2026-05-03T00:41:57.2590978Z       |           ^~~~
+2026-05-03T00:41:57.2881567Z [ 35%] Building CXX object CMakeFiles/nexus_tests.dir/src/eval.cpp.o
+2026-05-03T00:41:57.3091377Z [ 37%] Building CXX object CMakeFiles/nexus_tests.dir/src/tt.cpp.o
+2026-05-03T00:41:57.6852865Z /home/runner/work/public/public/src/eval.cpp: In static member function ‘static Nexus::Value Nexus::Eval::evaluate(const Nexus::BoardState&)’:
+2026-05-03T00:41:57.6881872Z /home/runner/work/public/public/src/eval.cpp:94:11: warning: unused variable ‘them’ [-Wunused-variable]
+2026-05-03T00:41:57.6910950Z    94 |     Color them = ~us;
+2026-05-03T00:41:57.6911380Z       |           ^~~~
+2026-05-03T00:41:57.7533654Z [ 40%] Building CXX object CMakeFiles/nexus.dir/src/timeman.cpp.o
+2026-05-03T00:41:58.3011520Z In file included from /home/runner/work/public/public/src/search.cpp:7:
+2026-05-03T00:41:58.3042700Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:41:58.3051291Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:41:58.3080974Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:41:58.4382245Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-03T00:41:58.4412608Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-03T00:41:58.4431390Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-03T00:41:58.4470995Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:58.4501073Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-03T00:41:58.4531578Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-03T00:41:58.4550913Z    26 | struct TTCluster {
+2026-05-03T00:41:58.4551327Z       |        ^~~~~~~~~
+2026-05-03T00:41:58.5372368Z [ 42%] Building CXX object CMakeFiles/nexus_tests.dir/src/see.cpp.o
+2026-05-03T00:41:58.6102421Z /home/runner/work/public/public/src/tt.cpp: In member function ‘void Nexus::TranspositionTable::clear()’:
+2026-05-03T00:41:58.6132630Z /home/runner/work/public/public/src/tt.cpp:44:20: warning: ‘void* memset(void*, int, size_t)’ clearing an object of non-trivial type ‘struct Nexus::TTCluster’; use assignment or value-initialization instead [-Wclass-memaccess]
+2026-05-03T00:41:58.6134269Z    44 |         std::memset(table, 0, clusterCount * sizeof(TTCluster));
+2026-05-03T00:41:58.6134840Z       |         ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-05-03T00:41:58.6135545Z In file included from /home/runner/work/public/public/src/tt.cpp:1:
+2026-05-03T00:41:58.6172026Z /home/runner/work/public/public/src/tt.h:26:8: note: ‘struct Nexus::TTCluster’ declared here
+2026-05-03T00:41:58.6201066Z    26 | struct TTCluster {
+2026-05-03T00:41:58.6230992Z       |        ^~~~~~~~~
+2026-05-03T00:41:58.7081723Z [ 45%] Building CXX object CMakeFiles/nexus.dir/src/uci.cpp.o
+2026-05-03T00:41:59.0201504Z [ 47%] Building CXX object CMakeFiles/nexus_tests.dir/src/reductions.cpp.o
+2026-05-03T00:41:59.1881580Z [ 50%] Building CXX object CMakeFiles/nexus_tests.dir/src/history.cpp.o
+2026-05-03T00:41:59.2082950Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = true]’:
+2026-05-03T00:41:59.2101308Z /home/runner/work/public/public/src/search.cpp:227:36:   required from here
+2026-05-03T00:41:59.2121820Z /home/runner/work/public/public/src/search.cpp:436:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-03T00:41:59.2151063Z   436 |     int moveCount = end - moveList;
+2026-05-03T00:41:59.2180960Z       |         ^~~~~~~~~
+2026-05-03T00:41:59.2192726Z /home/runner/work/public/public/src/search.cpp: In instantiation of ‘Nexus::Value Nexus::Search::negamax(Nexus::BoardState&, Nexus::SearchStack*, Nexus::Value, Nexus::Value, Nexus::Depth, bool) [with bool PvNode = false]’:
+2026-05-03T00:41:59.2211194Z /home/runner/work/public/public/src/search.cpp:818:91:   required from here
+2026-05-03T00:41:59.2241612Z /home/runner/work/public/public/src/search.cpp:436:9: warning: unused variable ‘moveCount’ [-Wunused-variable]
+2026-05-03T00:41:59.5482177Z [ 52%] Building CXX object CMakeFiles/nexus.dir/src/see.cpp.o
+2026-05-03T00:41:59.5721427Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-03T00:41:59.5752570Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:41:59.5781050Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:41:59.5810972Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:41:59.6691542Z [ 55%] Building CXX object CMakeFiles/nexus_tests.dir/src/simd.cpp.o
+2026-05-03T00:41:59.9161710Z [ 57%] Building CXX object CMakeFiles/nexus_tests.dir/src/nnue.cpp.o
+2026-05-03T00:42:00.0361675Z [ 60%] Building CXX object CMakeFiles/nexus_tests.dir/src/syzygy.cpp.o
+2026-05-03T00:42:00.7862880Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-03T00:42:00.7911847Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-03T00:42:00.7941098Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-03T00:42:00.7970881Z       |               ^~~~~~~
+2026-05-03T00:42:00.8882916Z [ 62%] Building CXX object CMakeFiles/nexus.dir/src/reductions.cpp.o
+2026-05-03T00:42:00.9763727Z [ 65%] Building CXX object CMakeFiles/nexus.dir/src/history.cpp.o
+2026-05-03T00:42:01.1892210Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-03T00:42:01.1932505Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-03T00:42:01.1950983Z   389 |     return size >= expectedSize;
+2026-05-03T00:42:01.1951511Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-03T00:42:01.2971700Z [ 67%] Building CXX object CMakeFiles/nexus.dir/src/simd.cpp.o
+2026-05-03T00:42:01.3468989Z [ 70%] Building CXX object CMakeFiles/nexus_tests.dir/src/thread.cpp.o
+2026-05-03T00:42:01.3731441Z In file included from /home/runner/work/public/public/src/history.cpp:1:
+2026-05-03T00:42:01.3762983Z /home/runner/work/public/public/src/history.h:92:49: warning: arithmetic between different enumeration types ‘Nexus::Piece’ and ‘Nexus::Square’ is deprecated [-Wdeprecated-enum-enum-conversion]
+2026-05-03T00:42:01.3790935Z    92 |     int16_t table[PIECE_NB][SQUARE_NB][PIECE_NB * SQUARE_NB];
+2026-05-03T00:42:01.3820798Z       |                                        ~~~~~~~~~^~~~~~~~~~~
+2026-05-03T00:42:01.4034551Z [ 72%] Building CXX object CMakeFiles/nexus_tests.dir/src/test_suite.cpp.o
+2026-05-03T00:42:01.4681556Z [ 75%] Building CXX object CMakeFiles/nexus_tests.dir/src/training.cpp.o
+2026-05-03T00:42:02.4912698Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-03T00:42:02.4941911Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-03T00:42:02.4971056Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-03T00:42:02.5001096Z       |              ^~~~~
+2026-05-03T00:42:02.5031643Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-03T00:42:02.5061033Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-03T00:42:02.5090857Z       |                  ^~~
+2026-05-03T00:42:02.5821494Z [ 77%] Building CXX object CMakeFiles/nexus.dir/src/nnue.cpp.o
+2026-05-03T00:42:03.0511808Z [ 80%] Building CXX object CMakeFiles/nexus_tests.dir/src/datapipeline.cpp.o
+2026-05-03T00:42:03.1122162Z [ 82%] Building CXX object CMakeFiles/nexus.dir/src/syzygy.cpp.o
+2026-05-03T00:42:03.6981609Z [ 85%] Building CXX object CMakeFiles/nexus.dir/src/thread.cpp.o
+2026-05-03T00:42:03.8392727Z /home/runner/work/public/public/src/syzygy.cpp: In member function ‘bool Syzygy::Tablebases::root_probe(const Nexus::BoardState&, Nexus::Move&, Nexus::Value&) const’:
+2026-05-03T00:42:03.8431736Z /home/runner/work/public/public/src/syzygy.cpp:136:15: warning: unused variable ‘bestWdl’ [-Wunused-variable]
+2026-05-03T00:42:03.8461090Z   136 |     WDLResult bestWdl = WDL_FAIL;
+2026-05-03T00:42:03.8491325Z       |               ^~~~~~~
+2026-05-03T00:42:03.8642010Z /home/runner/work/public/public/src/nnue.cpp: In function ‘bool NNUE::verify_network(const std::string&)’:
+2026-05-03T00:42:03.8682494Z /home/runner/work/public/public/src/nnue.cpp:389:17: warning: comparison of integer expressions of different signedness: ‘std::streamoff’ {aka ‘long int’} and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+2026-05-03T00:42:03.8710929Z   389 |     return size >= expectedSize;
+2026-05-03T00:42:03.8740879Z       |            ~~~~~^~~~~~~~~~~~~~~
+2026-05-03T00:42:04.0271572Z [ 87%] Building CXX object CMakeFiles/nexus.dir/src/test_suite.cpp.o
+2026-05-03T00:42:04.1421524Z [ 90%] Building CXX object CMakeFiles/nexus.dir/src/training.cpp.o
+2026-05-03T00:42:05.1222747Z /home/runner/work/public/public/src/test_suite.cpp: In member function ‘std::vector<TestSuite::TestResult> TestSuite::TestSuite::run_bench_suite(int)’:
+2026-05-03T00:42:05.1242161Z /home/runner/work/public/public/src/test_suite.cpp:231:14: warning: variable ‘start’ set but not used [-Wunused-but-set-variable]
+2026-05-03T00:42:05.1251194Z   231 |         auto start = std::chrono::steady_clock::now();
+2026-05-03T00:42:05.1278942Z       |              ^~~~~
+2026-05-03T00:42:05.1279378Z [ 92%] Linking CXX executable nexus_tests
+2026-05-03T00:42:05.1311590Z /home/runner/work/public/public/src/test_suite.cpp:238:18: warning: unused variable ‘end’ [-Wunused-variable]
+2026-05-03T00:42:05.1312736Z   238 |         ExtMove* end = generate<NON_EVASIONS>(board, moves);
+2026-05-03T00:42:05.1340951Z       |                  ^~~
+2026-05-03T00:42:05.6652181Z [ 95%] Building CXX object CMakeFiles/nexus.dir/src/datapipeline.cpp.o
+2026-05-03T00:42:05.8223902Z [ 97%] Building CXX object CMakeFiles/nexus.dir/src/main.cpp.o
+2026-05-03T00:42:05.8241305Z [ 97%] Built target nexus_tests
+2026-05-03T00:42:07.0620885Z [100%] Linking CXX executable nexus
+2026-05-03T00:42:08.8337542Z [100%] Built target nexus
+2026-05-03T00:42:08.8417384Z ##[group]Run cd build_new
+2026-05-03T00:42:08.8417661Z [36;1mcd build_new[0m
+2026-05-03T00:42:08.8417861Z [36;1m./nexus_tests[0m
+2026-05-03T00:42:08.8439053Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:42:08.8439286Z ##[endgroup]
+2026-05-03T00:42:08.8558317Z Bitboard tests passed
+2026-05-03T00:42:08.8559040Z All perft tests passed
+2026-05-03T00:42:08.8596570Z ##[group]Run echo "Baseline bench:"
+2026-05-03T00:42:08.8596896Z [36;1mecho "Baseline bench:"[0m
+2026-05-03T00:42:08.8597364Z [36;1m(echo "bench 14" | timeout 120 ./nexus_base | tee baseline_bench.txt) || echo "Baseline bench timeout or failed"[0m
+2026-05-03T00:42:08.8597841Z [36;1m[0m
+2026-05-03T00:42:08.8598013Z [36;1mecho "New version bench:"[0m
+2026-05-03T00:42:08.8598458Z [36;1m(echo "bench 14" | timeout 120 ./nexus_new | tee new_bench.txt) || echo "New version bench timeout or failed"[0m
+2026-05-03T00:42:08.8599078Z [36;1m[0m
+2026-05-03T00:42:08.8599247Z [36;1m# Extract NPS and compare[0m
+2026-05-03T00:42:08.8599609Z [36;1mBASELINE_NPS=$(grep "NPS:" baseline_bench.txt | tail -1 | awk '{print $2}')[0m
+2026-05-03T00:42:08.8600081Z [36;1mNEW_NPS=$(grep "NPS:" new_bench.txt | tail -1 | awk '{print $2}')[0m
+2026-05-03T00:42:08.8600702Z [36;1m[0m
+2026-05-03T00:42:08.8600938Z [36;1mecho "Baseline NPS: $BASELINE_NPS"[0m
+2026-05-03T00:42:08.8601250Z [36;1mecho "New NPS: $NEW_NPS"[0m
+2026-05-03T00:42:08.8601464Z [36;1m[0m
+2026-05-03T00:42:08.8601697Z [36;1m# Fail if new version is significantly slower (>10%)[0m
+2026-05-03T00:42:08.8602100Z [36;1m# This is simplified - actual comparison would need proper parsing[0m
+2026-05-03T00:42:08.8622977Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:42:08.8623208Z ##[endgroup]
+2026-05-03T00:42:08.8662436Z Baseline bench:
+2026-05-03T00:42:08.8757386Z NNUE: Failed to open nexus.nnue
+2026-05-03T00:42:08.8757977Z NNUE: No network found, using default initialization
+2026-05-03T00:42:08.8776981Z id name Nexus Infinite
+2026-05-03T00:42:08.8777375Z id author Nexus Team
+2026-05-03T00:42:08.8777726Z id version 1.0-NNUE
+2026-05-03T00:42:08.8778145Z option name Hash type spin default 64 min 1 max 16384
+2026-05-03T00:42:08.8778704Z option name Ponder type check default false
+2026-05-03T00:42:08.8779226Z option name Threads type spin default 1 min 1 max 512
+2026-05-03T00:42:08.8779783Z option name MultiPV type spin default 1 min 1 max 64
+2026-05-03T00:42:08.8780562Z option name SyzygyPath type string default <empty>
+2026-05-03T00:42:08.8781150Z option name SyzygyProbeLimit type spin default 6 min 0 max 6
+2026-05-03T00:42:08.8781697Z option name Use NNUE type check default true
+2026-05-03T00:42:08.8782179Z option name EvalFile type string default nexus.nnue
+2026-05-03T00:42:08.8782648Z option name Clear Hash type button
+2026-05-03T00:42:08.8782993Z uciok
+2026-05-03T00:42:08.8783256Z Benchmark started (depth 14)
+2026-05-03T00:42:08.8787359Z Position 1: 28 nodes
+2026-05-03T00:44:08.8696699Z New version bench:
+2026-05-03T00:44:08.8786879Z NNUE: Failed to open nexus.nnue
+2026-05-03T00:44:08.8787412Z NNUE: No network found, using default initialization
+2026-05-03T00:44:08.8806575Z id name Nexus Infinite
+2026-05-03T00:44:08.8806950Z id author Nexus Team
+2026-05-03T00:44:08.8807349Z id version 1.0-NNUE
+2026-05-03T00:44:08.8807800Z option name Hash type spin default 64 min 1 max 16384
+2026-05-03T00:44:08.8808411Z option name Ponder type check default false
+2026-05-03T00:44:08.8808964Z option name Threads type spin default 1 min 1 max 512
+2026-05-03T00:44:08.8809521Z option name MultiPV type spin default 1 min 1 max 64
+2026-05-03T00:44:08.8810050Z option name SyzygyPath type string default <empty>
+2026-05-03T00:44:08.8810918Z option name SyzygyProbeLimit type spin default 6 min 0 max 6
+2026-05-03T00:44:08.8811469Z option name Use NNUE type check default true
+2026-05-03T00:44:08.8811937Z option name EvalFile type string default nexus.nnue
+2026-05-03T00:44:08.8812412Z option name Clear Hash type button
+2026-05-03T00:44:08.8812762Z uciok
+2026-05-03T00:44:08.8813018Z Benchmark started (depth 14)
+2026-05-03T00:44:08.8815929Z Position 1: 28 nodes
+2026-05-03T00:46:08.8782163Z Baseline NPS: 
+2026-05-03T00:46:08.8783594Z New NPS: 
+2026-05-03T00:46:08.8823477Z ##[group]Run python3 scripts/run_sprt.py \
+2026-05-03T00:46:08.8823839Z [36;1mpython3 scripts/run_sprt.py \[0m
+2026-05-03T00:46:08.8824184Z [36;1m  --engine-new ./nexus_new --engine-base ./nexus_base \[0m
+2026-05-03T00:46:08.8824523Z [36;1m  --elo0 0 --elo1 5 \[0m
+2026-05-03T00:46:08.8824744Z [36;1m  --tc "10+0.1" \[0m
+2026-05-03T00:46:08.8824951Z [36;1m  --games 200 \[0m
+2026-05-03T00:46:08.8825195Z [36;1m  || echo "SPRT test completed or inconclusive"[0m
+2026-05-03T00:46:08.8846106Z shell: /usr/bin/bash -e {0}
+2026-05-03T00:46:08.8846347Z ##[endgroup]
+2026-05-03T00:46:08.9336255Z ============================================================
+2026-05-03T00:46:08.9336916Z Nexus Infinite - SPRT Validation
+2026-05-03T00:46:08.9337932Z ============================================================
+2026-05-03T00:46:08.9338474Z New:  ./nexus_new
+2026-05-03T00:46:08.9338871Z Base: ./nexus_base
+2026-05-03T00:46:08.9339209Z SPRT: H0=0.0 Elo, H1=5.0 Elo
+2026-05-03T00:46:08.9339644Z       alpha=0.05, beta=0.05
+2026-05-03T00:46:08.9339988Z TC:   10+0.1
+2026-05-03T00:46:08.9340270Z Max:  200 games
+2026-05-03T00:46:08.9340851Z ============================================================
+2026-05-03T00:46:08.9341200Z 
+2026-05-03T00:46:08.9341379Z Bounds: LLR_lower=-2.94, LLR_upper=2.94
+2026-05-03T00:46:08.9341690Z 
+2026-05-03T00:46:08.9341818Z Running games...
+2026-05-03T00:46:08.9342186Z WARNING: cutechess-cli not found, trying fastchess...
+2026-05-03T00:46:08.9342627Z ERROR: No game runner found (install cutechess-cli or fastchess)
+2026-05-03T00:46:08.9342925Z 
+2026-05-03T00:46:08.9343039Z WARNING: Using simulated results for testing
+2026-05-03T00:46:08.9343367Z Install cutechess-cli for real SPRT testing
+2026-05-03T00:46:08.9343593Z 
+2026-05-03T00:46:08.9343751Z Games: 1 W:0 D:1 L:0 Score:0.500 LLR:-0.00 CONTINUE   (1033.8 g/s)
+2026-05-03T00:46:08.9344190Z Games: 50 W:22 D:25 L:3 Score:0.690 LLR:+0.18 CONTINUE   (45849.4 g/s)
+2026-05-03T00:46:08.9344650Z Games: 100 W:40 D:51 L:9 Score:0.655 LLR:+0.28 CONTINUE   (84189.2 g/s)
+2026-05-03T00:46:08.9345137Z Games: 150 W:59 D:80 L:11 Score:0.660 LLR:+0.44 CONTINUE   (116702.9 g/s)
+2026-05-03T00:46:08.9345595Z Games: 200 W:79 D:103 L:18 Score:0.652 LLR:+0.56 CONTINUE   (143468.6 g/s)
+2026-05-03T00:46:08.9345886Z 
+2026-05-03T00:46:08.9345890Z 
+2026-05-03T00:46:08.9345995Z ============================================================
+2026-05-03T00:46:08.9346298Z SPRT Result: 200 games
+2026-05-03T00:46:08.9346542Z ============================================================
+2026-05-03T00:46:08.9346843Z Status:       INCONCLUSIVE
+2026-05-03T00:46:08.9347072Z Wins:         79 (39.5%)
+2026-05-03T00:46:08.9347286Z Draws:        103 (51.5%)
+2026-05-03T00:46:08.9347507Z Losses:       18 (9.0%)
+2026-05-03T00:46:08.9347722Z Score:        0.652
+2026-05-03T00:46:08.9347926Z Elo estimate: +109.5
+2026-05-03T00:46:08.9348126Z LLR:          +0.56
+2026-05-03T00:46:08.9348331Z Time:         0.0s (200.0 games/s)
+2026-05-03T00:46:08.9348599Z ============================================================
+2026-05-03T00:46:08.9348813Z 
+2026-05-03T00:46:08.9348907Z Result saved to: sprt_result.json
+2026-05-03T00:46:08.9349085Z 
+2026-05-03T00:46:08.9349184Z ? INCONCLUSIVE: Need more games
+2026-05-03T00:46:08.9409450Z SPRT test completed or inconclusive
+2026-05-03T00:46:08.9462859Z ##[group]Run actions/upload-artifact@v4
+2026-05-03T00:46:08.9463129Z with:
+2026-05-03T00:46:08.9463301Z   name: engine-builds
+2026-05-03T00:46:08.9463517Z   path: nexus_base
+nexus_new
+*.txt
+
+2026-05-03T00:46:08.9463758Z   if-no-files-found: warn
+2026-05-03T00:46:08.9463961Z   compression-level: 6
+2026-05-03T00:46:08.9464152Z   overwrite: false
+2026-05-03T00:46:08.9464333Z   include-hidden-files: false
+2026-05-03T00:46:08.9464554Z ##[endgroup]
+2026-05-03T00:46:09.1673340Z With the provided path, there will be 6 files uploaded
+2026-05-03T00:46:09.1681547Z Artifact name is valid!
+2026-05-03T00:46:09.1683621Z Root directory input is valid!
+2026-05-03T00:46:09.3136124Z Beginning upload of artifact content to blob storage
+2026-05-03T00:46:09.5126253Z Uploaded bytes 249553
+2026-05-03T00:46:09.5414905Z Finished uploading artifact content to blob storage!
+2026-05-03T00:46:09.5418360Z SHA256 digest of uploaded artifact zip is 4484eee26e95c19005fd7d58d62e70a06112dac2319864c1a94089b970d0507b
+2026-05-03T00:46:09.5420559Z Finalizing artifact upload
+2026-05-03T00:46:09.6501177Z Artifact engine-builds.zip successfully finalized. Artifact ID 6766892924
+2026-05-03T00:46:09.6503254Z Artifact engine-builds has been successfully uploaded! Final size is 249553 bytes. Artifact ID is 6766892924
+2026-05-03T00:46:09.6511520Z Artifact download URL: https://github.com/Longnononn/public/actions/runs/25265840723/artifacts/6766892924
+2026-05-03T00:46:09.6687127Z Post job cleanup.
+2026-05-03T00:46:09.7656509Z [command]/usr/bin/git version
+2026-05-03T00:46:09.7692599Z git version 2.53.0
+2026-05-03T00:46:09.7735264Z Temporarily overriding HOME='/home/runner/work/_temp/49c906b8-f49f-4153-b26c-ace870407672' before making global git config changes
+2026-05-03T00:46:09.7736284Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-03T00:46:09.7740968Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/public/public
+2026-05-03T00:46:09.7776534Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-03T00:46:09.7808483Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-03T00:46:09.8025835Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-03T00:46:09.8044702Z http.https://github.com/.extraheader
+2026-05-03T00:46:09.8056646Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-05-03T00:46:09.8085856Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-03T00:46:09.8298104Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-03T00:46:09.8327666Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-03T00:46:09.8661975Z Cleaning up orphan processes
+2026-05-03T00:46:09.8993248Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/upload-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

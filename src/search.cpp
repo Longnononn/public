@@ -262,9 +262,11 @@ Value Search::negamax(BoardState& pos, SearchStack* ss, Value alpha, Value beta,
     
     nodesSearched++;
     
-    // Emergency node limit
-    if (nodesSearched > 5000000)
-        return VALUE_DRAW;
+    // Emergency node limit - stop search gracefully
+    if (nodesSearched > 5000000) {
+        running = false;
+        return VALUE_NONE;
+    }
     
     const bool rootNode = (ss->ply == 0);
     const bool inCheck = pos.is_check();
@@ -659,9 +661,11 @@ Value Search::qsearch(BoardState& pos, SearchStack* ss, Value alpha, Value beta)
     
     nodesSearched++;
     
-    // Emergency node limit
-    if (nodesSearched > 5000000)
-        return VALUE_DRAW;
+    // Emergency node limit - stop search gracefully
+    if (nodesSearched > 5000000) {
+        running = false;
+        return VALUE_NONE;
+    }
     
     const bool inCheck = pos.is_check();
     
@@ -870,14 +874,21 @@ u64 Search::bench(int depth) {
         
         // Search to specified depth
         running = true;
-        for (int d = 1; d <= depth; ++d) {
-            negamax<true>(pos, ss, -VALUE_INFINITE, VALUE_INFINITE, Depth(d), false);
+        std::cout << "  Starting iterative deepening (" << rootMoves.size() << " root moves)" << std::endl;
+        u64 posNodes = 0;
+        for (int d = 1; d <= depth && running; ++d) {
+            std::cout << "    Depth " << d << "..." << std::flush;
+            u64 depthStartNodes = nodesSearched;
+            Value result = negamax<true>(pos, ss, -VALUE_INFINITE, VALUE_INFINITE, Depth(d), false);
+            u64 depthNodes = nodesSearched - depthStartNodes;
+            posNodes += depthNodes;
+            std::cout << " done (" << depthNodes << " nodes, score=" << result << ")" << std::endl;
+            if (!running) break;
         }
         running = false;
         
-        u64 nodes = nodesSearched - nodesBefore;
-        totalNodes += nodes;
-        std::cout << "Position " << (i+1) << ": " << nodes << " nodes" << std::endl;
+        totalNodes += posNodes;
+        std::cout << "Position " << (i+1) << ": " << posNodes << " nodes" << std::endl;
     }
     
     auto end = std::chrono::steady_clock::now();

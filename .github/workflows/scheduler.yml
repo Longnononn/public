@@ -69,16 +69,12 @@ jobs:
       with:
         workflow: selfplay.yml
         token: ${{ secrets.GITHUB_TOKEN }}
-        inputs: '{
-          "games": "${{ github.event.inputs.games_per_shard || '10000' }}",
-          "depth": "8",
-          "threads": "4",
-          "shards": "8"
-        }'
+        inputs: >-
+          {"games":"${{ github.event.inputs.games_per_shard || 10000 }}","depth":"8","threads":"4","shards":"8"}
     
     - name: Log Dispatch
       run: |
-        echo "Dispatched: Self-Play (${{ github.event.inputs.games_per_shard || '10000' }} games x 8 shards)"
+        echo "Dispatched: Self-Play (${{ github.event.inputs.games_per_shard || 10000 }} games x 8 shards)"
         echo "Next: Merge will auto-trigger when self-play completes"
 
   # ======== Dispatch Merge (if starting from merge) ========

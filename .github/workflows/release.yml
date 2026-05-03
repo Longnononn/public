@@ -156,22 +156,26 @@ jobs:
     - name: Download Best Model (Backup)
       run: |
         mkdir -p models/archive
-        python3 -c "
-import requests, os
-repo = os.environ['GITHUB_REPOSITORY']
-try:
-    url = f'https://api.github.com/repos/{repo}/releases/latest'
-    r = requests.get(url, timeout=10)
-    data = r.json()
-    for asset in data.get('assets', []):
-        if asset['name'] == 'best.nnue':
-            a = requests.get(asset['browser_download_url'])
-            with open('models/archive/best_backup.nnue', 'wb') as f:
-                f.write(a.content)
-            break
-except Exception as e:
-    print(f'No previous best model: {e}')
-"
+        python3 - << 'PY' || true
+        import requests, os
+
+        repo = os.environ.get('GITHUB_REPOSITORY', '')
+        if not repo:
+            raise SystemExit(0)
+
+        try:
+            url = f'https://api.github.com/repos/{repo}/releases/latest'
+            r = requests.get(url, timeout=10)
+            data = r.json()
+            for asset in data.get('assets', []):
+                if asset.get('name') == 'best.nnue':
+                    a = requests.get(asset['browser_download_url'], timeout=30)
+                    with open('models/archive/best_backup.nnue', 'wb') as f:
+                        f.write(a.content)
+                    break
+        except Exception as e:
+            print(f'No previous best model: {e}')
+        PY
 
     - name: Promote Candidate -> Best
       run: |
@@ -179,24 +183,27 @@ except Exception as e:
 
     - name: Update Elo History
       run: |
-        python3 -c "
-import json, datetime, os
-history = []
-if os.path.exists('elo_history.json'):
-    with open('elo_history.json', 'r') as f:
-        history = json.load(f)
-entry = {
-    'timestamp': datetime.datetime.now().isoformat(),
-    'version': '${{ needs.prepare.outputs.version }}',
-    'run_id': '${{ github.run_id }}',
-    'elo_gain': float('${{ github.event.inputs.elo_gain || 0 }}'),
-    'sprt_result': '${{ github.event.inputs.sprt_result || 'ACCEPT' }}',
-    'model_size': os.path.getsize('models/best.nnue') if os.path.exists('models/best.nnue') else 0
-}
-history.append(entry)
-with open('elo_history.json', 'w') as f:
-    json.dump(history, f, indent=2)
-"
+        python3 - << 'PY'
+        import json, datetime, os
+
+        history = []
+        if os.path.exists('elo_history.json'):
+            with open('elo_history.json', 'r', encoding='utf-8') as f:
+                history = json.load(f)
+
+        entry = {
+            'timestamp': datetime.datetime.now().isoformat(),
+            'version': '${{ needs.prepare.outputs.version }}',
+            'run_id': '${{ github.run_id }}',
+            'elo_gain': float('${{ github.event.inputs.elo_gain || 0 }}'),
+            'sprt_result': '${{ github.event.inputs.sprt_result || 'ACCEPT' }}',
+            'model_size': os.path.getsize('models/best.nnue') if os.path.exists('models/best.nnue') else 0,
+        }
+
+        history.append(entry)
+        with open('elo_history.json', 'w', encoding='utf-8') as f:
+            json.dump(history, f, indent=2)
+        PY
 
     - name: Upload Best Model
       uses: actions/upload-artifact@v4

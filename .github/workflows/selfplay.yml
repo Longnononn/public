@@ -103,29 +103,29 @@ jobs:
       run: |
         mkdir -p models
         # Try to get latest model from releases
-        python3 -c "
-import requests, os, sys
-
-repo = os.environ.get('GITHUB_REPOSITORY', '')
-if not repo:
-    print('No repo, skipping model download')
-    sys.exit(0)
-
-url = f'https://api.github.com/repos/{repo}/releases/latest'
-try:
-    r = requests.get(url, timeout=10)
-    data = r.json()
-    for asset in data.get('assets', []):
-        if asset['name'].endswith('.nnue'):
-            print(f'Downloading {asset[\"name\"]}...')
-            a = requests.get(asset['browser_download_url'])
-            with open('models/best.nnue', 'wb') as f:
-                f.write(a.content)
-            print('Model downloaded')
-            break
-except Exception as e:
-    print(f'Error: {e}')
-" || true
+        python3 - << 'PY' || true
+        import requests, os, sys
+        
+        repo = os.environ.get('GITHUB_REPOSITORY', '')
+        if not repo:
+            print('No repo, skipping model download')
+            sys.exit(0)
+        
+        url = f'https://api.github.com/repos/{repo}/releases/latest'
+        try:
+            r = requests.get(url, timeout=10)
+            data = r.json()
+            for asset in data.get('assets', []):
+                if asset['name'].endswith('.nnue'):
+                    print(f"Downloading {asset['name']}...")
+                    a = requests.get(asset['browser_download_url'])
+                    with open('models/best.nnue', 'wb') as f:
+                        f.write(a.content)
+                    print('Model downloaded')
+                    break
+        except Exception as e:
+            print(f'Error: {e}')
+        PY
 
     - name: Generate Games
       run: |

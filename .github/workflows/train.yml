@@ -100,16 +100,18 @@ jobs:
       run: |
         mkdir -p data
         # List available artifacts and find latest dataset
-        python3 -c "
-import requests, os, json, sys
+        python3 - << 'PY' || echo "Using default dataset location"
+        import os
 
-def get_latest_dataset():
-    repo = os.environ['GITHUB_REPOSITORY']
-    # This would require GitHub API token
-    print('Finding latest dataset artifact...')
-    
-get_latest_dataset()
-" || echo "Using default dataset location"
+        def get_latest_dataset():
+            repo = os.environ.get('GITHUB_REPOSITORY', '')
+            if not repo:
+                print('No repo env, skipping')
+                return
+            print('Finding latest dataset artifact...')
+
+        get_latest_dataset()
+        PY
 
     - name: Data Statistics
       run: |

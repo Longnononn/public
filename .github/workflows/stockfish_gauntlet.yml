@@ -77,63 +77,63 @@ jobs:
       - name: Compute Elo estimate
         run: |
           python3 - << 'PY'
-import json, re, time, math
+          import json, re, time, math
 
-log = open('match.log', 'r', encoding='utf-8', errors='ignore').read().splitlines()
+          log = open('match.log', 'r', encoding='utf-8', errors='ignore').read().splitlines()
 
-# cutechess summary usually contains:
-# "Score of Nexus vs Stockfish: W - L - D  [P]"
-pat = re.compile(r"^Score of (.+?) vs (.+?):\s*(\d+)\s*-\s*(\d+)\s*-\s*(\d+)")
+          # cutechess summary usually contains:
+          # "Score of Nexus vs Stockfish: W - L - D  [P]"
+          pat = re.compile(r"^Score of (.+?) vs (.+?):\s*(\d+)\s*-\s*(\d+)\s*-\s*(\d+)")
 
-w = l = d = None
-for line in reversed(log):
-    m = pat.search(line.strip())
-    if m:
-        w, l, d = map(int, m.group(3,4,5))
-        break
+          w = l = d = None
+          for line in reversed(log):
+              m = pat.search(line.strip())
+              if m:
+                  w, l, d = map(int, m.group(3,4,5))
+                  break
 
-out = {
-    'timestamp': int(time.time()),
-    'tc': '${{ github.event.inputs.tc }}',
-    'games_requested': int('${{ github.event.inputs.games }}'),
-    'wins': w,
-    'losses': l,
-    'draws': d,
-    'score': None,
-    'elo_estimate': None,
-    'elo_ci95_low': None,
-    'elo_ci95_high': None,
-    'games_played': None,
-}
+          out = {
+              'timestamp': int(time.time()),
+              'tc': '${{ github.event.inputs.tc }}',
+              'games_requested': int('${{ github.event.inputs.games }}'),
+              'wins': w,
+              'losses': l,
+              'draws': d,
+              'score': None,
+              'elo_estimate': None,
+              'elo_ci95_low': None,
+              'elo_ci95_high': None,
+              'games_played': None,
+          }
 
-if w is not None:
-    n = w + l + d
-    out['games_played'] = n
-    p = (w + 0.5*d) / n if n else 0.5
-    out['score'] = p
+          if w is not None:
+              n = w + l + d
+              out['games_played'] = n
+              p = (w + 0.5*d) / n if n else 0.5
+              out['score'] = p
 
-    # Elo from score using logistic model: p = 1/(1+10^(-Elo/400))
-    eps = 1e-9
-    p_clip = min(max(p, eps), 1 - eps)
-    elo = 400.0 * math.log10(p_clip / (1.0 - p_clip))
-    out['elo_estimate'] = elo
+              # Elo from score using logistic model: p = 1/(1+10^(-Elo/400))
+              eps = 1e-9
+              p_clip = min(max(p, eps), 1 - eps)
+              elo = 400.0 * math.log10(p_clip / (1.0 - p_clip))
+              out['elo_estimate'] = elo
 
-    # Approximate 95% CI by propagating binomial SE of score.
-    # Treat each game as score in {0, 0.5, 1} and approximate variance with p(1-p)/n.
-    # This is not as rigorous as BayesElo, but gives a useful stability signal.
-    if n > 0:
-        se_p = math.sqrt(max(p * (1.0 - p), 0.0) / n)
-        z = 1.96
-        p_low = min(max(p - z * se_p, eps), 1 - eps)
-        p_high = min(max(p + z * se_p, eps), 1 - eps)
-        out['elo_ci95_low'] = 400.0 * math.log10(p_low / (1.0 - p_low))
-        out['elo_ci95_high'] = 400.0 * math.log10(p_high / (1.0 - p_high))
+              # Approximate 95% CI by propagating binomial SE of score.
+              # Treat each game as score in {0, 0.5, 1} and approximate variance with p(1-p)/n.
+              # This is not as rigorous as BayesElo, but gives a useful stability signal.
+              if n > 0:
+                  se_p = math.sqrt(max(p * (1.0 - p), 0.0) / n)
+                  z = 1.96
+                  p_low = min(max(p - z * se_p, eps), 1 - eps)
+                  p_high = min(max(p + z * se_p, eps), 1 - eps)
+                  out['elo_ci95_low'] = 400.0 * math.log10(p_low / (1.0 - p_low))
+                  out['elo_ci95_high'] = 400.0 * math.log10(p_high / (1.0 - p_high))
 
-with open('elo_result.json', 'w', encoding='utf-8') as f:
-    json.dump(out, f, indent=2)
+          with open('elo_result.json', 'w', encoding='utf-8') as f:
+              json.dump(out, f, indent=2)
 
-print(json.dumps(out, indent=2))
-PY
+          print(json.dumps(out, indent=2))
+          PY
 
       - name: Commit result (optional)
         if: ${{ github.event.inputs.commit_results }}

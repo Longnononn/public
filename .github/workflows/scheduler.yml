@@ -105,12 +105,13 @@ jobs:
       with:
         workflow: micro_train.yml
         token: ${{ secrets.PAT_TOKEN }}
-        inputs: '{
-          "epochs": "${{ github.event.inputs.micro_epochs || '1' }}",
-          "batch_size": "4096",
-          "hidden_size": "128",
-          "max_positions": "500000"
-        }'
+        inputs: >-
+          {
+            "epochs": "${{ github.event.inputs.micro_epochs || '1' }}",
+            "batch_size": "4096",
+            "hidden_size": "128",
+            "max_positions": "500000"
+          }
     
     - name: Log Dispatch
       run: echo "Dispatched: Micro-Training (1 epoch, resume from checkpoint)"
@@ -127,11 +128,12 @@ jobs:
       with:
         workflow: sprt.yml
         token: ${{ secrets.PAT_TOKEN }}
-        inputs: '{
-          "games": "${{ github.event.inputs.sprt_games || '500' }}",
-          "elo1": "3",
-          "tc": "10+0.1"
-        }'
+        inputs: >-
+          {
+            "games": "${{ github.event.inputs.sprt_games || '500' }}",
+            "elo1": "3",
+            "tc": "10+0.1"
+          }
     
     - name: Log Dispatch
       run: echo "Dispatched: SPRT Validation (H1=+3 Elo)"
